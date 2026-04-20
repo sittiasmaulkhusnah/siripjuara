@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <title>My Orders - SIRIP JUARA</title>
+    <link rel="stylesheet" href="./login.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    />
+  </head>
+  <body>
+    <div class="myorder-page">
+      <!-- Header Navigation -->
+      <header class="myorder-header">
+        <div class="myorder-logo">
+          <img alt="SIRIP JUARA" src="./public/SIRIP_JUARA-removebg-preview_1.png" />
+        </div>
+
+        <nav class="myorder-nav">
+          <a href="#" class="myorder-nav-link">HOME</a>
+          <p class="myorder-nav-link">SHOP</p>
+          <p class="myorder-nav-link">CARE GUIDE</p>
+          <p class="myorder-nav-link">ABOUT BETTA</p>
+          <p class="myorder-nav-link">SUPPORT</p>
+        </nav>
+
+        <div class="myorder-header-icons">
+          <div class="myorder-icon-btn">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+              <path d="M8 8L10 20H22L24 8" stroke="#ffffff" stroke-width="2" />
+            </svg>
+          </div>
+          <div class="myorder-icon-btn myorder-icon-active">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+              <circle cx="15" cy="10" r="5" fill="white" />
+              <path d="M5 24C5 18 9 15 15 15C21 15 25 18 25 24" stroke="white" stroke-width="2" />
+            </svg>
+          </div>
+        </div>
+      </header>
+
+      <div class="myorder-wrapper">
+        <!-- Left Sidebar -->
+        <aside class="myorder-sidebar">
+          <div class="myorder-menu-container">
+            <button class="myorder-menu-item">Personal Information</button>
+            <button class="myorder-menu-item myorder-menu-active">My Orders</button>
+            <button class="myorder-menu-item">Manage Address</button>
+            <button class="myorder-menu-item">Password Manager</button>
+            <button class="myorder-menu-item">Logout</button>
+          </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="myorder-content">
+          <div class="myorder-header-section"></div>
+          <div class="myorder-content-area">
+            <div class="myorder-empty-state">
+              <p>Your orders will appear here</p>
+            </div>
+          </div>
+          <button class="myorder-update-btn">Update Changes</button>
+        </main>
+      </div>
+
+      <!-- Footer -->
+      <footer class="myorder-footer">
+        <div class="myorder-footer-logo">
+          <img alt="SIRIP JUARA" src="./public/SIRIP_JUARA-removebg-preview_2.png" />
+        </div>
+        <div class="myorder-footer-content">
+          <div class="myorder-footer-col">
+            <p class="myorder-footer-description">
+              Your trusted place to find high-quality betta fish and beginner-friendly care guidance.
+            </p>
+          </div>
+
+          <div class="myorder-footer-col">
+            <h4 class="myorder-footer-title">Company</h4>
+            <ul class="myorder-footer-list">
+              <li><a href="#">Beginner Guide</a></li>
+              <li><a href="#">Types of Betta</a></li>
+              <li><a href="#">Feeding Tips</a></li>
+              <li><a href="#">Care Basics</a></li>
+            </ul>
+          </div>
+
+          <div class="myorder-footer-col">
+            <h4 class="myorder-footer-title">Quick Links</h4>
+            <ul class="myorder-footer-list">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Shop</a></li>
+              <li><a href="#">Care Guide</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Support</a></li>
+            </ul>
+          </div>
+
+          <div class="myorder-footer-col">
+            <h4 class="myorder-footer-title">Contact</h4>
+            <p class="myorder-footer-contact">Jl. Makkio Baji II, SulSel, Indonesia</p>
+            <p class="myorder-footer-contact">siripjuara@gmail.com<br />Costumer Service</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      const menuItems = document.querySelectorAll(".myorder-menu-item");
+      menuItems.forEach((item) => {
+        item.addEventListener("click", function () {
+          menuItems.forEach((m) => m.classList.remove("myorder-menu-active"));
+          this.classList.add("myorder-menu-active");
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up - SIRIP JUARA</title>
+    <link rel="stylesheet" href="login.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="signup-page">
+      <div class="signup-left">
+        <h1 class="signup-title">Sign Up</h1>
+
+        <form class="signup-form">
+          <div class="signup-form-row">
+            <div class="signup-form-group">
+              <label class="signup-form-label">First Name *</label>
+              <input
+                type="text"
+                class="signup-form-input"
+                placeholder="Enter your first name"
+                required
+              />
+            </div>
+            <div class="signup-form-group">
+              <label class="signup-form-label">Last Name *</label>
+              <input
+                type="text"
+                class="signup-form-input"
+                placeholder="Enter your last name"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="signup-form-group">
+            <label class="signup-form-label">Email *</label>
+            <input
+              type="email"
+              class="signup-form-input"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+
+          <div class="signup-form-group">
+            <label class="signup-form-label">Password *</label>
+            <div class="signup-password-wrapper">
+              <input
+                type="password"
+                class="signup-form-input signup-password-input"
+                placeholder="Enter your password"
+                required
+              />
+              <button type="button" class="signup-password-toggle">
+                <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                  <path
+                    d="M15 5C7.5 5 1.73 9.11 0.5 15c1.23 5.89 7 10 14.5 10s13.27-4.11 14.5-10C28.27 9.11 22.5 5 15 5zm0 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"
+                    fill="#7E869E"
+                  />
+                  <circle cx="15" cy="15" r="3" fill="#7E869E" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <button type="submit" class="signup-submit-btn">Sign Up</button>
+        </form>
+
+        <div class="signup-divider">
+          <span class="signup-divider-line"></span>
+          <span class="signup-divider-text">Or With Google</span>
+          <span class="signup-divider-line"></span>
+        </div>
+
+        <button class="signup-google-btn">
+          <svg width="36" height="25" viewBox="0 0 36 25" fill="none">
+            <path
+              d="M32.65 10.48h-8.7V7.62h5.48C28.8 5.24 26.65 3.5 24 3.5c-3.31 0-6 2.69-6 6s2.69 6 6 6c1.66 0 3.16-.67 4.24-1.76l2.5 2.5C28.83 18.5 26.65 20 24 20c-5.52 0-10-4.48-10-10s4.48-10 10-10c5.04 0 9.35 3.64 9.92 8.48z"
+              fill="#1f2937"
+            />
+          </svg>
+          Sign In with Google
+        </button>
+      </div>
+
+      <div class="signup-right">
+        <div class="signup-right-logo">
+          <svg width="145" height="88" viewBox="0 0 145 88" fill="none">
+            <text
+              x="50%"
+              y="50%"
+              font-family="Poppins, sans-serif"
+              font-size="24"
+              font-weight="700"
+              fill="white"
+              text-anchor="middle"
+              dominant-baseline="middle"
+            >
+              SIRIP JUARA
+            </text>
+          </svg>
+        </div>
+
+        <h2 class="signup-right-heading">Hello, Future Betta Lover!</h2>
+
+        <p class="signup-right-description">
+          Create your account and start caring for your betta fish the right
+          way.
+        </p>
+
+        <div class="signup-right-footer">
+          <p class="signup-right-footer-text">Already have an account?</p>
+          <a href="signin.html" class="signup-right-footer-link">Sign in here!</a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const passwordInput = document.querySelector(".signup-password-input");
+      const passwordToggle = document.querySelector(".signup-password-toggle");
+
+      passwordToggle.addEventListener("click", function () {
+        if (passwordInput.type === "password") {
+          passwordInput.type = "text";
+        } else {
+          passwordInput.type = "password";
+        }
+      });
+
+      const form = document.querySelector(".signup-form");
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        alert("Sign Up successful!");
+      });
+    </script>
+  </body>
+</html>

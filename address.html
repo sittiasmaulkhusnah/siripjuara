@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <title>Manage Address - SIRIP JUARA</title>
+    <link rel="stylesheet" href="./login.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    />
+  </head>
+  <body>
+    <div class="address-page">
+      <!-- Header Navigation -->
+      <header class="address-header">
+        <div class="address-logo">
+          <img alt="SIRIP JUARA" src="./public/SIRIP_JUARA-removebg-preview_1.png" />
+        </div>
+
+        <nav class="address-nav">
+          <a href="#" class="address-nav-link">HOME</a>
+          <p class="address-nav-link">SHOP</p>
+          <p class="address-nav-link">CARE GUIDE</p>
+          <p class="address-nav-link">ABOUT BETTA</p>
+          <p class="address-nav-link">SUPPORT</p>
+        </nav>
+
+        <div class="address-header-icons">
+          <div class="address-icon-btn">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+              <path d="M8 8L10 20H22L24 8" stroke="#ffffff" stroke-width="2" />
+            </svg>
+          </div>
+          <div class="address-icon-btn address-icon-active">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+              <circle cx="15" cy="10" r="5" fill="white" />
+              <path d="M5 24C5 18 9 15 15 15C21 15 25 18 25 24" stroke="white" stroke-width="2" />
+            </svg>
+          </div>
+        </div>
+      </header>
+
+      <div class="address-wrapper">
+        <!-- Left Sidebar -->
+        <aside class="address-sidebar">
+          <div class="address-menu-container">
+            <button class="address-menu-item">Personal Information</button>
+            <button class="address-menu-item">My Orders</button>
+            <button class="address-menu-item address-menu-active">Manage Address</button>
+            <button class="address-menu-item">Password Manager</button>
+            <button class="address-menu-item">Logout</button>
+          </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="address-content">
+          <div class="address-content-inner">
+            <h2 class="address-form-title">Add New Address</h2>
+            <form class="address-form">
+              <!-- First Name and Last Name Row -->
+              <div class="address-form-row">
+                <div class="address-form-group">
+                  <label class="address-form-label">First Name <span class="required">*</span></label>
+                  <input type="text" class="address-form-input" placeholder="Enter first name" />
+                </div>
+                <div class="address-form-group">
+                  <label class="address-form-label">Last Name <span class="required">*</span></label>
+                  <input type="text" class="address-form-input" placeholder="Enter last name" />
+                </div>
+              </div>
+
+              <!-- Province -->
+              <div class="address-form-group">
+                <label class="address-form-label">Province <span class="required">*</span></label>
+                <input type="text" class="address-form-input" placeholder="Enter province" />
+              </div>
+
+              <!-- City -->
+              <div class="address-form-group">
+                <label class="address-form-label">City <span class="required">*</span></label>
+                <input type="text" class="address-form-input" placeholder="Enter city" />
+              </div>
+
+              <!-- Regency and Subdistrict Row -->
+              <div class="address-form-row">
+                <div class="address-form-group">
+                  <label class="address-form-label">Regency <span class="required">*</span></label>
+                  <input type="text" class="address-form-input" placeholder="Enter regency" />
+                </div>
+                <div class="address-form-group">
+                  <label class="address-form-label">Subdistrict <span class="required">*</span></label>
+                  <input type="text" class="address-form-input" placeholder="Enter subdistrict" />
+                </div>
+              </div>
+
+              <!-- Street Address -->
+              <div class="address-form-group">
+                <label class="address-form-label">Street Address</label>
+                <input type="text" class="address-form-input" placeholder="Enter street address" />
+              </div>
+
+              <!-- Post Code -->
+              <div class="address-form-group">
+                <label class="address-form-label">Post Code</label>
+                <input type="text" class="address-form-input" placeholder="Enter post code" />
+              </div>
+
+              <!-- Phone -->
+              <div class="address-form-group">
+                <label class="address-form-label">Phone</label>
+                <input type="tel" class="address-form-input" placeholder="Enter phone number" />
+              </div>
+
+              <!-- Email -->
+              <div class="address-form-group">
+                <label class="address-form-label">Email</label>
+                <input type="email" class="address-form-input" placeholder="Enter email" />
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit" class="address-submit-btn">Update Address</button>
+            </form>
+          </div>
+        </main>
+      </div>
+
+      <!-- Footer -->
+      <footer class="address-footer">
+        <div class="address-footer-logo">
+          <img alt="SIRIP JUARA" src="./public/SIRIP_JUARA-removebg-preview_2.png" />
+        </div>
+        <div class="address-footer-content">
+          <div class="address-footer-col">
+            <p class="address-footer-description">
+              Your trusted place to find high-quality betta fish and beginner-friendly care guidance.
+            </p>
+          </div>
+
+          <div class="address-footer-col">
+            <h4 class="address-footer-title">Company</h4>
+            <ul class="address-footer-list">
+              <li><a href="#">Beginner Guide</a></li>
+              <li><a href="#">Types of Betta</a></li>
+              <li><a href="#">Feeding Tips</a></li>
+              <li><a href="#">Care Basics</a></li>
+            </ul>
+          </div>
+
+          <div class="address-footer-col">
+            <h4 class="address-footer-title">Quick Links</h4>
+            <ul class="address-footer-list">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Shop</a></li>
+              <li><a href="#">Care Guide</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Support</a></li>
+            </ul>
+          </div>
+
+          <div class="address-footer-col">
+            <h4 class="address-footer-title">Contact</h4>
+            <p class="address-footer-contact">Jl. Makkio Baji II, SulSel, Indonesia</p>
+            <p class="address-footer-contact">siripjuara@gmail.com<br />Costumer Service</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      const menuItems = document.querySelectorAll(".address-menu-item");
+      menuItems.forEach((item) => {
+        item.addEventListener("click", function () {
+          menuItems.forEach((m) => m.classList.remove("address-menu-active"));
+          this.classList.add("address-menu-active");
+        });
+      });
+
+      const form = document.querySelector(".address-form");
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        alert("Address updated successfully!");
+      });
+    </script>
+  </body>
+</html>

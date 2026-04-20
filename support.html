@@ -1,0 +1,221 @@
+*SUPPORT HTML*
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Support - SIRIP JUARA</title>
+    <link rel="stylesheet" href="login.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="support-page">
+      <!-- Header -->
+      <div class="support-header">
+        <div class="support-header-content">
+          <div class="support-logo">
+            <svg width="263" height="80" viewBox="0 0 263 80" fill="none">
+              <text
+                x="50%"
+                y="50%"
+                font-family="Poppins, sans-serif"
+                font-size="28"
+                font-weight="700"
+                fill="white"
+                text-anchor="middle"
+                dominant-baseline="middle"
+              >
+                SIRIP JUARA
+              </text>
+            </svg>
+          </div>
+
+          <nav class="support-nav">
+            <a href="index.html" class="support-nav-link">HOME</a>
+            <a href="#shop" class="support-nav-link">SHOP</a>
+            <a href="#care" class="support-nav-link">CARE GUIDE</a>
+            <a href="#about" class="support-nav-link">ABOUT BETTA</a>
+            <a href="#support" class="support-nav-link">SUPPORT</a>
+          </nav>
+
+          <div class="support-header-icons">
+            <button class="support-icon-btn">
+              <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                <path
+                  d="M10 20h8v2h-8v-2zm8-6H8v6h10v-6zm2-2h-1V7c0-1.1-.9-2-2-2h-8c-1.1 0-2 .9-2 2v5h-1c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-8c0-1.1-.9-2-2-2zm-12-5h8v5H8V7z"
+                  fill="#1f2937"
+                />
+              </svg>
+            </button>
+            <div class="support-user-avatar"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="support-main">
+        <div class="support-chat-icon">
+          <svg width="112" height="112" viewBox="0 0 112 112" fill="none">
+            <circle cx="56" cy="56" r="56" fill="#d9d9d9" />
+            <path
+              d="M56 36c-11 0-20 9-20 20v20h40V56c0-11-9-20-20-20z"
+              fill="#222222"
+            />
+            <rect x="46" y="70" width="20" height="12" rx="2" fill="#222222" />
+          </svg>
+        </div>
+
+        <h1 class="support-title">Kirim Pertanyaan</h1>
+        <p class="support-subtitle">
+          Tulis pertanyaan kamu di sini, kami akan segera membalas melalui email
+        </p>
+
+        <div class="support-form-container">
+          <form class="support-form" id="supportForm">
+            <!-- Email Field -->
+            <div class="support-form-group">
+              <label class="support-form-label">E-mail</label>
+              <div class="support-input-wrapper">
+                <svg
+                  class="support-input-icon"
+                  width="30"
+                  height="24"
+                  viewBox="0 0 30 24"
+                  fill="none"
+                >
+                  <path
+                    d="M27 2H3c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h24c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 4l-12 7.5L3 6v0z"
+                    fill="#4a90e2"
+                  />
+                </svg>
+                <input
+                  type="email"
+                  class="support-form-input"
+                  placeholder="Masukkan email aktif kamu"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- Category Dropdown -->
+            <div class="support-form-group">
+              <label class="support-form-label">Kategori Pertanyaan</label>
+              <div class="support-select-wrapper">
+                <select class="support-form-input support-form-select" required>
+                  <option value="">Pilih kategori</option>
+                  <option value="general">Pertanyaan Umum</option>
+                  <option value="product">Tentang Produk</option>
+                  <option value="shipping">Pengiriman</option>
+                  <option value="return">Pengembalian</option>
+                  <option value="other">Lainnya</option>
+                </select>
+                <svg
+                  class="support-select-icon"
+                  width="35"
+                  height="35"
+                  viewBox="0 0 35 35"
+                  fill="none"
+                >
+                  <path
+                    d="M8.75 13.125L17.5 21.875l8.75-8.75"
+                    stroke="#33363F"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            <!-- Question Textarea -->
+            <div class="support-form-group">
+              <label class="support-form-label">Isi Pertanyaan</label>
+              <textarea
+                class="support-form-input support-form-textarea"
+                placeholder="Tulis pertanyaan kamu di sini..."
+                rows="8"
+                required
+              ></textarea>
+            </div>
+
+            <!-- Upload Image Button -->
+            <div class="support-form-group">
+              <label class="support-form-label">Upload Gambar</label>
+              <button type="button" class="support-upload-btn">
+                <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                  <path
+                    d="M15 3C8.4 3 3 8.4 3 15s5.4 12 12 12 12-5.4 12-12S21.6 3 15 3zm0 21c-4.98 0-9-4.02-9-9s4.02-9 9-9 9 4.02 9 9-4.02 9-9 9z"
+                    fill="#4a90e2"
+                  />
+                  <path d="M15 8v7m0 0h7m-7 0H8" stroke="#4a90e2" stroke-width="2" />
+                </svg>
+                Upload Gambar
+              </button>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="support-submit-btn">
+              Kirim Pertanyaan
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="support-footer">
+        <div class="support-footer-grid">
+          <div class="support-footer-col">
+            <h3 class="support-footer-title">Tentang Kami</h3>
+            <p class="support-footer-text">
+              Menyediakan ikan cupang berkualitas dan panduan perawatan
+              terpercaya
+            </p>
+          </div>
+
+          <div class="support-footer-col">
+            <h3 class="support-footer-title">Navigasi</h3>
+            <ul class="support-footer-list">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#shop">Shop</a></li>
+              <li><a href="#care">Care Guide</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#support">Support</a></li>
+            </ul>
+          </div>
+
+          <div class="support-footer-col">
+            <h3 class="support-footer-title">Bantuan</h3>
+            <ul class="support-footer-list">
+              <li><a href="#faq">FAQ</a></li>
+              <li><a href="#shipping">Pengiriman</a></li>
+              <li><a href="#return">Pengembalian</a></li>
+              <li><a href="#contact">Kontak</a></li>
+            </ul>
+          </div>
+
+          <div class="support-footer-col">
+            <h3 class="support-footer-title">Kontak</h3>
+            <p class="support-footer-contact">
+              Email: support@namabrand.com<br />
+              WhatsApp: +62 xxx xxxx xxx
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      const supportForm = document.getElementById("supportForm");
+      supportForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        alert("Pertanyaan Anda telah terkirim. Kami akan segera membalasnya!");
+        supportForm.reset();
+      });
+    </script>
+  </body>
+</html>

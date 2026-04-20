@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <title>Create New Password - SIRIP JUARA</title>
+    <link rel="stylesheet" href="./login.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+    />
+  </head>
+  <body>
+    <div class="newpass-container">
+      <!-- Back Button -->
+      <button class="newpass-back-button" onclick="window.history.back()">
+        <svg
+          width="35"
+          height="35"
+          viewBox="0 0 35 35"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M18.5 7.5L8 17.5L18.5 27.5"
+            stroke="#33363F"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+
+      <!-- Create New Password Card -->
+      <div class="newpass-card">
+        <h1 class="newpass-title">Create New Password</h1>
+        <p class="newpass-description">
+          Your new password must be differnt from previously used password.
+        </p>
+
+        <form class="newpass-form" onsubmit="handleCreatePassword(event)">
+          <!-- New Password Input -->
+          <div class="newpass-form-group">
+            <label for="new-password" class="newpass-form-label"
+              >New Password *</label
+            >
+            <div class="newpass-password-wrapper">
+              <input
+                type="password"
+                id="new-password"
+                class="newpass-form-input"
+                placeholder=""
+                required
+              />
+              <button
+                type="button"
+                class="newpass-password-toggle"
+                data-target="new-password"
+              >
+                <svg
+                  width="30"
+                  height="30"
+                  viewBox="0 0 30 30"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g opacity="0.5">
+                    <circle
+                      cx="15"
+                      cy="15"
+                      r="3"
+                      fill="#33363F"
+                      opacity="0.5"
+                    />
+                    <path
+                      d="M15 8C10.5 8 6.73 10.61 5 14.5C6.73 18.39 10.5 21 15 21C19.5 21 23.27 18.39 25 14.5C23.27 10.61 19.5 8 15 8Z"
+                      stroke="#7E869E"
+                      stroke-width="1.5"
+                    />
+                  </g>
+                  <g opacity="0.5">
+                    <path
+                      d="M5 5L25 25"
+                      stroke="#7E869E"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                    />
+                  </g>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Confirm Password Input -->
+          <div class="newpass-form-group">
+            <label for="confirm-password" class="newpass-form-label"
+              >Confirm Password *</label
+            >
+            <div class="newpass-password-wrapper">
+              <input
+                type="password"
+                id="confirm-password"
+                class="newpass-form-input"
+                placeholder=""
+                required
+              />
+              <button
+                type="button"
+                class="newpass-password-toggle"
+                data-target="confirm-password"
+              >
+                <svg
+                  width="30"
+                  height="30"
+                  viewBox="0 0 30 30"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g opacity="0.5">
+                    <circle
+                      cx="15"
+                      cy="15"
+                      r="3"
+                      fill="#33363F"
+                      opacity="0.5"
+                    />
+                    <path
+                      d="M15 8C10.5 8 6.73 10.61 5 14.5C6.73 18.39 10.5 21 15 21C19.5 21 23.27 18.39 25 14.5C23.27 10.61 19.5 8 15 8Z"
+                      stroke="#7E869E"
+                      stroke-width="1.5"
+                    />
+                  </g>
+                  <g opacity="0.5">
+                    <path
+                      d="M5 5L25 25"
+                      stroke="#7E869E"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                    />
+                  </g>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Save New Password Button -->
+          <button type="submit" class="newpass-btn">Save New Password</button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      const toggleButtons = document.querySelectorAll(".newpass-password-toggle");
+
+      toggleButtons.forEach((button) => {
+        button.addEventListener("click", function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute("data-target");
+          const input = document.getElementById(targetId);
+
+          if (input.type === "password") {
+            input.type = "text";
+            this.classList.add("active");
+          } else {
+            input.type = "password";
+            this.classList.remove("active");
+          }
+        });
+      });
+
+      function handleCreatePassword(event) {
+        event.preventDefault();
+
+        const newPassword = document.getElementById("new-password").value;
+        const confirmPassword = document.getElementById("confirm-password")
+          .value;
+
+        if (newPassword !== confirmPassword) {
+          alert("Passwords do not match!");
+          return;
+        }
+
+        if (newPassword.length < 6) {
+          alert("Password must be at least 6 characters long!");
+          return;
+        }
+
+        console.log("Password created successfully");
+        alert("Your password has been updated successfully!");
+        // Add your backend API call here
+      }
+    </script>
+  </body>
+</html>

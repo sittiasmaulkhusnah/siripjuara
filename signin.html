@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <title>Sign In - SIRIP JUARA</title>
+    <link rel="stylesheet" href="./login.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap"
+    />
+  </head>
+  <body>
+    <div class="login-container">
+      <!-- Left Side Panel -->
+      <div class="login-left-panel">
+        <div class="logo-section">
+          <img
+            class="logo"
+            alt="SIRIP JUARA"
+            src="./public/SIRIP_JUARA-removebg-preview_2.png"
+          />
+        </div>
+
+        <div class="left-content">
+          <h1 class="welcome-title">Hey There!</h1>
+          <p class="welcome-subtitle">Welcome Back.</p>
+          <p class="welcome-text">
+            Ready to check on your beautiful betta fish today?
+          </p>
+        </div>
+
+        <div class="signup-prompt">
+          <p class="signup-text">Don't have an account?</p>
+          <a href="signup.html" class="signup-link">Create Account!</a>
+        </div>
+      </div>
+
+      <!-- Right Side Form -->
+      <div class="login-right-panel">
+        <div class="form-container">
+          <h2 class="sign-in-title">Sign In</h2>
+
+          <!-- Email Input -->
+          <div class="form-group">
+            <label for="email" class="form-label">Email *</label>
+            <input
+              type="email"
+              id="email"
+              class="form-input"
+              placeholder=""
+              required
+            />
+          </div>
+
+          <!-- Password Input -->
+          <div class="form-group">
+            <label for="password" class="form-label">Password *</label>
+            <div class="password-input-wrapper">
+              <input
+                type="password"
+                id="password"
+                class="form-input"
+                placeholder=""
+                required
+              />
+              <button class="password-toggle" type="button">
+                <svg
+                  width="30"
+                  height="30"
+                  viewBox="0 0 30 30"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g opacity="0.5">
+                    <circle
+                      cx="15"
+                      cy="15"
+                      r="3"
+                      fill="#33363F"
+                      opacity="0.5"
+                    />
+                    <path
+                      d="M15 8C10.5 8 6.73 10.61 5 14.5C6.73 18.39 10.5 21 15 21C19.5 21 23.27 18.39 25 14.5C23.27 10.61 19.5 8 15 8Z"
+                      stroke="#7E869E"
+                      stroke-width="1.5"
+                    />
+                  </g>
+                  <g opacity="0.5">
+                    <path
+                      d="M5 5L25 25"
+                      stroke="#7E869E"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                    />
+                  </g>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Forgot Password Link -->
+          <a href="forgot.html" class="forgot-password">Forgot Password?</a>
+
+          <!-- Sign In Button -->
+          <button class="sign-in-btn">Sign In</button>
+
+          <!-- Divider -->
+          <div class="divider-section">
+            <div class="divider-line"></div>
+            <span class="divider-text">Or With Google</span>
+            <div class="divider-line"></div>
+          </div>
+
+          <!-- Google Sign In -->
+          <button class="google-signin-btn">
+            <img
+              class="google-icon"
+              alt="Google"
+              src="./public/image-removebg-preview_7_1.png"
+            />
+            <span>Sign In with Google</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const passwordToggle = document.querySelector(".password-toggle");
+      const passwordInput = document.getElementById("password");
+
+      passwordToggle.addEventListener("click", function () {
+        const type =
+          passwordInput.getAttribute("type") === "password"
+            ? "text"
+            : "password";
+        passwordInput.setAttribute("type", type);
+        this.classList.toggle("active");
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <title>My Account - SIRIP JUARA</title>
+    <link rel="stylesheet" href="./login.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    />
+  </head>
+  <body>
+    <div class="account-page">
+      <!-- Header Navigation -->
+      <header class="account-header">
+        <div class="account-logo">
+          <img alt="SIRIP JUARA" src="./public/SIRIP_JUARA-removebg-preview_1.png" />
+        </div>
+
+        <nav class="account-nav">
+          <a href="#" class="account-nav-link">HOME</a>
+          <p class="account-nav-link">SHOP</p>
+          <p class="account-nav-link">CARE GUIDE</p>
+          <p class="account-nav-link">ABOUT BETTA</p>
+          <p class="account-nav-link">SUPPORT</p>
+        </nav>
+
+        <div class="account-header-icons">
+          <div class="account-icon-btn">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+              <path d="M8 8L10 20H22L24 8" stroke="#ffffff" stroke-width="2" />
+            </svg>
+          </div>
+          <div class="account-icon-btn account-icon-active">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+              <circle cx="15" cy="10" r="5" fill="white" />
+              <path d="M5 24C5 18 9 15 15 15C21 15 25 18 25 24" stroke="white" stroke-width="2" />
+            </svg>
+          </div>
+        </div>
+      </header>
+
+      <div class="account-wrapper">
+        <!-- Left Sidebar -->
+        <aside class="account-sidebar">
+          <div class="account-menu-container">
+            <div class="account-menu-header">Personal Information</div>
+            <a href="#" class="account-menu-item">My Orders</a>
+            <a href="#" class="account-menu-item">Manage Address</a>
+            <a href="#" class="account-menu-item">Password Manager</a>
+            <a href="#" class="account-menu-item">Logout</a>
+          </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="account-content">
+          <div class="account-content-inner">
+            <!-- Profile Picture -->
+            <div class="account-avatar">
+              <svg width="230" height="230" viewBox="0 0 230 230" fill="none">
+                <circle cx="115" cy="115" r="115" fill="#E3E3E3" />
+                <circle cx="115" cy="80" r="35" fill="#CCCCCC" />
+                <path d="M60 200C60 160 85 140 115 140C145 140 170 160 170 200" fill="#CCCCCC" />
+              </svg>
+            </div>
+
+            <!-- Form Section -->
+            <form class="account-form" onsubmit="handleUpdateProfile(event)">
+              <div class="account-form-row">
+                <div class="account-form-group">
+                  <label class="account-form-label">First Name *</label>
+                  <input type="text" class="account-form-input" required />
+                </div>
+                <div class="account-form-group">
+                  <label class="account-form-label">Last Name *</label>
+                  <input type="text" class="account-form-input" required />
+                </div>
+              </div>
+
+              <div class="account-form-group">
+                <label class="account-form-label">Email *</label>
+                <input type="email" class="account-form-input" required />
+              </div>
+
+              <div class="account-form-group">
+                <label class="account-form-label">Phone *</label>
+                <input type="tel" class="account-form-input" required />
+              </div>
+
+              <div class="account-form-group">
+                <label class="account-form-label">Gender *</label>
+                <input type="text" class="account-form-input" required />
+              </div>
+
+              <button type="submit" class="account-submit-btn">Update Changes</button>
+            </form>
+          </div>
+        </main>
+      </div>
+
+      <!-- Footer -->
+      <footer class="account-footer">
+        <div class="account-footer-logo">
+          <img alt="SIRIP JUARA" src="./public/SIRIP_JUARA-removebg-preview_2.png" />
+        </div>
+        <div class="account-footer-content">
+          <div class="account-footer-col">
+            <p class="account-footer-description">
+              Your trusted place to find high-quality betta fish and beginner-friendly care guidance.
+            </p>
+          </div>
+
+          <div class="account-footer-col">
+            <h4 class="account-footer-title">Company</h4>
+            <ul class="account-footer-list">
+              <li><a href="#">Beginner Guide</a></li>
+              <li><a href="#">Types of Betta</a></li>
+              <li><a href="#">Feeding Tips</a></li>
+              <li><a href="#">Care Basics</a></li>
+            </ul>
+          </div>
+
+          <div class="account-footer-col">
+            <h4 class="account-footer-title">Quick Links</h4>
+            <ul class="account-footer-list">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Shop</a></li>
+              <li><a href="#">Care Guide</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Support</a></li>
+            </ul>
+          </div>
+
+          <div class="account-footer-col">
+            <h4 class="account-footer-title">Contact</h4>
+            <p class="account-footer-contact">Jl. Makkio Baji II, SulSel, Indonesia</p>
+            <p class="account-footer-contact">siripjuara@gmail.com<br />Costumer Service</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      function handleUpdateProfile(event) {
+        event.preventDefault();
+        alert("Profile updated successfully!");
+      }
+    </script>
+  </body>
+</html>

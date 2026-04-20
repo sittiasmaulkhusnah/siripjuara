@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <title>Forgot Password - SIRIP JUARA</title>
+    <link rel="stylesheet" href="./login.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+    />
+  </head>
+  <body>
+    <div class="forgot-container">
+      <!-- Back Button -->
+      <button class="back-button" onclick="window.history.back()">
+        <svg
+          width="35"
+          height="35"
+          viewBox="0 0 35 35"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M18.5 7.5L8 17.5L18.5 27.5"
+            stroke="#33363F"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+
+      <!-- Card Container -->
+      <div class="forgot-card">
+        <h1 class="forgot-title">Forgot Password</h1>
+        <p class="forgot-description">
+          Please enter your email address to recieve a verification card
+        </p>
+
+        <form class="forgot-form" onsubmit="handleForgotPassword(event)">
+          <!-- Email Input -->
+          <div class="forgot-form-group">
+            <label for="forgot-email" class="forgot-form-label">Email *</label>
+            <input
+              type="email"
+              id="forgot-email"
+              class="forgot-form-input"
+              placeholder=""
+              required
+            />
+          </div>
+
+          <!-- Send Instructions Button -->
+          <button type="submit" class="send-instructions-btn" href="verifyemail.html">
+            Send Instructions
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      function handleForgotPassword(event) {
+        event.preventDefault();
+        const email = document.getElementById("forgot-email").value;
+        console.log("Sending recovery instructions to:", email);
+        // Add your backend API call here
+        alert("Recovery instructions sent to " + email);
+      }
+    </script>
+  </body>
+</html>
