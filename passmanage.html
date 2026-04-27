@@ -1,186 +1,468 @@
-
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="initial-scale=1, width=device-width" />
-    <title>Password Manager - SIRIP JUARA</title>
-    <link rel="stylesheet" href="./login.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-    />
-  </head>
-  <body>
-    <div class="passmanag-page">
-      <!-- Header Navigation -->
-      <header class="passmanag-header">
-        <div class="passmanag-logo">
-          <img alt="SIRIP JUARA" src="./public/SIRIP_JUARA-removebg-preview_1.png" />
-        </div>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <title>Password Manager - SIRIP JUARA</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        <nav class="passmanag-nav">
-          <a href="#" class="passmanag-nav-link">HOME</a>
-          <p class="passmanag-nav-link">SHOP</p>
-          <p class="passmanag-nav-link">CARE GUIDE</p>
-          <p class="passmanag-nav-link">ABOUT BETTA</p>
-          <p class="passmanag-nav-link">SUPPORT</p>
-        </nav>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #fff;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    } 
 
-        <div class="passmanag-header-icons">
-          <div class="passmanag-icon-btn">
-            <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
-              <path d="M8 8L10 20H22L24 8" stroke="#ffffff" stroke-width="2" />
-            </svg>
-          </div>
-          <div class="passmanag-icon-btn passmanag-icon-active">
-            <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
-              <circle cx="15" cy="10" r="5" fill="white" />
-              <path d="M5 24C5 18 9 15 15 15C21 15 25 18 25 24" stroke="white" stroke-width="2" />
-            </svg>
-          </div>
-        </div>
-      </header>
+    /* ── HEADER ── */
+    .header {
+      background: #2e4070;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      box-shadow: 0 4px 4px rgba(0,0,0,0.1);
+      flex-shrink: 0;
+    }
 
-      <div class="passmanag-wrapper">
-        <!-- Left Sidebar -->
-        <aside class="passmanag-sidebar">
-          <div class="passmanag-menu-container">
-            <button class="passmanag-menu-item">Personal Information</button>
-            <button class="passmanag-menu-item">My Orders</button>
-            <button class="passmanag-menu-item">Manage Address</button>
-            <button class="passmanag-menu-item passmanag-menu-active">Password Manager</button>
-            <button class="passmanag-menu-item">Logout</button>
-          </div>
-        </aside>
+    .logo img {
+      width: 130px;
+      height: auto;
+      object-fit: contain;
+    }
 
-        <!-- Main Content -->
-        <main class="passmanag-content">
-          <div class="passmanag-content-inner">
-            <form class="passmanag-form">
-              <!-- Current Password Field -->
-              <div class="passmanag-form-group">
-                <label class="passmanag-form-label">Password</label>
-                <div class="passmanag-password-wrapper">
-                  <input type="password" class="passmanag-form-input" placeholder="Enter current password" />
-                  <button type="button" class="passmanag-password-toggle" aria-label="Toggle password visibility">
-                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
-                      <circle cx="15" cy="15" r="5" fill="#7E869E" />
-                      <path d="M2 15c2-5 5-8 13-8s11 3 13 8-5 8-13 8-11-3-13-8z" stroke="#7E869E" stroke-width="1.5" />
-                    </svg>
-                  </button>
-                </div>
-                <a href="#" class="passmanag-forgot-password">Forgot Password?</a>
-              </div>
+    .nav {
+      display: flex;
+      gap: 36px;
+      margin-left: 400px 
+    }
 
-              <!-- New Password Field -->
-              <div class="passmanag-form-group">
-                <label class="passmanag-form-label">New Password</label>
-                <div class="passmanag-password-wrapper">
-                  <input type="password" class="passmanag-form-input" placeholder="Enter new password" />
-                  <button type="button" class="passmanag-password-toggle" aria-label="Toggle password visibility">
-                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
-                      <circle cx="15" cy="15" r="5" fill="#7E869E" />
-                      <path d="M2 15c2-5 5-8 13-8s11 3 13 8-5 8-13 8-11-3-13-8z" stroke="#7E869E" stroke-width="1.5" />
-                    </svg>
-                  </button>
-                </div>
-              </div>
+    .nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+    }
 
-              <!-- Confirm New Password Field -->
-              <div class="passmanag-form-group">
-                <label class="passmanag-form-label">Confirm New Password</label>
-                <div class="passmanag-password-wrapper">
-                  <input type="password" class="passmanag-form-input" placeholder="Confirm new password" />
-                  <button type="button" class="passmanag-password-toggle" aria-label="Toggle password visibility">
-                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
-                      <circle cx="15" cy="15" r="5" fill="#7E869E" />
-                      <path d="M2 15c2-5 5-8 13-8s11 3 13 8-5 8-13 8-11-3-13-8z" stroke="#7E869E" stroke-width="1.5" />
-                    </svg>
-                  </button>
-                </div>
-              </div>
+    .nav a:hover { opacity: 0.75; }
 
-              <!-- Submit Button -->
-              <button type="submit" class="passmanag-submit-btn">Update Password</button>
-            </form>
-          </div>
-        </main>
-      </div>
+     .cart-icon {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+    }
 
-      <!-- Footer -->
-      <footer class="passmanag-footer">
-        <div class="passmanag-footer-logo">
-          <img alt="SIRIP JUARA" src="./public/SIRIP_JUARA-removebg-preview_2.png" />
-        </div>
-        <div class="passmanag-footer-content">
-          <div class="passmanag-footer-col">
-            <p class="passmanag-footer-description">
-              Your trusted place to find high-quality betta fish and beginner-friendly care guidance.
-            </p>
-          </div>
+    .account-icon {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+    }
 
-          <div class="passmanag-footer-col">
-            <h4 class="passmanag-footer-title">Company</h4>
-            <ul class="passmanag-footer-list">
-              <li><a href="#">Beginner Guide</a></li>
-              <li><a href="#">Types of Betta</a></li>
-              <li><a href="#">Feeding Tips</a></li>
-              <li><a href="#">Care Basics</a></li>
-            </ul>
-          </div>
+    /* ── MAIN ── */
+    .main-content {
+      display: flex;
+      gap: 24px;
+      padding: 40px 48px;
+      flex: 1;
+      align-items: flex-start;
+    }
 
-          <div class="passmanag-footer-col">
-            <h4 class="passmanag-footer-title">Quick Links</h4>
-            <ul class="passmanag-footer-list">
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Shop</a></li>
-              <li><a href="#">Care Guide</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Support</a></li>
-            </ul>
-          </div>
+    /* ── SIDEBAR ── */
+    .sidebar {
+      width: 280px;
+      flex-shrink: 0;
+      background: rgba(227, 240, 255, 0.5);
+      border-radius: 24px;
+      padding: 20px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
 
-          <div class="passmanag-footer-col">
-            <h4 class="passmanag-footer-title">Contact</h4>
-            <p class="passmanag-footer-contact">Jl. Makkio Baji II, SulSel, Indonesia</p>
-            <p class="passmanag-footer-contact">siripjuara@gmail.com<br />Costumer Service</p>
-          </div>
-        </div>
-      </footer>
+    .sidebar-item {
+      width: 100%;
+      height: 52px;
+      border-radius: 14px;
+      border: 1.5px solid #b0bcd4;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      cursor: pointer;
+      background: #fff;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .sidebar-item span {
+      font-size: 14px;
+      font-weight: 700;
+      color: #2e4070;
+    }
+
+    .sidebar-item.active {
+      background: #2e4070;
+      border-color: #2e4070;
+    }
+
+    .sidebar-item.active span { color: #fff; }
+    .sidebar-item:hover:not(.active) { background: rgba(46,64,112,0.06); }
+
+    /* ── CONTENT AREA ── */
+    .content-area {
+      flex: 1;
+      background: rgba(227, 240, 255, 0.4);
+      border-radius: 24px;
+      padding: 40px 48px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    /* ── FORM ── */
+    .pass-form {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #2e4070;
+    }
+
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .form-group input {
+      width: 100%;
+      height: 52px;
+      border: 1.5px solid #b0bcd4;
+      border-radius: 30px;
+      padding: 0 52px 0 20px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      color: #2e4070;
+      background: #fff;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus {
+      border-color: #2e4070;
+    }
+
+    /* Eye toggle */
+    .toggle-btn {
+      position: absolute;
+      right: 16px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      color: #9aa4b5;
+    }
+
+    .toggle-btn:hover { color: #2e4070; }
+
+    /* Forgot password */
+    .forgot-link {
+      align-self: flex-end;
+      font-size: 12px;
+      font-weight: 300;
+      color: #2e4070;
+      text-decoration: none;
+      margin-top: 4px;
+    }
+
+    .forgot-link:hover { text-decoration: underline; }
+
+    /* Submit Button */
+    .submit-btn {
+      align-self: flex-start;
+      margin-top: 10px;
+      height: 52px;
+      padding: 0 36px;
+      background: #2e4070;
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .submit-btn:hover {
+      background: #1e2e55;
+      transform: translateY(-2px);
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: #283a6c;
+      color: #fff;
+      padding: 52px 48px;
+      flex-shrink: 0;
+    }
+
+    .footer-content {
+      display: flex;
+      gap: 60px;
+      align-items: flex-start;
+    }
+
+    .footer-brand {
+      flex: 0 0 200px;
+    }
+
+    .footer-brand img {
+      height: 60px;
+      object-fit: contain;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .footer-desc {
+      font-size: 13px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.8);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 60px;
+      flex: 1;
+    }
+
+    .link-section h4 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .link-section h4::after {
+      content: '';
+      display: inline-block;
+      width: 32px;
+      height: 1.5px;
+      background: rgba(255,255,255,0.5);
+    }
+
+    .link-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .link-section a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+    .link-section a:hover { color: #fff; }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 8px;
+    }
+
+    .contact-item svg {
+      width: 15px;
+      height: 15px;
+      fill: rgba(255,255,255,0.7);
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 768px) {
+      .main-content { flex-direction: column; padding: 20px; }
+      .sidebar { width: 100%; }
+      .footer-content { flex-direction: column; gap: 32px; }
+      .footer-links { flex-wrap: wrap; gap: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="logo">
+      <img src="png/Logo.png" alt="Sirip Juara"
+           onerror="this.style.display='none'">
     </div>
+    <nav class="nav">
+      <a href="#">HOME</a>
+      <a href="#">SHOP</a>
+      <a href="#">CARE GUIDE</a>
+      <a href="#">ABOUT BETTA</a>
+      <a href="#">SUPPORT</a>
+    </nav>
+     <div class="header-actions">
+      <a href="cart.html" aria-label="Cart">
+        <img src="png/Cart.png" alt="Cart" class="cart-icon">
+      </a>
+      <a href="profil.html" aria-label="Account">
+        <img src="png/iconAccount.png" alt="Account" class="account-icon">
+      </a>
+    </div>
+  </header>
 
-    <script>
-      const menuItems = document.querySelectorAll(".passmanag-menu-item");
-      menuItems.forEach((item) => {
-        item.addEventListener("click", function () {
-          menuItems.forEach((m) => m.classList.remove("passmanag-menu-active"));
-          this.classList.add("passmanag-menu-active");
-        });
-      });
+  <!-- MAIN -->
+  <main class="main-content">
 
-      const passwordToggles = document.querySelectorAll(".passmanag-password-toggle");
-      passwordToggles.forEach((toggle) => {
-        toggle.addEventListener("click", function (e) {
-          e.preventDefault();
-          const input = this.parentElement.querySelector(".passmanag-form-input");
-          if (input.type === "password") {
-            input.type = "text";
-          } else {
-            input.type = "password";
-          }
-        });
-      });
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <a href="profil.html" class="sidebar-item"><span>Personal Information</span></a>
+      <a href="myorder.html" class="sidebar-item"><span>My Orders</span></a>
+      <a href="address.html" class="sidebar-item"><span>Manage Address</span></a>
+      <a href="passmanage.html" class="sidebar-item active"><span>Password Manager</span></a>
+      <a href="logout.html" class="sidebar-item"><span>Logout</span></a>
+    </aside>
 
-      const form = document.querySelector(".passmanag-form");
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        alert("Password updated successfully!");
-      });
-    </script>
-  </body>
+    <!-- Content -->
+    <section class="content-area">
+      <form class="pass-form" onsubmit="event.preventDefault(); alert('Password updated!')">
+
+        <!-- Current Password -->
+        <div class="form-group">
+          <label>Password</label>
+          <div class="input-wrapper">
+            <input type="password" id="pass1" placeholder="">
+            <button type="button" class="toggle-btn" onclick="togglePass('pass1', this)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </button>
+          </div>
+          <a href="#" class="forgot-link">Forgot Password?</a>
+        </div>
+
+        <!-- New Password -->
+        <div class="form-group">
+          <label>New Password</label>
+          <div class="input-wrapper">
+            <input type="password" id="pass2" placeholder="">
+            <button type="button" class="toggle-btn" onclick="togglePass('pass2', this)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+                <line x1="1" y1="1" x2="23" y2="23"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Confirm New Password -->
+        <div class="form-group">
+          <label>Confirm New Password</label>
+          <div class="input-wrapper">
+            <input type="password" id="pass3" placeholder="">
+            <button type="button" class="toggle-btn" onclick="togglePass('pass3', this)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+                <line x1="1" y1="1" x2="23" y2="23"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" class="submit-btn">Update Password</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <img src="./public/SIRIP_JUARA-removebg-preview_2.png" alt="Sirip Juara"
+             onerror="this.style.display='none'">
+        <p class="footer-desc">Your trusted place to find high-quality betta fish and beginner-friendly care guidance.</p>
+      </div>
+      <div class="footer-links">
+        <div class="link-section">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">Beginner Guide</a></li>
+            <li><a href="#">Types of Betta</a></li>
+            <li><a href="#">Feeding Tips</a></li>
+            <li><a href="#">Care Basics</a></li>
+          </ul>
+        </div>
+        <div class="link-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Shop</a></li>
+            <li><a href="#">Care Guide</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Support</a></li>
+          </ul>
+        </div>
+        <div class="link-section">
+          <h4>Contact</h4>
+          <div class="contact-item">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            Jl. Makkio Baji II, SulSel, Indonesia
+          </div>
+          <div class="contact-item">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            siripjuara@gmail.com
+          </div>
+          <div class="contact-item">
+            <svg viewBox="0 0 24 24"><path d="M12 1c-4.97 0-9 4.03-9 9v7c0 1.1.9 2 2 2h1v-8H4v-1c0-4.42 3.58-8 8-8s8 3.58 8 8v1h-2v8h1c1.1 0 2-.9 2-2v-7c0-4.97-4.03-9-9-9z"/></svg>
+            Customer Service
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function togglePass(id, btn) {
+      const input = document.getElementById(id);
+      const isHidden = input.type === 'password';
+      input.type = isHidden ? 'text' : 'password';
+      // Swap icon: eye vs eye-off
+      btn.innerHTML = isHidden
+        ? `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+            <circle cx="12" cy="12" r="3"/>
+           </svg>`
+        : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+            <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+            <line x1="1" y1="1" x2="23" y2="23"/>
+           </svg>`;
+    }
+  </script>
+
+</body>
 </html>

@@ -1,73 +1,315 @@
-
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="initial-scale=1, width=device-width" />
-    <title>Forgot Password - SIRIP JUARA</title>
-    <link rel="stylesheet" href="./login.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
-    />
-  </head>
-  <body>
-    <div class="forgot-container">
-      <!-- Back Button -->
-      <button class="back-button" onclick="window.history.back()">
-        <svg
-          width="35"
-          height="35"
-          viewBox="0 0 35 35"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M18.5 7.5L8 17.5L18.5 27.5"
-            stroke="#33363F"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
-      </button>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forgot Password - SIRIP JUARA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset dan base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-      <!-- Card Container -->
-      <div class="forgot-card">
-        <h1 class="forgot-title">Forgot Password</h1>
-        <p class="forgot-description">
-          Please enter your email address to recieve a verification card
-        </p>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #3b5380 0%, #2d4168 100%);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      overflow: hidden;
+    }
 
-        <form class="forgot-form" onsubmit="handleForgotPassword(event)">
-          <!-- Email Input -->
-          <div class="forgot-form-group">
-            <label for="forgot-email" class="forgot-form-label">Email *</label>
-            <input
-              type="email"
-              id="forgot-email"
-              class="forgot-form-input"
-              placeholder=""
-              required
-            />
-          </div>
+    /* Container utama */
+    .forgot-container {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-          <!-- Send Instructions Button -->
-          <button type="submit" class="send-instructions-btn" href="verifyemail.html">
-            Send Instructions
-          </button>
-        </form>
-      </div>
-    </div>
+    /* Card putih */
+    .forgot-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 50px 60px;
+      width: 100%;
+      max-width: 800px;
+      min-height: 480px;
+      position: relative;
+      box-shadow: 0px 4px 2px rgba(0, 0, 0, 0.25);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow-y: auto;
+    }
 
-    <script>
-      function handleForgotPassword(event) {
-        event.preventDefault();
-        const email = document.getElementById("forgot-email").value;
-        console.log("Sending recovery instructions to:", email);
-        // Add your backend API call here
-        alert("Recovery instructions sent to " + email);
+    /* Tombol back */
+    .back-button {
+      position: absolute;
+      top: 34px;
+      left: 26px;
+      width: 35px;
+      height: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      text-decoration: none;
+    }
+
+    .back-button:hover {
+      opacity: 0.7;
+    }
+
+    .back-arrow {
+      font-size: 26px;
+      color: #3b5380;
+      line-height: 1;
+      font-weight: 700;
+      display: inline-block;
+      transform: translateX(-1px);
+    }
+
+    /* Judul */
+    .forgot-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: #3b5380;
+      text-align: center;
+      margin: 0 0 15px 0;
+    }
+
+    /* Deskripsi */
+    .forgot-description {
+      font-size: 16px;
+      font-weight: 400;
+      color: #3b5380;
+      text-align: center;
+      margin: 0 0 80px 0;
+      max-width: 500px;
+      line-height: 1.4;
+    }
+
+    /* Form */
+    .forgot-form {
+      width: 100%;
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .form-group {
+      width: 100%;
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    .form-group label {
+      font-size: 16px;
+      font-weight: 400;
+      color: #3b5380;
+      display: block;
+      margin-bottom: 4px;
+      text-align: 0;
+    }
+
+    .form-input {
+      width: 100%;
+      height: 50px;
+      border: 1px solid #000000;
+      border-radius: 30px;
+      background: #f5f5f5;
+      padding: 0 70px 0 20px;
+      font-size: 16px;
+      color: #3b5380;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      font-family: 'Poppins';
+    }
+
+    .form-input::placeholder {
+      color: rgba(59, 83, 128, 0.5);
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: #3b5380;
+      box-shadow: 0 0 0 3px rgba(59, 83, 128, 0.1);
+    }
+
+    /* Tombol send */
+    .btn-send {
+      width: 100%;
+      height: 50px;
+      border-radius: 30px;
+      background: #3b5380;
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 700;
+      border: 1px solid #000000;
+      cursor: pointer;
+      transition: transform 0.2s, filter 0.2s;
+      margin-top: 15px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .btn-send:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.05);
+    }
+
+    .btn-send:active {
+      transform: translateY(0);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      body {
+        padding: 15px;
       }
-    </script>
-  </body>
+
+      .forgot-card {
+        padding: 40px 50px;
+        max-width: 700px;
+        min-height: 420px;
+      }
+
+      .forgot-title {
+        font-size: 28px;
+      }
+
+      .forgot-description {
+        font-size: 16px;
+      }
+
+      .form-group label {
+        font-size: 16px;
+      }
+
+      .form-input {
+        height: 50px;
+        padding: 0 18px;
+      }
+
+      .btn-send {
+        height: 45px;
+        font-size: 16px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      .forgot-card {
+        padding: 35px 25px;
+        max-width: 100%;
+        min-height: 380px;
+      }
+
+      .back-button {
+        top: 20px;
+        left: 15px;
+      }
+
+      .forgot-title {
+        font-size: 26px;
+      }
+
+      .forgot-description {
+        font-size: 15px;
+        margin-bottom: 25px;
+      }
+
+      .form-group label {
+        font-size: 15px;
+      }
+
+      .form-input {
+        height: 48px;
+        padding: 0 16px;
+      }
+
+      .btn-send {
+        height: 43px;
+        font-size: 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 5px;
+      }
+
+      .forgot-card {
+        padding: 25px 20px;
+        min-height: 350px;
+      }
+
+      .forgot-title {
+        font-size: 22px;
+      }
+
+      .forgot-description {
+        font-size: 13px;
+      }
+
+      .form-group label {
+        font-size: 13px;
+      }
+
+      .form-input {
+        height: 45px;
+        padding: 0 14px;
+      }
+
+      .btn-send {
+        height: 40px;
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="forgot-container">
+    <!-- White Card -->
+    <div class="forgot-card">
+      <!-- Back Button -->
+      <a href="Signin.html" class="back-button">
+        <span class="back-arrow">&lt;</span>
+      </a>
+
+      <!-- Title -->
+      <h1 class="forgot-title">Forgot Password</h1>
+
+      <!-- Description -->
+      <p class="forgot-description">
+        Please enter your email address to receive a verification code
+      </p>
+
+    <!-- Form -->
+    <form class="forgot-form" onsubmit="window.location.href='verifyemail.html'; return false;">
+      <!-- Email Field -->
+      <div class="form-group">
+        <label for="email">Email *</label>
+        <input type="email" id="email" name="email" class="form-input" placeholder="" required>
+      </div>
+
+      <!-- Send Button -->
+      <button type="submit" class="btn-send">Send Instructions</button>
+    </form>
+    </div>
+  </div>
+
+  <script src="scripts.js"></script>
+</body>
 </html>

@@ -1,152 +1,523 @@
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="initial-scale=1, width=device-width" />
-    <title>My Account - SIRIP JUARA</title>
-    <link rel="stylesheet" href="./login.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-    />
-  </head>
-  <body>
-    <div class="account-page">
-      <!-- Header Navigation -->
-      <header class="account-header">
-        <div class="account-logo">
-          <img alt="SIRIP JUARA" src="./public/SIRIP_JUARA-removebg-preview_1.png" />
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <title>Profil - Sirip Juara</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #fff;
+      color: #333;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      width: 100%;
+      height: 60px;
+      background: #2e4070;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+    }
+
+    .logo {
+      width: 130px;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .nav {
+      display: flex;
+      gap: 32px;
+    }
+
+    .nav-link {
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+    }
+
+    .nav-link:hover { opacity: 0.75; }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* HEADER LAYOUT */
+        .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        }
+
+        /* NAV GESER KE KANAN */
+        .site-nav {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        margin-left: 450px ; /* 🔥 dorong ke kanan */
+        }
+
+        /* LINK */
+        .nav-link {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 500;
+        cursor: pointer;
+        }
+
+        /* DROPDOWN */
+        .nav-dropdown {
+        position: relative;
+        }
+
+        /* MENU */
+        .dropdown-menu {
+        position: absolute;
+        top: 120%;
+        left: 0;
+        background: #fff;
+        border-radius: 14px;
+        padding: 10px 0;
+        min-width: 180px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+        }
+
+        /* ITEM */
+        .dropdown-menu a {
+        display: block;
+        padding: 10px 16px;
+        color: #333;
+        text-decoration: none;
+        }
+
+        .dropdown-menu a:hover {
+        background: #f3f6ff;
+        }
+
+        /* 🔥 SHOW DROPDOWN */
+        .nav-dropdown:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        }
+
+        /* ARROW ANIMASI */
+        .dropdown-arrow {
+        margin-left: 5px;
+        transition: 0.3s;
+        }
+
+        .nav-dropdown:hover .dropdown-arrow {
+        transform: rotate(180deg);
+        }
+
+    .cart-icon {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+    }
+
+    .account-icon {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+    }
+
+    /* ── MAIN ── */
+    .main-content {
+      display: flex;
+      gap: 24px;
+      padding: 40px 48px;
+      align-items: flex-start;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      width: 300px;
+      flex-shrink: 0;
+      background: rgba(227, 240, 255, 0.5);
+      border-radius: 24px;
+      padding: 24px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .sidebar-item {
+      width: 100%;
+      height: 52px;
+      border-radius: 14px;
+      border: 1.5px solid #b0bcd4;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      cursor: pointer;
+      background: #fff;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .sidebar-item p {
+      font-size: 14px;
+      font-weight: 700;
+      color: #2e4070;
+      margin: 0;
+    }
+
+    .sidebar-item.active {
+      background: #2e4070;
+      border-color: #2e4070;
+    }
+
+    .sidebar-item.active p { color: #fff; }
+    .sidebar-item:hover:not(.active) { background: rgba(46, 64, 112, 0.06); }
+
+    /* ── CONTENT AREA ── */
+    .content-area {
+      flex: 1;
+      background: rgba(227, 240, 255, 0.4);
+      border-radius: 24px;
+      padding: 40px 48px 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+    }
+
+    /* ── AVATAR ── */
+    .avatar-wrapper {
+      display: flex;
+      justify-content: center;
+    }
+
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: #d0d5dd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .avatar img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    /* ── FORM ── */
+    .profile-form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #2e4070;
+    }
+
+    .form-group input {
+      height: 50px;
+      border: 1.5px solid #b0bcd4;
+      border-radius: 30px;
+      padding: 0 20px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      color: #2e4070;
+      background: #fff;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus { border-color: #2e4070; }
+
+    .update-btn {
+      align-self: flex-start;
+      height: 52px;
+      padding: 0 36px;
+      background: #2e4070;
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .update-btn:hover { background: #1e2e55; }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: #283a6c;
+      color: #fff;
+      padding: 52px 48px;
+    }
+
+    .footer-content {
+      display: flex;
+      gap: 60px;
+      align-items: flex-start;
+    }
+
+    .footer-brand { width: 300px; flex-shrink: 0; }
+
+    .footer-logo {
+      width: 120px;
+      height: auto;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .footer-desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .footer-links {
+      display: grid;
+      grid-template-columns: 180px 160px 1fr;
+      gap: 0;
+      flex: 1;
+    }
+
+    .link-section h4 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+    }
+
+    .link-section h4::after {
+      content: '';
+      display: inline-block;
+      width: 32px;
+      height: 1.5px;
+      background: rgba(255,255,255,0.5);
+    }
+
+    .link-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .link-section a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+    .link-section a:hover { color: #fff; }
+
+    .contact-item {
+      display: flex !important;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 10px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .contact-icon {
+      width: 16px;
+      height: 16px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 768px) {
+      .main-content { flex-direction: column; padding: 20px; }
+      .sidebar { width: 100%; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-content { flex-direction: column; gap: 32px; }
+      .footer-links { grid-template-columns: 1fr; gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <img src="png/Logo.png" alt="Sirip Juara" class="logo">
+
+    <nav class="site-nav" aria-label="Primary navigation">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="shop.html" class="nav-link">Shop</a>
+    <a href="care.html" class="nav-link">Care Guide</a>
+
+    <div class="nav-dropdown">
+        <span class="nav-link nav-has-dropdown">
+        About <span class="dropdown-arrow">▾</span>
+        </span>
+        <div class="dropdown-menu">
+        <a href="about.html">About Betta</a>
+        <a href="team.html">Team</a>
         </div>
-
-        <nav class="account-nav">
-          <a href="#" class="account-nav-link">HOME</a>
-          <p class="account-nav-link">SHOP</p>
-          <p class="account-nav-link">CARE GUIDE</p>
-          <p class="account-nav-link">ABOUT BETTA</p>
-          <p class="account-nav-link">SUPPORT</p>
-        </nav>
-
-        <div class="account-header-icons">
-          <div class="account-icon-btn">
-            <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
-              <path d="M8 8L10 20H22L24 8" stroke="#ffffff" stroke-width="2" />
-            </svg>
-          </div>
-          <div class="account-icon-btn account-icon-active">
-            <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
-              <circle cx="15" cy="10" r="5" fill="white" />
-              <path d="M5 24C5 18 9 15 15 15C21 15 25 18 25 24" stroke="white" stroke-width="2" />
-            </svg>
-          </div>
-        </div>
-      </header>
-
-      <div class="account-wrapper">
-        <!-- Left Sidebar -->
-        <aside class="account-sidebar">
-          <div class="account-menu-container">
-            <div class="account-menu-header">Personal Information</div>
-            <a href="#" class="account-menu-item">My Orders</a>
-            <a href="#" class="account-menu-item">Manage Address</a>
-            <a href="#" class="account-menu-item">Password Manager</a>
-            <a href="#" class="account-menu-item">Logout</a>
-          </div>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="account-content">
-          <div class="account-content-inner">
-            <!-- Profile Picture -->
-            <div class="account-avatar">
-              <svg width="230" height="230" viewBox="0 0 230 230" fill="none">
-                <circle cx="115" cy="115" r="115" fill="#E3E3E3" />
-                <circle cx="115" cy="80" r="35" fill="#CCCCCC" />
-                <path d="M60 200C60 160 85 140 115 140C145 140 170 160 170 200" fill="#CCCCCC" />
-              </svg>
-            </div>
-
-            <!-- Form Section -->
-            <form class="account-form" onsubmit="handleUpdateProfile(event)">
-              <div class="account-form-row">
-                <div class="account-form-group">
-                  <label class="account-form-label">First Name *</label>
-                  <input type="text" class="account-form-input" required />
-                </div>
-                <div class="account-form-group">
-                  <label class="account-form-label">Last Name *</label>
-                  <input type="text" class="account-form-input" required />
-                </div>
-              </div>
-
-              <div class="account-form-group">
-                <label class="account-form-label">Email *</label>
-                <input type="email" class="account-form-input" required />
-              </div>
-
-              <div class="account-form-group">
-                <label class="account-form-label">Phone *</label>
-                <input type="tel" class="account-form-input" required />
-              </div>
-
-              <div class="account-form-group">
-                <label class="account-form-label">Gender *</label>
-                <input type="text" class="account-form-input" required />
-              </div>
-
-              <button type="submit" class="account-submit-btn">Update Changes</button>
-            </form>
-          </div>
-        </main>
-      </div>
-
-      <!-- Footer -->
-      <footer class="account-footer">
-        <div class="account-footer-logo">
-          <img alt="SIRIP JUARA" src="./public/SIRIP_JUARA-removebg-preview_2.png" />
-        </div>
-        <div class="account-footer-content">
-          <div class="account-footer-col">
-            <p class="account-footer-description">
-              Your trusted place to find high-quality betta fish and beginner-friendly care guidance.
-            </p>
-          </div>
-
-          <div class="account-footer-col">
-            <h4 class="account-footer-title">Company</h4>
-            <ul class="account-footer-list">
-              <li><a href="#">Beginner Guide</a></li>
-              <li><a href="#">Types of Betta</a></li>
-              <li><a href="#">Feeding Tips</a></li>
-              <li><a href="#">Care Basics</a></li>
-            </ul>
-          </div>
-
-          <div class="account-footer-col">
-            <h4 class="account-footer-title">Quick Links</h4>
-            <ul class="account-footer-list">
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Shop</a></li>
-              <li><a href="#">Care Guide</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Support</a></li>
-            </ul>
-          </div>
-
-          <div class="account-footer-col">
-            <h4 class="account-footer-title">Contact</h4>
-            <p class="account-footer-contact">Jl. Makkio Baji II, SulSel, Indonesia</p>
-            <p class="account-footer-contact">siripjuara@gmail.com<br />Costumer Service</p>
-          </div>
-        </div>
-      </footer>
     </div>
 
-    <script>
-      function handleUpdateProfile(event) {
-        event.preventDefault();
-        alert("Profile updated successfully!");
-      }
-    </script>
-  </body>
+    <div class="nav-dropdown">
+        <span class="nav-link nav-has-dropdown">
+        Support <span class="dropdown-arrow">▾</span>
+        </span>
+        <div class="dropdown-menu">
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact Us</a>
+        </div>
+    </div>
+    </nav>
+
+    <div class="header-actions">
+      <a href="cart.html" aria-label="Cart">
+        <img src="png/Cart.png" alt="Cart" class="cart-icon">
+      </a>
+      <a href="profil.html" aria-label="Account">
+        <img src="png/iconAccount.png" alt="Account" class="account-icon">
+      </a>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="main-content">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <a href="profil.html" class="sidebar-item active"><p>Personal Information</p></a>
+      <a href="myorder.html" class="sidebar-item"><p>My Orders</p></a>
+      <a href="address.html" class="sidebar-item"><p>Manage Address</p></a>
+      <a href="passmanage.html" class="sidebar-item"><p>Password Manager</p></a>
+      <a href="logout.html" class="sidebar-item"><p>Logout</p></a>
+    </aside>
+
+    <!-- Content -->
+    <section class="content-area">
+
+      <!-- Avatar -->
+      <div class="avatar-wrapper">
+        <div class="avatar">
+          <img src="png/avatarDefault.png" alt="Avatar"
+               onerror="this.parentElement.innerHTML='<svg viewBox=\'0 0 24 24\' width=\'80\' height=\'80\' fill=\'#9aa4b5\'><path d=\'M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z\'/></svg>'">
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="profile-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name *</label>
+            <input type="text" placeholder="">
+          </div>
+          <div class="form-group">
+            <label>Last Name *</label>
+            <input type="text" placeholder="">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email *</label>
+          <input type="email" placeholder="">
+        </div>
+        <div class="form-group">
+          <label>Phone *</label>
+          <input type="tel" placeholder="">
+        </div>
+        <div class="form-group">
+          <label>Gender *</label>
+          <input type="text" placeholder="">
+        </div>
+        <button class="update-btn">Update Changes</button>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <img src="png/Logo.png" alt="Sirip Juara" class="footer-logo">
+        <p class="footer-desc">Your trusted place to find high-quality betta fish and beginner-friendly care guidance.</p>
+      </div>
+      <div class="footer-links">
+        <div class="link-section">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">Beginner Guide</a></li>
+            <li><a href="#">Types of Betta</a></li>
+            <li><a href="#">Feeding Tips</a></li>
+            <li><a href="#">Care Basics</a></li>
+          </ul>
+        </div>
+        <div class="link-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="care.html">Care Guide</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="support.html">Support</a></li>
+          </ul>
+        </div>
+        <div class="link-section">
+          <h4>Contact</h4>
+          <p class="contact-item">
+            <img src="png/iconLokasi.png" alt="location" class="contact-icon">
+            <span>Jl. Makkio Baji II, SulSel, Indonesia</span>
+          </p>
+          <a href="mailto:siripjuara@gmail.com" class="contact-item">
+            <img src="png/iconEmail.png" alt="email" class="contact-icon">
+            <span>siripjuara@gmail.com</span>
+          </a>
+          <p class="contact-item">
+            <img src="png/iconCS.png" alt="cs" class="contact-icon">
+            <span>Customer Service</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
 </html>

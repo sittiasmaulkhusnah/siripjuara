@@ -1,195 +1,325 @@
-
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="initial-scale=1, width=device-width" />
-    <title>Create New Password - SIRIP JUARA</title>
-    <link rel="stylesheet" href="./login.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
-    />
-  </head>
-  <body>
-    <div class="newpass-container">
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reset Password - SIRIP JUARA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset dan base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins';
+      background: linear-gradient(135deg, #3b5380 0%, #2d4168 100%);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    /* Container utama */
+    .reset-container {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Card putih */
+    .reset-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 49px 59px;
+      width: 100%;
+      max-width: 800px;
+      min-height: 420px;
+      position: relative;
+      box-shadow: 0px 4px 2px rgba(0, 0, 0, 0.25);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      overflow-y: auto;
+    }
+
+    /* Tombol back */
+    .back-button {
+      position: absolute;
+      top: 34px;
+      left: 26px;
+      width: 35px;
+      height: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      text-decoration: none;
+    }
+
+    .back-button:hover {
+      opacity: 0.7;
+    }
+
+    .back-arrow {
+      font-size: 26px;
+      color: #3b5380;
+      line-height: 1;
+      font-weight: 700;
+      display: inline-block;
+      transform: translateX(-1px);
+    }
+
+    /* Judul */
+    .reset-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: #3b5380;
+      text-align: center;
+      margin: 0 0 10px 0;
+    }
+
+    /* Deskripsi */
+    .reset-description {
+      font-size: 16px;
+      font-weight: 400;
+      color: #3b5380;
+      text-align: center;
+      margin: 0 0 20px 0;
+      max-width: 550px;
+      line-height: 1.4;
+    }
+
+    /* Form reset */
+    .reset-form {
+      width: 100%;
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .form-group {
+      width: 100%;
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    .form-group label {
+      font-size: 16px;
+      font-weight: 400;
+      color: #3b5380;
+      display: block;
+      margin-bottom: 4px;
+      text-align: left;
+    }
+
+    .form-input {
+      width: 100%;
+      height: 50px;
+      border: 1px solid #000000;
+      border-radius: 30px;
+      background: #f5f5f5;
+      padding: 0 70px 0 20px;
+      font-size: 16px;
+      color: #3b5380;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      font-family: 'Poppins';
+    }
+
+    .form-input::placeholder {
+      color: rgba(59, 83, 128, 0.5);
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: #3b5380;
+      box-shadow: 0 0 0 3px rgba(59, 83, 128, 0.1);
+    }
+
+    /* Password toggle button */
+    .password-toggle {
+      position: absolute;
+      right: 18px;
+      top: 0;
+      width: 30px;
+      height: 100%;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      transition: opacity 0.2s;
+    }
+
+    .password-toggle:hover {
+      opacity: 0.7;
+    }
+
+    .eye-icon {
+      width: 20px;
+      height: 20px;
+      opacity: 0.6;
+      transform: translateY(15px);
+    }
+
+    /* Tombol save */
+    .btn-save {
+      width: 100%;
+      height: 46px;
+      border-radius: 30px;
+      background: #3b5380;
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 700;
+      border: 1px solid #000000;
+      cursor: pointer;
+      transition: transform 0.2s, filter 0.2s;
+      margin-top: 5px;
+      font-family: 'Poppins';
+    }
+
+    .btn-save:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.05);
+    }
+
+    .btn-save:active {
+      transform: translateY(0);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      body {
+        padding: 15px;
+      }
+
+      .reset-card {
+        padding: 40px 50px;
+        max-width: 700px;
+        min-height: 380px;
+      }
+
+      .reset-title {
+        font-size: 28px;
+      }
+
+      .reset-description {
+        font-size: 16px;
+      }
+
+      .form-group label {
+        font-size: 16px;
+      }
+
+      .form-input {
+        height: 50px;
+        padding: 0 45px 0 18px;
+      }
+
+      .password-toggle {
+        right: 12px;
+      }
+
+      .btn-save {
+        height: 45px;
+        font-size: 16px;
+      }
+    }
+  </style>
+
+</head>
+<body>
+  <div class="reset-container">
+    <!-- White Card -->
+    <div class="reset-card">
       <!-- Back Button -->
-      <button class="newpass-back-button" onclick="window.history.back()">
-        <svg
-          width="35"
-          height="35"
-          viewBox="0 0 35 35"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M18.5 7.5L8 17.5L18.5 27.5"
-            stroke="#33363F"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
-      </button>
+      <a href="verfyemail.html" class="back-button">
+        <span class="back-arrow">&lt;</span>
+      </a>
 
-      <!-- Create New Password Card -->
-      <div class="newpass-card">
-        <h1 class="newpass-title">Create New Password</h1>
-        <p class="newpass-description">
-          Your new password must be differnt from previously used password.
-        </p>
+      <!-- Title -->
+      <h1 class="reset-title">Create New Password</h1>
 
-        <form class="newpass-form" onsubmit="handleCreatePassword(event)">
-          <!-- New Password Input -->
-          <div class="newpass-form-group">
-            <label for="new-password" class="newpass-form-label"
-              >New Password *</label
-            >
-            <div class="newpass-password-wrapper">
-              <input
-                type="password"
-                id="new-password"
-                class="newpass-form-input"
-                placeholder=""
-                required
-              />
-              <button
-                type="button"
-                class="newpass-password-toggle"
-                data-target="new-password"
-              >
-                <svg
-                  width="30"
-                  height="30"
-                  viewBox="0 0 30 30"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g opacity="0.5">
-                    <circle
-                      cx="15"
-                      cy="15"
-                      r="3"
-                      fill="#33363F"
-                      opacity="0.5"
-                    />
-                    <path
-                      d="M15 8C10.5 8 6.73 10.61 5 14.5C6.73 18.39 10.5 21 15 21C19.5 21 23.27 18.39 25 14.5C23.27 10.61 19.5 8 15 8Z"
-                      stroke="#7E869E"
-                      stroke-width="1.5"
-                    />
-                  </g>
-                  <g opacity="0.5">
-                    <path
-                      d="M5 5L25 25"
-                      stroke="#7E869E"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                    />
-                  </g>
-                </svg>
-              </button>
-            </div>
-          </div>
+      <!-- Description -->
+      <p class="reset-description">
+        Your new password must be different from previously used password.
+      </p>
 
-          <!-- Confirm Password Input -->
-          <div class="newpass-form-group">
-            <label for="confirm-password" class="newpass-form-label"
-              >Confirm Password *</label
-            >
-            <div class="newpass-password-wrapper">
-              <input
-                type="password"
-                id="confirm-password"
-                class="newpass-form-input"
-                placeholder=""
-                required
-              />
-              <button
-                type="button"
-                class="newpass-password-toggle"
-                data-target="confirm-password"
-              >
-                <svg
-                  width="30"
-                  height="30"
-                  viewBox="0 0 30 30"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g opacity="0.5">
-                    <circle
-                      cx="15"
-                      cy="15"
-                      r="3"
-                      fill="#33363F"
-                      opacity="0.5"
-                    />
-                    <path
-                      d="M15 8C10.5 8 6.73 10.61 5 14.5C6.73 18.39 10.5 21 15 21C19.5 21 23.27 18.39 25 14.5C23.27 10.61 19.5 8 15 8Z"
-                      stroke="#7E869E"
-                      stroke-width="1.5"
-                    />
-                  </g>
-                  <g opacity="0.5">
-                    <path
-                      d="M5 5L25 25"
-                      stroke="#7E869E"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                    />
-                  </g>
-                </svg>
-              </button>
-            </div>
-          </div>
+      <!-- Form -->
+      <form class="reset-form" onsubmit="window.location.href='signin.html'; return false;">
+        <!-- New Password Field -->
+        <div class="form-group">
+          <label for="new-password">New Password *</label>
+          <input type="password" id="new-password" name="new-password" class="form-input" placeholder="" required>
+          <button type="button" class="password-toggle" data-target="new-password">
+            <svg viewBox="0 0 24 24" class="eye-icon">
+              <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z" stroke="#3b5380" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="12" cy="12" r="3" stroke="#3b5380" stroke-width="2"/>
+            </svg>
+          </button>
+        </div>
 
-          <!-- Save New Password Button -->
-          <button type="submit" class="newpass-btn">Save New Password</button>
-        </form>
-      </div>
+        <!-- Confirm Password Field -->
+        <div class="form-group">
+          <label for="confirm-password">Confirm Password *</label>
+          <input type="password" id="confirm-password" name="confirm-password" class="form-input" placeholder="" required>
+          <button type="button" class="password-toggle" data-target="confirm-password">
+            <svg viewBox="0 0 24 24" class="eye-icon">
+              <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z" stroke="#3b5380" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="12" cy="12" r="3" stroke="#3b5380" stroke-width="2"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Save Button -->
+        <button type="submit" class="btn-save">Save New Password</button>
+      </form>
     </div>
+  </div>
 
-    <script>
-      const toggleButtons = document.querySelectorAll(".newpass-password-toggle");
+  <script src="scripts.js"></script>
+  <script>
+    // Password visibility toggle
+    document.addEventListener('DOMContentLoaded', function() {
+      const toggleButtons = document.querySelectorAll('.password-toggle');
 
-      toggleButtons.forEach((button) => {
-        button.addEventListener("click", function (e) {
-          e.preventDefault();
-          const targetId = this.getAttribute("data-target");
+      toggleButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const targetId = this.getAttribute('data-target');
           const input = document.getElementById(targetId);
 
-          if (input.type === "password") {
-            input.type = "text";
-            this.classList.add("active");
+          if (input.type === 'password') {
+            input.type = 'text';
+            this.innerHTML = `
+              <svg viewBox="0 0 24 24" class="eye-icon">
+                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20C5 20 1 12 1 12C1 12 2.64 8.74 5.64 6.74" stroke="#3b5380" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M9.64 9.64C9.22 10.06 9 10.52 9 11C9 12.1 9.9 13 11 13C11.48 13 11.94 12.78 12.36 12.36" stroke="#3b5380" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="1" y1="1" x2="23" y2="23" stroke="#3b5380" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            `;
           } else {
-            input.type = "password";
-            this.classList.remove("active");
+            input.type = 'password';
+            this.innerHTML = `
+              <svg viewBox="0 0 24 24" class="eye-icon">
+                <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z" stroke="#3b5380" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="12" cy="12" r="3" stroke="#3b5380" stroke-width="2"/>
+              </svg>
+            `;
           }
         });
       });
-
-      function handleCreatePassword(event) {
-        event.preventDefault();
-
-        const newPassword = document.getElementById("new-password").value;
-        const confirmPassword = document.getElementById("confirm-password")
-          .value;
-
-        if (newPassword !== confirmPassword) {
-          alert("Passwords do not match!");
-          return;
-        }
-
-        if (newPassword.length < 6) {
-          alert("Password must be at least 6 characters long!");
-          return;
-        }
-
-        console.log("Password created successfully");
-        alert("Your password has been updated successfully!");
-        // Add your backend API call here
-      }
-    </script>
-  </body>
+    });
+  </script>
+</body>
 </html>

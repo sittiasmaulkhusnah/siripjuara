@@ -1,125 +1,387 @@
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="initial-scale=1, width=device-width" />
-    <title>My Orders - SIRIP JUARA</title>
-    <link rel="stylesheet" href="./login.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-    />
-  </head>
-  <body>
-    <div class="myorder-page">
-      <!-- Header Navigation -->
-      <header class="myorder-header">
-        <div class="myorder-logo">
-          <img alt="SIRIP JUARA" src="./public/SIRIP_JUARA-removebg-preview_1.png" />
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <title>My Orders - Sirip Juara</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #fff;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      background: #2e4070;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      box-shadow: 0 4px 4px rgba(0,0,0,0.1);
+      flex-shrink: 0;
+    }
+
+    .logo img {
+      width: 120px;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .nav {
+      display: flex;
+      gap: 36px;
+      margin-left: 380px ;
+    }
+
+    .nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+    }
+
+    .nav a:hover { opacity: 0.75; }
+
+    .header-icons {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .cart-icon {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+    }
+
+    .account-icon {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+    }
+
+    .btn-nav {
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      background: rgba(255,255,255,0.15);
+      padding: 6px 16px;
+      border-radius: 20px;
+    }
+
+    .hidden { display: none !important; }
+
+    /* ── MAIN ── */
+    .main-content {
+      display: flex;
+      gap: 24px;
+      padding: 40px 48px;
+      flex: 1;
+      align-items: flex-start;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      width: 300px;
+      flex-shrink: 0;
+      background: rgba(227, 240, 255, 0.5);
+      border-radius: 24px;
+      padding: 24px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .sidebar-item {
+      width: 100%;
+      height: 52px;
+      border-radius: 14px;
+      border: 1.5px solid #b0bcd4;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      cursor: pointer;
+      background: #fff;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .sidebar-item p {
+      font-size: 14px;
+      font-weight: 700;
+      color: #2e4070;
+      margin: 0;
+    }
+
+    .sidebar-item.active {
+      background: #2e4070;
+      border-color: #2e4070;
+    }
+
+    .sidebar-item.active p { color: #fff; }
+    .sidebar-item:hover:not(.active) { background: rgba(46,64,112,0.06); }
+
+    /* ── CONTENT ── */
+    .content-wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .content-header-bar {
+      background: rgba(227, 240, 255, 0.4);
+      border-radius: 20px 20px 0 0;
+      height: 56px;
+    }
+
+    .content-area {
+      background: rgba(227, 240, 255, 0.4);
+      border-radius: 0 0 24px 24px;
+      min-height: 520px;
+      padding: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .empty-state {
+      text-align: center;
+      color: #2e4070;
+      font-size: 16px;
+      opacity: 0.5;
+    }
+
+    .update-btn {
+      align-self: flex-start;
+      margin-top: 20px;
+      height: 52px;
+      padding: 0 36px;
+      background: #2e4070;
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .update-btn:hover { background: #1e2e55; }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: #283a6c;
+      color: #fff;
+      padding: 52px 48px;
+      flex-shrink: 0;
+    }
+
+    .footer-content {
+      display: flex;
+      gap: 60px;
+      align-items: flex-start;
+    }
+
+    .footer-brand { width: 300px; flex-shrink: 0; }
+
+    .footer-brand img {
+      height: 60px;
+      object-fit: contain;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .footer-desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .footer-links {
+      display: grid;
+      grid-template-columns: 180px 160px 1fr;
+      gap: 0;
+      flex: 1;
+    }
+
+    .link-section h4 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+    }
+
+    .link-section h4::after {
+      content: '';
+      display: inline-block;
+      width: 32px;
+      height: 1.5px;
+      background: rgba(255,255,255,0.5);
+    }
+
+    .link-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .link-section a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+    .link-section a:hover { color: #fff; }
+
+    .contact-item {
+      display: flex !important;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 10px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .contact-icon {
+      width: 16px;
+      height: 16px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 768px) {
+      .main-content { flex-direction: column; padding: 20px; }
+      .sidebar { width: 100%; }
+      .footer-content { flex-direction: column; gap: 32px; }
+      .footer-links { grid-template-columns: 1fr; gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="logo">
+      <img src="png/Logo.png" alt="Sirip Juara">
+    </div>
+    <nav class="nav">
+      <a href="index.html">HOME</a>
+      <a href="shop.html">SHOP</a>
+      <a href="care.html">CARE GUIDE</a>
+      <a href="about.html">ABOUT BETTA</a>
+      <a href="support.html">SUPPORT</a>
+    </nav>
+    <div class="header-icons">
+      <a href="cart.html" aria-label="Cart">
+        <img src="png/Cart.png" alt="Cart" class="cart-icon">
+      </a>
+      <a href="Signup.html" id="auth-button" class="btn-nav">SIGN UP</a>
+      <a href="profil.html" id="profile-button" class="hidden" aria-label="Profile">
+        <img src="png/iconAccount.png" alt="Profile" class="account-icon">
+      </a>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="main-content">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <a href="profil.html" class="sidebar-item"><p>Personal Information</p></a>
+      <a href="myorder.html" class="sidebar-item active"><p>My Orders</p></a>
+      <a href="address.html" class="sidebar-item"><p>Manage Address</p></a>
+      <a href="passmanage.html" class="sidebar-item"><p>Password Manager</p></a>
+      <a href="logout.html" class="sidebar-item"><p>Logout</p></a>
+    </aside>
+
+    <!-- Content -->
+    <div class="content-wrapper">
+      <div class="content-header-bar"></div>
+      <div class="content-area">
+        <div class="empty-state">
+          <p>Your orders will appear here</p>
         </div>
-
-        <nav class="myorder-nav">
-          <a href="#" class="myorder-nav-link">HOME</a>
-          <p class="myorder-nav-link">SHOP</p>
-          <p class="myorder-nav-link">CARE GUIDE</p>
-          <p class="myorder-nav-link">ABOUT BETTA</p>
-          <p class="myorder-nav-link">SUPPORT</p>
-        </nav>
-
-        <div class="myorder-header-icons">
-          <div class="myorder-icon-btn">
-            <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
-              <path d="M8 8L10 20H22L24 8" stroke="#ffffff" stroke-width="2" />
-            </svg>
-          </div>
-          <div class="myorder-icon-btn myorder-icon-active">
-            <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
-              <circle cx="15" cy="10" r="5" fill="white" />
-              <path d="M5 24C5 18 9 15 15 15C21 15 25 18 25 24" stroke="white" stroke-width="2" />
-            </svg>
-          </div>
-        </div>
-      </header>
-
-      <div class="myorder-wrapper">
-        <!-- Left Sidebar -->
-        <aside class="myorder-sidebar">
-          <div class="myorder-menu-container">
-            <button class="myorder-menu-item">Personal Information</button>
-            <button class="myorder-menu-item myorder-menu-active">My Orders</button>
-            <button class="myorder-menu-item">Manage Address</button>
-            <button class="myorder-menu-item">Password Manager</button>
-            <button class="myorder-menu-item">Logout</button>
-          </div>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="myorder-content">
-          <div class="myorder-header-section"></div>
-          <div class="myorder-content-area">
-            <div class="myorder-empty-state">
-              <p>Your orders will appear here</p>
-            </div>
-          </div>
-          <button class="myorder-update-btn">Update Changes</button>
-        </main>
       </div>
-
-      <!-- Footer -->
-      <footer class="myorder-footer">
-        <div class="myorder-footer-logo">
-          <img alt="SIRIP JUARA" src="./public/SIRIP_JUARA-removebg-preview_2.png" />
-        </div>
-        <div class="myorder-footer-content">
-          <div class="myorder-footer-col">
-            <p class="myorder-footer-description">
-              Your trusted place to find high-quality betta fish and beginner-friendly care guidance.
-            </p>
-          </div>
-
-          <div class="myorder-footer-col">
-            <h4 class="myorder-footer-title">Company</h4>
-            <ul class="myorder-footer-list">
-              <li><a href="#">Beginner Guide</a></li>
-              <li><a href="#">Types of Betta</a></li>
-              <li><a href="#">Feeding Tips</a></li>
-              <li><a href="#">Care Basics</a></li>
-            </ul>
-          </div>
-
-          <div class="myorder-footer-col">
-            <h4 class="myorder-footer-title">Quick Links</h4>
-            <ul class="myorder-footer-list">
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Shop</a></li>
-              <li><a href="#">Care Guide</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Support</a></li>
-            </ul>
-          </div>
-
-          <div class="myorder-footer-col">
-            <h4 class="myorder-footer-title">Contact</h4>
-            <p class="myorder-footer-contact">Jl. Makkio Baji II, SulSel, Indonesia</p>
-            <p class="myorder-footer-contact">siripjuara@gmail.com<br />Costumer Service</p>
-          </div>
-        </div>
-      </footer>
+      <button class="update-btn">Update Changes</button>
     </div>
 
-    <script>
-      const menuItems = document.querySelectorAll(".myorder-menu-item");
-      menuItems.forEach((item) => {
-        item.addEventListener("click", function () {
-          menuItems.forEach((m) => m.classList.remove("myorder-menu-active"));
-          this.classList.add("myorder-menu-active");
-        });
-      });
-    </script>
-  </body>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <img src="png/Logo.png" alt="Sirip Juara">
+        <p class="footer-desc">Your trusted place to find high-quality betta fish and beginner-friendly care guidance.</p>
+      </div>
+      <div class="footer-links">
+        <div class="link-section">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">Beginner Guide</a></li>
+            <li><a href="#">Types of Betta</a></li>
+            <li><a href="#">Feeding Tips</a></li>
+            <li><a href="#">Care Basics</a></li>
+          </ul>
+        </div>
+        <div class="link-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="care.html">Care Guide</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="support.html">Support</a></li>
+          </ul>
+        </div>
+        <div class="link-section">
+          <h4>Contact</h4>
+          <p class="contact-item">
+            <img src="png/iconLokasi.png" alt="location" class="contact-icon">
+            <span>Jl. Makkio Baji II, SulSel, Indonesia</span>
+          </p>
+          <a href="mailto:siripjuara@gmail.com" class="contact-item">
+            <img src="png/iconEmail.png" alt="email" class="contact-icon">
+            <span>siripjuara@gmail.com</span>
+          </a>
+          <p class="contact-item">
+            <img src="png/iconCS.png" alt="cs" class="contact-icon">
+            <span>Customer Service</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function updateAuthState() {
+      const loggedIn = localStorage.getItem('sj_loggedIn') === 'true';
+      document.getElementById('auth-button').classList.toggle('hidden', loggedIn);
+      document.getElementById('profile-button').classList.toggle('hidden', !loggedIn);
+    }
+    updateAuthState();
+  </script>
+
+</body>
 </html>

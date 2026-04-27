@@ -1,0 +1,802 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <title>Shop - SIRIP JUARA</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      background: linear-gradient(135deg, #1e2d5a 0%, #283a6c 50%, #2f4478 100%);
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 60px;
+      border-radius: 0 0 20px 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      flex-shrink: 0;
+    }
+
+.brand img {
+  max-height: 110px;
+  width: auto;
+  margin-left: -20px; /* geser ke kiri */
+}
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      margin-left: auto;
+      margin-right: 40px;
+    }
+
+    .header-nav a {
+      font-size: 13px;
+      font-weight: 500;
+      color: white;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+    }
+
+    .header-nav a:hover { opacity: 0.75; }
+    .header-nav a.active { font-weight: 700; }
+
+    .header-icons {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .icon-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.18);
+      color: white;
+    }
+
+     .cart-icon {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+    }
+
+    .account-icon {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+    }
+
+    /* ── MAIN WRAPPER ── */
+    .shop-wrapper {
+      flex: 1;
+      padding: 30px 60px 60px;
+    }
+
+    /* ── FILTER BAR ── */
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 15px;
+    }
+
+    .filter-toggle-icon img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    }
+
+    .tab-btn {
+      height: 40px;
+      padding: 0 22px;
+      border-radius: 50px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1.5px solid transparent;
+      transition: all 0.2s;
+    }
+
+    .tab-btn.active {
+      background: #3b5380;
+      color: white;
+      border-color: #3b5380;
+    }
+
+    .tab-btn:not(.active) {
+      background: white;
+      color: #3b5380;
+      border-color: #c5d0e0;
+    }
+
+    .tab-btn:not(.active):hover {
+      background: #f0f5ff;
+    }
+
+    .search-wrap {
+      margin-left: auto;
+      position: relative;
+      width: 700px;
+    }
+
+    .search-input {
+      width: 100%;
+      height: 40px;
+      border: 1.5px solid #d9d9d9;
+      border-radius: 50px;
+      padding: 0 44px 0 18px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      color: #3b5380;
+      outline: none;
+    }
+
+    .search-input:focus { border-color: #3b5380; }
+
+    .search-icon-btn {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #9aa4b5;
+      display: flex;
+      align-items: center;
+    }
+
+    /* ── ACTIVE FILTER ── */
+    .active-filter {
+      font-size: 13px;
+      font-weight: 400;
+      color: #3b5380;
+      margin-bottom: 20px;
+    }
+
+    /* ── MAIN BG CARD ── */
+    .shop-card {
+      background: rgba(227, 240, 255, 0.4);
+      border-radius: 35px;
+      padding: 28px 40px 40px;
+    }
+
+    /* ── PRODUCT GRID ── */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px 24px;
+    }
+
+    .product-item {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    .product-img-wrap {
+      width: 100%;
+      aspect-ratio: 249/220;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #e0e8f4;
+    }
+
+    .product-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .product-item:hover .product-img-wrap img {
+      transform: scale(1.04);
+    }
+
+    .product-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+    }
+
+    .product-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: #3b5380;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex: 1;
+    }
+
+    .product-rating {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      flex-shrink: 0;
+      font-size: 12px;
+      font-weight: 400;
+      color: #3b5380;
+    }
+
+    .star-svg {
+      width: 13px;
+      height: 13px;
+      fill: #f5c518;
+    }
+
+    .product-price {
+      font-size: 12px;
+      font-weight: 400;
+      color: #3b5380;
+    }
+
+    /* ── PAGINATION ── */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin-top: 36px;
+    }
+
+    .page-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #c5d0e0;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .page-dot.active { background: #3b5380; }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: #1e2d5a;
+      color: #fff;
+      padding: 55px 60px;
+      flex-shrink: 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      gap: 80px;
+      align-items: flex-start;
+    }
+
+    .footer-brand {
+      flex: 0 0 200px;
+    }
+
+    .footer-brand img {
+      height: 60px;
+      object-fit: contain;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .footer-desc {
+      font-size: 13px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.82);
+    }
+
+    .footer-cols {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 50px;
+      flex: 1;
+    }
+
+    .footer-col-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: white;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-col-title::after {
+      content: '';
+      flex: 1;
+      height: 1.5px;
+      background: rgba(255,255,255,0.35);
+    }
+
+    .footer-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer-list a {
+      font-size: 13px;
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+    }
+
+    .footer-list a:hover { color: white; }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 10px;
+    }
+
+    .contact-item svg {
+      width: 16px;
+      height: 16px;
+      fill: rgba(255,255,255,0.8);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    @media (max-width: 1024px) {
+      .product-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .header { padding: 0 24px; }
+      .header-nav { display: none; }
+      .shop-wrapper { padding: 20px 24px 40px; }
+      .product-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .footer { padding: 40px 24px; }
+      .footer-inner { flex-direction: column; gap: 30px; }
+      .footer-cols { grid-template-columns: 1fr 1fr; gap: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+        <a class="brand" href="index.html">
+          <img src="png/Logo.png" alt="Sirip Juara Logo">
+        </a>
+
+    <nav class="header-nav">
+      <a href="index.html">HOME</a>
+      <a href="shop.html" class="active">SHOP</a>
+      <a href="#">CARE GUIDE</a>
+      <a href="#">ABOUT BETTA</a>
+      <a href="#">SUPPORT</a>
+    </nav>
+
+     <div class="header-actions">
+      <a href="cart.html" aria-label="Cart">
+        <img src="png/Cart.png" alt="Cart" class="cart-icon">
+      </a>
+      <a href="profil.html" aria-label="Account">
+        <img src="png/iconAccount.png" alt="Account" class="account-icon">
+      </a>
+    </div>
+  </header>
+
+  <!-- SHOP CONTENT -->
+  <div class="shop-wrapper">
+
+    <!-- Filter Bar -->
+    <div class="filter-bar">
+      <!-- Filter icon (sliders) -->
+    <a href="shopfilter.html" class="filter-toggle-icon">
+    <img src="png/iconFilter.png" alt="Filter">
+    </a>
+
+      <button class="tab-btn active" onclick="setTab(this)">Betta Fish</button>
+      <button class="tab-btn" onclick="setTab(this)">Betta Supplies</button>
+
+      <div class="search-wrap">
+        <input type="text" class="search-input" placeholder="">
+        <button class="search-icon-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Active Filter -->
+    <p class="active-filter">Active Filter:</p>
+
+    <!-- Shop Card -->
+    <div class="shop-card">
+      <div class="product-grid" id="productGrid">
+
+        <!-- Row 1 -->
+        <div class="product-item">
+          <div class="product-img-wrap">
+            <img src="png/s1double tail betta.png" alt="Double Tail Betta">
+          </div>
+          <div class="product-meta">
+            <span class="product-name">Double Tail Betta</span>
+            <span class="product-rating">
+              <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              4,9
+            </span>
+          </div>
+          <span class="product-price">Rp 100.000</span>
+        </div>
+
+        <div class="product-item">
+          <div class="product-img-wrap">
+            <img src="png/s2feathertail.png" alt="Feathertail">
+          </div>
+          <div class="product-meta">
+            <span class="product-name">Feathertail</span>
+            <span class="product-rating">
+              <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              4,9
+            </span>
+          </div>
+          <span class="product-price">Rp 450.000</span>
+        </div>
+
+        <div class="product-item">
+          <div class="product-img-wrap">
+            <img src="png/s3plakat betta thai.png" alt="Plakat Betta T...">
+          </div>
+          <div class="product-meta">
+            <span class="product-name">Plakat Betta T...</span>
+            <span class="product-rating">
+              <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              4,8
+            </span>
+          </div>
+          <span class="product-price">Rp 80.000</span>
+        </div>
+
+        <div class="product-item">
+          <div class="product-img-wrap">
+            <img src="png/s4crowntail.png" alt="Crowntail Betta ...">
+          </div>
+          <div class="product-meta">
+            <span class="product-name">Crowntail Betta ...</span>
+            <span class="product-rating">
+              <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              4,9
+            </span>
+          </div>
+          <span class="product-price">Rp 150.000</span>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="product-item">
+          <div class="product-img-wrap">
+            <img src="png/s5elephant ear.png" alt="Elephant Ear">
+          </div>
+          <div class="product-meta">
+            <span class="product-name">Elephant Ear</span>
+            <span class="product-rating">
+              <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              4,9
+            </span>
+          </div>
+          <span class="product-price">Rp 400.000</span>
+        </div>
+
+        <div class="product-item">
+          <div class="product-img-wrap">
+            <img src="png/s6halfmoon betta.png" alt="Halfmoon Betta">
+          </div>
+          <div class="product-meta">
+            <span class="product-name">Halfmoon Betta</span>
+            <span class="product-rating">
+              <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              4,9
+            </span>
+          </div>
+          <span class="product-price">Rp 120.000</span>
+        </div>
+
+        <div class="product-item">
+          <div class="product-img-wrap">
+            <img src="png/s7dumbo ear.png" alt="Dumbo Ear">
+          </div>
+          <div class="product-meta">
+            <span class="product-name">Dumbo Ear</span>
+            <span class="product-rating">
+              <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              4,8
+            </span>
+          </div>
+          <span class="product-price">Rp 100.000</span>
+        </div>
+
+        <div class="product-item">
+          <div class="product-img-wrap">
+            <img src="png/s8giant betta.png" alt="Giant Betta">
+          </div>
+          <div class="product-meta">
+            <span class="product-name">Giant Betta</span>
+            <span class="product-rating">
+              <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              4,9
+            </span>
+          </div>
+          <span class="product-price">Rp 250.000</span>
+        </div>
+
+        <!-- Row 3 -->
+        <div class="product-item">
+          <div class="product-img-wrap">
+            <img src="png/s9rosetail.png" alt="Rosetail">
+          </div>
+          <div class="product-meta">
+            <span class="product-name">Rosetail</span>
+            <span class="product-rating">
+              <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              4,9
+            </span>
+          </div>
+          <span class="product-price">Rp 600.000</span>
+        </div>
+
+        <div class="product-item">
+          <div class="product-img-wrap">
+            <img src="png/s10super delta.png" alt="Super Delta Betta">
+          </div>
+          <div class="product-meta">
+            <span class="product-name">Super Delta Betta</span>
+            <span class="product-rating">
+              <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              4,9
+            </span>
+          </div>
+          <span class="product-price">Rp 60.000</span>
+        </div>
+
+        <div class="product-item">
+          <div class="product-img-wrap">
+            <img src="png/s11rosetail betta.png" alt="Rosetail Betta">
+          </div>
+          <div class="product-meta">
+            <span class="product-name">Rosetail Betta</span>
+            <span class="product-rating">
+              <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              4,7
+            </span>
+          </div>
+          <span class="product-price">Rp 150.000</span>
+        </div>
+
+        <div class="product-item">
+          <div class="product-img-wrap">
+            <img src="png/s12halfmoon blue.png" alt="Halfmoon Blue">
+          </div>
+          <div class="product-meta">
+            <span class="product-name">Halfmoon Blue</span>
+            <span class="product-rating">
+              <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              4,9
+            </span>
+          </div>
+          <span class="product-price">Rp 80.000</span>
+        </div>
+
+        <!-- Row 4 -->
+        <div class="product-item">
+          <div class="product-img-wrap">
+            <img src="png/s13yellow koi.png" alt="Yellow Koi">
+          </div>
+          <div class="product-meta">
+            <span class="product-name">Yellow Koi</span>
+            <span class="product-rating">
+              <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              4,9
+            </span>
+          </div>
+          <span class="product-price">Rp 30.000</span>
+        </div>
+
+        <div class="product-item">
+          <div class="product-img-wrap">
+            <img src="png/s14dragon besgel.png" alt="Dragon Besgel">
+          </div>
+          <div class="product-meta">
+            <span class="product-name">Dragon Besgel</span>
+            <span class="product-rating">
+              <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              4,7
+            </span>
+          </div>
+          <span class="product-price">Rp 50.000</span>
+        </div>
+
+        <div class="product-item">
+          <div class="product-img-wrap">
+            <img src="png/s15FCCP red head.png" alt="FCCP Red Head">
+          </div>
+          <div class="product-meta">
+            <span class="product-name">FCCP Red Head</span>
+            <span class="product-rating">
+              <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              4,8
+            </span>
+          </div>
+          <span class="product-price">Rp 100.000</span>
+        </div>
+
+        <div class="product-item">
+          <div class="product-img-wrap">
+            <img src="png/s16dumbo ear butterfly.png" alt="Dumbo Ear But...">
+          </div>
+          <div class="product-meta">
+            <span class="product-name">Dumbo Ear But...</span>
+            <span class="product-rating">
+              <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              4,9
+            </span>
+          </div>
+          <span class="product-price">Rp 200.000</span>
+        </div>
+
+        <!-- Row 5 -->
+        <div class="product-item">
+          <div class="product-img-wrap">
+            <img src="png/s17mustard gass.png" alt="Mustard Gass">
+          </div>
+          <div class="product-meta">
+            <span class="product-name">Mustard Gass</span>
+            <span class="product-rating">
+              <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              4,8
+            </span>
+          </div>
+          <span class="product-price">Rp 60.000</span>
+        </div>
+
+        <div class="product-item">
+          <div class="product-img-wrap">
+            <img src="png/s18multy cello.png" alt="Multy Cello">
+          </div>
+          <div class="product-meta">
+            <span class="product-name">Multy Cello</span>
+            <span class="product-rating">
+              <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              4,9
+            </span>
+          </div>
+          <span class="product-price">Rp 50.000</span>
+        </div>
+
+        <div class="product-item">
+          <div class="product-img-wrap">
+            <img src="png/s19blue rim.png" alt="Blue Rim">
+          </div>
+          <div class="product-meta">
+            <span class="product-name">Blue Rim</span>
+            <span class="product-rating">
+              <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              4,7
+            </span>
+          </div>
+          <span class="product-price">Rp 30.000</span>
+        </div>
+
+        <div class="product-item">
+          <div class="product-img-wrap">
+            <img src="png/s20nemo emerald.png" alt="Nemo Emerald">
+          </div>
+          <div class="product-meta">
+            <span class="product-name">Nemo Emerald</span>
+            <span class="product-rating">
+              <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              4,9
+            </span>
+          </div>
+          <span class="product-price">Rp 250.000</span>
+        </div>
+
+      </div><!-- /product-grid -->
+
+      <!-- Pagination -->
+      <div class="pagination">
+        <div class="page-dot active"></div>
+        <div class="page-dot"></div>
+        <div class="page-dot"></div>
+        <div class="page-dot"></div>
+        <div class="page-dot"></div>
+      </div>
+
+    </div><!-- /shop-card -->
+  </div><!-- /shop-wrapper -->
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <img src="png/Logo.png" alt="Sirip Juara"
+             onerror="this.style.display='none'">
+        <p class="footer-desc">Your trusted place to find high-quality betta fish and beginner-friendly care guidance.</p>
+      </div>
+
+      <div class="footer-cols">
+        <div>
+          <h4 class="footer-col-title">Company</h4>
+          <ul class="footer-list">
+            <li><a href="#">Beginner Guide</a></li>
+            <li><a href="#">Types of Betta</a></li>
+            <li><a href="#">Feeding Tips</a></li>
+            <li><a href="#">Care Basics</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Quick Links</h4>
+          <ul class="footer-list">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Shop</a></li>
+            <li><a href="#">Care Guide</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Support</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Contact</h4>
+          <div class="contact-item">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            Jl. Makkio Baji II, SulSel, Indonesia
+          </div>
+          <div class="contact-item">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            siripjuara@gmail.com
+          </div>
+          <div class="contact-item">
+            <svg viewBox="0 0 24 24"><path d="M12 1c-4.97 0-9 4.03-9 9v7c0 1.1.9 2 2 2h1v-8H4v-1c0-4.42 3.58-8 8-8s8 3.58 8 8v1h-2v8h1c1.1 0 2-.9 2-2v-7c0-4.97-4.03-9-9-9z"/></svg>
+            Costumer Service
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function setTab(btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+
+    // Pagination dots
+    document.querySelectorAll('.page-dot').forEach((dot, i, arr) => {
+      dot.addEventListener('click', () => {
+        arr.forEach(d => d.classList.remove('active'));
+        dot.classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
