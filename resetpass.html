@@ -256,37 +256,37 @@
         Your new password must be different from previously used password.
       </p>
 
-      <!-- Form -->
-      <form class="reset-form" onsubmit="window.location.href='signin.html'; return false;">
-        <!-- New Password Field -->
-        <div class="form-group">
-          <label for="new-password">New Password *</label>
-          <input type="password" id="new-password" name="new-password" class="form-input" placeholder="" required>
-          <button type="button" class="password-toggle" data-target="new-password">
-            <svg viewBox="0 0 24 24" class="eye-icon">
-              <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z" stroke="#3b5380" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <circle cx="12" cy="12" r="3" stroke="#3b5380" stroke-width="2"/>
-            </svg>
-          </button>
-        </div>
+ <!-- Form -->
+<form class="reset-form" onsubmit="window.location.href='Signin.html'; return false;">
+  
+  <!-- New Password Field -->
+  <div class="form-group">
+    <label for="new-password">New Password *</label>
+    <input type="password" id="new-password" name="new-password" class="form-input" required>
+    <button type="button" class="password-toggle" data-target="new-password">
+      <svg viewBox="0 0 24 24" class="eye-icon">
+        <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z" stroke="#3b5380" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="12" cy="12" r="3" stroke="#3b5380" stroke-width="2"/>
+      </svg>
+    </button>
+  </div>
 
-        <!-- Confirm Password Field -->
-        <div class="form-group">
-          <label for="confirm-password">Confirm Password *</label>
-          <input type="password" id="confirm-password" name="confirm-password" class="form-input" placeholder="" required>
-          <button type="button" class="password-toggle" data-target="confirm-password">
-            <svg viewBox="0 0 24 24" class="eye-icon">
-              <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z" stroke="#3b5380" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <circle cx="12" cy="12" r="3" stroke="#3b5380" stroke-width="2"/>
-            </svg>
-          </button>
-        </div>
+  <!-- Confirm Password Field -->
+  <div class="form-group">
+    <label for="confirm-password">Confirm Password *</label>
+    <input type="password" id="confirm-password" name="confirm-password" class="form-input" required>
+    <button type="button" class="password-toggle" data-target="confirm-password">
+      <svg viewBox="0 0 24 24" class="eye-icon">
+        <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z" stroke="#3b5380" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="12" cy="12" r="3" stroke="#3b5380" stroke-width="2"/>
+      </svg>
+    </button>
+  </div>
 
-    <form action="Signin.html">
-      <!-- input dll -->
-      <button type="submit" class="btn-save">Save New Password</button>
-    </form>
-      </div>
+  <!-- Save Button -->
+  <button type="submit" class="btn-save">Save New Password</button>
+
+</form>
 
   <script src="scripts.js"></script>
   <script>
