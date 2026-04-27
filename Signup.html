@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <title>Sign Up - SIRIP JUARA</title>
+  
+<style>
+.signup-container {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  box-shadow: 0pxq 4px 2px rgba(0, 0, 0, 0.25);
+  background: #ffffff;
+  overflow: hidden;
+}
+
+/* Left Panel - Sign Up Form */
+.signup-left-panel {
+  background: #ffffff;
+  padding: 30px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  border-radius: 0 50px 50px 0;
+  overflow: hidden;
+}
+
+.signup-logo {
+  display: inline-block;
+  width: 130px;
+  height: auto;
+  margin-bottom: 30px;
+  transform: translateY(-10px);
+}
+
+.signup-logo img {
+  width: 100%;
+  height: auto;
+  margin-left: 420px;
+}
+
+.signup-welcome {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  text-align: right;
+  margin-bottom: 60px;
+}
+
+.signup-welcome h1 {
+  font-family: 'Poppins';
+  font-size: 37px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 16px 0;
+  line-height: 1.1;
+}
+.welcome-subtitle {
+  font-family: 'Poppins';
+  font-size: 18px;
+  font-weight: 400;
+  color: #ffffff;
+  margin: 0 0 1px 0;
+}
+
+.welcome-desc {
+  font-family: 'Poppins';
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  line-height: 1.4;
+  max-width: 570px;
+}
+
+.signup-signin-prompt {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.signup-signin-prompt span {
+  font-family: 'Poppins';
+  font-size: 14px;
+  font-weight: 100;
+  color: rgba(255, 255, 255, 0.8);
+  display: block;
+  margin-bottom: 1px;
+}
+
+.signin-link {
+  font-family: 'Poppins';
+  font-size: 14px;
+  font-weight: 400;
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  transition: opacity 0.2s;
+}
+
+.signin-link:hover {
+  opacity: 0.8;
+}
+
+/* Right Panel - Welcome Section */
+.signup-right-panel {
+  background: linear-gradient(135deg, #3b5380 0%, #2d4168 100%);
+  padding: 40px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  border-radius: 50px 0 0 50px;
+  overflow: hidden;
+}
+
+.signup-title {
+  font-family: 'Poppins';
+  font-size: 28px;
+  font-weight: 700;
+  color: #3b5380;
+  text-align: center;
+  margin: 0 0 25px 0;
+}
+
+.signup-form {
+  width: 100%;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+.name-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 0px;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+.form-group label {
+  font-family: 'Poppins';
+  font-size: 16px;
+  font-weight: 400;
+  color: #3b5380;
+  display: block;
+  margin-bottom: 3px;
+}
+
+.form-input {
+  width: 100%;
+  height: 50px;
+  border: 1px solid #000000;
+  border-radius: 30px;
+  background: #f5f5f5;
+  padding: 0 20px;
+  font-family: 'Poppins';
+  font-size: 15px;
+  color: #3b5380;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-input::placeholder {
+  color: rgba(59, 83, 128, 0.5);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #3b5380;
+  box-shadow: 0 0 0 3px rgba(59, 83, 128, 0.1);
+}
+
+.password-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-input-wrapper input {
+  width: 100%;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+}
+
+.eye-icon {
+  width: 20px;
+  height: 20px;
+  stroke: #3b5380;
+  stroke-width: 2;
+  fill: none;
+  transition: opacity 0.2s;
+}
+
+.toggle-password:hover .eye-icon {
+  opacity: 0.7;
+}
+
+.btn-signup {
+  width: 100%;
+  height: 45px;
+  border-radius: 30px;
+  background: #3b5380;
+  color: #ffffff;
+  font-family: 'Poppins';
+  font-size: 18px;
+  font-weight: 700;
+  border: 1px solid #000000;
+  cursor: pointer;
+  transition: transform 0.2s, filter 0.2s;
+  margin-top: 45px;
+  margin-bottom: 18px;
+}
+
+.btn-signup:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+.btn-signup:active {
+  transform: translateY(0);
+}
+
+/* Divider with text */
+.divider-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 18px 0;
+}
+
+.divider-container::before,
+.divider-container::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #3b5380;
+}
+
+.divider-text {
+  font-family: 'Poppins';
+  font-size: 12px;
+  font-weight: 300;
+  color: #3b5380;
+  white-space: nowrap;
+}
+
+/* Google Sign Up Button */
+.btn-google {
+  width: 35%;
+  height: 48px;
+  border-radius: 35px;
+  background: #f5f5f5;
+  border: 1px solid #000000;
+  font-family: 'Poppins';
+  font-size: 13px;
+  font-weight: 400;
+  color: #3b5380;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  transition: background 0.2s, transform 0.2s;
+  margin-left: 32%;
+}
+
+.btn-google:hover {
+  background: #eeeeee;
+  transform: translateY(-1px);
+}
+
+.btn-google img {
+  width: 36px;
+  height: 25px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .signup-left-panel {
+    padding: 35px 40px;
+  }
+
+  .signup-right-panel {
+    padding: 35px 40px;
+  }
+
+  .signup-welcome h1 {
+    font-size: 35px;
+  }
+
+  .welcome-desc {
+    font-size: 16px;
+  }
+
+  .signup-title {
+    font-size: 26px;
+  }
+
+  .form-group label {
+    font-size: 15px;
+  }
+
+  .form-input {
+    height: 48px;
+    padding: 0 18px;
+  }
+
+  .btn-signup {
+    height: 48px;
+    font-size: 17px;
+  }
+
+  .btn-google {
+    height: 48px;
+    font-size: 13px;
+  }
+}
+</style>
+
+</head>
+<body>
+  <div class="signup-container">
+    <!-- Left Side -->
+    <div class="signup-left-panel">
+      <h2 class="signup-title">Sign Up</h2>
+
+      <form class="signup-form" action="#" method="POST">
+        <!-- Name Fields Row -->
+        <div class="name-fields">
+          <div class="form-group">
+            <label for="firstname">First Name *</label>
+            <input type="text" id="firstname" name="firstname" class="form-input" placeholder="" required>
+          </div>
+
+          <div class="form-group">
+            <label for="lastname">Last Name *</label>
+            <input type="text" id="lastname" name="lastname" class="form-input" placeholder="" required>
+          </div>
+        </div>
+
+        <!-- Email Field -->
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input type="email" id="email" name="email" class="form-input" placeholder="" required>
+        </div>
+
+        <!-- Password Field -->
+        <div class="form-group">
+          <label for="password">Password *</label>
+          <div class="password-input-wrapper">
+            <input type="password" id="password" name="password" class="form-input" placeholder="" required>
+            <button type="button" class="toggle-password" onclick="togglePasswordVisibility()">
+              <svg viewBox="0 0 30 30" class="eye-icon">
+                <g>
+                  <path d="M15 8c-5 0-9 4-9 7s4 7 9 7 9-4 9-7-4-7-9-7z"/>
+                  <circle cx="15" cy="15" r="3"/>
+                </g>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Sign Up Button -->
+        <button type="button" class="btn-signup" onclick="window.location.href='index.html'">Sign Up</button>
+
+        <!-- Divider -->
+        <div class="divider-container">
+          <span class="divider-text">Or With Google</span>
+        </div>
+
+        <!-- Google Sign Up Button -->
+        <button type="button" class="btn-google">
+          <img src="png/Google.png" alt="Google Icon">
+          <span>Sign Up with Google</span>
+        </button>
+      </form>
+    </div>
+
+    <!-- Right Side -->
+    <div class="signup-right-panel">
+      <a href="index.html" class="signup-logo">
+        <img src="png/Logo.png" alt="SIRIP JUARA Logo">
+      </a>
+
+      <div class="signup-welcome">
+        <h1>Hello, Future Betta Lover!</h1>
+        <p class="welcome-subtitle">Create your account and start caring for your betta </p>
+        <p class="welcome-desc"> fish the right way.</p>
+      </div>
+
+      <div class="signup-signin-prompt">
+        <span>Already have an account?</span>
+        <a href="Signin.html" class="signin-link">Sign in here!</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="scripts.js"></script>
+  <script>
+    function togglePasswordVisibility() {
+      const passwordInput = document.getElementById('password');
+      const toggleBtn = document.querySelector('.toggle-password');
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleBtn.classList.add('active');
+      } else {
+        passwordInput.type = 'password';
+        toggleBtn.classList.remove('active');
+      }
+    }
+  // di signup.html
+  document.querySelector('.btn-signup').addEventListener('click', function() {
+    localStorage.setItem('sj_loggedIn', 'true');
+    window.location.href = 'index.html';
+  });
+  </script>
+</body>
+</html>
