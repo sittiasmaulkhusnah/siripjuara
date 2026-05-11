@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <title>TypeofBetta - Sirip Juara</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:        #293B6D;
+      --blue-footer: #1c2d5c;
+      --surface:     #ffffff;
+      --surface-soft:#f0f4fb;   
+      --border:      #d8e2f2;
+      --text-dark:   #1e3057;
+      --text-muted:  #6b83ad;
+      --accent:      #2d4f9f;
+    }
+
+    body {
+      font-family: 'Poppins';
+      background: #fff;
+      color: var(--text-dark);
+      padding-top: 96px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    img { max-width: 100%; display: block; }
+    a   { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; border: none; background: none; }
+
+    .container {
+      width: min(1320px, calc(100% - 80px));
+      margin: 0 auto;
+    }
+
+    .hidden { display: none !important; }
+
+    /* ====================================================
+       HEADER — sama persis dengan cart.html
+    ==================================================== */
+    .site-header {
+      position: relative;
+      z-index: 999;
+      padding: 10px 5px;
+      margin-top: -95px;
+    }
+
+    .header-pill {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      background: #293B6D;
+      border-radius: 999px;
+
+      padding: 12px 16px;
+      height: 69px; /* 🔥 kunci utama */
+    }
+
+    .brand img { 
+      max-height: 90px; 
+      width: auto; }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      margin-left: auto;
+    }
+
+    .nav-link {
+      color: rgba(255,255,255,0.72);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+      transition: color 0.2s;
+    }
+
+    .nav-link:hover,
+    .nav-link.active-page { 
+      color: #fff; 
+      font-weight: 700; 
+    }
+
+    .nav-dropdown { 
+      position: relative; 
+    }
+
+    .nav-has-dropdown { 
+      display: flex; 
+      align-items: center; 
+      gap: 3px; 
+      cursor: pointer; 
+    }
+
+    .dropdown-arrow {
+      font-size: 0.6rem; 
+      opacity: 0.7; 
+      transition: transform 0.2s; 
+    }
+
+    .nav-dropdown:hover 
+    .dropdown-arrow { 
+      transform: rotate(180deg); 
+    }
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1c2e50;
+  border-radius: 12px;
+  padding: 14px 0 8px;
+  min-width: 140px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+  z-index: 300;
+  overflow: hidden;
+}
+
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 100%;
+  height: 16px;
+}
+
+    .dropdown-menu a {
+      display: block;
+      padding: 10px 20px;
+      color: rgba(255,255,255,0.8);
+      font-size: 0.82rem;
+      transition: background 0.15s, color 0.15s;
+    }
+    .dropdown-menu a:hover { 
+      background: rgba(255,255,255,0.08); 
+      color: #fff; 
+    }
+    
+    .nav-dropdown:hover .dropdown-menu { 
+      display: block; 
+    }
+
+    .header-actions { 
+      display: flex; 
+      align-items: center; 
+      gap: 10px; 
+      margin-left: 45px;
+      margin-right: 30px;
+    }
+
+    .cart-wrapper {
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+      width: 35px; 
+      height: 35px; 
+      border-radius: 50%;
+      transition: background 0.2s;
+    }
+
+    .cart-icon { 
+      width: 37px; 
+      height: 37px;
+      object-fit: contain;
+    }
+    
+    .cart-wrapper
+    .cart-active { 
+      background: #fff; 
+    }
+
+    .btn-nav {
+      background: #ffffff;
+      color: #3D588B;
+      border-radius: 999px;
+      padding: 0.3rem 1.2rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+      transition: opacity 0.2s, transform 0.2s;
+      font-family: 'Poppins';
+    }
+
+    .btn-nav:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    .profile-btn {
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+      width: 38px; 
+      height: 38px; 
+      border-radius: 50%; 
+      overflow: hidden;
+    }
+
+    .profile-btn img { 
+      width: 34px; 
+      height: 34px; 
+      object-fit: contain; 
+    }
+
+   main {
+  flex: 1;
+  width: 100%;
+  padding: 20px 24px 56px;
+  background: #ffffff;
+}
+
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  background: #ffffff;
+}
+
+    .hero-card {
+      background: #ffff; 
+      border:  none;   
+      border-radius: 0;
+      padding: 20px;
+      box-shadow: none;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 36px;
+    }
+
+    .hero-card::before {
+      display: none;
+    }
+
+    .hero-card h1 {
+      margin: 0 0 16px;
+      font-size: clamp(2rem, 3vw, 3.1rem);
+      line-height: 1.05;
+      max-width: 760px;
+    }
+
+    .hero-card p {
+      margin: 0;
+      max-width: 760px;
+      font-size: 1rem;
+      line-height: 1.9;
+      color: var(--text-muted);
+    }
+
+    .type-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 50px;
+  margin-top: 1px;
+}
+
+.type-title::before {
+  content: '';
+  flex: 1px;
+  height: 2px;
+  background: #D9D9D9;
+  margin-right: 28px; 
+}
+
+.badge-blue {
+  background: #3D588B;
+  color: white;
+  padding: 9px 18px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+    .type-grid {
+      columns: 2;
+      gap: 18px;
+    }
+
+    .type-card {
+      display: grid;
+      grid-template-columns: 56px 1fr 36px;
+      align-items: center;
+      gap: 16px;
+      padding: 10px 16px 10px 10px;
+      border-radius: 20px;
+      background: var(--surface);
+      border: 1px solid #00000068;
+      box-shadow: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+      break-inside: avoid;
+      margin-bottom: 18px;
+    }
+
+    .type-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(37, 80, 158, 0.12);
+    }
+
+    .type-body {
+  display: none;
+  grid-column: 1 / -1;
+  padding: 8px 4px 4px;
+  font-size: 0.85rem;
+  color: #3D588B;
+  line-height: 1.7;
+  border-top: none;
+  margin-top: 0px;
+}
+
+.type-card.open .type-body {
+  display: block;
+}
+
+.type-card.open {
+  grid-template-rows: auto auto;
+}
+
+.type-card.open .type-icon {
+  transform: rotate(0deg);
+}
+
+.type-icon {
+  transition: transform 0.2s ease;
+}
+
+    .type-thumb {
+      width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #132445 0%, #89b4ff 100%);
+  display: grid;
+  place-items: center;
+  position: relative;
+  flex-shrink: 0;
+    }
+
+    .type-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 18px;
+}
+
+    .type-thumb::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(255,255,255,0.28), transparent 45%);
+    }
+
+    .type-thumb span {
+      font-size: 2.2rem;
+  position: relative;
+  z-index: 1;
+    }
+
+    .type-info {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-width: 0;
+    }
+
+    .type-info h3 {
+        margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #3D588B;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+    }
+
+    .type-info p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .type-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: none;
+    display: grid;
+    place-items: center;
+    color: #3D588B;
+    background: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 500;
+    }
+
+    .site-footer {
+      background: #1c2d5c;
+      color: #fff;
+      padding: 60px 20px;
+      margin-top: auto;
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1fr 2.2fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .footer-brand .brand img { 
+      max-height: 110px; 
+      width: auto;
+      margin: -30px; 
+    }
+
+    .footer-brand p {
+      margin: 20px 0 0;
+      max-width: 300px;
+      line-height: 1.65;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .footer-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.4fr;
+      gap: 0;
+      align-items: start;
+      margin-right: -50px
+    }
+
+    .footer-links h3 {
+      margin: 0 0 20px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-line { display: inline-block; width: 32px; height: 1.5px; background: #fff; flex-shrink: 0; }
+
+    .footer-links a,
+    .footer-links > div > p {
+      display: block;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 10px;
+      line-height: 1.4;
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+    .footer-links a:hover { color: #fff; }
+
+    .contact-item {
+      display: flex !important;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255,255,255,0.85);
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+      text-decoration: none;
+      line-height: 1.4;
+    }
+    
+    .contact-icon { 
+      width: 22px; 
+      height: 22px; 
+      object-fit: contain; 
+      flex-shrink: 0; 
+    }
+
+        @media (max-width: 1080px) {
+      .tips-grid, .guides-grid { grid-template-columns: 1fr; }
+      .tips-section, .guides-section { padding-left: 24px; padding-right: 24px; }
+    }
+
+    @media (max-width: 768px) {
+      .site-nav { display: none; }
+      .footer-inner { grid-template-columns: 1fr; gap: 30px; }
+      .footer-links { grid-template-columns: 1fr 1fr; margin-right: 0; }
+    }
+
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-pill">
+
+      <a class="brand" href="index.html">
+        <img src="png/Logo.png" alt="Sirip Juara Logo">
+      </a>
+
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="index.html" class="nav-link">HOME</a>
+        <a href="shop.html" class="nav-link">SHOP</a>
+        <a href="careguide.html" class="nav-link active-page">CARE GUIDE</a>
+
+        <div class="nav-dropdown">
+          <a href="about.html" class="nav-link nav-has-dropdown">ABOUT <span class="dropdown-arrow">▾</span></a>
+          <div class="dropdown-menu">
+            <a href="about.html">About Betta</a>
+            <a href="team.html">Team</a>
+          </div>
+        </div>
+
+        <div class="nav-dropdown">
+          <a href="support.html" class="nav-link nav-has-dropdown">SUPPORT <span class="dropdown-arrow">▾</span></a>
+          <div class="dropdown-menu">
+            <a href="support1.html">FAQ</a>
+            <a href="support2.html">Contact Us</a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="header-actions">
+        <a href="cart.html" class="cart-wrapper" id="cart-link" aria-label="Cart">
+          <img src="png/Cart.png" alt="Cart" class="cart-icon">
+        </a>
+        <a href="Signup.html" id="auth-button" class="btn-nav">SIGN UP</a>
+        <a href="profil.html" id="profile-button" class="profile-btn hidden" aria-label="Profile">
+          <img src="png/iconAccount.png" alt="Profile">
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+    <main>
+      <div class="container">
+        <section class="hero-card" id="home">
+          <div class="type-title">
+            <span class="badge-blue">Different Types of Betta Fish</span>
+          </div>
+          <div class="type-grid">
+
+            <article class="type-card" onclick="this.classList.toggle('open')">
+          <div class="type-thumb">
+            <img src="png/type1.png" alt="Halfmoon Series" />
+          </div>
+           <div class="type-info"><h3>Halfmoon Series</h3></div>
+        <div class="type-icon">⌄</div>
+        <div class="type-body">
+        <strong>Includes: Halfmoon, Halfmoon Blue, Rosetail, Rosetail Blue </strong> <br>
+        Halfmoon betta fish are the result of modern breeding, which became popular around the 1980s–1990s. 
+        They are among the most popular types and are often considered part of the premium category.<br>
+        <span class="characteristics">Characteristics: 180° tail spread, full and symmetrical fins.</span>
+        </div>
+      </article>
+
+            <article class="type-card" onclick="this.classList.toggle('open')">
+          <div class="type-thumb">
+            <img src="png/type2.png" alt="Double Tail" />
+          </div>
+          <div class="type-info"><h3>Double Tail</h3></div>
+          <div class="type-icon">⌄</div>
+          <div class="type-body">
+        <strong>Includes: Halfmoon, Halfmoon Blue, Rosetail, Rosetail Blue </strong> <br>
+        Halfmoon betta fish are the result of modern breeding, which became popular around the 1980s–1990s. 
+        They are among the most popular types and are often considered part of the premium category.<br>
+        <span class="characteristics">Characteristics: 180° tail spread, full and symmetrical fins.</span>
+        </div>
+        </article>
+
+             <article class="type-card" onclick="this.classList.toggle('open')">
+          <div class="type-thumb">
+            <img src="png/type3.png" alt="Plakat" />
+          </div>
+          <div class="type-info"><h3>Plakat</h3></div>
+          <div class="type-icon">⌄</div>
+          <div class="type-body">
+        <strong>Includes: Halfmoon, Halfmoon Blue, Rosetail, Rosetail Blue </strong> <br>
+        Halfmoon betta fish are the result of modern breeding, which became popular around the 1980s–1990s. 
+        They are among the most popular types and are often considered part of the premium category.<br>
+        <span class="characteristics">Characteristics: 180° tail spread, full and symmetrical fins.</span>
+        </div>
+        </article>
+
+             <article class="type-card" onclick="this.classList.toggle('open')">
+          <div class="type-thumb">
+            <img src="png/type4.png" alt="Crown Tail" />
+          </div>
+          <div class="type-info"><h3>Crown Tail</h3></div>
+          <div class="type-icon">⌄</div>
+          <div class="type-body">
+        <strong>Includes: Halfmoon, Halfmoon Blue, Rosetail, Rosetail Blue </strong> <br>
+        Halfmoon betta fish are the result of modern breeding, which became popular around the 1980s–1990s. 
+        They are among the most popular types and are often considered part of the premium category.<br>
+        <span class="characteristics">Characteristics: 180° tail spread, full and symmetrical fins.</span>
+        </div>
+        </article>
+
+            <article class="type-card" onclick="this.classList.toggle('open')">
+          <div class="type-thumb">
+            <img src="png/type5.png" alt="Feathertail" />
+          </div>
+          <div class="type-info"><h3>Feathertail</h3></div>
+          <div class="type-icon">⌄</div>
+           <div class="type-body">
+        <strong>Includes: Feathertail</strong> <br>
+        Feathertail betta fish are the result of modern crossbreeding developed since the early 2000s. 
+        They were bred to produce extremely ruffled fins that resemble feathers, making them more complex than Halfmoon varieties.<br>
+        <span class="characteristics">Characteristics: wavy, layered fins resembling feathers.</span>
+        </div>
+        </article>
+
+            <article class="type-card" onclick="this.classList.toggle('open')">
+          <div class="type-thumb">
+            <img src="png/type6.png" alt="Dumbo"/>
+          </div>
+          <div class="type-info"><h3>Dumbo</h3></div>
+          <div class="type-icon">⌄</div>
+          <div class="type-body">
+        <strong>Includes: Elephant Ear, Dumbo, Dumbo Ear Butterfly</strong> <br>
+        Dumbo betta fish are a variety developed through selective breeding to produce large pectoral fins resembling elephant ears. 
+        They became popular in the early 2000s and are known for their graceful and unique movement. <br>
+        <span class="characteristics">Characteristics: large, ear-like pectoral fins.</span>
+        </div>
+        </article>
+
+            <article class="type-card" onclick="this.classList.toggle('open')">
+          <div class="type-thumb">
+            <img src="png/type7.png" alt="Giant Betta" />
+          </div>
+          <div class="type-info"><h3>Giant Betta</h3></div>
+          <div class="type-icon">⌄</div>
+          <div class="type-body">
+        <strong>Includes: Giant Betta</strong> <br>
+        Giant betta fish are developed through selective breeding in Thailand in the early 2000s to produce a 
+        much larger body size than regular bettas. They are often used as a centerpiece due to their size. <br>
+        <span class="characteristics">Characteristics: significantly larger body size than regular bettas.</span>
+        </div>
+        </article>
+
+             <article class="type-card" onclick="this.classList.toggle('open')">
+          <div class="type-thumb">
+            <img src="png/type8.png" alt="Koi Series" />
+          </div>
+          <div class="type-info"><h3>Koi Series</h3></div>
+          <div class="type-icon">⌄</div>
+          <div class="type-body">
+            <strong>Includes: Yellow Koi, Nemo Emerald, Multy Cello / Cello Koi</strong> <br>
+            Koi series betta fish are developed through selective crossbreeding to produce color patterns resembling 
+            Japanese koi fish. They became popular in the early 2000s, and each fish has a unique pattern. <br>
+            <span class="characteristics">Characteristics: mixed, random koi-like colors.</span>
+          </div>
+        </article>
+
+            <article class="type-card" onclick="this.classList.toggle('open')">
+          <div class="type-thumb">
+            <img src="png/type9.png" alt="Dragon Scale" />
+          </div>
+          <div class="type-info"><h3>Dragon Scale</h3></div>
+          <div class="type-icon">⌄</div>
+          <div class="type-body">
+            <strong>Includes: Dragon Scale</strong> <br>
+           Dragon Scale betta fish are developed through selective crossbreeding to produce thick, iridescent scales resembling dragon armor. 
+           They became popular in the mid-2000s and are known for their bold, solid appearance.<br>
+            <span class="characteristics">Characteristics: thick, armor-like scales.</span>
+        </article>
+
+            <article class="type-card" onclick="this.classList.toggle('open')">
+          <div class="type-thumb">
+            <img src="png/type10.png" alt="Fancy" />
+          </div>
+          <div class="type-info"><h3>Fancy</h3></div>
+          <div class="type-icon">⌄</div>
+          <div class="type-body">
+            <strong>Includes: FCCP Red Head, Mustas Glass</strong> <br>
+            Fancy betta fish are developed through selective crossbreeding to produce diverse and irregular color combinations. They became popular in the 
+            modern era around the 2000s and are often the result of specialized breeding. <br>
+            <span class="characteristics">Characteristics: unique, non-standard color combinations.</span>
+        </article>
+
+            <article class="type-card" onclick="this.classList.toggle('open')">
+          <div class="type-thumb">
+            <img src="png/type11.png" alt="Blue Rim" />
+          </div>
+          <div class="type-info"><h3>Blue Rim</h3></div>
+          <div class="type-icon">⌄</div>
+          <div class="type-body">
+            <strong>Includes: Blue Rim</strong> <br>
+            Blue Rim betta fish are developed through selective crossbreeding to produce white fins with striking blue edges. They became popular in the 
+            modern era around the 2010s and are considered a sought-after variety. <br>
+            <span class="characteristics">Characteristics: contrasting fin edges (outline).</span>
+          </div>
+        </article>
+
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <a class="brand" href="index.html">
+            <img src="png/Logo.png" alt="Sirip Juara Logo">
+          </a>
+          <p>Your trusted place to find high-quality betta fish and beginner-friendly care guidance.</p>
+        </div>
+        <div class="footer-links">
+          <div>
+            <h3>Company <span class="footer-line"></span></h3>
+            <a href="#">Beginner Guide</a>
+            <a href="#">Types of Betta</a>
+            <a href="#">Feeding Tips</a>
+            <a href="#">Care Basics</a>
+          </div>
+          <div>
+            <h3>Quick Links <span class="footer-line"></span></h3>
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="care.html">Care Guide</a>
+            <a href="about.html">About</a>
+            <a href="support.html">Support</a>
+          </div>
+          <div>
+            <div class="contact">
+          <h3>Contact <span class="footer-line"></span></h3>
+
+          <p class="contact-item">
+          <img src="png/iconLokasi.png" alt="location" class="contact-icon">
+          <span>Jl. Makkio Baji II, SulSel, Indonesia</span>
+          </p>
+
+          <a href="mailto:siripjuara@gmail.com" class="contact-item">
+          <img src="png/iconEmail.png" alt="email" class="contact-icon">
+          <span>siripjuara@gmail.com</span>
+          </a>
+
+          <p class="contact-item">
+          <img src="png/iconCS.png" alt="cs" class="contact-icon">
+          <span>Customer Service</span>
+          </p>
+        </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Active nav
+      (function () {
+        const links = document.querySelectorAll('.nav-link');
+        const current = location.pathname.split('/').pop() || 'index.html';
+        links.forEach(link => {
+          const href = (link.getAttribute('href') || '').split('/').pop();
+          if (href === current) link.classList.add('active-page');
+        });
+      })();
+
+      // Active cart
+      (function () {
+        const cartLink = document.getElementById('cart-link');
+        if (location.pathname.split('/').pop() === 'cart.html') {
+          cartLink.classList.add('cart-active');
+        }
+      })();
+
+      // Auth
+      function handleAuth() { window.location.href = 'login.html'; }
+
+      function updateAuthState() {
+        const loggedIn = localStorage.getItem('sj_loggedIn') === 'true';
+        document.getElementById('auth-button').classList.toggle('hidden', loggedIn);
+        document.getElementById('profile-button').classList.toggle('hidden', !loggedIn);
+      }
+      updateAuthState();
+
+    
+    </script>
+
+</body>
+</html

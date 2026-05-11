@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <title>Log Out - Sirip Juara</title>
+  <title>Payment QRIS - Sirip Juara</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -12,7 +12,7 @@
       --navy:        #293B6D;
       --blue-footer: #1c2d5c;
       --surface:     #ffffff;
-      --surface-soft:#f0f4fb;
+      --surface-soft:#f0f4fb;   
       --border:      #d8e2f2;
       --text-dark:   #1e3057;
       --text-muted:  #6b83ad;
@@ -20,7 +20,7 @@
     }
 
     body {
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Poppins';
       background: #fff;
       color: var(--text-dark);
       padding-top: 96px;
@@ -212,172 +212,227 @@
       height: 34px; 
       object-fit: contain; 
     }
-      
-/* ===== MAIN ===== */
-.main-content {
-  display:flex;
-  gap:24px;
-  padding:40px 48px;
-}
 
-/* ===== SIDEBAR ===== */
-    .sidebar {
-      width: 280px;
-      flex-shrink: 0;
-      background: rgba(227, 240, 255, 0.5);
-      border-radius: 24px;
-      padding: 24px 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-right: 20px;
-      margin-left: -8px;
-    }
+        /* Main Content */
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 32px 120px;
+            min-height: calc(100vh - 400px);
+        }
 
-    .sidebar-item {
-      width: 100%;
-      height: 52px;
-      border-radius: 14px;
-      border: 1.5px solid #b0bcd4;
-      display: flex;
-      align-items: center;
-      padding: 0 20px;
-      cursor: pointer;
-      background: #fff;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
+        .page-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #3D588B;
+            margin-bottom: 32px;
+            text-align: center;
+        }
 
-    .sidebar-item span {
-      font-size: 14px;
-      font-weight: 700;
-      color: #2e4070;
-    }
+        /* Payment Code Section */
+        .payment-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
 
-    .sidebar-item.active { background: #2e4070; border-color: #2e4070; }
-    .sidebar-item.active span { color: #fff; }
-    .sidebar-item:hover:not(.active) { background: rgba(46,64,112,0.06); }
+        .expiry-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            text-align: left;
+            width: 100%;
+            max-width: 500px;
+        }
 
-/* ===== CONTENT ===== */
-.content-area {
-  padding:10px 0 130px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-}
+        .expiry-time,
+        .due-date {
+            font-size: 18px;
+            color: #3b5380;
+            font-weight: 500;
+        }
 
-.content-title {
-  font-size:18px;
-  font-weight:700;
-  color:#2e4070;
-  margin-bottom:10px;
-}
+        .due-date strong {
+            font-weight: bold;
+        }
 
-.content-desc {
-  font-size:14px;
-  color:#2e4070;
-  margin-bottom:30px;
-}
+        /* QR Code Container */
+        .qr-container {
+            border: 1px solid #3c4f6d74;
+            border-radius: 20px;
+            padding: 40px;
+            background: #f4f9ff;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+            margin: 3px;
+        }
 
-.logout-btn {
-  width:220px;
-  height:52px;
-  background:#2e4070;
-  color:#fff;
-  border:none;
-  border-radius:30px;
-  font-weight:700;
-  cursor:pointer;
-}
+        .qr-label {
+            font-size: 18px;
+            font-weight: bold;
+            color: #1a1a1a;
+           font-family: 'Courier New', monospace;
+            padding: 0 4px;
+        }
 
-.logout-btn:hover {
-  background:#1e2e55;
-}
+        .qr-code {
+            width: 280px;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
 
-/* ===== FOOTER ===== */
-    .site-footer {
-      background: #1c2d5c;
-      color: #fff;
-      padding: 60px 20px;
-      margin-top: auto;
-    }
+        /* Button */
+        .save-btn {
+            background: #3b5380;
+            color: white;
+            border: none;
+            padding: 18px 60px;
+            border-radius: 35px;
+            font-size: 20px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: background 0.3s, transform 0.3s;
+        }
 
-    .footer-inner {
-      display: grid;
-      grid-template-columns: 1fr 2.2fr;
-      gap: 60px;
-      align-items: start;
-    }
+        .save-btn:hover {
+            background: #1f2a52;
+            transform: scale(1.05);
+        }
 
-    .footer-brand .brand img { 
-      max-height: 110px; 
-      width: auto;
-      margin: -30px; 
-    }
+        .save-btn svg {
+            width: 25px;
+            height: 25px;
+        }
 
-    .footer-brand p {
-      margin: 20px 0 0;
-      max-width: 300px;
-      line-height: 1.65;
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.85);
-    }
+        /* Instructions */
+        .instructions {
+            font-size: 15px;
+            color: #3b5380;
+            text-align: center;
+            max-width: 700px;
+            margin-top: 5px;
+            line-height: 1.5;
+        }
 
-    .footer-links {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1.4fr;
-      gap: 0;
-      align-items: start;
-      margin-right: -50px
-    }
+        .instructions .highlight {
+            color: #283a6c;
+            font-weight: 500;
+        }
 
-    .footer-links h3 {
-      margin: 0 0 20px;
-      font-size: 1rem;
-      font-weight: 700;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+        /* Footer */
+        .site-footer .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 80px;
+        }
 
-    .footer-line { display: inline-block; width: 32px; height: 1.5px; background: #fff; flex-shrink: 0; }
+        .site-footer {
+            background: #283a6c;
+            color: #fff;
+            padding: 56px 0;
+            margin-top: auto;
+        }
+        .footer-inner {
+            display: grid;
+            grid-template-columns: 1fr 2.2fr;
+            gap: 60px;
+            align-items: start;
+        }
+        .footer-brand .brand img { max-height: 80px; width: auto; }
+        .footer-brand p {
+            margin: 16px 0 0;
+            max-width: 260px;
+            line-height: 1.65;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.85);
+        }
+        .footer-links {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1.4fr;
+            gap: 0;
+            align-items: start;
+        }
+        .footer-links h3 {
+            margin: 0 0 20px;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .footer-line { display: inline-block; width: 32px; height: 1.5px; background: #fff; flex-shrink: 0; }
+        .footer-links a,
+        .footer-links > div > p {
+            display: block;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 10px;
+            line-height: 1.5;
+            font-size: 0.9rem;
+            text-decoration: none;
+        }
+        .footer-links a:hover { color: #fff; }
+        .contact-item {
+            display: flex !important;
+            align-items: center;
+            gap: 10px;
+            color: rgba(255,255,255,0.85);
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            text-decoration: none;
+            line-height: 1.4;
+        }
+        .contact-icon { width: 22px; height: 22px; object-fit: contain; flex-shrink: 0; }
 
-    .footer-links a,
-    .footer-links > div > p {
-      display: block;
-      color: rgba(255,255,255,0.85);
-      margin-bottom: 10px;
-      line-height: 1.4;
-      font-size: 0.9rem;
-      text-decoration: none;
-    }
-    .footer-links a:hover { color: #fff; }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                padding: 10px 16px;
+            }
 
-    .contact-item {
-      display: flex !important;
-      align-items: center;
-      gap: 10px;
-      color: rgba(255,255,255,0.85);
-      font-size: 0.9rem;
-      margin-bottom: 12px;
-      text-decoration: none;
-      line-height: 1.4;
-    }
-    
-    .contact-icon { 
-      width: 22px; 
-      height: 22px; 
-      object-fit: contain; 
-      flex-shrink: 0; 
-    }
-    
-</style>
+            .header-inner {
+                padding: 12px 20px;
+                border-radius: 40px;
+            }
+
+            .nav-menu {
+                gap: 16px;
+                font-size: 13px;
+            }
+
+            .container {
+                padding: 40px 30px;
+            }
+
+            .page-title {
+                font-size: 28px;
+            }
+
+            .qr-container {
+                padding: 20px;
+            }
+
+            .qr-code {
+                width: 250px;
+                height: 260px;
+            }
+
+            .save-btn {
+                font-size: 18px;
+                padding: 15px 40px;
+            }
+        }
+    </style>
 </head>
-
 <body>
-
-<!-- HEADER -->
+    <!-- Header -->
   <header class="site-header">
     <div class="header-pill">
 
@@ -387,8 +442,8 @@
 
       <nav class="site-nav" aria-label="Primary navigation">
         <a href="index.html" class="nav-link">HOME</a>
-        <a href="shop.html" class="nav-link">SHOP</a>
-        <a href="care.html" class="nav-link">CARE GUIDE</a>
+        <a href="shop.html" class="nav-link active-page">SHOP</a>
+        <a href="careguide.html" class="nav-link">CARE GUIDE</a>
 
         <div class="nav-dropdown">
           <a href="about.html" class="nav-link nav-has-dropdown">ABOUT <span class="dropdown-arrow">▾</span></a>
@@ -418,31 +473,69 @@
       </div>
 
     </div>
-</header>
+  </header>
 
-<!-- MAIN -->
-<main class="main-content">
+    <!-- Main Content -->
+    <div class="container">
+        <h1 class="page-title">Payment Code</h1>
 
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
-    <a href="profil.html" class="sidebar-item"><span>Personal Information</span></a>
-    <a href="myorder.html" class="sidebar-item"><span>My Orders</span></a>
-    <a href="address.html" class="sidebar-item"><span>Manage Address</span></a>
-    <a href="passmanage.html" class="sidebar-item"><span>Password Manager</span></a>
-    <a href="logout.html" class="sidebar-item active"><span>Logout</span></a>
-  </aside>
+        <div class="payment-section">
+            <!-- Expiry Info -->
+            <div class="expiry-info">
+                <p class="expiry-time">Expires in 23:59:40</p>
+                <p class="due-date">Due at <strong>13:04, 19 Apr 2026</strong></p>
+            </div>
 
-  <!-- CONTENT -->
-  <section class="content-area">
-    <div class="content-title">Logout</div>
-    <div class="content-desc">Are you sure you want to log out?</div>
+            <!-- QR Code Container -->
+<div class="qr-container">
 
-    <button class="logout-btn" onclick="logout()">Yes, Logout</button>
-  </section>
+    <!-- Logo QRIS -->
+    <div class="qris-logo">
+        <img src="png/LogoQris.png" alt="QRIS Logo">
+    </div>
 
-</main>
+    <!-- QR Code -->
+    <img src="png/QRIS.png" 
+         alt="QR Code" 
+         class="qr-code">
 
-<!-- FOOTER -->
+</div>
+
+<style>
+.qris-logo {
+    background: white;
+    padding: 8px 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.qris-logo img {
+    width: 70px;
+    height: auto;
+    display: block;
+}
+</style>
+
+            <!-- Save Button -->
+            <button class="save-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Save QR code
+            </button>
+
+            <!-- Instructions -->
+            <p class="instructions">
+                Tap <span class="highlight">"Save QR Code"</span> or take a screenshot to save the QR Code to your phone. You can find this page anytime by going to website, then Select Orders  > Unpaid > View Code
+            </p>
+        </div>
+    </div>
+
+    <!-- Footer -->
   <footer class="site-footer">
     <div class="container footer-inner">
 
@@ -465,7 +558,7 @@
           <h3>Quick Links <span class="footer-line"></span></h3>
           <a href="index.html">Home</a>
           <a href="shop.html">Shop</a>
-          <a href="care.html">Care Guide</a>
+          <a href="careguide.html">Care Guide</a>
           <a href="about.html">About</a>
           <a href="support.html">Support</a>
         </div>
@@ -487,15 +580,11 @@
       </div>
 
     </div>
-</footer>
+  </footer>
+</body>
 
 <script>
-function logout(){
-  localStorage.clear();
-  window.location.href = "login.html";
-}
-
-    // Active nav
+    // JavaScript for any interactive functionality can be added here    // Active nav
     (function () {
       const links = document.querySelectorAll('.nav-link');
       const current = location.pathname.split('/').pop() || 'index.html';
@@ -505,14 +594,6 @@ function logout(){
       });
     })();
 
-    // Active cart
-    (function () {
-      const cartLink = document.getElementById('cart-link');
-      if (location.pathname.split('/').pop() === 'cart.html') {
-        cartLink.classList.add('cart-active');
-      }
-    })();
-
     // Auth state
     function updateAuthState() {
       const loggedIn = localStorage.getItem('sj_loggedIn') === 'true';
@@ -520,8 +601,5 @@ function logout(){
       document.getElementById('profile-button').classList.toggle('hidden', !loggedIn);
     }
     updateAuthState();
- 
 </script>
-
-</body>
 </html>

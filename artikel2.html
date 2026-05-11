@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <title>Article 2 - Sirip Juara</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:        #293B6D;
+      --blue-footer: #1c2d5c;
+      --surface:     #ffffff;
+      --surface-soft:#f0f4fb;
+      --border:      #d8e2f2;
+      --text-dark:   #1e3057;
+      --text-muted:  #6b83ad;
+      --accent:      #2d4f9f;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #fff;
+      color: var(--text-dark);
+      padding-top: 96px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    img { max-width: 100%; display: block; }
+    a   { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; border: none; background: none; }
+
+    .container {
+      width: min(1320px, calc(100% - 80px));
+      margin: 0 auto;
+    }
+
+    .hidden { display: none !important; }
+
+    /* ====================================================
+       HEADER
+    ==================================================== */
+    .site-header {
+      position: relative;
+      z-index: 999;
+      padding: 10px 5px;
+      margin-top: -95px;
+    }
+
+    .header-pill {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #293B6D;
+      border-radius: 999px;
+      padding: 12px 16px;
+      height: 69px;
+    }
+
+    .brand img { max-height: 90px; width: auto; }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      margin-left: auto;
+    }
+
+    .nav-link {
+      color: rgba(255,255,255,0.72);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+      transition: color 0.2s;
+    }
+
+    .nav-link:hover,
+    .nav-link.active-page { color: #fff; font-weight: 700; }
+
+    .nav-dropdown { position: relative; }
+    .nav-has-dropdown { display: flex; align-items: center; gap: 3px; cursor: pointer; }
+    .dropdown-arrow { font-size: 0.6rem; opacity: 0.7; transition: transform 0.2s; }
+    .nav-dropdown:hover .dropdown-arrow { transform: rotate(180deg); }
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1c2e50;
+  border-radius: 12px;
+  padding: 14px 0 8px;
+  min-width: 140px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+  z-index: 300;
+  overflow: hidden;
+}
+
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 100%;
+  height: 16px;
+}
+
+    .dropdown-menu a {
+      display: block;
+      padding: 10px 20px;
+      color: rgba(255,255,255,0.8);
+      font-size: 0.82rem;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .dropdown-menu a:hover { background: rgba(255,255,255,0.08); color: #fff; }
+    .nav-dropdown:hover .dropdown-menu { display: block; }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-left: 45px;
+      margin-right: 30px;
+    }
+
+    .cart-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      transition: background 0.2s;
+    }
+
+    .cart-icon { width: 37px; height: 37px; object-fit: contain; }
+
+    .btn-nav {
+      background: #ffffff;
+      color: #293B6D;
+      border-radius: 999px;
+      padding: 0.3rem 1.2rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+      transition: opacity 0.2s, transform 0.2s;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .btn-nav:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    .profile-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+
+    ul, li { font-family: 'Poppins', sans-serif; font-size: 14px; }
+    li { font-weight: 400; margin-bottom: 4px; }
+    ul { padding-left: 20px; margin: 0 0 16px; }
+
+    img { max-width: 100%; display: block; }
+    a   { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; border: none; background: none; }
+
+    .hidden { display: none !important; }
+
+    /* ====================================================
+       PAGE WRAPPER
+    ==================================================== */
+    .page-wrapper {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+      width: 100%;
+      max-width: 1100px;
+      margin: 40px auto 60px;
+      padding: 40px 60px 80px;
+    }
+
+    .main-bg {
+      background: #f4f9ff;
+      border-radius: 24px;
+      padding: 32px;
+    }
+
+    /* ---- PAGE SYSTEM ---- */
+    .page { display: none; }
+    .page.active { display: block; }
+
+    /* ---- ARTICLE HEADER ---- */
+    .header { margin-bottom: 20px; }
+
+    .header h1 {
+      font-size: clamp(22px, 3.8vw, 42px);
+      font-weight: 800;
+      color: #3b5380;
+      line-height: 1.15;
+      margin-bottom: 6px;
+    }
+
+    .header .author {
+      font-size: clamp(13px, 1.6vw, 19px);
+      font-weight: 600;
+      color: #3b5380;
+      margin-bottom: 6px;
+    }
+
+    .header .meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .header .meta span { font-size: 13px; color: #222; }
+
+    .link-badge {
+      margin-left: auto;
+      background: #3b5380;
+      border-radius: 14px;
+      width: 36px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* ---- LAYOUT ---- */
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 260px;
+      gap: 24px;
+    }
+
+    @media (max-width: 700px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 16px;
+      }
+    }
+
+    /* ---- HERO ---- */
+    .hero {
+      width: 100%;
+      height: 240px;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+    }
+
+    /* ---- ARTICLE ---- */
+    .article p {
+      font-size: clamp(13px, 1.4vw, 16px);
+      color: #222;
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+
+    .article .section-title {
+      font-size: clamp(13px, 1.4vw, 16px);
+      font-weight: 700;
+      color: #222;
+      margin-bottom: 8px;
+      margin-top: 4px;
+    }
+
+    /* ---- SIDEBAR ---- */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .sidebar-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #3b5380;
+      margin-bottom: 4px;
+    }
+
+    .card {
+      background: #f4f9ff;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: 0 4px 16px rgba(59,83,128,0.18);
+      transform: translateY(-2px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+    }
+
+    .card-body { padding: 10px 14px 14px; }
+
+    .card-body h3 {
+      font-size: 14px;
+      font-weight: 800;
+      color: #3b5380;
+      margin-bottom: 2px;
+      line-height: 1.2;
+    }
+
+    .card-body .card-author {
+      font-size: 11px;
+      font-weight: 600;
+      color: #3b5380;
+      margin-bottom: 10px;
+    }
+
+    .card-body .btn-more {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #d9d9d9;
+      border-radius: 25px;
+      font-size: 10px;
+      font-weight: 600;
+      color: #3b5380;
+      padding: 4px 14px;
+      float: right;
+      cursor: pointer;
+      border: none;
+      font-family: 'Poppins', sans-serif;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .card-body .btn-more:hover { background: #3b5380; color: #fff; }
+
+    /* ---- BACK BUTTON ---- */
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #3b5380;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      padding: 8px 20px;
+      font-size: 13px;
+      font-weight: 600;
+      font-family: 'Poppins', sans-serif;
+      cursor: pointer;
+      margin-bottom: 24px;
+      transition: background 0.2s;
+    }
+
+    .back-btn:hover { background: #2d4069; }
+
+    /* ---- ARTICLE SUB-PAGE ---- */
+    .article-page-hero {
+      width: 100%;
+      height: 260px;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .article-page-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .article-page-title {
+      font-size: clamp(20px, 3.2vw, 34px);
+      font-weight: 800;
+      color: #3b5380;
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+
+    .article-page-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .article-page-meta .author-tag { font-size: 13px; font-weight: 600; color: #3b5380; }
+    .article-page-meta .date-tag { font-size: 12px; color: #666; }
+
+    .article-page-body p {
+      font-size: clamp(13px, 1.4vw, 16px);
+      color: #222;
+      line-height: 1.8;
+      margin-bottom: 18px;
+    }
+
+    .article-page-body h2 {
+      font-size: clamp(14px, 1.5vw, 17px);
+      font-weight: 700;
+      color: #222;
+      margin-bottom: 10px;
+      margin-top: 6px;
+    }
+
+    /* ---- RELATED ---- */
+    .related-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #3b5380;
+      margin: 32px 0 14px;
+      border-top: 2px solid #dce8f5;
+      padding-top: 20px;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+        .site-footer {
+      background: #1c2d5c;
+      color: #fff;
+      padding: 60px 20px;
+      margin-top: auto;
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1fr 2.2fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .footer-brand .brand img { max-height: 110px; width: auto; margin: -30px; }
+
+    .footer-brand p {
+      margin: 20px 0 0;
+      max-width: 300px;
+      line-height: 1.65;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .footer-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.4fr;
+      gap: 0;
+      align-items: start;
+      margin-right: -50px;
+    }
+
+    .footer-links h3 {
+      margin: 0 0 20px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-line { display: inline-block; width: 32px; height: 1.5px; background: #fff; flex-shrink: 0; }
+
+    .footer-links a,
+    .footer-links > div > p {
+      display: block;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 10px;
+      line-height: 1.4;
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover { color: #fff; }
+
+    .contact-item {
+      display: flex !important;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255,255,255,0.85);
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+      text-decoration: none;
+      line-height: 1.4;
+    }
+
+    .contact-icon { width: 22px; height: 22px; object-fit: contain; flex-shrink: 0; }
+
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-pill">
+      <a class="brand" href="index.html">
+        <img src="png/Logo.png" alt="Sirip Juara Logo">
+      </a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="index.html" class="nav-link">HOME</a>
+        <a href="shop.html" class="nav-link">SHOP</a>
+        <a href="careguide.html" class="nav-link active-page">CARE GUIDE</a>
+        <div class="nav-dropdown">
+          <a href="about.html" class="nav-link nav-has-dropdown">ABOUT <span class="dropdown-arrow">▾</span></a>
+          <div class="dropdown-menu">
+            <a href="about.html">About Betta</a>
+            <a href="team.html">Team</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <a href="support.html" class="nav-link nav-has-dropdown">SUPPORT <span class="dropdown-arrow">▾</span></a>
+          <div class="dropdown-menu">
+            <a href="support1.html">FAQ</a>
+            <a href="support2.html">Contact Us</a>
+          </div>
+        </div>
+      </nav>
+      <div class="header-actions">
+        <a href="cart.html" class="cart-wrapper" id="cart-link" aria-label="Cart">
+          <img src="png/Cart.png" alt="Cart" class="cart-icon">
+        </a>
+        <a href="Signup.html" id="auth-button" class="btn-nav">SIGN UP</a>
+        <a href="profil.html" id="profile-button" class="profile-btn hidden" aria-label="Profile">
+          <img src="png/iconAccount.png" alt="Profile">
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-wrapper">
+    <div class="main-bg">
+
+      <!-- ===================== MAIN PAGE ===================== -->
+      <div class="page active" id="page-home">
+        <div class="header">
+          <h1>Betta Fish Disease &amp; Treatment</h1>
+          <p class="author">By SiripJuara</p>
+          <div class="meta">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="9" stroke="#222" stroke-width="2"/>
+              <path d="M12 6V12L16 14" stroke="#222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>September 03, 2025 | 06.45 WITA</span>
+            <div class="link-badge">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="layout">
+          <div class="article">
+            <div class="hero">
+              <img src="png/guide2.png"
+                   onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Betta_fish_%28Betta_splendens%29.jpg/1280px-Betta_fish_%28Betta_splendens%29.jpg'"
+                   alt="Betta Fish Disease">
+            </div>
+
+            <p>Many beginners immediately give medicine when their betta gets sick, but that's often a mistake. Without knowing the cause, medication can make the condition worse — especially if the dose is too high. That's why you should understand these basics before learning about disease types and how to treat them.</p>
+
+            <p class="section-title">1. Fungal Infection</p>
+            <ul>
+              <li>Symptoms: white cotton-like patches on the body or fins</li>
+              <li>Cause: dirty water, open wounds</li>
+              <li>Treatment: regular water changes, add aquarium salt or antifungal medication</li>
+            </ul>
+
+            <p class="section-title">2. Fin Rot</p>
+            <ul>
+              <li>Symptoms: torn, blackened, or shrinking fins</li>
+              <li>Cause: bacteria from unclean water</li>
+              <li>Treatment: clean the water, use antibacterial medication</li>
+            </ul>
+
+            <p class="section-title">3. Bacterial Infection</p>
+            <ul>
+              <li>Symptoms: pale body, wounds, lethargic fish</li>
+              <li>Cause: poor water quality, stress</li>
+              <li>Treatment: water change, give specific antibacterial medication</li>
+            </ul>
+
+            <p class="section-title">4. Stress</p>
+            <ul>
+              <li>Symptoms: stays at the bottom, loss of appetite</li>
+              <li>Cause: sudden environmental changes, unstable temperature</li>
+              <li>Treatment: stabilize temperature, minimize disturbances, improve water conditions</li>
+            </ul>
+
+            <p class="section-title">5. Parasites (White Spot / ICH)</p>
+            <ul>
+              <li>Symptoms: small white dots on the body, fish frequently rubbing against surfaces</li>
+              <li>Cause: parasites from water or other fish</li>
+              <li>Treatment: use anti-parasitic medication and keep water temperature warm</li>
+            </ul>
+
+            <p class="section-title">6. Dropsy</p>
+            <ul>
+              <li>Symptoms: swollen belly, scales sticking out like a pinecone</li>
+              <li>Cause: internal infection, overfeeding, or poor water quality</li>
+              <li>Treatment: temporary fasting, regular water changes, antibacterial medication (severe cases are usually difficult to cure)</li>
+            </ul>
+
+            <p class="section-title">7. Velvet Disease</p>
+            <ul>
+              <li>Symptoms: body appears dusty or golden, fish frequently rubbing against surfaces</li>
+              <li>Cause: parasites (similar to ICH but finer)</li>
+              <li>Treatment: dim the lights, slightly raise the water temperature, use specific anti-parasitic medication</li>
+            </ul>
+
+            <p class="section-title">8. Swim Bladder Disorder</p>
+            <ul>
+              <li>Symptoms: fish swims sideways, upside down, or has difficulty sinking</li>
+              <li>Cause: overfeeding, constipation, or organ problems</li>
+              <li>Treatment: fast for 1–2 days, feed light food (like daphnia), maintain water quality</li>
+            </ul>
+
+          </div>
+
+          <div class="sidebar">
+            <p class="sidebar-title">Top Picks</p>
+
+            <div class="card">
+              <img src="png/guide5.png"
+                   onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Single_combatfish.jpg/800px-Single_combatfish.jpg'"
+                   alt="Feeding Management">
+              <div class="card-body">
+                <h3>Feeding Management</h3>
+                <p class="card-author">By SiripJuara</p>
+                <button class="btn-more" onclick="showArticle('pakan')">Read More</button>
+              </div>
+            </div>
+
+            <div class="card">
+              <img src="png/guide4.png"
+                   onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Single_combatfish.jpg/800px-Single_combatfish.jpg'"
+                   alt="Care Ethics">
+              <div class="card-body">
+                <h3>Care Ethics</h3>
+                <p class="card-author">By SiripJuara</p>
+                <button class="btn-more" onclick="showArticle('etika')">Read More</button>
+              </div>
+            </div>
+
+            <div class="card">
+              <img src="png/guide7.png"
+                   onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Single_combatfish.jpg/800px-Single_combatfish.jpg'"
+                   alt="Adaptation Process">
+              <div class="card-body">
+                <h3>Adaptation Process</h3>
+                <p class="card-author">By SiripJuara</p>
+                <button class="btn-more" onclick="showArticle('adaptasi')">Read More</button>
+              </div>
+            </div>
+
+            <div class="card">
+              <img src="png/guide8.png"
+                   onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Single_combatfish.jpg/800px-Single_combatfish.jpg'"
+                   alt="Decoration & Environment">
+              <div class="card-body">
+                <h3>Decoration &amp; Environment</h3>
+                <p class="card-author">By SiripJuara</p>
+                <button class="btn-more" onclick="showArticle('dekorasi')">Read More</button>
+              </div>
+            </div>
+
+            <div class="card">
+              <img src="png/guide3.png"
+                   onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Single_combatfish.jpg/800px-Single_combatfish.jpg'"
+                   alt="Betta First Aid">
+              <div class="card-body">
+                <h3>Betta First Aid</h3>
+                <p class="card-author">By SiripJuara</p>
+                <button class="btn-more" onclick="showArticle('p3k')">Read More</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ===================== ARTICLE SUB-PAGE ===================== -->
+      <div class="page" id="page-article">
+        <button class="back-btn" onclick="goBack()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+            <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Back
+        </button>
+
+        <div class="article-page-hero">
+          <img id="article-img" src="" alt="">
+        </div>
+
+        <h1 class="article-page-title" id="article-title"></h1>
+        <div class="article-page-meta">
+          <span class="author-tag">By SiripJuara</span>
+          <span class="date-tag">· September 03, 2025</span>
+        </div>
+
+        <div class="article-page-body" id="article-body"></div>
+
+        <p class="related-title">Related Articles</p>
+        <div class="related-grid" id="related-grid"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a class="brand" href="index.html">
+          <img src="png/Logo.png" alt="Sirip Juara Logo">
+        </a>
+        <p>Your trusted place to find high-quality betta fish and beginner-friendly care guidance.</p>
+      </div>
+      <div class="footer-links">
+        <div>
+          <h3>Company <span class="footer-line"></span></h3>
+          <a href="#">Beginner Guide</a>
+          <a href="#">Types of Betta</a>
+          <a href="#">Feeding Tips</a>
+          <a href="#">Care Basics</a>
+        </div>
+        <div>
+          <h3>Quick Links <span class="footer-line"></span></h3>
+          <a href="index.html">Home</a>
+          <a href="shop.html">Shop</a>
+          <a href="careguide.html">Care Guide</a>
+          <a href="about.html">About</a>
+          <a href="support.html">Support</a>
+        </div>
+        <div>
+          <h3>Contact <span class="footer-line"></span></h3>
+          <p class="contact-item">
+            <img src="png/iconLokasi.png" alt="location" class="contact-icon">
+            <span>Jl. Makkio Baji II, SulSel, Indonesia</span>
+          </p>
+          <a href="mailto:siripjuara@gmail.com" class="contact-item">
+            <img src="png/iconEmail.png" alt="email" class="contact-icon">
+            <span>siripjuara@gmail.com</span>
+          </a>
+          <p class="contact-item">
+            <img src="png/iconCS.png" alt="cs" class="contact-icon">
+            <span>Customer Service</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const articles = {
+      etika: {
+        title: 'Betta Fish Care Ethics',
+        img: 'png/guide4.png',
+        fallback: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Single_combatfish.jpg/800px-Single_combatfish.jpg',
+        body: `
+          <p>Keeping betta fish is not just a hobby — there is a moral responsibility behind it. As an owner, you are responsible for the quality of life of a creature that is entirely dependent on your care.</p>
+          <h2>Don't Treat Them as Mere Decorations</h2>
+          <p>Bettas are often bought just for their beautiful colors, then placed in a small jar with no attention. This is a form of neglect. Fish need adequate space, clean water, and environmental stimulation to avoid stress.</p>
+          <h2>Avoid Unnecessary Fighting</h2>
+          <p>While male bettas are naturally aggressive toward each other, forcing them to fight for entertainment is unethical. Fights cause serious injuries, infections, and even death. Enjoy the beauty of bettas without causing them harm.</p>
+          <h2>Buy from Responsible Sources</h2>
+          <p>Choose sellers who take good care of their fish before selling — not those who keep them in cramped bottles for days. By choosing ethical sources, you help promote better care practices in the industry.</p>
+          <h2>Prepare Before You Buy</h2>
+          <p>Learn the basic needs of betta fish before bringing one home. Prepare the container, conditioned water, and food. Buying a fish without preparation only leads to a sick fish and a frustrated owner.</p>
+        `
+      },
+      adaptasi: {
+        title: 'Betta Fish Adaptation Process',
+        img: 'png/guide7.png',
+        fallback: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Single_combatfish.jpg/800px-Single_combatfish.jpg',
+        body: `
+          <p>Bringing a betta fish to a new home is not an instant process. There is an important adaptation phase that is often overlooked and can lead to a stressed fish or even death in the first few days.</p>
+          <h2>Temperature Acclimatization</h2>
+          <p>When the fish first arrives, don't immediately transfer it to the aquarium. Place the bag on the surface of the aquarium water for 15–20 minutes so the temperature gradually adjusts.</p>
+          <h2>Gradually Mix the Water</h2>
+          <p>After the temperature is balanced, add a small amount of aquarium water into the bag every 5 minutes for about 20–30 minutes. This helps the fish adjust to different water parameters (pH, hardness, etc.).</p>
+          <h2>Don't Add Store Water to the Aquarium</h2>
+          <p>Water from the store may carry unwanted bacteria or parasites. Use a fine net to transfer the fish and discard the original water.</p>
+          <h2>Quiet Phase After Transfer</h2>
+          <p>Give the betta 24–48 hours to adapt without disturbance. Dim the lights, avoid tapping the glass, and delay feeding for 12–24 hours.</p>
+          <h2>Signs of Successful Adaptation</h2>
+          <p>A betta that has successfully adapted will start moving actively, eat willingly, and display vibrant colors within the first 2–3 days. If it's still hiding after 3 days, check the water quality.</p>
+        `
+      },
+      dekorasi: {
+        title: 'Betta Fish Decoration & Environment',
+        img: 'png/guide8.png',
+        fallback: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Single_combatfish.jpg/800px-Single_combatfish.jpg',
+        body: `
+          <p>A good environment is not just about aesthetics — it's about the mental and physical health of your betta fish. The right decorations can reduce stress and help bettas live longer.</p>
+          <h2>Choose Safe Decorations</h2>
+          <p>Avoid decorations with sharp or rough edges that can tear the betta's delicate fins. Test by rubbing a piece of tissue — if it snags or tears, that decoration is not safe.</p>
+          <h2>Live vs. Artificial Plants</h2>
+          <p>Live plants like java moss or anubias are highly recommended because they help maintain water quality naturally. Plastic plants can be used but make sure the tips are not sharp.</p>
+          <h2>Hiding Spots Are Important</h2>
+          <p>Bettas need spots to hide — this is their natural instinct. Mini caves, bamboo pieces, or dense plants can fulfill this need. Without hiding spots, bettas tend to get stressed more easily.</p>
+          <h2>Don't Overcrowd</h2>
+          <p>Too many decorations are actually dangerous. Fish need free swimming space, especially to reach the surface for air. Make sure at least 1/3 of the aquarium is free from decorations.</p>
+          <h2>Proper Lighting</h2>
+          <p>Bettas need a consistent light-dark cycle, around 8–12 hours of light per day. Avoid placing the aquarium directly under sunlight.</p>
+        `
+      },
+      pakan: {
+        title: 'Betta Fish Feeding Management',
+        img: 'png/guide5.png',
+        fallback: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Single_combatfish.jpg/800px-Single_combatfish.jpg',
+        body: `
+          <p>Feeding is one of the most critical aspects of caring for a betta. Giving too much is just as dangerous as too little — both can cause serious health problems.</p>
+          <h2>How Much and How Often?</h2>
+          <p>The golden rule: feed only as much as can be eaten in 2–3 minutes, 1–2 times per day. A betta's stomach is only the size of its eye. Any uneaten food must be removed from the water immediately.</p>
+          <h2>Best Types of Food</h2>
+          <p>Bettas are carnivores. The best foods are live or frozen options such as bloodworms, brine shrimp, and daphnia. High-quality betta pellets are also a great choice because they're easier to portion control.</p>
+          <h2>Vary the Diet</h2>
+          <p>Don't feed the same type of food continuously. Varying the diet provides more complete nutrition and stimulates the betta's hunting instincts.</p>
+          <h2>Fast Once a Week</h2>
+          <p>Give your betta a fasting day once a week. Fasting helps the digestive system rest and prevents constipation, a common problem from overfeeding.</p>
+          <h2>Signs of Overfeeding</h2>
+          <p>A bloated belly, difficulty swimming upright, and frequently floating at the surface can be signs of digestive problems. Reduce portions and try fasting for 2–3 days if this occurs.</p>
+        `
+      },
+      p3k: {
+        title: 'Betta Fish First Aid',
+        img: 'png/guide3.png',
+        fallback: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Single_combatfish.jpg/800px-Single_combatfish.jpg',
+        body: `
+          <p>When your betta fish shows signs of illness, quick and correct action can make all the difference. Here's what to do in an emergency.</p>
+          <h2>Step 1: Isolate the Fish</h2>
+          <p>Move the sick fish to a separate clean container immediately. This prevents the spread of disease to other fish and allows you to treat it more effectively.</p>
+          <h2>Step 2: Check Water Quality</h2>
+          <p>Most betta illnesses stem from poor water quality. Test the water for ammonia, nitrite, and pH. Perform a 50% water change with conditioned water at the same temperature.</p>
+          <h2>Step 3: Identify the Problem</h2>
+          <p>Observe the fish carefully. Look for visible symptoms: white spots, torn fins, bloating, or unusual swimming behavior. This will help you choose the right treatment.</p>
+          <h2>Step 4: Add Aquarium Salt</h2>
+          <p>Aquarium salt (not table salt) at 1 teaspoon per 10 liters can help with many common issues including fungal infections and mild fin rot. It reduces stress and boosts the fish's immune response.</p>
+          <h2>Step 5: Apply Medication if Needed</h2>
+          <p>Only use medication after identifying the problem. Using the wrong medication can do more harm than good. Follow dosage instructions carefully and remove activated carbon from the filter during treatment.</p>
+          <h2>Step 6: Monitor Daily</h2>
+          <p>Check on your fish at least twice a day during recovery. Partial water changes every 2 days help keep the treatment environment clean. Be patient — recovery can take 1–2 weeks.</p>
+        `
+      }
+    };
+
+    const relatedMap = {
+      etika: ['adaptasi', 'dekorasi', 'pakan'],
+      adaptasi: ['etika', 'dekorasi', 'p3k'],
+      dekorasi: ['etika', 'adaptasi', 'pakan'],
+      pakan: ['etika', 'adaptasi', 'dekorasi'],
+      p3k: ['etika', 'adaptasi', 'pakan']
+    };
+
+    function showArticle(key) {
+      const art = articles[key];
+      if (!art) return;
+
+      const img = document.getElementById('article-img');
+      img.src = art.img;
+      img.onerror = () => { img.src = art.fallback; };
+      img.alt = art.title;
+
+      document.getElementById('article-title').textContent = art.title;
+      document.getElementById('article-body').innerHTML = art.body;
+
+      const grid = document.getElementById('related-grid');
+      grid.innerHTML = '';
+      relatedMap[key].forEach(rKey => {
+        const r = articles[rKey];
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <img src="${r.img}" onerror="this.src='${r.fallback}'" alt="${r.title}" style="height:120px;object-fit:cover;">
+          <div class="card-body">
+            <h3>${r.title}</h3>
+            <p class="card-author">By SiripJuara</p>
+            <button class="btn-more" onclick="showArticle('${rKey}')">Read More</button>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+
+      document.getElementById('page-home').classList.remove('active');
+      document.getElementById('page-article').classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function goBack() {
+      document.getElementById('page-article').classList.remove('active');
+      document.getElementById('page-home').classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    // Active nav
+    (function () {
+      const links = document.querySelectorAll('.nav-link');
+      const current = location.pathname.split('/').pop() || 'index.html';
+      links.forEach(link => {
+        const href = (link.getAttribute('href') || '').split('/').pop();
+        if (href === current) link.classList.add('active-page');
+      });
+    })();
+
+    // Auth
+    function updateAuthState() {
+      const loggedIn = localStorage.getItem('sj_loggedIn') === 'true';
+      document.getElementById('auth-button').classList.toggle('hidden', loggedIn);
+      document.getElementById('profile-button').classList.toggle('hidden', !loggedIn);
+    }
+    updateAuthState();
+  </script>
+</body>
+</html>

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LiveChatSIRA - Sirip Juara Assistant</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #EEF2F8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    #chat-wrapper {
+      width: 100%;
+      max-width: 900px;
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 6px 32px rgba(0,0,0,0.12);
+      display: flex;
+      flex-direction: column;
+      height: 420px;
+    }
+
+    /* HEADER */
+    .chat-header {
+      background: #2E4A7A;
+      padding: 9px 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .header-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .header-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .chat-header span {
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    /* MESSAGES */
+    #messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px 18px 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 10px;
+      scroll-behavior: smooth;
+    }
+
+    #messages::-webkit-scrollbar { width: 4px; }
+    #messages::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+
+    .bot-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+    }
+
+    .user-row {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .bot-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #f5c9de;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .bot-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .bubble-bot {
+      background: #F4F9FF;
+      color: #3B5380;
+      border-radius: 18px 18px 18px 4px;
+      padding: 10px 14px;
+      max-width: 60%;
+      font-size: 14px;
+      line-height: 1.6;
+      animation: slideIn 0.3s ease;
+    }
+
+    .bubble-bot {
+      position: relative;
+      background: #F4F9FF;
+      color: #3B5380;
+      border-radius: 18px 18px 18px 4px;
+      padding: 10px 14px;
+      max-width: 60%;
+      font-size: 14px;
+      line-height: 1.6;
+      animation: slideIn 0.3s ease;
+    }
+
+    /* ekor chat bot */
+    .bubble-bot::after {
+      content: "";
+      position: absolute;
+      left: -6px;
+      bottom: 2px;
+      width: 0;
+      height: 0;
+      border-top: 6px solid transparent;
+      border-bottom: 0px solid transparent;
+      border-right: 6px solid #F4F9FF;
+    }
+
+    .bubble-user {
+      background: #2E4A7A;
+      color: #fff;
+      border-radius: 18px 18px 4px 18px;
+      padding: 10px 14px;
+      max-width: 80%;
+      font-size: 14px;
+      line-height: 1.6;
+      animation: slideIn 0.3s ease;
+    }
+
+    /* TYPING */
+    .typing {
+      display: flex;
+      gap: 5px;
+      padding: 12px 14px;
+      align-items: center;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #8899bb;
+      animation: bounce 1.2s infinite;
+    }
+
+    .dot:nth-child(2) { animation-delay: 0.2s; }
+    .dot:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes bounce {
+      0%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-6px); }
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* INPUT */
+    .chat-input-area {
+      padding: 12px 14px;
+      flex-shrink: 0;
+      border-top: 1px solid #eee;
+    }
+
+    .input-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #F4F9FF;
+      border: 1px solid #dde2ec;
+      border-radius: 50px;
+      padding: 6px 10px 6px 14px;
+    }
+
+    .btn-attach {
+      background: none;
+      border: 1.5px solid #c5cfe0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      color: #8899bb;
+      flex-shrink: 0;
+      font-size: 16px;
+      transition: background 0.2s, border-color 0.2s;
+      padding: 0;
+    }
+
+    .btn-attach:hover { background: #e0e5f0; border-color: #a0b0cc; }
+
+    #msg-input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      font-size: 14px;
+      outline: none;
+      color: #1a2540;
+    }
+
+    #msg-input::placeholder { color: #aab0c4; }
+
+    .btn-send {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      transition: color 0.2s, transform 0.1s;
+      font-size: 20px;
+      color: #2E4A7A;
+      padding: 0;
+    }
+
+    .btn-send:hover {
+      transform: scale(1.1);
+      color: #3a5c96;
+    }
+
+    .btn-send:hover { background: #3a5c96; }
+    .btn-send:active { transform: scale(0.95); }
+  </style>
+</head>
+<body>
+
+<div id="chat-wrapper">
+
+  <!-- HEADER -->
+  <div class="chat-header">
+    <div class="header-avatar">
+      <img src="png/SIRA.png" alt="SIRA">
+    </div>
+    <span>SIRA</span>
+  </div>
+
+  <!-- MESSAGES -->
+  <div id="messages"></div>
+
+  <!-- INPUT -->
+  <div class="chat-input-area">
+    <div class="input-row">
+      <button class="btn-attach" onclick="handleAttach()" aria-label="Lampirkan file">
+        <i class="ti ti-plus"></i>
+      </button>
+      <input id="msg-input" type="text" placeholder="Type a message"
+        onkeydown="if(event.key==='Enter') sendMessage()" />
+      <button class="btn-send" onclick="sendMessage()" aria-label="Kirim pesan">
+        <i class="ti ti-send" style="transform: rotate(43deg);"></i>
+      </button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const BOT_AVATAR_SVG = `
+    <img src="png/SIRA.png" alt="SIRA">
+  `;
+
+  const SYSTEM_PROMPT = `You are SIRA, a friendly virtual assistant for Sirip Juara, an online betta fish store.
+You help customers with questions about betta fish care, fish types, orders, shipping, and products.
+Keep responses short, warm, and helpful. Use occasional emojis.
+If asked about specific orders, say you'll connect them with an admin.
+Respond in the same language the user uses (Indonesian or English).`;
+
+  const WELCOME_MESSAGES = [
+    "Hellooo 👋 I'm SIRA, Sirip Juara's assistant, ready to help answer your questions about betta fish, care tips, and your orders 😊",
+    "Need help? Just send us a message anytime",
+    "If you'd like to speak directly with an admin, I can help connect you 😊"
+  ];
+
+  // GANTI dengan API key kamu
+  const API_KEY = "YOUR_ANTHROPIC_API_KEY";
+
+  const messagesEl = document.getElementById('messages');
+  const input = document.getElementById('msg-input');
+  let conversationHistory = [];
+  let isTyping = false;
+
+  function addBotBubble(text) {
+
+    // hapus avatar lama
+    document.querySelectorAll('.bot-avatar').forEach(el => {
+      el.style.visibility = 'hidden';
+    });
+
+    const row = document.createElement('div');
+    row.className = 'bot-row';
+
+    row.innerHTML = `
+      <div class="bot-avatar">${BOT_AVATAR_SVG}</div>
+      <div class="bubble-bot">${text}</div>
+    `;
+
+    messagesEl.appendChild(row);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
+
+  function addUserBubble(text) {
+    const row = document.createElement('div');
+    row.className = 'user-row';
+    row.innerHTML = `<div class="bubble-user">${text}</div>`;
+    messagesEl.appendChild(row);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
+
+  function showTyping() {
+    const row = document.createElement('div');
+    row.className = 'bot-row';
+    row.id = 'typing-indicator';
+
+    row.innerHTML = `
+      <div class="bubble-bot typing">
+        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      </div>`;
+
+    messagesEl.appendChild(row);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
+
+  function hideTyping() {
+    const el = document.getElementById('typing-indicator');
+    if (el) el.remove();
+  }
+
+  async function sendMessage() {
+    const text = input.value.trim();
+    if (!text || isTyping) return;
+
+    input.value = '';
+    addUserBubble(text);
+    conversationHistory.push({ role: 'user', content: text });
+
+    isTyping = true;
+    showTyping();
+
+    try {
+      const res = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': API_KEY,
+          'anthropic-version': '2023-06-01'
+        },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-20250514',
+          max_tokens: 1000,
+          system: SYSTEM_PROMPT,
+          messages: conversationHistory
+        })
+      });
+
+      const data = await res.json();
+
+      hideTyping();
+
+      const reply = data.content?.[0]?.text || 'Maaf, ada gangguan. Coba lagi ya! 😊';
+
+      conversationHistory.push({ role: 'assistant', content: reply });
+
+      addBotBubble(reply);
+
+    } catch (e) {
+
+      hideTyping();
+      addBotBubble('Maaf, terjadi kesalahan koneksi. Silakan coba lagi 🙏');
+
+    }
+
+    isTyping = false;
+  }
+
+  function handleAttach() {
+    addBotBubble('Fitur lampiran segera hadir! 📎');
+  }
+
+  async function showWelcome() {
+    for (let i = 0; i < WELCOME_MESSAGES.length; i++) {
+      await new Promise(r => setTimeout(r, i === 0 ? 500 : 900));
+
+      addBotBubble(WELCOME_MESSAGES[i]);
+
+      conversationHistory.push({
+        role: 'assistant',
+        content: WELCOME_MESSAGES[i]
+      });
+    }
+  }
+
+  showWelcome();
+</script>
+
+</body>
+</html>

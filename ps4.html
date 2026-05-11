@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <title>Log Out - Sirip Juara</title>
+  <title>PaymentSucces - Sirip Juara</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -12,7 +12,7 @@
       --navy:        #293B6D;
       --blue-footer: #1c2d5c;
       --surface:     #ffffff;
-      --surface-soft:#f0f4fb;
+      --surface-soft:#f0f4fb;   
       --border:      #d8e2f2;
       --text-dark:   #1e3057;
       --text-muted:  #6b83ad;
@@ -20,7 +20,7 @@
     }
 
     body {
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Poppins';
       background: #fff;
       color: var(--text-dark);
       padding-top: 96px;
@@ -212,89 +212,85 @@
       height: 34px; 
       object-fit: contain; 
     }
-      
-/* ===== MAIN ===== */
-.main-content {
-  display:flex;
-  gap:24px;
-  padding:40px 48px;
+
+    .main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding-top: 50px;
+    padding-bottom: 60px;
+    padding-left: 24px;
+    padding-right: 24px;
+
+    background: #fff;
 }
 
-/* ===== SIDEBAR ===== */
-    .sidebar {
-      width: 280px;
-      flex-shrink: 0;
-      background: rgba(227, 240, 255, 0.5);
-      border-radius: 24px;
-      padding: 24px 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-right: 20px;
-      margin-left: -8px;
-    }
+        /* ── SUCCESS CARD ── */
+        .success-card {
+            background: #f5f8ff;
+            border: 1px solid #11182795;
+            border-radius: 20px;
+            padding: 48px 40px 40px;
+            width: 100%;
+            max-width: 360px;
+            text-align: center;
+        }
 
-    .sidebar-item {
-      width: 100%;
-      height: 52px;
-      border-radius: 14px;
-      border: 1.5px solid #b0bcd4;
-      display: flex;
-      align-items: center;
-      padding: 0 20px;
-      cursor: pointer;
-      background: #fff;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
+        .check-circle {
+            width: 64px;
+            height: 64px;
+            background: #3D588B;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 32px;
+        }
+        .check-circle svg {
+            width: 32px;
+            height: 32px;
+        }
 
-    .sidebar-item span {
-      font-size: 14px;
-      font-weight: 700;
-      color: #2e4070;
-    }
+        .success-title {
+            font-size: 22px;
+            font-weight: 450;
+            color: #3D588B;
+            margin-bottom: 40px;
+        }
 
-    .sidebar-item.active { background: #2e4070; border-color: #2e4070; }
-    .sidebar-item.active span { color: #fff; }
-    .sidebar-item:hover:not(.active) { background: rgba(46,64,112,0.06); }
+        .success-amount {
+            font-size: 26px;
+            font-weight: 700;
+            color: #3D588B;
+            margin-bottom: 16px;
+        }
 
-/* ===== CONTENT ===== */
-.content-area {
-  padding:10px 0 130px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
+        .order-id {
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    color: #3D588B;
+    margin-bottom: 45px;
 }
 
-.content-title {
-  font-size:18px;
-  font-weight:700;
-  color:#2e4070;
-  margin-bottom:10px;
-}
+        .back-btn {
+            display: inline-block;
+            background: #3B5380;
+            color: white;
+            border: none;
+            padding: 9px 50px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .back-btn:hover { background: #1f2a52; transform: scale(1.02); }
 
-.content-desc {
-  font-size:14px;
-  color:#2e4070;
-  margin-bottom:30px;
-}
-
-.logout-btn {
-  width:220px;
-  height:52px;
-  background:#2e4070;
-  color:#fff;
-  border:none;
-  border-radius:30px;
-  font-weight:700;
-  cursor:pointer;
-}
-
-.logout-btn:hover {
-  background:#1e2e55;
-}
-
-/* ===== FOOTER ===== */
+        /* ── FOOTER ── */
     .site-footer {
       background: #1c2d5c;
       color: #fff;
@@ -309,10 +305,10 @@
       align-items: start;
     }
 
-    .footer-brand .brand img { 
-      max-height: 110px; 
+    .footer-brand .brand img {
+      max-height: 110px;
       width: auto;
-      margin: -30px; 
+      margin: -30px;
     }
 
     .footer-brand p {
@@ -328,7 +324,7 @@
       grid-template-columns: 1fr 1fr 1.4fr;
       gap: 0;
       align-items: start;
-      margin-right: -50px
+      margin-right: -50px;
     }
 
     .footer-links h3 {
@@ -341,7 +337,13 @@
       gap: 10px;
     }
 
-    .footer-line { display: inline-block; width: 32px; height: 1.5px; background: #fff; flex-shrink: 0; }
+    .footer-line {
+      display: inline-block;
+      width: 32px;
+      height: 1.5px;
+      background: #fff;
+      flex-shrink: 0;
+    }
 
     .footer-links a,
     .footer-links > div > p {
@@ -352,6 +354,7 @@
       font-size: 0.9rem;
       text-decoration: none;
     }
+
     .footer-links a:hover { color: #fff; }
 
     .contact-item {
@@ -364,17 +367,16 @@
       text-decoration: none;
       line-height: 1.4;
     }
-    
-    .contact-icon { 
-      width: 22px; 
-      height: 22px; 
-      object-fit: contain; 
-      flex-shrink: 0; 
-    }
-    
-</style>
-</head>
 
+    .contact-icon {
+      width: 22px;
+      height: 22px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    </style>
+</head>
 <body>
 
 <!-- HEADER -->
@@ -387,8 +389,8 @@
 
       <nav class="site-nav" aria-label="Primary navigation">
         <a href="index.html" class="nav-link">HOME</a>
-        <a href="shop.html" class="nav-link">SHOP</a>
-        <a href="care.html" class="nav-link">CARE GUIDE</a>
+        <a href="shop.html" class="nav-link active-page">SHOP</a>
+        <a href="careguide.html" class="nav-link">CARE GUIDE</a>
 
         <div class="nav-dropdown">
           <a href="about.html" class="nav-link nav-has-dropdown">ABOUT <span class="dropdown-arrow">▾</span></a>
@@ -418,28 +420,21 @@
       </div>
 
     </div>
-</header>
+  </header>
 
 <!-- MAIN -->
-<main class="main-content">
-
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
-    <a href="profil.html" class="sidebar-item"><span>Personal Information</span></a>
-    <a href="myorder.html" class="sidebar-item"><span>My Orders</span></a>
-    <a href="address.html" class="sidebar-item"><span>Manage Address</span></a>
-    <a href="passmanage.html" class="sidebar-item"><span>Password Manager</span></a>
-    <a href="logout.html" class="sidebar-item active"><span>Logout</span></a>
-  </aside>
-
-  <!-- CONTENT -->
-  <section class="content-area">
-    <div class="content-title">Logout</div>
-    <div class="content-desc">Are you sure you want to log out?</div>
-
-    <button class="logout-btn" onclick="logout()">Yes, Logout</button>
-  </section>
-
+<main class="main">
+    <div class="success-card">
+        <div class="check-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+            </svg>
+        </div>
+        <div class="success-title">Payment Successful</div>
+        <div class="success-amount">Rp 155.000</div>
+        <div class="order-id">Order ID #SDGT1254FD </div>
+        <a href="shop.html" class="back-btn">Back to Orders</a>
+    </div>
 </main>
 
 <!-- FOOTER -->
@@ -465,7 +460,7 @@
           <h3>Quick Links <span class="footer-line"></span></h3>
           <a href="index.html">Home</a>
           <a href="shop.html">Shop</a>
-          <a href="care.html">Care Guide</a>
+          <a href="careguide.html">Care Guide</a>
           <a href="about.html">About</a>
           <a href="support.html">Support</a>
         </div>
@@ -487,14 +482,9 @@
       </div>
 
     </div>
-</footer>
+  </footer>
 
 <script>
-function logout(){
-  localStorage.clear();
-  window.location.href = "login.html";
-}
-
     // Active nav
     (function () {
       const links = document.querySelectorAll('.nav-link');
@@ -505,14 +495,6 @@ function logout(){
       });
     })();
 
-    // Active cart
-    (function () {
-      const cartLink = document.getElementById('cart-link');
-      if (location.pathname.split('/').pop() === 'cart.html') {
-        cartLink.classList.add('cart-active');
-      }
-    })();
-
     // Auth state
     function updateAuthState() {
       const loggedIn = localStorage.getItem('sj_loggedIn') === 'true';
@@ -520,7 +502,6 @@ function logout(){
       document.getElementById('profile-button').classList.toggle('hidden', !loggedIn);
     }
     updateAuthState();
- 
 </script>
 
 </body>

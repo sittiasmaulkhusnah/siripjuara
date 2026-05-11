@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <title>FAQ - Sirip Juara</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:        #293B6D;
+      --blue-footer: #1c2d5c;
+      --surface:     #ffffff;
+      --surface-soft:#f0f4fb;   
+      --border:      #d8e2f2;
+      --text-dark:   #1e3057;
+      --text-muted:  #6b83ad;
+      --accent:      #2d4f9f;
+    }
+
+    body {
+      font-family: 'Poppins';
+      background: #fff;
+      color: var(--text-dark);
+      padding-top: 96px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    img { max-width: 100%; display: block; }
+    a   { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; border: none; background: none; }
+
+    .container {
+      width: min(1320px, calc(100% - 80px));
+      margin: 0 auto;
+    }
+
+    .hidden { display: none !important; }
+
+    /* ====================================================
+       HEADER — sama persis dengan cart.html
+    ==================================================== */
+    .site-header {
+      position: relative;
+      z-index: 999;
+      padding: 10px 5px;
+      margin-top: -95px;
+    }
+
+    .header-pill {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      background: #293B6D;
+      border-radius: 999px;
+
+      padding: 12px 16px;
+      height: 69px; /* 🔥 kunci utama */
+    }
+
+    .brand img { 
+      max-height: 90px; 
+      width: auto; }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      margin-left: auto;
+    }
+
+    .nav-link {
+      color: rgba(255,255,255,0.72);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+      transition: color 0.2s;
+    }
+
+    .nav-link:hover,
+    .nav-link.active-page { 
+      color: #fff; 
+      font-weight: 700; 
+    }
+
+    .nav-dropdown { 
+      position: relative; 
+    }
+
+    .nav-has-dropdown { 
+      display: flex; 
+      align-items: center; 
+      gap: 3px; 
+      cursor: pointer; 
+    }
+
+    .dropdown-arrow {
+      font-size: 0.6rem; 
+      opacity: 0.7; 
+      transition: transform 0.2s; 
+    }
+
+    .nav-dropdown:hover 
+    .dropdown-arrow { 
+      transform: rotate(180deg); 
+    }
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1c2e50;
+  border-radius: 12px;
+  padding: 14px 0 8px;
+  min-width: 140px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+  z-index: 300;
+  overflow: hidden;
+}
+
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 100%;
+  height: 16px;
+}
+    .dropdown-menu a {
+      display: block;
+      padding: 10px 20px;
+      color: rgba(255,255,255,0.8);
+      font-size: 0.82rem;
+      transition: background 0.15s, color 0.15s;
+    }
+    .dropdown-menu a:hover { 
+      background: rgba(255,255,255,0.08); 
+      color: #fff; 
+    }
+    
+    .nav-dropdown:hover .dropdown-menu { 
+      display: block; 
+    }
+
+    .header-actions { 
+      display: flex; 
+      align-items: center; 
+      gap: 10px; 
+      margin-left: 45px;
+      margin-right: 30px;
+    }
+
+    .cart-wrapper {
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+      width: 35px; 
+      height: 35px; 
+      border-radius: 50%;
+      transition: background 0.2s;
+    }
+
+    .cart-icon { 
+      width: 37px; 
+      height: 37px;
+      object-fit: contain;
+    }
+    
+    .cart-wrapper
+    .cart-active { 
+      background: #fff; 
+    }
+
+    .btn-nav {
+      background: #ffffff;
+      color: 293B6D;
+      border-radius: 999px;
+      padding: 0.3rem 1.2rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+      transition: opacity 0.2s, transform 0.2s;
+      font-family: 'Poppins';
+    }
+
+    .btn-nav:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    .profile-btn {
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+      width: 38px; 
+      height: 38px; 
+      border-radius: 50%; 
+      overflow: hidden;
+    }
+
+    .profile-btn img { 
+      width: 34px; 
+      height: 34px; 
+      object-fit: contain; 
+    }
+
+    /* ── MAIN ── */
+    main { flex: 1; 
+        padding: 30px 60px 40px; }
+
+    .container { max-width: 1100px;
+         margin: 0 auto; 
+        padding: 30px 80px}
+
+    .hero { margin-bottom: 16px; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: #F4F9FF; 
+      color: #3D588B;
+      font-size: 0.76rem;
+      font-weight: 450;
+      box-shadow: 0 2px 10px rgba(28, 59, 121, 0.10);
+    }
+
+    .hero-title {
+      margin: 12px 0 10px;
+      font-size: 1.6rem;
+      line-height: 1.1;
+      color: #3D588B;
+      font-weight: 800;
+    }
+
+    .hero-text {
+      color: #3D588B;
+      font-size: 0.875rem;
+      max-width: 600px;
+    }
+
+    .content-grid {
+      display: grid;
+    grid-template-columns: 1.5fr 1fr;
+      gap: 24px;
+      align-items: start; 
+    }
+
+    /* FAQ */
+    .faq-card {
+      background: transparent;
+      padding: 0;
+      margin-top: 45px;
+    }
+
+    .faq-item {
+      border-radius: 16px;
+      background: #F4F9FF;
+      border: 1px solid #3B5380;
+      margin-bottom: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(17,41,89,0.05);
+    }
+
+    .faq-item:last-child { margin-bottom: 0; }
+
+    .faq-button {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      border: none;
+      background: transparent;
+      padding: 12px 14px;
+      text-align: left;
+      cursor: pointer;
+      color: var(--text);
+      font-size: 0.82rem;
+      font-weight: 600;
+      font-family: inherit;
+      transition: background 0.15s;
+    }
+
+    .faq-button:hover { background: rgba(36,63,119,0.05); }
+
+    .faq-button svg {
+      width: 18px;
+      height: 18px;
+      color: var(--primary);
+      flex-shrink: 0;
+      transition: transform 0.2s ease;
+    }
+    
+
+    .faq-item.open .faq-button svg { transform: rotate(180deg); }
+
+    .faq-answer {
+      display: none;
+      padding: 0 16px 16px;
+      color: var(--text-muted);
+      font-size: 0.84rem;
+      line-height: 1.75;
+    }
+
+    .faq-item.open .faq-answer { display: block; }
+
+    .faq-item.open { background: #3B5380; }
+.faq-item.open .faq-button { color: #F4F9FF; }
+.faq-item.open .faq-answer { color: #F4F9FF; }
+.faq-item.open .faq-button svg { color: #F4F9FF; }
+
+   .contact-card {
+  background: #F4F9FF;
+  border-radius: 40px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(36,63,119,0.08);
+  overflow: hidden;
+  align-self: start;
+  max-width: 320px;
+    margin-left: 30px;
+}
+
+    .contact-header {
+  background: #3B5380;
+  color: white;
+  margin: 0 0 20px;
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  border-radius: 20px;
+   text-align: center;
+}
+
+      .contact-header span {
+  color: white;
+  font-size: 0.80rem;
+  letter-spacing: 0.10em;
+  font-weight: 800;
+}
+
+    .contact-header h2 {
+      font-size: 0.96rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .field {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+
+    .field label {
+      color: #3D588B;
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid rgba(28,59,121,0.14);
+      background: #f8faff;
+      color: var(--text);
+      padding: 9px 35px;
+      font-size: 0.84rem;
+      font-family: inherit;
+      outline: none;
+      resize: none;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-color: rgba(36,63,119,0.35);
+      box-shadow: 0 0 0 3px rgba(46,88,190,0.08);
+    }
+
+    .field textarea { min-height: 60px; 
+     margin-bottom: 8px;
+    }
+
+    .submit-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: auto;
+      padding: 11px 16px;
+      border: none;
+      border-radius: 999px;
+      background: #3B5380;
+      color: white;
+      font-size: 0.80rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+        margin-top: 8px;
+    }
+
+    .submit-button:hover {
+      background: #3B5380;
+      transform: translateY(-1px);
+    }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      background: #1c2d5c;
+      color: #fff;
+      padding: 60px 20px;
+      margin-top: auto;
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1fr 2.2fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .footer-brand .brand img {
+      max-height: 110px;
+      width: auto;
+      margin: -30px;
+    }
+
+    .footer-brand p {
+      margin: 20px 0 0;
+      max-width: 300px;
+      line-height: 1.65;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .footer-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.4fr;
+      gap: 0;
+      align-items: start;
+      margin-right: -50px;
+    }
+
+    .footer-links h3 {
+      margin: 0 0 20px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-line {
+      display: inline-block;
+      width: 32px;
+      height: 1.5px;
+      background: #fff;
+      flex-shrink: 0;
+    }
+
+    .footer-links a,
+    .footer-links > div > p {
+      display: block;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 10px;
+      line-height: 1.4;
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover { color: #fff; }
+
+    .contact-item {
+      display: flex !important;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255,255,255,0.85);
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+      text-decoration: none;
+      line-height: 1.4;
+    }
+
+    .contact-icon {
+      width: 22px;
+      height: 22px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 880px) {
+      .content-grid { grid-template-columns: 1fr; }
+      .contact-card { position: static; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 560px) {
+      html { font-size: 13px; }
+      .hero-title { font-size: 1.5rem; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .topbar { flex-wrap: wrap; }
+      .nav-list { justify-content: flex-start; gap: 14px; overflow-x: auto; padding-bottom: 4px; }
+      .nav-list a { white-space: nowrap; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-pill">
+
+      <a class="brand" href="index.html">
+        <img src="png/Logo.png" alt="Sirip Juara Logo">
+      </a>
+
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="index.html" class="nav-link">HOME</a>
+        <a href="shop.html" class="nav-link active-page">SHOP</a>
+        <a href="careguide.html" class="nav-link">CARE GUIDE</a>
+
+        <div class="nav-dropdown">
+          <a href="about.html" class="nav-link nav-has-dropdown">ABOUT <span class="dropdown-arrow">▾</span></a>
+          <div class="dropdown-menu">
+            <a href="about.html">About Betta</a>
+            <a href="team.html">Team</a>
+          </div>
+        </div>
+
+        <div class="nav-dropdown">
+          <a href="support.html" class="nav-link nav-has-dropdown">SUPPORT <span class="dropdown-arrow">▾</span></a>
+          <div class="dropdown-menu">
+            <a href="support1.html">FAQ</a>
+            <a href="support2.html">Contact Us</a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="header-actions">
+        <a href="cart.html" class="cart-wrapper" id="cart-link" aria-label="Cart">
+          <img src="png/Cart.png" alt="Cart" class="cart-icon">
+        </a>
+        <a href="Signup.html" id="auth-button" class="btn-nav">SIGN UP</a>
+        <a href="profil.html" id="profile-button" class="profile-btn hidden" aria-label="Profile">
+          <img src="png/iconAccount.png" alt="Profile">
+        </a>
+      </div>
+
+    </div>
+  </header>
+  
+  <!-- MAIN -->
+  <main>
+    <div class="container">
+
+      <div class="content-grid">
+        <!-- LEFT: Hero + FAQ -->
+        <div>
+          <section class="hero">
+            <span class="hero-badge">Question / Answer</span>
+            <h1 class="hero-title">Frequently Asked any </br> Questions</h1>
+            <p class="hero-text">Find answers to common questions about orders, shipping, betta fish care, and our services.</p>
+          </section>
+          <div class="faq-card">
+          <div class="faq-item open">
+            <button type="button" class="faq-button" aria-expanded="true">
+              What if the fish dies during shipping?
+              <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="faq-answer">
+             We always ensure that the fish are shipped in healthy condition with the best possible packaging. If anything unexpected happens, please don’t worry. Kindly send an unboxing video (without cuts or pauses) as proof, and we will help provide the best 
+             solution, either a replacement or a refund according to our policy.
+             </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-button" aria-expanded="false">
+              What should I do before placing a new betta fish into its tank?
+              <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="faq-answer">
+              Do not place the fish directly into the tank. First, float the plastic bag for around 15–30 minutes so the water temperature can adjust. Then, slowly add a small amount of tank water into the bag so the fish can adapt. After that, transfer the fish into the new tank without mixing too much of the old water. 
+              It is also recommended not to feed the fish immediately to avoid stress.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-button" aria-expanded="false">
+              How long does a betta fish need to recover after shipping?
+              <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="faq-answer">
+              Betta fish colors can stay bright when fed nutritious food such as mosquito larvae or special pellets, with regular water changes and the addition of catappa leaves. Avoid stressing the fish by 
+              not moving it too often, so it stays more stable and healthy.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-button" aria-expanded="false">
+              Can cupang fish be kept together with other fish?
+              <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="faq-answer">
+              Betta fish are known to be aggressive, especially males, so they may injure other fish when kept together. Although some people keep them with small peaceful fish, attacks can still happen. The safest option is to keep 
+              betta fish alone so they stay healthy and maintain their bright colors.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-button" aria-expanded="false">
+              Do cupang fish need an aerator?
+              <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="faq-answer">
+              Betta fish do not actually need an aerator because they have a special organ called a labyrinth organ that allows them to breathe directly from the air. An aerator may be useful in larger tanks with other fish, but for a single betta fish in a small tank, strong water flow 
+              can cause stress. Keeping the water clean and calm without an aerator is usually enough.
+          </div>
+          </div>
+        </div>
+        </div><!-- end left column -->
+
+        <!-- Contact -->
+        <aside class="contact-card">
+          <div class="contact-header">
+            <span>Any Question? Ask Us!!</span>
+          </div>
+          <form onsubmit="return false;">
+            <div class="field">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" />
+            </div>
+            <div class="field">
+              <label for="email">Your Email</label>
+              <input type="email" id="email" name="email"  />
+            </div>
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" ></textarea>
+            </div>
+            <button type="submit" class="submit-button">Submit Question</button>
+          </form>
+        </aside>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+
+      <div class="footer-brand">
+        <a class="brand" href="index.html">
+          <img src="png/Logo.png" alt="Sirip Juara Logo">
+        </a>
+        <p>Your trusted place to find high-quality betta fish and beginner-friendly care guidance.</p>
+      </div>
+
+      <div class="footer-links">
+        <div>
+          <h3>Company <span class="footer-line"></span></h3>
+          <a href="#">Beginner Guide</a>
+          <a href="#">Types of Betta</a>
+          <a href="#">Feeding Tips</a>
+          <a href="#">Care Basics</a>
+        </div>
+        <div>
+          <h3>Quick Links <span class="footer-line"></span></h3>
+          <a href="index.html">Home</a>
+          <a href="shop.html">Shop</a>
+          <a href="careguide.html">Care Guide</a>
+          <a href="about.html">About</a>
+          <a href="support.html">Support</a>
+        </div>
+        <div>
+          <h3>Contact <span class="footer-line"></span></h3>
+          <p class="contact-item">
+            <img src="png/iconLokasi.png" alt="location" class="contact-icon">
+            <span>Jl. Makkio Baji II, SulSel, Indonesia</span>
+          </p>
+          <a href="mailto:siripjuara@gmail.com" class="contact-item">
+            <img src="png/iconEmail.png" alt="email" class="contact-icon">
+            <span>siripjuara@gmail.com</span>
+          </a>
+          <p class="contact-item">
+            <img src="png/iconCS.png" alt="cs" class="contact-icon">
+            <span>Customer Service</span>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+
+</div>
+
+<script>
+  document.querySelectorAll('.faq-button').forEach((button) => {
+    button.addEventListener('click', () => {
+      const item = button.closest('.faq-item');
+      const currentlyOpen = document.querySelector('.faq-item.open');
+      if (currentlyOpen && currentlyOpen !== item) {
+        currentlyOpen.classList.remove('open');
+        currentlyOpen.querySelector('.faq-button').setAttribute('aria-expanded', 'false');
+      }
+      const isOpen = item.classList.toggle('open');
+      button.setAttribute('aria-expanded', isOpen.toString());
+    });
+  });
+
+      // Active nav
+    (function () {
+      const links = document.querySelectorAll('.nav-link');
+      const current = location.pathname.split('/').pop() || 'index.html';
+      links.forEach(link => {
+        const href = (link.getAttribute('href') || '').split('/').pop();
+        if (href === current) link.classList.add('active-page');
+      });
+    })();
+
+    // Auth state
+    function updateAuthState() {
+      const loggedIn = localStorage.getItem('sj_loggedIn') === 'true';
+      document.getElementById('auth-button').classList.toggle('hidden', loggedIn);
+      document.getElementById('profile-button').classList.toggle('hidden', !loggedIn);
+    }
+    updateAuthState();
+</script>
+</body>
+</html>
