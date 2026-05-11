@@ -353,6 +353,9 @@
             margin-top: 20px;
             align-items: start;
         }
+        .checkout-link {
+  text-decoration: none;
+}
 
         /* ── PAYMENT ── */
         .payment-card {
@@ -547,8 +550,8 @@
 
       <nav class="site-nav" aria-label="Primary navigation">
         <a href="index.html" class="nav-link">HOME</a>
-        <a href="shop.html" class="nav-link">SHOP</a>
-        <a href="careguide.html" class="nav-link active-page">CARE GUIDE</a>
+        <a href="shop.html" class="nav-link active-page">SHOP</a>
+        <a href="careguide.html" class="nav-link">CARE GUIDE</a>
 
         <div class="nav-dropdown">
           <a href="about.html" class="nav-link nav-has-dropdown">ABOUT <span class="dropdown-arrow">▾</span></a>
@@ -671,7 +674,9 @@
             <div class="summary-row"><span>Coupon Discount</span><span class="discount">-Rp 5.000</span></div>
             <div class="summary-row total"><span>Total</span><span>Rp 205.000</span></div>
 
-            <button class="checkout-btn">Proceed to Checkout</button>
+<a href="payment.html" class="checkout-link">
+  <button class="checkout-btn">Proceed to Checkout</button>
+</a>
         </div>
 
     </div>

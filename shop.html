@@ -205,6 +205,11 @@
     .product-rating { display: flex; align-items: center; gap: 3px; flex-shrink: 0; font-size: 12px; font-weight: 400; color: #3b5380; }
     .star-svg { width: 13px; height: 13px; fill: #f5c518; }
     .product-price { font-size: 13px; font-weight: 400; color: #3b5380; }
+    .product-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
 
     /* ── PRODUCT HIDDEN (filter) ── */
     .product-item.filtered-out { display: none; }
@@ -385,11 +390,28 @@
         <div class="product-grid-wrap">
           <div class="product-grid" id="productGrid">
 
-            <div class="product-item" data-name="Double Tail Betta" data-rating="4.9" data-price="100000">
-              <div class="product-img-wrap"><img src="png/s1double tail betta.png" alt="Double Tail Betta"></div>
-              <div class="product-meta"><span class="product-name">Double Tail Betta</span><span class="product-rating"><svg class="star-svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>4,9</span></div>
-              <span class="product-price">Rp 100.000</span>
-            </div>
+<a href="product1.html" class="product-link">
+  <div class="product-item" data-name="Double Tail Betta" data-rating="4.9" data-price="100000">
+    
+    <div class="product-img-wrap">
+      <img src="png/s1double tail betta.png" alt="Double Tail Betta">
+    </div>
+
+    <div class="product-meta">
+      <span class="product-name">Double Tail Betta</span>
+
+      <span class="product-rating">
+        <svg class="star-svg" viewBox="0 0 24 24">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
+        4,9
+      </span>
+    </div>
+
+    <span class="product-price">Rp 100.000</span>
+
+  </div>
+</a>
 
             <div class="product-item" data-name="Feathertail" data-rating="4.9" data-price="450000">
               <div class="product-img-wrap"><img src="png/s2feathertail.png" alt="Feathertail"></div>
