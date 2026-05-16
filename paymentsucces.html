@@ -431,9 +431,9 @@
             </svg>
         </div>
         <div class="success-title">Payment Successful</div>
-        <div class="success-amount">Rp 125.000</div>
-        <div class="order-id">Order ID #SD311254F0</div>
-        <a href="shop.html" class="back-btn">Back to Orders</a>
+        <div class="success-amount" id="successAmount"></div>
+        <div class="order-id" id="orderId"></div>
+        <a href="trackuorder.html" class="back-btn">Check Your Order</a>
     </div>
 </main>
 
@@ -502,6 +502,27 @@
       document.getElementById('profile-button').classList.toggle('hidden', !loggedIn);
     }
     updateAuthState();
+
+    ///
+    const order = JSON.parse(
+      localStorage.getItem("sj_last_order") || "{}"
+    );
+
+    if(order.name){
+      
+    const total = order.total || ((order.price || 0) * (order.qty || 1) + 10000 - 5000);
+
+    document.getElementById("successAmount").textContent =
+      "Rp " + total.toLocaleString("id-ID");
+
+      document.getElementById("orderId")
+        .textContent =
+        "Order ID #" +
+        Math.random()
+          .toString(36)
+          .substring(2,10)
+          .toUpperCase();
+    }
 </script>
 
 </body>

@@ -235,7 +235,7 @@
             padding: 32px 36px;
             box-shadow: 0 4px 24px rgba(46, 74, 129, 0.07);
         }
-        .status-card { margin-bottom: 20px; }
+        .status-card { margin-bottom: 30px; }
 
         /* ── TRACKER ── */
         .tracker {
@@ -256,7 +256,7 @@
          */
         .tracker-line {
             position: absolute;
-            top: 108px;
+            top: 100px;
             left: calc(10% + 12px);
             right: calc(10% + 12px);
             height: 2px;
@@ -304,15 +304,19 @@
 
         /* Dot */
         .step-dot {
-            width: 24px; height: 24px;
-            border-radius: 50%;
-            background: #f0f6ff;
-            border: 2px solid #c4d2e8;
-            display: grid; place-items: center;
-            margin-bottom: 10px;
-            position: relative; z-index: 2;
-            flex-shrink: 0;
-        }
+    width: 24px; 
+    height: 24px;
+    border-radius: 50%;
+    background: #f0f6ff;
+    border: 2px solid #c4d2e8;
+    display: grid; 
+    place-items: center;
+    margin-bottom: 10px;
+    position: relative;
+    top: 2px;
+    z-index: 2;
+    flex-shrink: 0;
+}
 
         /* COMPLETED: solid navy circle + white SVG checkmark */
         .step.completed .step-dot {
@@ -475,6 +479,53 @@
             .brand { font-size: 1rem; }
             .tracker-line { display: none; }
         }
+        .qty-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.qty-control {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.qty-control button {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #3D588B;
+    font-size: 1rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    transition: background 0.2s;
+}
+
+.qty-control button:hover {
+    background: #b8cce8;
+}
+
+.qty-control span {
+    min-width: 40px;
+    height: 26px;
+    padding: 0 10px;
+    border-radius: 18px;
+    background: #ffffff;
+    color: #3D588B;
+    font-size: 1rem;
+    font-weight: 600;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
     </style>
 </head>
 <body>
@@ -572,8 +623,13 @@
             <div class="order-item">
                 <img class="fish-img" src="png/s1double tail betta.png" alt="Dumbo Ear" onerror="this.style.background='#1a1a2e'"/>
                 <div class="item-info">
-                    <div class="item-name">Double <Table></Table></div>
-                </div>
+    <div class="item-name">Double Tail Betta</div>
+    <div class="qty-control">
+        <button onclick="changeQty(-1)">-</button>
+        <span class="qty-number" id="qty">2</span>
+        <button onclick="changeQty(1)">+</button>
+    </div>
+</div>
                 <div class="item-price" id="price">Rp 205.000</div>
             </div>
         </section>

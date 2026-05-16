@@ -491,7 +491,7 @@
 
     <!-- Logo QRIS -->
     <div class="qris-logo">
-        <img src="png/LogoQris.png" alt="QRIS Logo">
+        <img src="png/QRISpayment.png" alt="QRIS Logo">
     </div>
 
     <!-- QR Code -->
@@ -519,13 +519,8 @@
 </style>
 
             <!-- Save Button -->
-            <button class="save-btn">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                    <polyline points="7 10 12 15 17 10"></polyline>
-                    <line x1="12" y1="15" x2="12" y2="3"></line>
-                </svg>
-                Save QR code
+            <button class="save-btn" onclick="goToSuccess()">
+              I Have Paid
             </button>
 
             <!-- Instructions -->
@@ -601,5 +596,22 @@
       document.getElementById('profile-button').classList.toggle('hidden', !loggedIn);
     }
     updateAuthState();
+
+    ///
+    function goToSuccess() {
+
+      const order = JSON.parse(
+        localStorage.getItem("sj_last_order") || "{}"
+      );
+
+      localStorage.setItem(
+        "sj_paid_order",
+        JSON.stringify(order)
+      );
+
+      window.location.href =
+        "paymentsucces.html";
+
+      }
 </script>
 </html>

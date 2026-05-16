@@ -654,7 +654,7 @@
 
             <div class="payment-option selected">
                 <input type="radio" name="payment" checked>
-                <img src="png/qris.png" alt="QRIS"class="qris-img">
+                <img src="png/LogoQris.png" alt="QRIS"class="qris-img">
             </div>
 
             <div class="payment-option">
@@ -667,16 +667,14 @@
         <div class="summary-card">
             <div class="card-title">Order Summary</div>
 
-            <div class="summary-row"><span>Items</span><span>2</span></div>
-            <div class="summary-row"><span>Sub Total</span><span>Rp 200.000</span></div>
-            <div class="summary-row"><span>Shipping</span><span>-Rp 10.000</span></div>
+            <div class="summary-row"><span>Items</span><span id="summaryQty">1</span></div>
+            <div class="summary-row"><span>Sub Total</span><span id="summarySubtotal">Rp 0</span></div>
+            <div class="summary-row"><span>Shipping</span><span id="summaryShipping">Rp 10.000</span></div>
             <div class="summary-row"><span>Taxes</span><span>Rp 0</span></div>
-            <div class="summary-row"><span>Coupon Discount</span><span class="discount">-Rp 5.000</span></div>
-            <div class="summary-row total"><span>Total</span><span>Rp 205.000</span></div>
+            <div class="summary-row"><span>Coupon Discount</span><span id="summaryCoupon" class="discount">Rp 0</span></div>
+            <div class="summary-row total"><span>Total</span><span id="summaryTotal">Rp 0</span></div>
 
-<a href="payment.html" class="checkout-link">
-  <button class="checkout-btn">Proceed to Checkout</button>
-</a>
+        <button class="checkout-btn" onclick="handleCheckout()">Proceed to Checkout</button>
         </div>
 
     </div>
@@ -735,36 +733,129 @@
     (function () {
       const links = document.querySelectorAll('.nav-link');
       const current = location.pathname.split('/').pop() || 'index.html';
+
       links.forEach(link => {
         const href = (link.getAttribute('href') || '').split('/').pop();
-        if (href === current) link.classList.add('active-page');
+
+        if (href === current) {
+          link.classList.add('active-page');
+        }
       });
     })();
 
     // Auth state
     function updateAuthState() {
       const loggedIn = localStorage.getItem('sj_loggedIn') === 'true';
-      document.getElementById('auth-button').classList.toggle('hidden', loggedIn);
-      document.getElementById('profile-button').classList.toggle('hidden', !loggedIn);
+
+      document.getElementById('auth-button')
+        .classList.toggle('hidden', loggedIn);
+
+      document.getElementById('profile-button')
+        .classList.toggle('hidden', !loggedIn);
     }
+
     updateAuthState();
 
-    // Shipping option toggle
+    // Shipping option
     document.querySelectorAll('.shipping-option').forEach(opt => {
-        opt.addEventListener('click', () => {
-            document.querySelectorAll('.shipping-option').forEach(o => o.classList.remove('selected'));
-            opt.classList.add('selected');
-        });
+
+      opt.addEventListener('click', () => {
+
+        document.querySelectorAll('.shipping-option')
+          .forEach(o => o.classList.remove('selected'));
+
+        opt.classList.add('selected');
+
+      });
+
     });
 
-    // Payment option toggle
+    // Payment option
     document.querySelectorAll('.payment-option').forEach(opt => {
-        opt.addEventListener('click', () => {
-            document.querySelectorAll('.payment-option').forEach(o => o.classList.remove('selected'));
-            opt.classList.add('selected');
-            opt.querySelector('input[type="radio"]').checked = true;
-        });
+
+      opt.addEventListener('click', () => {
+
+        document.querySelectorAll('.payment-option')
+          .forEach(o => o.classList.remove('selected'));
+
+        opt.classList.add('selected');
+
+        opt.querySelector('input[type="radio"]').checked = true;
+
+      });
+
     });
+
+    // Load order
+    const order = JSON.parse(
+      localStorage.getItem("sj_last_order") || "{}"
+    );
+
+    if (order.name) {
+
+      document.querySelector(".order-item img").src =
+        order.img || "";
+
+      document.querySelector(".order-item img").alt =
+        order.name;
+
+      document.querySelector(".item-name").textContent =
+        order.name;
+
+      document.querySelector(".item-sub").textContent =
+        order.gender || "Male";
+
+      document.querySelector(".item-price").textContent =
+        "Rp " + (order.price || 0).toLocaleString("id-ID");
+
+      const qty = order.qty || 1;
+      const subtotal = (order.price || 0) * qty;
+      const shipping = 10000;
+      const coupon = 5000;
+      const total = subtotal + shipping - coupon;
+
+      order.total = total;
+      localStorage.setItem("sj_last_order", JSON.stringify(order));
+
+      document.getElementById("summaryQty").textContent = qty;
+
+      document.getElementById("summarySubtotal").textContent =
+        "Rp " + subtotal.toLocaleString("id-ID");
+
+      document.getElementById("summaryShipping").textContent =
+        "Rp " + shipping.toLocaleString("id-ID");
+
+      document.getElementById("summaryCoupon").textContent =
+        "Rp " + coupon.toLocaleString("id-ID");
+
+      document.getElementById("summaryTotal").textContent =
+        "Rp " + total.toLocaleString("id-ID");
+    }
+
+    // CHECKOUT
+    function handleCheckout() {
+
+      const selectedPayment =
+        document.querySelector('.payment-option.selected');
+
+      const isQRIS =
+        selectedPayment.querySelector('.qris-img') !== null;
+
+      const isCOD =
+        selectedPayment.querySelector('.cod-label') !== null;
+
+      if (isQRIS) {
+
+        window.location.href = "payment.html";
+
+      } else if (isCOD) {
+
+        window.location.href = "trackuorder.html";
+
+      }
+
+    }
+
 </script>
 </body>
 </html>

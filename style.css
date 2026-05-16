@@ -136,6 +136,13 @@ button {
 .dropdown-menu a:hover { background: rgba(255,255,255,0.08); color: #fff; }
 .nav-dropdown:hover .dropdown-menu { display: block; }
 
+.dropdown-toggle {
+  background: none;
+  border: none;
+  font-family: inherit;
+  padding: 0;
+}
+
 /* Header actions */
 .header-actions {
   display: flex;
@@ -957,4 +964,584 @@ body { font-family: 'Poppins', sans-serif; }
 
   .care-grid { grid-template-columns: 1fr; }
   .care-grid img { height: 160px; }
+}
+
+/* ── TABLET (max 1024px) ── */
+@media (max-width: 1024px) {
+
+  /* Header */
+  .header-inner {
+    gap: 16px;
+    padding-top: 8px;
+  }
+
+  .site-nav {
+    gap: 20px;
+  }
+
+  /* Hero */
+  .hero-title {
+    font-size: clamp(70px, 12vw, 130px);
+  }
+
+  .hero-fish img {
+    width: clamp(220px, 28vw, 360px);
+  }
+
+  .hero-bottom {
+    width: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* About */
+  .about-copy h2 {
+    text-indent: 0;
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+  }
+
+  /* Why */
+  .why-cards {
+    grid-template-columns: 1fr;
+    gap: 60px;
+    padding: 0 20px;
+  }
+
+  .why-card-center {
+    margin-top: 40px;
+  }
+
+  /* Care */
+  .care-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .care-desc {
+    margin-bottom: 40px;
+  }
+
+  /* Testimonials */
+  .testimonial-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .testimonial-card-dark {
+    transform: none;
+  }
+
+  /* Footer */
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .footer-links {
+    grid-template-columns: 1fr 1fr;
+    margin-right: 0;
+    gap: 32px;
+  }
+}
+
+/* ── MOBILE (max 768px) ── */
+@media (max-width: 768px) {
+
+  /* Container */
+  .container {
+    width: calc(100% - 32px);
+  }
+
+  /* ── HEADER ── */
+  .header-inner {
+    position: relative;
+    left: auto;
+    transform: none;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: rgba(15, 23, 51, 0.92);
+    border-radius: 0 0 20px 20px;
+    gap: 10px;
+  }
+
+  .brand img {
+    max-height: 70px;
+    margin-left: 0;
+  }
+
+  /* Sembunyikan nav desktop, pakai tombol burger jika ada */
+  .site-nav {
+    display: none;
+  }
+
+  .header-actions {
+    margin-left: auto;
+    gap: 10px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    height: 100svh;
+    min-height: 500px;
+  }
+
+  .hero-fish {
+    top: 8vh;
+  }
+
+  .hero-fish img {
+    width: clamp(180px, 55vw, 280px);
+  }
+
+  .hero-title {
+    font-size: clamp(48px, 14vw, 80px);
+    line-height: 3.5;
+  }
+
+  .hero-bottom {
+    width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 30px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .hero-sub {
+    font-size: 0.85rem;
+  }
+
+  .hero-btn {
+    transform: none;
+    font-size: 0.85rem;
+    padding: 8px 20px;
+  }
+
+  /* ── ABOUT ── */
+  .about-panel {
+    padding: 48px 0;
+  }
+
+  .about-inner {
+    padding: 0 16px;
+    gap: 14px;
+  }
+
+  .about-copy h2 {
+    font-size: clamp(1rem, 4vw, 1.3rem);
+    text-indent: 0;
+  }
+
+  .about-note {
+    justify-self: start;
+  }
+
+  /* ── WHY ── */
+  .why {
+    padding: 60px 0 80px;
+  }
+
+  .why-title-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .why-title {
+    font-size: 1.2rem;
+    text-align: center;
+    white-space: normal;
+  }
+
+  .why-cards {
+    grid-template-columns: 1fr;
+    gap: 60px;
+    padding: 0 16px;
+    max-width: 100%;
+  }
+
+  .why-card {
+    margin-top: 50px;
+  }
+
+  .why-card-center {
+    margin-top: 50px;
+  }
+
+  .why-curve-img {
+    display: none; /* sembunyikan di mobile */
+  }
+
+  /* ── BEST SELLER ── */
+  .best-seller-inner {
+    padding: 0 16px;
+  }
+
+  .section-title {
+    font-size: 1rem;
+    margin-left: 0;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+    margin-right: 0;
+  }
+
+  .bs-slider-wrapper {
+    height: 320px;
+    width: calc(100% + 32px);
+    margin-left: -16px;
+  }
+
+  .bs-item {
+    width: 70vw;
+  }
+
+  /* ── CARE ── */
+  .care-section {
+    padding: 60px 20px;
+  }
+
+  .care-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .care-label {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+  }
+
+  .care-desc {
+    font-size: 0.95rem;
+    margin-bottom: 32px;
+  }
+
+  .care-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .care-grid img {
+    width: 100%;
+    height: 130px;
+  }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials {
+    padding: 40px 0;
+  }
+
+  .testimonials-title-row {
+    margin-bottom: 32px;
+  }
+
+  .testimonials-title {
+    font-size: 1.2rem;
+  }
+
+  .testimonials-curveblue-img {
+    display: none;
+  }
+
+  .testimonial-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px 16px 30px;
+  }
+
+  .testimonial-card {
+    transform: none;
+    padding: 20px 20px;
+  }
+
+  .testimonial-card-dark {
+    transform: none;
+  }
+
+  /* ── FOOTER ── */
+  .site-footer {
+    padding: 40px 20px;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .footer-brand .brand img {
+    margin: -20px 0 0 -10px;
+    max-height: 80px;
+  }
+
+  .footer-brand p {
+    margin-top: 10px;
+  }
+
+  .footer-links {
+    grid-template-columns: 1fr 1fr;
+    margin-right: 0;
+    gap: 24px;
+  }
+}
+
+/* ── SMALL MOBILE (max 480px) ── */
+@media (max-width: 480px) {
+
+  .hero-title {
+    font-size: clamp(36px, 13vw, 60px);
+  }
+
+  .hero-fish img {
+    width: clamp(150px, 60vw, 220px);
+  }
+
+  .care-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .care-grid img {
+    height: 160px;
+  }
+
+  .footer-links {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .bs-item {
+    width: 85vw;
+  }
+
+  .bs-slider-wrapper {
+    height: 260px;
+  }
+
+  .why-card h3 {
+    font-size: 1rem;
+  }
+
+  .why-card p {
+    font-size: 0.95rem;
+  }
+
+  .testimonial-card p {
+    font-size: 0.85rem;
+  }
+}
+
+/* ============================================================
+   MOBILE FIXES — tambahkan ke bagian BAWAH style.css kamu
+   ============================================================ */
+
+/* ── HAMBURGER BUTTON ── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: rgba(255,255,255,0.15);
+  border: 1.5px solid rgba(255,255,255,0.4);
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 6px;
+  margin-left: 12px;
+  z-index: 1000;
+  flex-shrink: 0;
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #ffffff;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Animasi X saat terbuka */
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── MOBILE NAV DRAWER ── */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(10, 18, 45, 0.97);
+  z-index: 500;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  padding: 24px;
+}
+
+.mobile-nav.open { display: flex; }
+
+.mobile-nav a {
+  color: rgba(255,255,255,0.85);
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.mobile-nav a:hover,
+.mobile-nav a.active-page { color: #fff; }
+
+.mobile-nav .mobile-nav-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  font-size: 1.8rem;
+  color: #fff;
+  cursor: pointer;
+  background: none;
+  border: none;
+  line-height: 1;
+}
+
+.mobile-nav .mobile-auth {
+  margin-top: 12px;
+  background: #fff;
+  color: #293B6D;
+  border-radius: 999px;
+  padding: 0.5rem 2rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+}
+
+/* ── HERO CENTER FIX ── */
+/* Pastikan teks SIRIP JUARA centered di mobile */
+@media (max-width: 768px) {
+  .hamburger { display: flex !important; }
+
+  /* Sembunyikan nav desktop */
+  .site-nav { display: none !important; }
+
+  /* Header inner: logo kiri, hamburger kanan */
+  .header-inner {
+    justify-content: space-between;
+    flex-wrap: nowrap !important;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px !important;
+  }
+
+  /* Sembunyikan header-actions (cart, signup) di mobile — sudah ada di drawer */
+  .header-actions {
+    display: none !important;
+  }
+
+  /* Hero title rata tengah */
+  .hero-title-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .hero-title {
+    text-align: center !important;
+    width: 100%;
+  }
+
+  /* Hero bottom centered di mobile */
+  .hero-bottom {
+    width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 28px;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    text-align: center;
+  }
+
+  .hero-btn {
+    transform: none;
+    align-self: center;
+  }
+}
+
+/* ── BEST SELLER SLIDER FIX ── */
+/* Pastikan track dan item tidak overflow aneh */
+.bs-track {
+  display: flex !important;
+  align-items: center;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.bs-item {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.bs-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+  pointer-events: none;
+  -webkit-user-drag: none;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .bs-slider-wrapper {
+    height: 300px;
+  }
+  .bs-item {
+    width: 72vw;
+    height: 100%;
+    transform: scale(0.7);
+  }
+  .bs-item.active {
+    transform: scale(1);
+  }
+}
+
+/* ── NAIKAN TEKS SIRIP JUARA DI MOBILE ── */
+@media (max-width: 768px) {
+  .hero-title-wrap {
+    position: absolute;
+    bottom: 120px;   /* jarak dari bawah, naikkan angka ini kalau mau lebih ke atas */
+    left: 0;
+    width: 100%;
+  }
+
+  .hero-title {
+    line-height: 1 !important;  /* hapus line-height besar yang bikin teks ke bawah */
+    margin-bottom: 8px;
+  }
+
+  .hero-bottom {
+    bottom: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title-wrap {
+    bottom: 110px;
+  }
 }

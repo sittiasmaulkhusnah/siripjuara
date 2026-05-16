@@ -118,3 +118,168 @@ document.addEventListener('DOMContentLoaded', function() {
   window.addEventListener('resize', () => goTo(current, false));
   goTo(TOTAL + 1, false); // bs2 di tengah
 });
+
+///responsive
+/* ============================================================
+   mobile-fixes.js — tambahkan SEBELUM </body> di index.html
+   Atau paste ke dalam <script> yang sudah ada di bawah
+   ============================================================ */
+
+// ── HAMBURGER MENU ──────────────────────────────────────────
+(function () {
+  // Inject hamburger button ke header-inner
+  const headerInner = document.querySelector('.header-inner');
+  if (!headerInner) return;
+
+  // Buat hamburger button
+  const hamburger = document.createElement('button');
+  hamburger.className = 'hamburger';
+  hamburger.setAttribute('aria-label', 'Menu');
+  hamburger.innerHTML = '<span></span><span></span><span></span>';
+  headerInner.appendChild(hamburger);
+
+  // Buat mobile nav drawer
+  const mobileNav = document.createElement('nav');
+  mobileNav.className = 'mobile-nav';
+  mobileNav.innerHTML = `
+    <button class="mobile-nav-close" aria-label="Tutup">✕</button>
+    <a href="index.html">HOME</a>
+    <a href="shop.html">SHOP</a>
+    <a href="careguide.html">CARE GUIDE</a>
+    <a href="about.html">ABOUT</a>
+    <a href="support1.html">FAQ</a>
+    <a href="support2.html">CONTACT</a>
+    <a href="Signup.html" class="mobile-auth" id="mobileAuthBtn">SIGN UP</a>
+  `;
+  document.body.appendChild(mobileNav);
+
+  // Toggle buka/tutup
+  function openNav() {
+    mobileNav.classList.add('open');
+    hamburger.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeNav() {
+    mobileNav.classList.remove('open');
+    hamburger.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  hamburger.addEventListener('click', () => {
+    mobileNav.classList.contains('open') ? closeNav() : openNav();
+  });
+  mobileNav.querySelector('.mobile-nav-close').addEventListener('click', closeNav);
+
+  // Tutup kalau klik link
+  mobileNav.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', closeNav);
+  });
+
+  // Active page di mobile nav
+  const current = location.pathname.split('/').pop() || 'index.html';
+  mobileNav.querySelectorAll('a').forEach(link => {
+    const href = (link.getAttribute('href') || '').split('/').pop();
+    if (href === current) link.classList.add('active-page');
+  });
+
+  // Sync auth state di mobile nav
+  const loggedIn = localStorage.getItem('sj_loggedIn') === 'true';
+  const mobileAuthBtn = document.getElementById('mobileAuthBtn');
+  if (mobileAuthBtn && loggedIn) {
+    mobileAuthBtn.href = 'profil.html';
+    mobileAuthBtn.textContent = 'PROFIL';
+  }
+})();
+
+// ── BEST SELLER SLIDER ───────────────────────────────────────
+(function () {
+  const track   = document.getElementById('bsTrack');
+  const wrapper = document.getElementById('bsWrapper');
+  if (!track || !wrapper) return;
+
+  // Bersihkan duplikat nested track (bug di HTML asli)
+  const nestedTrack = track.querySelector('#bsTrack');
+  if (nestedTrack) {
+    // Pindahkan item dari nested ke parent, hapus nested
+    while (nestedTrack.firstChild) {
+      track.appendChild(nestedTrack.firstChild);
+    }
+    nestedTrack.remove();
+  }
+
+  const items = Array.from(track.querySelectorAll('.bs-item'));
+  if (items.length === 0) return;
+
+  // Duplikat items untuk loop infinite
+  const clones = items.map(item => {
+    const clone = item.cloneNode(true);
+    track.appendChild(clone);
+    return clone;
+  });
+  const allItems = [...items, ...clones];
+
+  const itemWidth = () => wrapper.offsetWidth * 0.42 || 400;
+  let currentIndex = 0;
+  let startX = 0;
+  let isDragging = false;
+  let autoTimer;
+
+  function getOffset(idx) {
+    const iw = itemWidth();
+    const center = wrapper.offsetWidth / 2;
+    return center - iw / 2 - idx * iw;
+  }
+
+  function goTo(idx, animate = true) {
+    // Loop infinite
+    if (idx >= items.length) idx = 0;
+    if (idx < 0) idx = items.length - 1;
+    currentIndex = idx;
+
+    track.style.transition = animate ? 'transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94)' : 'none';
+    track.style.transform = `translateX(${getOffset(idx)}px)`;
+
+    allItems.forEach((item, i) => {
+      item.classList.toggle('active', i % items.length === idx);
+    });
+  }
+
+  function next() { goTo(currentIndex + 1); }
+  function prev() { goTo(currentIndex - 1); }
+
+  // Auto play
+  function startAuto() { autoTimer = setInterval(next, 2800); }
+  function stopAuto()  { clearInterval(autoTimer); }
+
+  // Drag / swipe
+  wrapper.addEventListener('mousedown',  e => { isDragging = true; startX = e.clientX; stopAuto(); });
+  wrapper.addEventListener('touchstart', e => { isDragging = true; startX = e.touches[0].clientX; stopAuto(); }, { passive: true });
+
+  window.addEventListener('mouseup', e => {
+    if (!isDragging) return;
+    isDragging = false;
+    const diff = e.clientX - startX;
+    if (Math.abs(diff) > 40) diff < 0 ? next() : prev();
+    startAuto();
+  });
+
+  wrapper.addEventListener('touchend', e => {
+    if (!isDragging) return;
+    isDragging = false;
+    const diff = e.changedTouches[0].clientX - startX;
+    if (Math.abs(diff) > 40) diff < 0 ? next() : prev();
+    startAuto();
+  });
+
+  // Klik item
+  allItems.forEach((item, i) => {
+    item.addEventListener('click', () => goTo(i % items.length));
+  });
+
+  // Init
+  goTo(0, false);
+  startAuto();
+
+  // Recalc saat resize
+  window.addEventListener('resize', () => goTo(currentIndex, false));
+})();

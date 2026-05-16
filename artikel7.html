@@ -1,838 +1,526 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <title>Article 7 - Sirip Juara</title>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --navy:        #293B6D;
-      --blue-footer: #1c2d5c;
-      --surface:     #ffffff;
-      --surface-soft:#f0f4fb;
-      --border:      #d8e2f2;
-      --text-dark:   #1e3057;
-      --text-muted:  #6b83ad;
-      --accent:      #2d4f9f;
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: #fff;
-      color: var(--text-dark);
-      padding-top: 96px;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    img { max-width: 100%; display: block; }
-    a   { color: inherit; text-decoration: none; }
-    button { font: inherit; cursor: pointer; border: none; background: none; }
-
-    .container {
-      width: min(1320px, calc(100% - 80px));
-      margin: 0 auto;
-    }
-
-    .hidden { display: none !important; }
-
-    /* ====================================================
-       HEADER
-    ==================================================== */
-    .site-header {
-      position: relative;
-      z-index: 999;
-      padding: 10px 5px;
-      margin-top: -95px;
-    }
-
-    .header-pill {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: #293B6D;
-      border-radius: 999px;
-      padding: 12px 16px;
-      height: 69px;
-    }
-
-    .brand img { max-height: 90px; width: auto; }
-
-    .site-nav {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      margin-left: auto;
-    }
-
-    .nav-link {
-      color: rgba(255,255,255,0.72);
-      font-size: 0.85rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      white-space: nowrap;
-      transition: color 0.2s;
-    }
-
-    .nav-link:hover,
-    .nav-link.active-page { color: #fff; font-weight: 700; }
-
-    .nav-dropdown { position: relative; }
-    .nav-has-dropdown { display: flex; align-items: center; gap: 3px; cursor: pointer; }
-    .dropdown-arrow { font-size: 0.6rem; opacity: 0.7; transition: transform 0.2s; }
-    .nav-dropdown:hover .dropdown-arrow { transform: rotate(180deg); }
-
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #1c2e50;
-  border-radius: 12px;
-  padding: 14px 0 8px;
-  min-width: 140px;
-  box-shadow: 0 12px 32px rgba(0,0,0,0.3);
-  z-index: 300;
-  overflow: hidden;
-}
-
-.nav-dropdown {
-  position: relative;
-}
-
-.nav-dropdown::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 100%;
-  width: 100%;
-  height: 16px;
-}
-
-    .dropdown-menu a {
-      display: block;
-      padding: 10px 20px;
-      color: rgba(255,255,255,0.8);
-      font-size: 0.82rem;
-      transition: background 0.15s, color 0.15s;
-    }
-
-    .dropdown-menu a:hover { background: rgba(255,255,255,0.08); color: #fff; }
-    .nav-dropdown:hover .dropdown-menu { display: block; }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-left: 45px;
-      margin-right: 30px;
-    }
-
-    .cart-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 35px;
-      height: 35px;
-      border-radius: 50%;
-      transition: background 0.2s;
-    }
-
-    .cart-icon { width: 37px; height: 37px; object-fit: contain; }
-
-    .btn-nav {
-      background: #ffffff;
-      color: #293B6D;
-      border-radius: 999px;
-      padding: 0.3rem 1.2rem;
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      white-space: nowrap;
-      transition: opacity 0.2s, transform 0.2s;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    .btn-nav:hover { opacity: 0.88; transform: translateY(-1px); }
-
-    .profile-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      overflow: hidden;
-    }
-
-    .profile-btn img { width: 34px; height: 34px; object-fit: contain; }
-
-    ul, li { font-family: 'Poppins', sans-serif; font-size: 14px; }
-    li { font-weight: 400; margin-bottom: 6px; }
-    ul { padding-left: 20px; margin: 0 0 16px; }
-
-    img { max-width: 100%; display: block; }
-    a   { color: inherit; text-decoration: none; }
-    button { font: inherit; cursor: pointer; border: none; background: none; }
-
-    .hidden { display: none !important; }
-
-    .page-wrapper {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
-      width: 100%;
-      max-width: 1100px;
-      margin: 40px auto 60px;
-      padding: 40px 60px 80px;
-    }
-
-    .main-bg {
-      background: #f4f9ff;
-      border-radius: 24px;
-      padding: 32px;
-    }
-
-    .page { display: none; }
-    .page.active { display: block; }
-
-    .header { margin-bottom: 20px; }
-
-    .header h1 {
-      font-size: clamp(22px, 3.8vw, 42px);
-      font-weight: 800;
-      color: #3b5380;
-      line-height: 1.15;
-      margin-bottom: 6px;
-    }
-
-    .header .author {
-      font-size: clamp(13px, 1.6vw, 19px);
-      font-weight: 600;
-      color: #3b5380;
-      margin-bottom: 6px;
-    }
-
-    .header .meta {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .header .meta span { font-size: 13px; color: #222; }
-
-    .link-badge {
-      margin-left: auto;
-      background: #3b5380;
-      border-radius: 14px;
-      width: 36px;
-      height: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .layout {
-      display: grid;
-      grid-template-columns: 1fr 260px;
-      gap: 24px;
-    }
-
-    @media (max-width: 700px) {
-      .layout { grid-template-columns: 1fr; }
-      .sidebar {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 16px;
-      }
-    }
-
-    .hero {
-      width: 100%;
-      height: 240px;
-      border-radius: 16px;
-      overflow: hidden;
-      margin-bottom: 20px;
-    }
-
-    .hero img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 30%;
-    }
-
-    .article p {
-      font-size: clamp(13px, 1.4vw, 16px);
-      color: #222;
-      line-height: 1.75;
-      margin-bottom: 16px;
-    }
-
-    .article .section-title {
-      font-size: clamp(13px, 1.4vw, 16px);
-      font-weight: 700;
-      color: #222;
-      margin-bottom: 8px;
-      margin-top: 4px;
-    }
-
-    .sidebar {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .sidebar-title {
-      font-size: 16px;
-      font-weight: 700;
-      color: #3b5380;
-      margin-bottom: 4px;
-    }
-
-    .card {
-      background: #f4f9ff;
-      border: 1px solid #ccc;
-      border-radius: 20px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: box-shadow 0.2s, transform 0.2s;
-    }
-
-    .card:hover {
-      box-shadow: 0 4px 16px rgba(59,83,128,0.18);
-      transform: translateY(-2px);
-    }
-
-    .card img { width: 100%; height: 140px; object-fit: cover; }
-    .card-body { padding: 10px 14px 14px; }
-
-    .card-body h3 {
-      font-size: 14px;
-      font-weight: 800;
-      color: #3b5380;
-      margin-bottom: 2px;
-      line-height: 1.2;
-    }
-
-    .card-body .card-author {
-      font-size: 11px;
-      font-weight: 600;
-      color: #3b5380;
-      margin-bottom: 10px;
-    }
-
-    .card-body .btn-more {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: #d9d9d9;
-      border-radius: 25px;
-      font-size: 10px;
-      font-weight: 600;
-      color: #3b5380;
-      padding: 4px 14px;
-      float: right;
-      cursor: pointer;
-      border: none;
-      font-family: 'Poppins', sans-serif;
-      transition: background 0.2s, color 0.2s;
-    }
-
-    .card-body .btn-more:hover { background: #3b5380; color: #fff; }
-
-    .back-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: #3b5380;
-      color: white;
-      border: none;
-      border-radius: 25px;
-      padding: 8px 20px;
-      font-size: 13px;
-      font-weight: 600;
-      font-family: 'Poppins', sans-serif;
-      cursor: pointer;
-      margin-bottom: 24px;
-      transition: background 0.2s;
-    }
-
-    .back-btn:hover { background: #2d4069; }
-
-    .article-page-hero {
-      width: 100%;
-      height: 260px;
-      border-radius: 16px;
-      overflow: hidden;
-      margin-bottom: 24px;
-    }
-
-    .article-page-hero img { width: 100%; height: 100%; object-fit: cover; }
-
-    .article-page-title {
-      font-size: clamp(20px, 3.2vw, 34px);
-      font-weight: 800;
-      color: #3b5380;
-      margin-bottom: 6px;
-      line-height: 1.2;
-    }
-
-    .article-page-meta {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 20px;
-    }
-
-    .article-page-meta .author-tag { font-size: 13px; font-weight: 600; color: #3b5380; }
-    .article-page-meta .date-tag { font-size: 12px; color: #666; }
-
-    .article-page-body p {
-      font-size: clamp(13px, 1.4vw, 16px);
-      color: #222;
-      line-height: 1.8;
-      margin-bottom: 18px;
-    }
-
-    .article-page-body h2 {
-      font-size: clamp(14px, 1.5vw, 17px);
-      font-weight: 700;
-      color: #222;
-      margin-bottom: 10px;
-      margin-top: 6px;
-    }
-
-    .related-title {
-      font-size: 16px;
-      font-weight: 700;
-      color: #3b5380;
-      margin: 32px 0 14px;
-      border-top: 2px solid #dce8f5;
-      padding-top: 20px;
-    }
-
-    .related-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 16px;
-    }
-
-        .site-footer {
-      background: #1c2d5c;
-      color: #fff;
-      padding: 60px 20px;
-      margin-top: auto;
-    }
-
-    .footer-inner {
-      display: grid;
-      grid-template-columns: 1fr 2.2fr;
-      gap: 60px;
-      align-items: start;
-    }
-
-    .footer-brand .brand img { max-height: 110px; width: auto; margin: -30px; }
-
-    .footer-brand p {
-      margin: 20px 0 0;
-      max-width: 300px;
-      line-height: 1.65;
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.85);
-    }
-
-    .footer-links {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1.4fr;
-      gap: 0;
-      align-items: start;
-      margin-right: -50px;
-    }
-
-    .footer-links h3 {
-      margin: 0 0 20px;
-      font-size: 1rem;
-      font-weight: 700;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .footer-line { display: inline-block; width: 32px; height: 1.5px; background: #fff; flex-shrink: 0; }
-
-    .footer-links a,
-    .footer-links > div > p {
-      display: block;
-      color: rgba(255,255,255,0.85);
-      margin-bottom: 10px;
-      line-height: 1.4;
-      font-size: 0.9rem;
-      text-decoration: none;
-    }
-
-    .footer-links a:hover { color: #fff; }
-
-    .contact-item {
-      display: flex !important;
-      align-items: center;
-      gap: 10px;
-      color: rgba(255,255,255,0.85);
-      font-size: 0.9rem;
-      margin-bottom: 12px;
-      text-decoration: none;
-      line-height: 1.4;
-    }
-
-    .contact-icon { width: 22px; height: 22px; object-fit: contain; flex-shrink: 0; }
-
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proses Adaptasi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #e8eef5;
+            min-height: 100vh;
+            padding: 32px 16px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        ul, li {
+          font-family: 'Poppins', sans-serif;
+          font-size: 14px;
+        }
+        li {
+          font-weight: 400;
+        }    
+        ul {
+          padding-left: 20px;
+          margin: 0;
+        }
+
+        .page-wrapper {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+            width: 100%;
+            max-width: 1100px;
+            padding: 32px;
+        }
+
+        .main-bg {
+            background: #f4f9ff;
+            border-radius: 24px;
+            padding: 32px;
+        }
+
+        /* ---- PAGE SYSTEM ---- */
+        .page { display: none; }
+        .page.active { display: block; }
+
+        /* ---- HEADER ---- */
+        .header { margin-bottom: 20px; }
+
+        .header h1 {
+            font-size: clamp(22px, 3.8vw, 42px);
+            font-weight: 800;
+            color: #3b5380;
+            line-height: 1.15;
+            margin-bottom: 6px;
+        }
+
+        .header .author {
+            font-size: clamp(13px, 1.6vw, 19px);
+            font-weight: 600;
+            color: #3b5380;
+            margin-bottom: 6px;
+        }
+
+        .header .meta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header .meta span { font-size: 13px; color: #222; }
+
+        .link-badge {
+            margin-left: auto;
+            background: #3b5380;
+            border-radius: 14px;
+            width: 36px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        /* ---- LAYOUT ---- */
+        .layout {
+            display: grid;
+            grid-template-columns: 1fr 260px;
+            gap: 24px;
+        }
+
+        @media (max-width: 700px) {
+            .layout { grid-template-columns: 1fr; }
+            .sidebar {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 16px;
+            }
+        }
+
+        /* ---- HERO ---- */
+        .hero {
+            width: 100%;
+            height: 240px;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 30%;
+        }
+
+        /* ---- ARTICLE ---- */
+        .article p {
+            font-size: clamp(13px, 1.4vw, 16px);
+            color: #222;
+            line-height: 1.75;
+            margin-bottom: 16px;
+        }
+
+        .article .section-title {
+            font-size: clamp(13px, 1.4vw, 16px);
+            font-weight: 700;
+            color: #222;
+            margin-bottom: 8px;
+            margin-top: 4px;
+        }
+
+        /* ---- SIDEBAR CARDS ---- */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .card {
+            background: #f4f9ff;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 16px rgba(59,83,128,0.18);
+            transform: translateY(-2px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+        }
+
+        .card-body { padding: 10px 14px 14px; }
+
+        .card-body h3 {
+            font-size: 14px;
+            font-weight: 800;
+            color: #3b5380;
+            margin-bottom: 2px;
+            line-height: 1.2;
+        }
+
+        .card-body .card-author {
+            font-size: 11px;
+            font-weight: 600;
+            color: #3b5380;
+            margin-bottom: 10px;
+        }
+
+        .card-body .btn-more {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #d9d9d9;
+            border-radius: 25px;
+            font-size: 10px;
+            font-weight: 600;
+            color: #3b5380;
+            padding: 4px 14px;
+            float: right;
+            cursor: pointer;
+            border: none;
+            font-family: 'Poppins', sans-serif;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .card-body .btn-more:hover {
+            background: #3b5380;
+            color: #fff;
+        }
+
+        /* ---- BACK BUTTON ---- */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #3b5380;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 8px 20px;
+            font-size: 13px;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            margin-bottom: 24px;
+            transition: background 0.2s;
+        }
+
+        .back-btn:hover { background: #2d4069; }
+
+        /* ---- ARTICLE PAGE ---- */
+        .article-page-hero {
+            width: 100%;
+            height: 260px;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+
+        .article-page-hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .article-page-title {
+            font-size: clamp(20px, 3.2vw, 34px);
+            font-weight: 800;
+            color: #3b5380;
+            margin-bottom: 6px;
+            line-height: 1.2;
+        }
+
+        .article-page-meta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .article-page-meta .author-tag {
+            font-size: 13px;
+            font-weight: 600;
+            color: #3b5380;
+        }
+
+        .article-page-meta .date-tag {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .article-page-body p {
+            font-size: clamp(13px, 1.4vw, 16px);
+            color: #222;
+            line-height: 1.8;
+            margin-bottom: 18px;
+        }
+
+        .article-page-body h2 {
+            font-size: clamp(14px, 1.5vw, 17px);
+            font-weight: 700;
+            color: #222;
+            margin-bottom: 10px;
+            margin-top: 6px;
+        }
+
+        /* ---- RELATED ---- */
+        .related-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #3b5380;
+            margin: 32px 0 14px;
+            border-top: 2px solid #dce8f5;
+            padding-top: 20px;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+        }
+    </style>
 </head>
 <body>
-
-  <!-- HEADER -->
-  <header class="site-header">
-    <div class="header-pill">
-      <a class="brand" href="index.html">
-        <img src="png/Logo.png" alt="Sirip Juara Logo">
-      </a>
-      <nav class="site-nav" aria-label="Primary navigation">
-        <a href="index.html" class="nav-link">HOME</a>
-        <a href="shop.html" class="nav-link">SHOP</a>
-        <a href="careguide.html" class="nav-link active-page">CARE GUIDE</a>
-        <div class="nav-dropdown">
-          <a href="about.html" class="nav-link nav-has-dropdown">ABOUT <span class="dropdown-arrow">▾</span></a>
-          <div class="dropdown-menu">
-            <a href="about.html">About Betta</a>
-            <a href="team.html">Team</a>
-          </div>
-        </div>
-        <div class="nav-dropdown">
-          <a href="support.html" class="nav-link nav-has-dropdown">SUPPORT <span class="dropdown-arrow">▾</span></a>
-          <div class="dropdown-menu">
-            <a href="support1.html">FAQ</a>
-            <a href="support2.html">Contact Us</a>
-          </div>
-        </div>
-      </nav>
-      <div class="header-actions">
-        <a href="cart.html" class="cart-wrapper" id="cart-link" aria-label="Cart">
-          <img src="png/Cart.png" alt="Cart" class="cart-icon">
-        </a>
-        <a href="Signup.html" id="auth-button" class="btn-nav">SIGN UP</a>
-        <a href="profil.html" id="profile-button" class="profile-btn hidden" aria-label="Profile">
-          <img src="png/iconAccount.png" alt="Profile">
-        </a>
-      </div>
-    </div>
-  </header>
-
-  <div class="page-wrapper">
+<div class="page-wrapper">
     <div class="main-bg">
 
-      <!-- ===================== MAIN PAGE ===================== -->
-      <div class="page active" id="page-home">
-        <div class="header">
-          <h1>Betta First Aid</h1>
-          <p class="author">By SiripJuara</p>
-          <div class="meta">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-              <circle cx="12" cy="12" r="9" stroke="#222" stroke-width="2"/>
-              <path d="M12 6V12L16 14" stroke="#222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span>January 26, 2023 | 21.03 WITA</span>
-            <div class="link-badge">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
+        <!-- ===================== HALAMAN UTAMA ===================== -->
+        <div class="page active" id="page-home">
+            <div class="header">
+                <h1>Proses Adaptasi</h1>
+                <p class="author">Oleh SiripJuara</p>
+                <div class="meta">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <circle cx="12" cy="12" r="9" stroke="#222" stroke-width="2"/>
+                        <path d="M12 6V12L16 14" stroke="#222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>06 Januari 2026 | 17.42 WITA</span>
+                    <div class="link-badge">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
             </div>
-          </div>
+
+            <div class="layout">
+                <div class="article">
+                    <div class="hero">
+                        <img src="png/care7.png"
+                             alt="Ikan Cupang">
+                    </div>
+
+                    <p>Perpindahan ke wadah baru adalah momen paling rentan bagi ikan cupang. Perbedaan suhu, kualitas air, dan lingkungan bisa memicu stres yang berujung pada penurunan kondisi kesehatan, bahkan kematian jika terjadi "shock".</p>
+                    <p>Proses adaptasi sebaiknya dilakukan secara bertahap. Saat pertama kali memindahkan ikan, jangan langsung memasukkannya ke wadah baru. Biarkan ikan tetap di plastik atau wadah asal, lalu apungkan di air baru selama 15–30 menit agar suhu menyesuaikan.</p>
+                    <p>Setelah itu, campurkan sedikit demi sedikit air dari wadah baru ke dalam wadah lama setiap 5-10 menit. Lakukan beberapa kali sampai volume air bertambah dan kondisi mulai mendekati sama. Ini penting untuk menghindari perbedaan pH dan zat terlarut yang bisa membuat ikan kaget.</p>
+                    <p>Gunakan jaring saat memindahkan ikan ke wadah baru, jangan menuangkan seluruh air lama. Air dari tempat asal sering mengandung kotoran atau bakteri yang justru bisa merusak lingkungan baru.</p>
+                    <p>Lingkungan awal harus dibuat "tenang". Hindari cahaya terang, suara bising, atau getaran. Jangan langsung diberi pakan tunggu beberapa jam hingga ikan terlihat lebih stabil. Memberi makan terlalu cepat justru bisa memperparah stres.</p>
+                    <p>Selama 1–2 hari pertama, fokus pada observasi. Ikan yang beradaptasi dengan baik akan mulai berenang normal, membuka sirip, dan merespons gerakan di sekitarnya. Jika ikan terlihat pucat, diam di dasar, atau megap-megap di permukaan, itu tanda ada masalah—biasanya dari kualitas air atau suhu yang tidak sesuai.</p>
+                    <p>Tanda adaptasi berhasil terlihat dari ikan yang mulai aktif berenang, responsif, dan mau makan. Jika ikan diam di dasar atau terlihat lemas, kemungkinan masih stres atau ada masalah pada kondisi air.</p>
+                </div>
+
+                <div class="sidebar">
+                    <div class="card">
+                        <img src="png/care1.png"
+                             alt="Panduan Cepat Merawat Ikan Cupang">
+                        <div class="card-body">
+                            <h3>Panduan Cepat Merawat Ikan Cupang</h3>
+                            <p class="card-author">Oleh SiripJuara</p>
+                            <button class="btn-more" onclick="showArticle('etika')">Selengkapnya</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="png/care8.png"
+                             alt="Dekorasi & Lingkungan">
+                        <div class="card-body">
+                            <h3>Dekorasi & Lingkungan</h3>
+                            <p class="card-author">Oleh SiripJuara</p>
+                            <button class="btn-more" onclick="showArticle('dekorasi')">Selengkapnya</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="png/care5.png"
+                             alt="Manajemen Pakan">
+                        <div class="card-body">
+                            <h3>Manajemen Pakan</h3>
+                            <p class="card-author">Oleh SiripJuara</p>
+                            <button class="btn-more" onclick="showArticle('pakan')">Selengkapnya</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="png/care3.png"
+                             alt="P3K Ikan Cupang: Pertolongan Pertama">
+                        <div class="card-body">
+                            <h3>P3K Ikan Cupang: Pertolongan Pertama</h3>
+                            <p class="card-author">Oleh SiripJuara</p>
+                            <button class="btn-more" onclick="showArticle('etika')">Selengkapnya</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="layout">
-          <div class="article">
-            <div class="hero">
-              <img src="png/guide3.png"
-                   onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Betta_fish_%28Betta_splendens%29.jpg/1280px-Betta_fish_%28Betta_splendens%29.jpg'"
-                   alt="Betta First Aid">
+        <!-- ===================== HALAMAN ARTIKEL ===================== -->
+        <div class="page" id="page-article">
+            <button class="back-btn" onclick="goBack()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Kembali
+            </button>
+
+            <div class="article-page-hero">
+                <img id="article-img" src="" alt="">
             </div>
 
-            <p>First aid for betta fish is important when the fish shows signs of illness, stress, or injury. Some common signs include the fish appearing lethargic, less active, damaged fins, faded body color, or loss of appetite. These conditions are usually caused by poor water quality, sudden temperature changes, mild infections, or stress from environmental changes. If not treated promptly, the fish's condition can deteriorate and risk death. Therefore, first aid steps must be carried out quickly and correctly so the fish can recover.</p>
-
-            <p>The first step is to change the water with clean, conditioned water. Clean water helps reduce bacteria, waste, and harmful substances that can worsen the fish's condition. Water changes also help improve the quality of the environment so the fish can feel more comfortable during the recovery process.</p>
-
-            <p>If the fish shows signs of illness, it should be moved to a quarantine container. The quarantine process makes it easier to monitor the fish's condition and keeps water quality stable. A calmer quarantine environment also helps reduce stress on the fish, allowing recovery to take place more quickly.</p>
-
-            <p>In addition, adding a small amount of aquarium salt can help speed up the healing of minor wounds and reduce stress. Aquarium salt can also help inhibit the growth of mild bacteria and fungi. However, salt must be used carefully and not excessively to avoid disrupting the fish's condition. Use 1 teaspoon per 10 liters — never use table salt or iodized salt.</p>
-
-            <p>During the recovery process, it is important to keep the environment calm and the water temperature stable. Avoid moving the fish too frequently or placing the container in a busy area as this can add to the fish's stress. Additionally, feeding can be temporarily reduced to maintain water quality and allow the fish to focus on recovery.</p>
-          </div>
-
-          <div class="sidebar">
-            <p class="sidebar-title">Top Picks</p>
-
-            <div class="card">
-              <img src="png/guide2.png"
-                   onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Single_combatfish.jpg/800px-Single_combatfish.jpg'"
-                   alt="Betta Disease & Treatment">
-              <div class="card-body">
-                <h3>Betta Disease &amp; Treatment</h3>
-                <p class="card-author">By SiripJuara</p>
-                <button class="btn-more" onclick="showArticle('penyakit')">Read More</button>
-              </div>
+            <h1 class="article-page-title" id="article-title"></h1>
+            <div class="article-page-meta">
+                <span class="author-tag">Oleh SiripJuara</span>
+                <span class="date-tag">· 06 Juni 2026</span>
             </div>
 
-            <div class="card">
-              <img src="png/guide1.png"
-                   onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Betta_fish_%28Betta_splendens%29.jpg/1280px-Betta_fish_%28Betta_splendens%29.jpg'"
-                   alt="Quick Guide">
-              <div class="card-body">
-                <h3>Quick Guide to Caring for Betta Fish</h3>
-                <p class="card-author">By SiripJuara</p>
-                <button class="btn-more" onclick="showArticle('panduan')">Read More</button>
-              </div>
-            </div>
+            <div class="article-page-body" id="article-body"></div>
 
-            <div class="card">
-              <img src="png/guide5.png"
-                   onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Single_combatfish.jpg/800px-Single_combatfish.jpg'"
-                   alt="Feeding Management">
-              <div class="card-body">
-                <h3>Feeding Management</h3>
-                <p class="card-author">By SiripJuara</p>
-                <button class="btn-more" onclick="showArticle('pakan')">Read More</button>
-              </div>
-            </div>
-
-            <div class="card">
-              <img src="png/guide8.png"
-                   onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Single_combatfish.jpg/800px-Single_combatfish.jpg'"
-                   alt="Decoration & Environment">
-              <div class="card-body">
-                <h3>Decoration &amp; Environment</h3>
-                <p class="card-author">By SiripJuara</p>
-                <button class="btn-more" onclick="showArticle('dekorasi')">Read More</button>
-              </div>
-            </div>
-
-          </div>
+            <p class="related-title">Artikel Terkait</p>
+            <div class="related-grid" id="related-grid"></div>
         </div>
-      </div>
-
-      <!-- ===================== ARTICLE SUB-PAGE ===================== -->
-      <div class="page" id="page-article">
-        <button class="back-btn" onclick="goBack()">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-            <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Back
-        </button>
-
-        <div class="article-page-hero">
-          <img id="article-img" src="" alt="">
-        </div>
-
-        <h1 class="article-page-title" id="article-title"></h1>
-        <div class="article-page-meta">
-          <span class="author-tag">By SiripJuara</span>
-          <span class="date-tag">· January 26, 2023</span>
-        </div>
-
-        <div class="article-page-body" id="article-body"></div>
-
-        <p class="related-title">Related Articles</p>
-        <div class="related-grid" id="related-grid"></div>
-      </div>
 
     </div>
-  </div>
+</div>
 
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <a class="brand" href="index.html">
-          <img src="png/Logo.png" alt="Sirip Juara Logo">
-        </a>
-        <p>Your trusted place to find high-quality betta fish and beginner-friendly care guidance.</p>
-      </div>
-      <div class="footer-links">
-        <div>
-          <h3>Company <span class="footer-line"></span></h3>
-          <a href="#">Beginner Guide</a>
-          <a href="#">Types of Betta</a>
-          <a href="#">Feeding Tips</a>
-          <a href="#">Care Basics</a>
-        </div>
-        <div>
-          <h3>Quick Links <span class="footer-line"></span></h3>
-          <a href="index.html">Home</a>
-          <a href="shop.html">Shop</a>
-          <a href="careguide.html">Care Guide</a>
-          <a href="about.html">About</a>
-          <a href="support.html">Support</a>
-        </div>
-        <div>
-          <h3>Contact <span class="footer-line"></span></h3>
-          <p class="contact-item">
-            <img src="png/iconLokasi.png" alt="location" class="contact-icon">
-            <span>Jl. Makkio Baji II, SulSel, Indonesia</span>
-          </p>
-          <a href="mailto:siripjuara@gmail.com" class="contact-item">
-            <img src="png/iconEmail.png" alt="email" class="contact-icon">
-            <span>siripjuara@gmail.com</span>
-          </a>
-          <p class="contact-item">
-            <img src="png/iconCS.png" alt="cs" class="contact-icon">
-            <span>Customer Service</span>
-          </p>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <script>
+<script>
     const articles = {
-      penyakit: {
-        title: 'Betta Disease & Treatment',
-        img: 'png/guide2.png',
-        fallback: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Single_combatfish.jpg/800px-Single_combatfish.jpg',
-        body: `
-          <p>Many beginners immediately give medicine when their betta gets sick, but that's often a mistake. Without knowing the cause, medication can make the condition worse — especially if the dose is too high.</p>
-          <h2>1. Fungal Infection</h2>
-          <p>Symptoms: white cotton-like patches on the body or fins. Cause: dirty water or open wounds. Treatment: regular water changes, add aquarium salt or antifungal medication.</p>
-          <h2>2. Fin Rot</h2>
-          <p>Symptoms: torn, blackened, or shrinking fins. Cause: bacteria from unclean water. Treatment: clean the water, use antibacterial medication.</p>
-          <h2>3. Dropsy</h2>
-          <p>Symptoms: swollen belly, scales sticking out like a pinecone. Cause: internal infection, overfeeding, or poor water quality. Treatment: fasting, water changes, antibacterial medication. Severe cases are usually difficult to cure.</p>
-          <h2>4. Swim Bladder Disorder</h2>
-          <p>Symptoms: fish swims sideways, upside down, or has difficulty sinking. Cause: overfeeding or constipation. Treatment: fast for 1–2 days, feed light food like daphnia, maintain water quality.</p>
-        `
-      },
-      panduan: {
-        title: 'Quick Guide to Caring for Betta Fish',
-        img: 'png/guide1.png',
-        fallback: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Betta_fish_%28Betta_splendens%29.jpg/1280px-Betta_fish_%28Betta_splendens%29.jpg',
-        body: `
-          <p>Caring for betta fish doesn't require expensive equipment, but there are still several important things to keep in mind. Use a container of at least 2–5 liters. Water should sit for 24 hours before use to remove chlorine.</p>
-          <h2>Water Quality</h2>
-          <p>Change water regularly (every 2–3 days for small containers). Avoid cloudy or smelly water. Maintain the ideal temperature between 24–28°C.</p>
-          <h2>Feeding Control</h2>
-          <p>Feed only 1–2 times a day in small portions. Overfeeding leads to dirty water and triggers disease.</p>
-          <h2>Environment</h2>
-          <p>Avoid noisy or vibrating areas. Add simple decorations like aquatic plants so the fish feels secure.</p>
-          <h2>Behavior</h2>
-          <p>Observe the fish daily. A healthy betta is active, responsive, and vibrantly colored. Sluggish movement or damaged fins are warning signs.</p>
-        `
-      },
-      pakan: {
-        title: 'Betta Fish Feeding Management',
-        img: 'png/guide5.png',
-        fallback: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Single_combatfish.jpg/800px-Single_combatfish.jpg',
-        body: `
-          <p>Feeding is one of the most critical aspects of caring for a betta. Giving too much is just as dangerous as too little — both can cause serious health problems.</p>
-          <h2>How Much and How Often?</h2>
-          <p>The golden rule: feed only as much as can be eaten in 2–3 minutes, 1–2 times per day. Remove any uneaten food immediately to maintain water quality.</p>
-          <h2>Best Types of Food</h2>
-          <p>Bettas are carnivores. Best foods include bloodworms, brine shrimp, and daphnia. High-quality betta pellets are also a great choice for easy portion control.</p>
-          <h2>Vary the Diet</h2>
-          <p>Don't feed the same type of food continuously. Varying the diet provides more complete nutrition and stimulates natural hunting instincts.</p>
-          <h2>Fast Once a Week</h2>
-          <p>Give your betta a fasting day once a week to help the digestive system rest and prevent constipation from overfeeding.</p>
-        `
-      },
-      dekorasi: {
-        title: 'Decoration & Environment',
-        img: 'png/guide8.png',
-        fallback: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Single_combatfish.jpg/800px-Single_combatfish.jpg',
-        body: `
-          <p>A good environment is not just about aesthetics — it's about the mental and physical health of your betta. The right decorations reduce stress and help bettas live longer.</p>
-          <h2>Choose Safe Decorations</h2>
-          <p>Avoid decorations with sharp or rough edges. Test by rubbing a piece of tissue over the surface — if it snags, that decoration is not safe.</p>
-          <h2>Live vs. Artificial Plants</h2>
-          <p>Live plants like java moss or anubias help maintain water quality naturally. Plastic plants are fine but make sure the tips are not sharp.</p>
-          <h2>Hiding Spots</h2>
-          <p>Bettas need hiding spots — it's a natural instinct. Mini caves, bamboo pieces, or dense plants fulfill this need and reduce stress.</p>
-          <h2>Proper Lighting</h2>
-          <p>Use moderate lighting — around 8–12 hours per day. Overly bright light can stress the fish. Never place the aquarium in direct sunlight.</p>
-        `
-      }
+        etika: {
+            title: 'Etika Pemeliharaan Ikan Cupang',
+            img: 'png/care4.png',
+            body: `
+                <p>Memelihara ikan cupang bukan sekadar hobi—ada tanggung jawab moral di baliknya. Sebagai pemilik, kamu bertanggung jawab atas kualitas hidup makhluk yang sepenuhnya bergantung pada perawatanmu.</p>
+                <h2>Jangan Jadikan Pajangan Semata</h2>
+                <p>Cupang sering dibeli hanya karena warnanya indah, lalu ditempatkan di toples kecil tanpa perhatian. Ini adalah bentuk pengabaian. Ikan butuh ruang gerak yang cukup, air bersih, dan stimulasi lingkungan agar tidak stres.</p>
+                <h2>Hindari Pertarungan yang Tidak Perlu</h2>
+                <p>Meski cupang jantan memang agresif satu sama lain, memaksa mereka bertarung demi hiburan adalah tindakan tidak etis. Pertarungan menyebabkan luka serius, infeksi, bahkan kematian. Nikmati keindahan cupang tanpa menyakitinya.</p>
+                <h2>Beli dari Sumber yang Bertanggung Jawab</h2>
+                <p>Pilih penjual yang merawat ikan dengan baik sebelum dijual—bukan yang menyimpannya dalam botol sempit berhari-hari. Dengan memilih sumber yang etis, kamu turut mendorong praktik pemeliharaan yang lebih baik di industri ini.</p>
+                <h2>Siapkan Diri Sebelum Membeli</h2>
+                <p>Pelajari dulu kebutuhan dasar cupang sebelum membawanya pulang. Persiapkan wadah, air kondisi, dan pakan. Membeli ikan tanpa persiapan hanya berujung pada ikan yang sakit dan pemilik yang frustasi.</p>
+            `
+        },
+        adaptasi: {
+            title: 'Proses Adaptasi Ikan Cupang',
+            img: 'png/care7.png',
+            body: `
+                <p>Membawa ikan cupang ke rumah baru bukan proses instan. Ada fase adaptasi penting yang sering diabaikan dan bisa berujung pada ikan yang stres atau bahkan mati dalam beberapa hari pertama.</p>
+                <h2>Aklimatisasi Suhu</h2>
+                <p>Saat baru tiba, jangan langsung pindahkan ikan ke akuarium. Letakkan plastik/wadah berisi ikan di atas permukaan air akuarium selama 15–20 menit agar suhu di dalam plastik menyesuaikan dengan suhu akuarium secara perlahan.</p>
+                <h2>Campurkan Air Secara Bertahap</h2>
+                <p>Setelah suhu sesuai, tambahkan sedikit air akuarium ke dalam plastik setiap 5 menit selama sekitar 20–30 menit. Ini membantu ikan menyesuaikan diri dengan parameter air yang berbeda (pH, hardness, dll).</p>
+                <h2>Jangan Masukkan Air Toko ke Akuarium</h2>
+                <p>Air dari toko bisa membawa bakteri atau parasit yang tidak diinginkan. Gunakan jaring halus untuk memindahkan ikan, dan buang air asalnya.</p>
+                <h2>Fase Tenang Setelah Dipindah</h2>
+                <p>Beri waktu 24–48 jam untuk cupang beradaptasi tanpa gangguan. Kurangi cahaya, hindari mengetuk kaca, dan tunda pemberian pakan hingga 12–24 jam setelah dipindahkan.</p>
+                <h2>Tanda Adaptasi Berhasil</h2>
+                <p>Cupang yang berhasil beradaptasi akan mulai aktif bergerak, mau makan, dan menunjukkan warna yang cerah dalam 2–3 hari pertama. Jika masih bersembunyi atau menolak makan setelah 3 hari, periksa kualitas air.</p>
+            `
+        },
+        dekorasi: {
+            title: 'Dekorasi & Lingkungan Hidup Cupang',
+            img: 'png/care8.png',
+            body: `
+                <p>Lingkungan yang baik bukan sekadar estetika—ini soal kesehatan mental dan fisik ikan cupangmu. Dekorasi yang tepat bisa mengurangi stres dan membuat cupang hidup lebih lama.</p>
+                <h2>Pilih Dekorasi yang Aman</h2>
+                <p>Hindari dekorasi dengan tepian tajam atau kasar yang bisa merobek sirip cupang yang halus. Periksa dengan menggesek sehelai tisu di permukaannya—jika tisu tersangkut atau robek, dekorasi itu tidak aman.</p>
+                <h2>Tanaman Air: Nyata vs Buatan</h2>
+                <p>Tanaman hidup seperti java moss atau anubias sangat disarankan karena membantu menjaga kualitas air secara alami dan memberi tempat berlindung yang nyaman. Tanaman plastik bisa digunakan tapi pastikan ujungnya tidak tajam.</p>
+                <h2>Tempat Bersembunyi Itu Penting</h2>
+                <p>Cupang butuh spot untuk bersembunyi—ini naluri alami mereka di alam liar. Gua mini, potongan bambu, atau tanaman rimbun bisa memenuhi kebutuhan ini. Tanpa tempat berlindung, cupang cenderung lebih mudah stres.</p>
+                <h2>Jangan Terlalu Penuh</h2>
+                <p>Dekorasi yang berlebihan justru berbahaya. Ikan perlu ruang berenang bebas, terutama ke permukaan untuk mengambil napas. Pastikan minimal 1/3 volume akuarium bebas dari dekorasi.</p>
+                <h2>Pencahayaan yang Tepat</h2>
+                <p>Cupang butuh siklus terang-gelap yang konsisten, sekitar 8–12 jam cahaya per hari. Cahaya berlebihan dapat mendorong pertumbuhan alga dan membuat ikan stres. Hindari juga meletakkan akuarium langsung di bawah sinar matahari.</p>
+            `
+        },
+        pakan: {
+            title: 'Manajemen Pakan Ikan Cupang',
+            img: 'png/care5.png',
+            body: `
+                <p>Pakan adalah salah satu aspek paling kritis dalam merawat cupang. Memberikan terlalu banyak sama berbahayanya dengan terlalu sedikit—keduanya bisa menyebabkan masalah kesehatan serius.</p>
+                <h2>Berapa Banyak dan Seberapa Sering?</h2>
+                <p>Aturan emas: beri pakan sebanyak yang bisa dimakan dalam 2–3 menit, 1–2 kali sehari. Perut cupang hanya sebesar matanya—jangan tertipu ukuran tubuhnya yang kecil. Sisa pakan yang tidak termakan harus segera dikeluarkan dari air.</p>
+                <h2>Jenis Pakan Terbaik</h2>
+                <p>Cupang adalah ikan karnivora. Pakan terbaik adalah pakan hidup atau beku seperti cacing darah (bloodworm), artemia, dan daphnia. Pelet khusus cupang berkualitas tinggi juga bisa jadi pilihan utama karena lebih mudah dikontrol porsinya.</p>
+                <h2>Variasikan Pakan</h2>
+                <p>Jangan berikan jenis pakan yang sama terus-menerus. Variasi pakan tidak hanya memberi nutrisi lebih lengkap, tapi juga menstimulasi naluri berburu cupang dan mencegah kebosanan.</p>
+                <h2>Puasa Seminggu Sekali</h2>
+                <p>Beri hari puasa satu kali seminggu—ini bukan kekejaman, justru sehat. Puasa membantu sistem pencernaan cupang istirahat dan mencegah sembelit, salah satu masalah umum akibat overfeeding.</p>
+                <h2>Tanda-Tanda Overfeeding</h2>
+                <p>Perut buncit, susah berenang tegak, dan sering mengambang di permukaan bisa jadi tanda masalah pencernaan akibat makan berlebih. Kurangi porsi dan coba puasa 2–3 hari jika ini terjadi.</p>
+            `
+        }
     };
 
     const relatedMap = {
-      penyakit: ['panduan', 'pakan', 'dekorasi'],
-      panduan:  ['penyakit', 'pakan', 'dekorasi'],
-      pakan:    ['penyakit', 'panduan', 'dekorasi'],
-      dekorasi: ['penyakit', 'panduan', 'pakan']
+        etika: ['adaptasi', 'dekorasi', 'pakan'],
+        adaptasi: ['etika', 'dekorasi', 'pakan'],
+        dekorasi: ['etika', 'adaptasi', 'pakan'],
+        pakan: ['etika', 'adaptasi', 'dekorasi']
     };
 
     function showArticle(key) {
-      const art = articles[key];
-      if (!art) return;
+        const art = articles[key];
+        if (!art) return;
 
-      const img = document.getElementById('article-img');
-      img.src = art.img;
-      img.onerror = () => { img.src = art.fallback; };
-      img.alt = art.title;
+        const img = document.getElementById('article-img');
+        img.src = art.img;
+        img.alt = art.title;
 
-      document.getElementById('article-title').textContent = art.title;
-      document.getElementById('article-body').innerHTML = art.body;
+        document.getElementById('article-title').textContent = art.title;
+        document.getElementById('article-body').innerHTML = art.body;
 
-      const grid = document.getElementById('related-grid');
-      grid.innerHTML = '';
-      relatedMap[key].forEach(rKey => {
-        const r = articles[rKey];
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.innerHTML = `
-          <img src="${r.img}" onerror="this.src='${r.fallback}'" alt="${r.title}" style="height:120px;object-fit:cover;">
-          <div class="card-body">
-            <h3>${r.title}</h3>
-            <p class="card-author">By SiripJuara</p>
-            <button class="btn-more" onclick="showArticle('${rKey}')">Read More</button>
-          </div>
-        `;
-        grid.appendChild(card);
-      });
+        const grid = document.getElementById('related-grid');
+        grid.innerHTML = '';
+        relatedMap[key].forEach(rKey => {
+            const r = articles[rKey];
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+                <img src="${r.img}" alt="${r.title}" style="height:120px;object-fit:cover;">
+                <div class="card-body">
+                    <h3>${r.title}</h3>
+                    <p class="card-author">Oleh SiripJuara</p>
+                    <button class="btn-more" onclick="showArticle('${rKey}')">Selengkapnya</button>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
 
-      document.getElementById('page-home').classList.remove('active');
-      document.getElementById('page-article').classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+        document.getElementById('page-home').classList.remove('active');
+        document.getElementById('page-article').classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function goBack() {
-      document.getElementById('page-article').classList.remove('active');
-      document.getElementById('page-home').classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+        document.getElementById('page-article').classList.remove('active');
+        document.getElementById('page-home').classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-
-    // Active nav
-    (function () {
-      const links = document.querySelectorAll('.nav-link');
-      const current = location.pathname.split('/').pop() || 'index.html';
-      links.forEach(link => {
-        const href = (link.getAttribute('href') || '').split('/').pop();
-        if (href === current) link.classList.add('active-page');
-      });
-    })();
-
-    // Auth
-    function updateAuthState() {
-      const loggedIn = localStorage.getItem('sj_loggedIn') === 'true';
-      document.getElementById('auth-button').classList.toggle('hidden', loggedIn);
-      document.getElementById('profile-button').classList.toggle('hidden', !loggedIn);
-    }
-    updateAuthState();
-
-  </script>
+</script>
 </body>
 </html>

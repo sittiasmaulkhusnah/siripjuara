@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produk — Sirip Juara</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    :root { --navy:#293B6D; --surface:#ffffff; --surface-soft:#f0f4fb; --border:#d8e2f2; --text-dark:#1e3057; --text-muted:#6b83ad; }
+    body { font-family:"Poppins",sans-serif; background:#fff; color:var(--text-dark); padding-top:96px; min-height:100vh; display:flex; flex-direction:column; }
+    img { max-width:100%; display:block; } a { color:inherit; text-decoration:none; } button { font:inherit; cursor:pointer; border:none; background:none; }
+    .container { width:min(1320px,calc(100% - 80px)); margin:0 auto; } .hidden { display:none !important; }
+
+    /* HEADER */
+    .site-header { position:relative; z-index:999; padding:10px 5px; margin-top:-95px; }
+    .header-pill { display:flex; align-items:center; justify-content:space-between; background:#293B6D; border-radius:999px; padding:12px 16px; height:69px; }
+    .brand img { max-height:90px; width:auto; }
+    .site-nav { display:flex; align-items:center; gap:28px; margin-left:auto; }
+    .nav-link { color:rgba(255,255,255,0.72); font-size:0.85rem; font-weight:500; letter-spacing:0.08em; white-space:nowrap; transition:color 0.2s; }
+    .nav-link:hover, .nav-link.active-page { color:#fff; font-weight:700; }
+    .nav-dropdown { position:relative; }
+    .nav-has-dropdown { display:flex; align-items:center; gap:3px; cursor:pointer; }
+    .dropdown-arrow { font-size:0.6rem; opacity:0.7; transition:transform 0.2s; }
+    .nav-dropdown:hover .dropdown-arrow { transform:rotate(180deg); }
+    .dropdown-menu { display:none; position:absolute; top:100%; left:50%; transform:translateX(-50%); background:#1c2e50; border-radius:12px; padding:14px 0 8px; min-width:140px; box-shadow:0 12px 32px rgba(0,0,0,0.3); z-index:300; overflow:hidden; }
+    .nav-dropdown::after { content:""; position:absolute; left:0; top:100%; width:100%; height:16px; }
+    .dropdown-menu a { display:block; padding:10px 20px; color:rgba(255,255,255,0.8); font-size:0.82rem; transition:background 0.15s,color 0.15s; }
+    .dropdown-menu a:hover { background:rgba(255,255,255,0.08); color:#fff; }
+    .nav-dropdown:hover .dropdown-menu { display:block; }
+    .header-actions { display:flex; align-items:center; gap:10px; margin-left:45px; margin-right:30px; }
+    .cart-wrapper { display:flex; align-items:center; justify-content:center; width:35px; height:35px; border-radius:50%; transition:background 0.2s; }
+    .cart-icon { width:37px; height:37px; object-fit:contain; }
+    .btn-nav { background:#fff; color:#293B6D; border-radius:999px; padding:0.3rem 1.2rem; font-size:0.8rem; font-weight:700; letter-spacing:0.06em; white-space:nowrap; transition:opacity 0.2s,transform 0.2s; font-family:"Poppins",sans-serif; }
+    .btn-nav:hover { opacity:0.88; transform:translateY(-1px); }
+    .profile-btn { display:flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:50%; overflow:hidden; }
+    .profile-btn img { width:34px; height:34px; object-fit:contain; }
+
+    /* MAIN */
+    main { flex:1; padding:32px 0 48px; }
+
+    /* Product Top */
+    .product-top { background:#f4f9ff; border-radius:28px; padding:32px; box-shadow:0 8px 40px rgba(18,52,102,0.08); display:grid; grid-template-columns:1fr 1.2fr; gap:40px; align-items:start; margin-bottom:24px; }
+    .product-img-wrap { border-radius:20px; overflow:hidden; }
+    .product-img-wrap img { width:95%; height:auto; object-fit:cover; border-radius:20px; }
+    .product-info-wrap { display:flex; flex-direction:column; gap:15px; }
+
+    /* Rating baris atas: bintang kiri, sold badge kanan */
+    .product-meta-row { display:flex; align-items:center; justify-content:space-between; }
+    .stars-display { color:#f5c518; font-size:1rem; letter-spacing:2px; }
+    .sold-badge { background:var(--navy); color:#fff; border-radius:999px; padding:4px 14px; font-size:0.75rem; font-weight:600; display:flex; align-items:center; gap:6px; }
+
+    .product-name { font-size:1.7rem; font-weight:700; color:#3B5380; }
+    .product-price { font-size:1.15rem; font-weight:700; color:#3B5380; }
+    .product-desc { font-size:0.9rem; line-height:1.7; color:#3B5380; }
+
+    .gender-row { display:flex; gap:12px; }
+    .gender-btn { padding:8px 24px; border-radius:999px; border:1.5px solid var(--border); background:var(--surface-soft); color:var(--text-dark); font-weight:600; font-size:0.88rem; transition:all 0.2s; cursor:pointer; font-family:"Poppins",sans-serif; }
+    .gender-btn.active { background:var(--navy); color:#fff; border-color:var(--navy); }
+
+    .action-row { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+    .qty-wrap { display:flex; align-items:center; border-radius:999px; border:1.5px solid var(--border); background:var(--surface-soft); padding:5px 12px; gap:12px; }
+    .qty-btn { width:28px; height:28px; border-radius:50%; border:1.5px solid var(--border); background:var(--surface); color:var(--text-dark); font-weight:700; font-size:1rem; display:grid; place-items:center; transition:background 0.15s; cursor:pointer; font-family:"Poppins",sans-serif; }
+    .qty-btn:hover { background:var(--border); }
+    .qty-value { min-width:24px; text-align:center; font-weight:600; }
+    .add-cart-btn { width:40px; height:40px; border-radius:50%; border:1.5px solid var(--border); background:var(--surface-soft); display:grid; place-items:center; transition:background 0.2s; cursor:pointer; }
+    .add-cart-btn:hover { background:var(--border); }
+    .add-cart-btn img { width:22px; }
+    .buy-btn { padding:10px 28px; border-radius:999px; background:var(--navy); color:#fff; font-weight:700; font-size:0.9rem; transition:opacity 0.2s,transform 0.2s; cursor:pointer; font-family:"Poppins",sans-serif; }
+    .buy-btn:hover { opacity:0.88; transform:translateY(-1px); }
+
+    /* Description */
+    .desc-section { background:#fff; border-radius:28px; padding:32px; box-shadow:0 8px 40px rgba(18,52,102,0.08); margin-bottom:24px; }
+    .section-title { font-size:1.1rem; font-weight:700; color:var(--text-dark); margin-bottom:16px; }
+    .section-divider { height:1.5px; background:var(--border); border:none; margin-bottom:24px; }
+    .info-table { display:grid; grid-template-columns:130px 1fr; gap:8px 0; margin-bottom:20px; font-size:0.9rem; }
+    .info-table .label { color:var(--text-muted); }
+    .info-table .value { color:var(--text-dark); font-weight:500; }
+    .desc-text { font-size:0.9rem; line-height:1.8; color:var(--text-muted); margin-bottom:20px; }
+    .important-box { background:var(--surface-soft); border-radius:16px; padding:20px 24px; font-size:0.88rem; line-height:1.9; color:var(--text-dark); }
+    .important-box strong { display:block; margin-bottom:4px; }
+
+    /* Reviews */
+    .reviews-section { background:#fff; border-radius:28px; padding:32px; box-shadow:0 8px 40px rgba(18,52,102,0.08); margin-bottom:24px; }
+    .reviews-header-row { display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; }
+
+    /* Rating besar: angka + bintang, di kanan judul "Product Review" */
+    .rating-big { display:flex; align-items:center; gap:8px; font-size:1.5rem; font-weight:700; color:var(--text-dark); }
+    .rating-big .stars-sm { color:#f5c518; font-size:1rem; letter-spacing:1px; }
+
+    .review-item { border-top:1px solid var(--border); padding:20px 0; }
+    .review-top-row { display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; }
+    .reviewer { display:flex; align-items:center; gap:12px; }
+    .reviewer-avatar { width:40px; height:40px; border-radius:50%; background:#d8e2f2; display:grid; place-items:center; font-size:1rem; font-weight:700; color:#3b5380; flex-shrink:0; overflow:hidden; }
+    .reviewer-avatar img { width:100%; height:100%; object-fit:cover; }
+    .reviewer-name { font-weight:600; font-size:0.9rem; }
+    .reviewer-meta { font-size:0.75rem; color:var(--text-muted); margin-top:2px; }
+    .helpful-btn { font-size:0.8rem; color:var(--text-muted); cursor:pointer; }
+    .review-stars { color:#f5c518; font-size:0.9rem; margin-bottom:4px; }
+    .review-date { font-size:0.75rem; color:var(--text-muted); margin-bottom:8px; }
+    .review-text { font-size:0.88rem; line-height:1.7; color:var(--text-dark); margin-bottom:12px; }
+    .review-imgs { display:flex; gap:10px; }
+    .review-img-thumb { width:90px; height:90px; border-radius:12px; background:var(--surface-soft); border:1px solid var(--border); display:grid; place-items:center; font-size:0.75rem; color:var(--text-muted); }
+
+    /* Footer */
+    .site-footer { background:#1c2d5c; color:#fff; padding:60px 20px; margin-top:auto; }
+    .footer-inner { display:grid; grid-template-columns:1fr 2.2fr; gap:60px; align-items:start; }
+    .footer-brand .brand img { max-height:110px; width:auto; margin:-30px; }
+    .footer-brand p { margin:20px 0 0; max-width:300px; line-height:1.65; font-size:0.9rem; color:rgba(255,255,255,0.85); }
+    .footer-links { display:grid; grid-template-columns:1fr 1fr 1.4fr; gap:0; align-items:start; margin-right:-50px; }
+    .footer-links h3 { margin:0 0 20px; font-size:1rem; font-weight:700; color:#fff; display:flex; align-items:center; gap:10px; }
+    .footer-line { display:inline-block; width:32px; height:1.5px; background:#fff; flex-shrink:0; }
+    .footer-links a, .footer-links > div > p { display:block; color:rgba(255,255,255,0.85); margin-bottom:10px; line-height:1.4; font-size:0.9rem; text-decoration:none; }
+    .footer-links a:hover { color:#fff; }
+    .contact-item { display:flex !important; align-items:center; gap:10px; color:rgba(255,255,255,0.85); font-size:0.9rem; margin-bottom:12px; text-decoration:none; line-height:1.4; }
+    .contact-icon { width:22px; height:22px; object-fit:contain; flex-shrink:0; }
+    @media (max-width:900px) { .product-top { grid-template-columns:1fr; } .footer-inner { grid-template-columns:1fr; gap:40px; } .footer-links { grid-template-columns:1fr 1fr; } }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-pill">
+      <a class="brand" href="index.html"><img src="png/Logo.png" alt="Sirip Juara Logo"></a>
+      <nav class="site-nav">
+        <a href="index.html" class="nav-link">HOME</a>
+        <a href="shop.html" class="nav-link active-page">SHOP</a>
+        <a href="careguide.html" class="nav-link">CARE GUIDE</a>
+        <div class="nav-dropdown">
+          <a href="about.html" class="nav-link nav-has-dropdown">ABOUT <span class="dropdown-arrow">▾</span></a>
+          <div class="dropdown-menu"><a href="about.html">About Betta</a><a href="team.html">Team</a></div>
+        </div>
+        <div class="nav-dropdown">
+          <a href="support.html" class="nav-link nav-has-dropdown">SUPPORT <span class="dropdown-arrow">▾</span></a>
+          <div class="dropdown-menu"><a href="support1.html">FAQ</a><a href="support2.html">Contact Us</a></div>
+        </div>
+      </nav>
+      <div class="header-actions">
+        <a href="cart.html" class="cart-wrapper" id="cart-link"><img src="png/Cart.png" alt="Cart" class="cart-icon"></a>
+        <a href="Signup.html" id="auth-button" class="btn-nav">SIGN UP</a>
+        <a href="profil.html" id="profile-button" class="profile-btn hidden"><img src="png/iconAccount.png" alt="Profile"></a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <!-- Product Top -->
+      <div class="product-top">
+        <div class="product-img-wrap">
+          <img id="productImg" src="" alt="">
+        </div>
+        <div class="product-info-wrap">
+          <!-- Bintang kiri | Sold badge kanan -->
+          <div class="product-meta-row">
+            <div class="stars-display" id="productStars"></div>
+            <div class="sold-badge"><span id="productSold"></span> <span>🔗</span></div>
+          </div>
+          <h1 class="product-name" id="productName"></h1>
+          <div class="product-price" id="productPrice"></div>
+          <p class="product-desc" id="productShortDesc"></p>
+          <div class="gender-row">
+            <button class="gender-btn active">Male</button>
+            <button class="gender-btn">Female</button>
+          </div>
+          <div class="action-row">
+            <div class="qty-wrap">
+              <button class="qty-btn">−</button>
+              <span class="qty-value">1</span>
+              <button class="qty-btn">+</button>
+            </div>
+            <button class="add-cart-btn" aria-label="Add to Cart">
+              <img src="png/Cart.png" alt="Cart">
+            </button>
+            <button class="buy-btn" id="buyNowBtn">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Description -->
+      <div class="desc-section">
+        <h2 class="section-title">Product Description</h2>
+        <hr class="section-divider">
+        <div class="info-table">
+          <span class="label">Stok</span>     <span class="value" id="infoStock"></span>
+          <span class="label">Gender</span>   <span class="value" id="infoGender"></span>
+          <span class="label">Kategori</span> <span class="value" id="infoCategory"></span>
+          <span class="label">Asal</span>     <span class="value" id="infoOrigin"></span>
+        </div>
+        <p class="desc-text" id="productLongDesc"></p>
+        <div class="important-box">
+          <strong>INFO PENTING</strong>
+          • Produk menggunakan label khusus hewan hidup pada paket<br>
+          • Pengemasan menggunakan plastik double di bagian dalam dan box styrofoam/kardus pada bagian luar agar aman sampai tujuan<br>
+          • Ruang oksigen dipastikan cukup aman<br>
+          • Volume air tidak lebih dari 50% dari kapasitas kantong<br>
+          • Packing sesuai standar pengiriman ikan<br><br>
+          <strong>GARANSI</strong>
+          • Jika ikan mati kami akan ganti<br>
+          • Wajib menyertakan video unboxing dari awal sampai akhir tanpa jeda, tanpa video maka garansi dianggap hangus<br><br>
+          Happy Shopping 😉🔥
+        </div>
+      </div>
+
+      <!-- Reviews -->
+      <div class="reviews-section">
+        <div class="reviews-header-row">
+          <h2 class="section-title">Product Review</h2>
+          <!-- Angka rating + bintang kecil di kanan -->
+          <div class="rating-big">
+            <span id="ratingNumber"></span>
+            <span class="stars-sm" id="ratingStars"></span>
+          </div>
+        </div>
+        <hr class="section-divider">
+        <div id="reviewsList"></div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a class="brand" href="index.html"><img src="png/Logo.png" alt="Sirip Juara Logo"></a>
+        <p>Your trusted place to find high-quality betta fish and beginner-friendly care guidance.</p>
+      </div>
+      <div class="footer-links">
+        <div>
+          <h3>Company <span class="footer-line"></span></h3>
+          <a href="#">Beginner Guide</a><a href="#">Types of Betta</a><a href="#">Feeding Tips</a><a href="#">Care Basics</a>
+        </div>
+        <div>
+          <h3>Quick Links <span class="footer-line"></span></h3>
+          <a href="index.html">Home</a><a href="shop.html">Shop</a><a href="careguide.html">Care Guide</a><a href="about.html">About</a><a href="support.html">Support</a>
+        </div>
+        <div>
+          <h3>Contact <span class="footer-line"></span></h3>
+          <p class="contact-item"><img src="png/iconLokasi.png" alt="" class="contact-icon"><span>Jl. Makkio Baji II, SulSel, Indonesia</span></p>
+          <a href="mailto:siripjuara@gmail.com" class="contact-item"><img src="png/iconEmail.png" alt="" class="contact-icon"><span>siripjuara@gmail.com</span></a>
+          <p class="contact-item"><img src="png/iconCS.png" alt="" class="contact-icon"><span>Customer Service</span></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ── DATA PRODUK (sama persis dengan shop.html) ────────────
+    const SJ_PRODUCTS = {
+      1:  { id:1,  name:"Double Tail Betta",   price:100000, img:"png/s1double tail betta.png",  rating:"4,9", ratingNum:4.9, sold:5,  gender:"Male", stock:"Tersedia", category:"Double Tail", origin:"Lokal",
+            shortDesc:"Cupang Double Tail tampil elegan dengan sirip ganda yang mekar simetris dan warna biru-putih yang clean.",
+            longDesc:"Double Tail Betta memiliki ciri khas ekor terbelah dua yang membuat tampilannya terlihat lebih penuh dan mewah saat berenang. Perpaduan warna putih bersih dengan gradasi biru di bagian sirip memberikan kesan premium dan eye-catching, cocok untuk kamu yang cari ikan dengan tampilan unik tapi tetap classy.",
+            reviews:[{name:"Diela", avatar:"png/diela.png", date:"2026-01-12", variant:"Male", stars:5, text:"Cantik, pengiriman cepat, ikan sampai dengan selamat"},
+                     {name:"Aiman", avatar:"png/aiman.png", date:"2026-01-12", variant:"Male", stars:5, text:"Bagus, pengiriman cepat, ikan sampai dengan selamat"}] },
+
+      2:  { id:2,  name:"Feathertail",          price:450000, img:"png/s2feathertail.png",         rating:"4,9", ratingNum:4.9, sold:7,  gender:"Male", stock:"Tersedia", category:"Feathertail", origin:"Import",
+            shortDesc:"Feathertail memiliki sirip bercabang halus yang terlihat indah dan premium.",
+            longDesc:"Jenis ini cocok untuk kolektor karena bentuk siripnya unik, lebar, dan menyerupai bulu halus saat mengembang. Warnanya beragam dan sangat eye-catching dalam aquarium.",
+            reviews:[{name:"Naya", avatar:"", date:"2026-02-03", variant:"Male", stars:5, text:"Siripnya cantik banget dan ikan aktif."}] },
+
+      3:  { id:3,  name:"Plakat Betta Thai",    price:80000,  img:"png/s3plakat betta thai.png",   rating:"4,8", ratingNum:4.8, sold:8,  gender:"Male", stock:"Tersedia", category:"Plakat",      origin:"Import",
+            shortDesc:"Plakat Betta Thai memiliki tubuh kuat, warna tegas, dan gaya berenang aktif.",
+            longDesc:"Cupang plakat dikenal dengan sirip pendek dan postur kokoh, cocok untuk penghobi yang menyukai tampilan simple namun berkarakter. Mudah dirawat dan sangat aktif.",
+            reviews:[{name:"Fahri", avatar:"", date:"2026-01-28", variant:"Male", stars:4, text:"Warnanya cerah dan geraknya aktif."}] },
+
+      4:  { id:4,  name:"Crowntail Betta",      price:150000, img:"png/s4crowntail.png",           rating:"4,9", ratingNum:4.9, sold:6,  gender:"Male", stock:"Tersedia", category:"Crowntail",   origin:"Lokal",
+            shortDesc:"Crowntail Betta memiliki sirip runcing menyerupai mahkota yang terlihat unik.",
+            longDesc:"Jenis ini populer karena bentuk siripnya berbeda dari cupang lain, cocok untuk pengguna yang ingin ikan dengan tampilan mencolok dan berkarakter kuat.",
+            reviews:[{name:"Alya", avatar:"", date:"2026-02-10", variant:"Male", stars:5, text:"Bentuk siripnya bagus dan sesuai foto."}] },
+
+      5:  { id:5,  name:"Elephant Ear",         price:400000, img:"png/s5elephant ear.png",        rating:"4,9", ratingNum:4.9, sold:4,  gender:"Male", stock:"Tersedia", category:"Dumbo",       origin:"Import",
+            shortDesc:"Elephant Ear memiliki sirip dada besar menyerupai telinga gajah.",
+            longDesc:"Cupang ini memiliki daya tarik pada bagian sirip dadanya yang lebar dan elegan saat bergerak di air. Warnanya metalik dan sangat memukau dalam aquarium.",
+            reviews:[{name:"Mira", avatar:"", date:"2026-01-20", variant:"Male", stars:5, text:"Cantik banget, cocok untuk koleksi."}] },
+
+      6:  { id:6,  name:"Halfmoon Betta",       price:120000, img:"png/s6halfmoon betta.png",      rating:"4,9", ratingNum:4.9, sold:12, gender:"Male", stock:"Tersedia", category:"Halfmoon",    origin:"Lokal",
+            shortDesc:"Halfmoon Betta memiliki sirip lebar yang membentuk setengah lingkaran sempurna.",
+            longDesc:"Jenis ini sangat populer karena tampilan siripnya yang megah dan mudah dikenali, cocok untuk pemula maupun kolektor. Sirip mekar 180 derajat saat display.",
+            reviews:[{name:"Dina", avatar:"", date:"2026-02-06", variant:"Male", stars:5, text:"Siripnya mekar bagus dan ikan sehat."}] },
+
+      7:  { id:7,  name:"Dumbo Ear",            price:100000, img:"png/s7dumbo ear.png",           rating:"4,8", ratingNum:4.8, sold:9,  gender:"Male", stock:"Tersedia", category:"Dumbo",       origin:"Lokal",
+            shortDesc:"Dumbo Ear memiliki sirip samping besar yang membuat tampilannya lucu dan menarik.",
+            longDesc:"Cupang ini cocok untuk penghobi yang mencari ikan dengan karakter visual unik dan mudah dikenali. Sirip dadanya lebar seperti telinga gajah.",
+            reviews:[{name:"Rara", avatar:"", date:"2026-01-15", variant:"Male", stars:5, text:"Ikan lucu, aktif, dan packing rapi."}] },
+
+      8:  { id:8,  name:"Giant Betta",          price:250000, img:"png/s8giant betta.png",         rating:"4,9", ratingNum:4.9, sold:5,  gender:"Male", stock:"Tersedia", category:"Giant Betta", origin:"Import",
+            shortDesc:"Giant Betta memiliki ukuran tubuh lebih besar dibanding cupang biasa.",
+            longDesc:"Jenis ini cocok untuk kolektor yang menyukai cupang dengan ukuran dominan, postur kuat, dan tampilan gagah. Bisa tumbuh hingga 3x ukuran cupang biasa.",
+            reviews:[{name:"Bayu", avatar:"", date:"2026-01-05", variant:"Male", stars:5, text:"Ukuran besar dan sehat."}] },
+
+      9:  { id:9,  name:"Rosetail",             price:600000, img:"png/s9rosetail.png",            rating:"4,9", ratingNum:4.9, sold:3,  gender:"Male", stock:"Tersedia", category:"Rosetail",    origin:"Import",
+            shortDesc:"Rosetail memiliki sirip mewah dengan lipatan menyerupai kelopak bunga mawar.",
+            longDesc:"Jenis ini termasuk premium karena tampilan siripnya yang tebal, lebar, dan sangat dekoratif. Sangat langka dan menjadi incaran kolektor serius.",
+            reviews:[{name:"Kevin", avatar:"", date:"2026-01-18", variant:"Male", stars:5, text:"Sangat premium, sesuai harga."}] },
+
+      10: { id:10, name:"Super Delta Betta",    price:60000,  img:"png/s10super delta.png",        rating:"4,9", ratingNum:4.9, sold:10, gender:"Male", stock:"Tersedia", category:"Super Delta", origin:"Lokal",
+            shortDesc:"Super Delta Betta memiliki sirip lebar dengan bentuk hampir menyerupai Halfmoon.",
+            longDesc:"Jenis ini cocok untuk pemula karena tampilannya indah, harga terjangkau, dan mudah dirawat. Sirip mengembang hampir 180 derajat.",
+            reviews:[{name:"Tia", avatar:"", date:"2026-02-01", variant:"Male", stars:5, text:"Bagus untuk pemula, ikan sehat."}] },
+
+      11: { id:11, name:"Rosetail Betta Blue",       price:150000, img:"png/s11rosetail betta.png",     rating:"4,7", ratingNum:4.7, sold:1,  gender:"Male", stock:"Tersedia", category:"Premium",    origin:"Lokal",
+            shortDesc:"Rosetail Betta ini punya sirip super lebar dan berlapis-lapis seperti bunga yang sedang mekar.",
+            longDesc:"Rosetail merupakan pengembangan dari Halfmoon dengan sirip yang lebih rimbun dan bertumpuk, menciptakan efek dramatis saat bergerak di air. Warna biru pekat memberikan kesan elegan dan mewah, cocok untuk kolektor yang ingin tampilan lebih premium di akuarium.",
+            reviews:[{name:"Kania", avatar:"kania.png", date:"2026-02-12", variant:"Male", stars:5, text:"Lucu dan aktif banget 😄💖 warnanya juga cantik, jadi makin betah lihat di akuarium 😍."}],
+            reviews:[{name:"Harum", avatar:"harum.png", date:"2026-02-12", variant:"Male", stars:5, text:"Bagus, pengiriman cepat, ikan sampai dengan selamat."}],
+            reviews:[{name:"Fitri", avatar:"fitri.png", date:"2026-01-13", variant:"Male", stars:5, text:"alhamdulillah paket sampai dengan selamat 💖 ikannya sehat dan geraknya lincah banget. warnanya juga sesuai ekspektasi, cantik dan cerah 😍."}] },
+
+      12: { id:12, name:"Halfmoon Blue",        price:80000,  img:"png/s12halfmoon blue.png",      rating:"4,9", ratingNum:4.9, sold:1, gender:"Male", stock:"Tersedia", category:"Premium",    origin:"Lokal",
+            shortDesc:"Halfmoon Blue ini tampil clean dengan warna biru-putih yang lembut dan bukaan ekor sempurna.",
+            longDesc:"Halfmoon dikenal dengan ekor yang bisa mengembang hingga 180°, memberikan tampilan simetris dan penuh. Kombinasi warna biru dan putih membuatnya terlihat kalem namun tetap menarik, cocok untuk kamu yang suka gaya elegan dan tidak terlalu mencolok.",
+            reviews:[{name:"Sabil", avatar:"sabil.png", date:"2026-06-29", variant:"Male", stars:5, text:"Warna ikan sesuai deskripsi, tidak mengecewakan."}],
+             reviews:[{name:"Akmal", avatar:"akmal.png", date:"2026-02-11", variant:"Male", stars:5, text:"Ikannya bagus, warnanya keluar banget dan kelihatan sehat sejak pertama datang."}] },
+
+      13: { id:13, name:"Yellow Koi",           price:30000,  img:"png/s13yellow koi.png",         rating:"4,9", ratingNum:4.9, sold:4, gender:"Male", stock:"Tersedia", category:"Standar",  origin:"Lokal",
+            shortDesc:"Yellow Koi ini tampil unik dengan corak kuning bercampur hitam seperti ikan koi.",
+            longDesc:"Jenis koi dikenal dengan pola warna acak yang membuat setiap ikan terlihat berbeda dan eksklusif. Dominasi warna kuning dengan bercak hitam memberikan kesan cerah dan hidup, cocok untuk kamu yang suka tampilan playful dan tidak monoton.",
+            reviews:[{name:"Fajar", avatar:"fajar.png", date:"2026-01-30", variant:"Male", stars:5, text:"Keren, sesuai ekspektasi, warna sama bentuk siripnya enak dilihat."}],
+            reviews:[{name:"Dimas", avatar:"dimas.png", date:"2026-01-30", variant:"Male", stars:5, text:"Warnanya cakep, apalagi pas kena lampu jadi makin kelihatan"}]},
+
+      14: { id:14, name:"Dragon Besgel",        price:50000,  img:"png/s14dragon besgel.png",      rating:"4,7", ratingNum:4.7, sold:2,  gender:"Male", stock:"Tersedia", category:"Standar", origin:"Lokal",
+            shortDesc:"Dragon Besgel ini punya warna gelap dengan kilap sisik yang tegas dan elegan.",
+            longDesc:"Ciri khas dragon ada pada sisik tebal yang terlihat seperti armor, memberikan kesan kuat dan eksklusif. Kombinasi warna gelap dengan sedikit aksen cerah membuat ikan ini terlihat misterius tapi tetap menarik.",
+            reviews:[{name:"ardi", avatar:"ardi.png", date:"2026-01-25", variant:"Male", stars:4, text:"Ikannya sehat, geraknya juga aktif jadi nggak bosen dilihat"}],
+            reviews:[{name:"Uli", avatar:"Uli.png", date:"2026-01-25", variant:"Male", stars:4, text:"Ikan cupangnya cantik banget 😍 warnanya cerah dan mengkilap, apalagi kalau kena cahaya jadi makin kelihatan elegan. Gerakannya juga anggun banget, bikin aku betah lama-lama lihat akuariumnya 💕"}] },
+
+      15: { id:15, name:"FCCP Red Head",        price:100000, img:"png/s15FCCP red head.png",      rating:"4,8", ratingNum:4.8, sold:2,  gender:"Male", stock:"Tersedia", category:"Premium",       origin:"Impor",
+            shortDesc:"FCCP Red Head ini tampil mencolok dengan warna merah putih yang kontras dan unik.",
+            longDesc:"Corak warna pada jenis ini terlihat tegas antara merah dan putih, menciptakan tampilan yang sangat eye-catching. Bentuk sirip yang rapi dan warna cerah membuatnya cocok jadi pilihan utama untuk mempercantik akuarium.",
+            reviews:[{name:"Bima", avatar:"bima.png", date:"2026-02-08", variant:"Male", stars:5, text:"Ikannya datang dengan kondisi bagus, langsung aktif pas dimasukin ke wadah, kelihatan sehat dari awal."}],
+             reviews:[{name:"Yudha", avatar:"yudha.png", date:"2026-02-08", variant:"Male", stars:5, text:"Ikan sehat, nggak ada tanda-tanda sakit, jadi lebih tenang peliharanya."}]},
+
+      16: { id:16, name:"Dumbo Ear Butterfly",  price:200000, img:"png/s16dumbo ear butterfly.png",rating:"4,9", ratingNum:4.9, sold:3,  gender:"Male", stock:"Tersedia", category:"Premium",       origin:"Import",
+            shortDesc:"Dumbo Ear Butterfly ini punya sirip besar dan warna gradasi yang cantik dan elegan.",
+            longDesc:"Dumbo dikenal dengan sirip dada besar seperti telinga, ditambah pola butterfly yang memiliki gradasi warna di ujung sirip. Kombinasi ini menciptakan tampilan yang sangat lembut dan artistik saat berenang.",
+            reviews:[{name:"Andika", avatar:"andika.png", date:"2026-02-04", variant:"Male", stars:5, text:"ikannya sampe dengan aman, pas dibuka masih aktif banget. warnanya juga keluar, puas sih 👍"}],
+             reviews:[{name:"Sari", avatar:"sari.png", date:"2026-02-04", variant:"Male", stars:5, text:"paketnya baru aja sampai 😍 alhamdulillah ikannya masih hidup dan langsung gerak aktif pas dibuka. warnanya juga cantik banget, sesuai sama yang di foto. packingnya rapi dan aman, jadi nggak terlalu khawatir waktu buka. puas banget sih sejauh ini 💕"}] },
+
+      17: { id:17, name:"Mustard Gass",         price:60000,  img:"png/s17mustard gass.png",       rating:"4,8", ratingNum:4.8, sold:2,  gender:"Male", stock:"Tersedia", category:"Standar",       origin:"Lokal",
+            shortDesc:"Mustard Gass ini tampil unik dengan kombinasi warna kontras dan pola yang tidak biasa.",
+            longDesc:"Jenis ini memiliki perpaduan warna biru, kuning, dan hitam yang mencolok dengan pola khas yang jarang ditemukan. Tampilan keseluruhan terlihat eksotis dan cocok untuk kamu yang ingin ikan beda dari yang lain.",
+            reviews:[{name:"Aan", avatar:"aan.png", date:"2026-01-28", variant:"Male", stars:5, text:"paket baru sampai tadi, langsung dibuka dan dicek. ikannya masih hidup dan cukup aktif, jadi lega. warnanya juga sesuai sama foto, nggak jauh beda."}], 
+             reviews:[{name:"Rizky", avatar:"rizky.png", date:"2026-01-28", variant:"Male", stars:5, text:"barang sudah diterima, awalnya sempat khawatir karena kirimnya lumayan jauh, tapi ternyata ikan masih sehat dan langsung gerak. sejauh ini puas."}]},
+
+      18: { id:18, name:"Multy Cello",          price:50000,  img:"png/s18multy cello.png",        rating:"4,9", ratingNum:4.9, sold:2, gender:"Male", stock:"Tersedia", category:"Standar",       origin:"Lokal",
+            shortDesc:"Multy Cello ini hadir dengan warna lembut transparan yang terlihat clean dan estetik.",
+            longDesc:"Ciri khas cello adalah warna tubuh yang lebih terang dan sedikit transparan, memberikan kesan ringan dan elegan. Warna pastel yang dimiliki membuatnya cocok untuk tampilan akuarium yang minimalis dan modern.",
+            reviews:[{name:"Fajar", avatar:"fajar.png", date:"2026-02-11", variant:"Male", stars:5, text:" paketnya aman, packing cukup rapi. pas dibuka ikan masih hidup dan nggak lemes. warnanya juga masih bagus."}],
+             reviews:[{name:"Aulia", avatar:"aulia.png", date:"2026-02-11", variant:"Male", stars:5, text:"Paket baru datang dan langsung aku cek 😍 ikannya masih fresh, nggak lemes sama sekali. gerakannya aktif banget, bikin lega. warna juga sesuai ekspektasi, cantik banget 💖"}]},
+
+      19: { id:19, name:"Blue Rim",             price:30000,  img:"png/s19blue rim.png",           rating:"4,7", ratingNum:4.7, sold:3, gender:"Male", stock:"Tersedia", category:"Standar",    origin:"Lokal",
+            shortDesc:"Blue Rim ini punya pinggiran sirip biru yang tegas dan terlihat sangat kontras.",
+            longDesc:"Jenis ini dikenal dari garis warna di tepi sirip yang membuat tampilannya lebih hidup. Kombinasi warna dasar terang dengan outline biru memberikan efek visual yang menarik dan unik.",
+            reviews:[{name:"Bima", avatar:"bima.png", date:"2026-01-19", variant:"Male", stars:5, text:"baru sampai tadi, ikan masih hidup dan kelihatan sehat. packing juga lumayan aman."}],
+            reviews:[{name:"Dandi", avatar:"dandi.png", date:"2026-01-19", variant:"Male", stars:5, text:"Paket diterima, ikan masih aktif dan nggak lemes. kondisi sesuai ekspektasi."}]},
+
+      20: { id:20, name:"Nemo Emerald",         price:250000, img:"png/s20nemo emerald.png",       rating:"4,9", ratingNum:4.9, sold:5,  gender:"Male", stock:"Tersedia", category:"Premium",  origin:"Import",
+            shortDesc:"Nemo Emerald ini tampil super mencolok dengan warna campuran merah, kuning, dan biru.",
+            longDesc:"Jenis nemo terkenal dengan pola warna acak yang vibrant dan penuh karakter. Warna emerald memberikan tambahan kesan eksklusif, membuat ikan ini terlihat mahal dan cocok untuk kolektor.",
+            reviews:[{name:"Hendra", avatar:"hendra.png", date:"2026-02-05", variant:"Male", stars:5, text:"ikannya selamat sampai rumah, kondisi masih bagus dan aktif."}],
+            reviews:[{name:"Ayu", avatar:"ayu.png", date:"2026-02-05", variant:"Male", stars:5, text:"paket udah diterima 🥺 awalnya khawatir tapi ternyata ikannya sehat banget. warnanya juga nggak pudar, malah cantik. langsung jatuh suka 💖."}]}
+    };
+
+    // ── HELPER ────────────────────────────────────────────────
+    function fmt(n) { return "Rp " + Number(n).toLocaleString("id-ID"); }
+    function starsHtml(n) {
+    const full = Math.floor(n);
+    const empty = 5 - full;
+    return "★".repeat(full) + "☆".repeat(empty);
+  }
+
+    // ── AUTH ──────────────────────────────────────────────────
+    function updateAuthState() {
+      const loggedIn = localStorage.getItem("sj_loggedIn") === "true";
+      document.getElementById("auth-button").classList.toggle("hidden", loggedIn);
+      document.getElementById("profile-button").classList.toggle("hidden", !loggedIn);
+    }
+    updateAuthState();
+
+    // ── ACTIVE NAV ────────────────────────────────────────────
+    (function () {
+      const current = location.pathname.split("/").pop() || "index.html";
+      document.querySelectorAll(".nav-link").forEach(link => {
+        const href = (link.getAttribute("href") || "").split("/").pop();
+        if (href === current) link.classList.add("active-page");
+      });
+    })();
+
+    // ── ISI DATA PRODUK ───────────────────────────────────────
+    const id = parseInt(new URLSearchParams(location.search).get("id")) || 1;
+    const p  = SJ_PRODUCTS[id] || SJ_PRODUCTS[1];
+
+    document.title = p.name + " — Sirip Juara";
+
+    // Gambar
+    document.getElementById("productImg").src = p.img;
+    document.getElementById("productImg").alt = p.name;
+
+    // Bintang (atas, di samping sold)
+    document.getElementById("productStars").innerHTML = starsHtml(p.ratingNum);
+
+    // Sold
+    document.getElementById("productSold").textContent = p.sold + " sold";
+
+    // Nama & harga
+    document.getElementById("productName").textContent  = p.name;
+    document.getElementById("productPrice").textContent = fmt(p.price);
+    document.getElementById("productShortDesc").textContent = p.shortDesc;
+
+    // Info tabel
+    document.getElementById("infoStock").textContent    = p.stock;
+    document.getElementById("infoGender").textContent   = p.gender;
+    document.getElementById("infoCategory").textContent = p.category;
+    document.getElementById("infoOrigin").textContent   = p.origin;
+    document.getElementById("productLongDesc").textContent = p.longDesc;
+
+    // Rating besar di section review: angka + bintang kecil
+    document.getElementById("ratingNumber").textContent = p.rating;
+    document.getElementById("ratingStars").innerHTML = starsHtml(p.ratingNum);
+
+    // Render ulasan
+    const reviewsList = document.getElementById("reviewsList");
+    (p.reviews || []).forEach(r => {
+      const avatarHtml = r.avatar
+        ? `<img src="${r.avatar}" alt="${r.name}">`
+        : r.name[0].toUpperCase();
+      reviewsList.innerHTML += `
+        <div class="review-item">
+          <div class="review-top-row">
+            <div class="reviewer">
+              <div class="reviewer-avatar">${avatarHtml}</div>
+              <div>
+                <div class="reviewer-name">${r.name}</div>
+                <div class="reviewer-meta">${r.date} · Variasi: ${r.variant}</div>
+              </div>
+            </div>
+            <button class="helpful-btn">Membantu (2) 👍</button>
+          </div>
+          <div class="review-stars">${"★".repeat(r.stars)}${"☆".repeat(5-r.stars)}</div>
+          <p class="review-text">${r.text}</p>
+          <div class="review-imgs">
+            <div class="review-img-thumb">Image 1</div>
+            <div class="review-img-thumb">Image 2</div>
+          </div>
+        </div>`;
+    });
+
+    // ── GENDER TOGGLE ─────────────────────────────────────────
+    document.querySelectorAll(".gender-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".gender-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+      });
+    });
+
+    // ── QUANTITY ──────────────────────────────────────────────
+    let qty = 1;
+    const qtyVal = document.querySelector(".qty-value");
+    document.querySelectorAll(".qty-btn").forEach((btn, i) => {
+      btn.addEventListener("click", () => {
+        if (i === 0 && qty > 1) qty--;
+        if (i === 1) qty++;
+        qtyVal.textContent = qty;
+      });
+    });
+
+    // ── BUY NOW ───────────────────────────────────────────────
+    document.getElementById("buyNowBtn").addEventListener("click", () => {
+      const gender = document.querySelector(".gender-btn.active")?.textContent || p.gender;
+      const orderId = localStorage.getItem("sj_order_id") || ("#SJ" + Date.now().toString().slice(-8));
+      localStorage.setItem("sj_order_id", orderId);
+      localStorage.setItem("sj_last_order", JSON.stringify({
+        productId: id, name: p.name, price: p.price,
+        img: p.img, qty, gender, orderId, total: p.price * qty
+      }));
+      window.location.href = "checkout.html";
+    });
+
+    // ── ADD TO CART ───────────────────────────────────────────
+    document.querySelector(".add-cart-btn").addEventListener("click", () => {
+      let cart = [];
+      try { cart = JSON.parse(localStorage.getItem("sj_cart") || "[]"); } catch {}
+      const ex = cart.find(i => i.id === id);
+      if (ex) ex.qty += qty; else cart.push({ id, qty });
+      localStorage.setItem("sj_cart", JSON.stringify(cart));
+      const btn = document.querySelector(".add-cart-btn");
+      btn.style.transform = "scale(1.2)";
+      setTimeout(() => btn.style.transform = "", 300);
+    });
+  </script>
+
+</body>
+</html>

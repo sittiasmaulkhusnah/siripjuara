@@ -12,6 +12,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mobile-fixes.css" />
   </head>
   
   <body>
@@ -30,7 +31,9 @@
           <a href="careguide.html" class="nav-link">CARE GUIDE</a>
 
           <div class="nav-dropdown">
-            <a href="about.html" class="nav-link nav-has-dropdown">ABOUT <span class="dropdown-arrow">▾</span></a>
+            <button type="button" class="nav-link nav-has-dropdown dropdown-toggle">
+            ABOUT <span class="dropdown-arrow">▾</span>
+          </button>
             <div class="dropdown-menu">
               <a href="about.html">About Betta</a>
               <a href="team.html">Team</a>
@@ -38,7 +41,9 @@
           </div>
 
           <div class="nav-dropdown">
-            <a href="support.html" class="nav-link nav-has-dropdown">SUPPORT <span class="dropdown-arrow">▾</span></a>
+            <button type="button" class="nav-link nav-has-dropdown dropdown-toggle">
+            SUPPORT <span class="dropdown-arrow">▾</span>
+          </button>
             <div class="dropdown-menu">
               <a href="support1.html">FAQ</a>
               <a href="support2.html">Contact Us</a>
@@ -47,7 +52,7 @@
         </nav>
 
         <div class="header-actions">
-          <a href="cart.html" class="cart-wrapper" id="cart-link" aria-label="Cart">
+          <a href="cart1.html" class="cart-wrapper" id="cart-link" aria-label="Cart">
             <img src="png/Cart.png" alt="Cart" class="cart-icon">
           </a>
           <a href="Signup.html" id="auth-button" class="btn-nav">SIGN UP</a>
@@ -314,6 +319,7 @@
     
     </script>
     <script src="scripts.js"></script>
+    <script src="mobile-fixes.js"></script>
 
     <!-- tombol reset sementara, hapus nanti -->
     <button onclick="localStorage.removeItem('sj_loggedIn'); location.reload()" 

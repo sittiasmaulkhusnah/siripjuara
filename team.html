@@ -1,586 +1,722 @@
-Team Kami
-
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Kami - Sirip Juara</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <title>TEAM - Sirip Juara</title>
   <style>
-    :root {
-      --blue-deep:   #0f4e95;
-      --blue-mid:    #1a6fc4;
-      --blue-light:  #eef4fb;
-      --blue-pale:   #d8e8ff;
-      --accent-teal: #17b8a6;
-      --text-dark:   #1e3256;
-      --text-body:   #3d5278;
-      --white:       #ffffff;
-      --radius-lg:   24px;
-      --radius-pill: 999px;
-      --shadow:      0 16px 48px rgba(15,78,149,.10);
-      font-family: 'Poppins', sans-serif;
-    }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: var(--white); color: var(--text-dark); line-height: 1.65; }
-    a { color: inherit; text-decoration: none; }
 
-    /* ─── HEADER ─────────────────────────────── */
+    :root {
+      --navy:        #293B6D;
+      --blue-footer: #1c2d5c;
+      --surface:     #ffffff;
+      --surface-soft:#f0f4fb;   
+      --border:      #d8e2f2;
+      --text-dark:   #1e3057;
+      --text-muted:  #6b83ad;
+      --accent:      #2d4f9f;
+    }
+
+    body {
+      font-family: 'Poppins';
+      background: #fff;
+      color: var(--text-dark);
+      padding-top: 96px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    img { max-width: 100%; display: block; }
+    a   { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; border: none; background: none; }
+
+    .container {
+      width: min(1320px, calc(100% - 80px));
+      margin: 0 auto;
+    }
+
+    .hidden { display: none !important; }
+
+    /* ====================================================
+       HEADER — sama persis dengan cart.html
+    ==================================================== */
     .site-header {
-      background: linear-gradient(160deg, #0a3d7a 0%, #1a6fc4 60%, #2b8fd4 100%);
-      color: var(--white);
       position: relative;
-      overflow: hidden;
+      z-index: 999;
+      padding: 10px 5px;
+      margin-top: -95px;
     }
-    /* subtle wave-blob decorations */
-    .site-header::before,
-    .site-header::after {
-      content: '';
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(255,255,255,.07);
-      pointer-events: none;
-    }
-    .site-header::before { width: 420px; height: 420px; right: -80px; top: -120px; }
-    .site-header::after  { width: 220px; height: 220px; right: 200px; top: 60px; background: rgba(255,255,255,.05); }
 
-    /* ─── TOPBAR ─────────────────────────────── */
-    .topbar {
+    .header-pill {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 22px 48px;
-      position: relative;
-      z-index: 2;
+
+      background: #293B6D;
+      border-radius: 999px;
+
+      padding: 12px 16px;
+      height: 69px; /* 🔥 kunci utama */
     }
-    .brand {
-      font-weight: 800;
-      font-size: 1.15rem;
-      letter-spacing: .5px;
+
+    .brand img { 
+      max-height: 90px; 
+      width: auto; }
+
+    .site-nav {
       display: flex;
       align-items: center;
-      gap: 8px;
-    }
-    .brand-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: var(--accent-teal);
-      display: inline-block;
-    }
-    .main-nav {
-      display: flex;
-      gap: 8px;
-    }
-    .main-nav a {
-      padding: 8px 18px;
-      border-radius: var(--radius-pill);
-      font-weight: 600;
-      font-size: .92rem;
-      color: rgba(255,255,255,.75);
-      transition: background .2s, color .2s;
-    }
-    .main-nav a:hover { color: var(--white); background: rgba(255,255,255,.12); }
-    .main-nav a.active { color: var(--white); background: rgba(255,255,255,.18); }
-
-    /* ─── HERO ───────────────────────────────── */
-    .hero {
-      max-width: 1160px;
-      margin: 0 auto;
-      padding: 40px 48px 16px;
-      position: relative;
-      z-index: 2;
-    }
-    .hero-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      text-transform: uppercase;
-      letter-spacing: 2.5px;
-      font-size: .78rem;
-      font-weight: 700;
-      color: rgba(255,255,255,.7);
-      margin-bottom: 16px;
-    }
-    .hero-label span {
-      display: inline-block;
-      width: 24px; height: 2px;
-      background: var(--accent-teal);
-    }
-    .hero h1 {
-      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
-      font-weight: 800;
-      line-height: 1.08;
-      max-width: 640px;
-    }
-    .hero-text {
-      margin-top: 20px;
-      max-width: 580px;
-      color: rgba(255,255,255,.85);
-      font-size: 1.05rem;
+      gap: 28px;
+      margin-left: auto;
     }
 
-    /* ─── PAGE WRAPPER ───────────────────────── */
-    .page-content {
-      max-width: 1160px;
-      margin: 0 auto;
-      padding: 0 32px 64px;
+    .nav-link {
+      color: rgba(255,255,255,0.72);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+      transition: color 0.2s;
     }
 
-    .intro-section {
-  background: var(--white);
-  padding: 56px 32px 52px;
-  text-align: center;
-  border-bottom: 1px solid rgba(15,78,149,.08);
+    .nav-link:hover,
+    .nav-link.active-page { 
+      color: #fff; 
+      font-weight: 700; 
+    }
+
+    .nav-dropdown { 
+      position: relative; 
+    }
+
+    .nav-has-dropdown { 
+      display: flex; 
+      align-items: center; 
+      gap: 3px; 
+      cursor: pointer; 
+    }
+
+    .dropdown-arrow {
+      font-size: 0.6rem; 
+      opacity: 0.7; 
+      transition: transform 0.2s; 
+    }
+
+    .nav-dropdown:hover 
+    .dropdown-arrow { 
+      transform: rotate(180deg); 
+    }
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1c2e50;
+  border-radius: 12px;
+  padding: 14px 0 8px;
+  min-width: 140px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+  z-index: 300;
   overflow: hidden;
 }
-.intro-section h2,
-.intro-section p {
-  padding: 0 32px;
+
+.nav-dropdown {
+  position: relative;
 }
+
+.nav-dropdown::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 100%;
+  height: 16px;
+}
+    .dropdown-menu a {
+      display: block;
+      padding: 10px 20px;
+      color: rgba(255,255,255,0.8);
+      font-size: 0.82rem;
+      transition: background 0.15s, color 0.15s;
+    }
+    .dropdown-menu a:hover { 
+      background: rgba(255,255,255,0.08); 
+      color: #fff; 
+    }
     
-.intro-divider {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 0 -32px 30px -32px;
-}
-.intro-divider span {
-  display: block;
-  width: 28%;
-  height: 3px;
-  background: #0f4e95;
-  border-radius: 2px;
-}
-
-    .intro-section p {
-      max-width: 680px;
-      margin: 0 auto 14px;
-      color: var(--text-body);
-      font-size: .97rem;
-      line-height: 1.8;
-    }
-    .intro-section p:last-child { margin-bottom: 0; }
-
-    /* ─── SECTION HEADING ────────────────────── */
-    .section-heading {
-      text-align: center;
-      margin: 52px 0 28px;
-    }
-    .section-heading h2 {
-      font-size: 1.9rem;
-      font-weight: 500;
-    }
-    .section-heading p {
-      color: var(--text-body);
-      margin-top: 8px;
+    .nav-dropdown:hover .dropdown-menu { 
+      display: block; 
     }
 
-    .section-heading-left {
-  display: flex;
-  align-items: center;
-  gap: 0px;
-  margin: 48px 0 100px;
-}
-.section-heading-left h2 {
-  font-size: 1.9rem;
-  font-weight: 800;
-}
-.left-line {
-  display: block;
-  width: 440px;
-  height: 3px;
-  background: #0f4e95;
-  border-radius: 2px;
-  flex-shrink: 0;
-}
-
-    /* ─── VISI MISI ──────────────────────────── */
-    .mv-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      margin-top: 0;
+    .header-actions { 
+      display: flex; 
+      align-items: center; 
+      gap: 10px; 
+      margin-left: 45px;
+      margin-right: 30px;
     }
-   .mv-card {
-  background: #D9D9D9;
-  border-radius: 0;
-  padding: 32px;
-  box-shadow: none;
-  border: none;
-  text-align: center;
-}
-    .mv-label {
-  display: block;
-  font-weight: 800;
-  font-size: 1.1rem;
-  letter-spacing: 1px;
-  color: var(--text-dark);
-  margin-bottom: 20px;
-  background: none;
-  padding: 0;
-  border-radius: 0;
-}
-    .mv-card p { color: var(--text-body); }
-    .mv-card ul {
-      padding-left: 20px;
-      color: var(--text-body);
+
+    .cart-wrapper {
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+      width: 35px; 
+      height: 35px; 
+      border-radius: 50%;
+      transition: background 0.2s;
+    }
+
+    .cart-icon { 
+      width: 37px; 
+      height: 37px;
+      object-fit: contain;
+    }
+    
+    .cart-wrapper
+    .cart-active { 
+      background: #fff; 
+    }
+
+    .btn-nav {
+      background: #ffffff;
+      color: 293B6D;
+      border-radius: 999px;
+      padding: 0.3rem 1.2rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+      transition: opacity 0.2s, transform 0.2s;
+      font-family: 'Poppins';
+    }
+
+    .btn-nav:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    .profile-btn {
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+      width: 38px; 
+      height: 38px; 
+      border-radius: 50%; 
+      overflow: hidden;
+    }
+
+    .profile-btn img { 
+      width: 34px; 
+      height: 34px; 
+      object-fit: contain; 
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: #ffffff;
+      padding: 25px 20px 115px;
+    }
+    .hero-inner {
+      max-width: 900px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 16px; align-items: flex-start; 
+      justify-content: center;
+      padding-top: 50px;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center;
+      padding: 5px 14px; border-radius: 999px;
+      background: #f4f9ff;
+      color: #3B5380;
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.06em; margin-bottom: 14px;
+      border: 1px solid rgba(59, 83, 128, 0.42);
+    }
+    .hero-title {
+      font-size: clamp(2rem, 3vw, 3rem);
+      font-weight: 700; line-height: 1.15;
+      color: #3D588B; margin-bottom: 16px;
+    }
+    .hero-desc {
+      font-size: 0.95rem; color: #3D588B;
+      line-height: 1.8; max-width: 520px;
+    }
+
+    /* ── HERO IMAGE (fixed) ── */
+    .hero-image-wrap {
+      position: relative;
+      width: 360px;
+      height: 340px;
+      flex-shrink: 0;
+      margin-top: 30px;
+    }
+    .hero-img-1 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 260px;
+      height: 240px;
+      border-radius: 50px 4px 50px 4px;
+      object-fit: cover;
+      box-shadow: var(--shadow);
+      z-index: 1;
+    }
+    .hero-img-2 {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 210px;
+      height: 190px;
+      border-radius: 4px 50px 4px 50px;
+      object-fit: cover;
+      box-shadow: var(--shadow);
+      z-index: 2;
+    }
+
+    /* Placeholder SVG for when images are missing */
+    .hero-img-placeholder-1,
+    .hero-img-placeholder-2 {
+      position: absolute;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
       display: flex;
-      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-img-placeholder-1 {
+      top: 0; left: 0;
+      width: 220px; height: 200px;
+      background: #dce8ff;
+      z-index: 1;
+    }
+    .hero-img-placeholder-2 {
+      bottom: 0; right: 0;
+      width: 180px; height: 160px;
+      background: #1c3b79;
+      z-index: 2;
+    }
+    .hero-img-placeholder-1 svg { width: 64px; height: 64px; color: #1c3b79; opacity: 0.3; }
+    .hero-img-placeholder-2 svg { width: 52px; height: 52px; color: white; opacity: 0.4; }
+
+    main { flex: 1; }
+
+    /* ── INTRO CARD ── */
+    .intro-wrap {
+      max-width: 1100px; margin: 0 auto;
+      padding: 0 20px;
+      margin-top: -36px;
+    }
+    .intro-card {
+      background: white; border-radius: 20px;
+      padding: 28px 32px;
+      box-shadow: var(--shadow);
+      font-size: 0.88rem; color: var(--text-muted); line-height: 1.85;
+    }
+
+    /* ── SECTION ── */
+    .section { padding: 0px 0px 60px;  }
+    .section-inner { max-width: 890px; 
+      margin: 0 auto;  padding: 0 20px;}
+    .section-title {
+      text-align: center; font-size: 1.4rem;
+      font-weight: 900; color: #122E3A; margin-bottom: 28px;
+    }
+
+    /* ── VISI MISI ── */
+    .mv-grid { display: grid; grid-template-columns: 1fr 1fr; 
+      gap: 20px; }
+    .mv-card {
+      background: #F4F9FF; 
+      border-radius: 40px;
+      padding: 28px; 
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+    .mv-tag {
+      display: inline-block; padding: 5px 16px;
+      border-radius: 999px; background: none;
+      color:  #3D588B; font-weight: 700;
+      font-size: 1.3rem; letter-spacing: 0.06em;
+      margin-bottom: 14px;
+    }
+    .mv-card p { font-size: 0.86rem; color: #122E3A; line-height: 1.8; }
+    .mv-card ol {
+      padding-left: 18px; 
+      font-size: 0.86rem;
+      color: #122E3A; 
+      line-height: 2;
+      text-align: left; 
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px; background: rgba(28,59,121,0.10);
+      max-width: 1100px; margin: 0 auto;
+    }
+
+    /* ── OUR TEAM ── */
+.team-section { padding: 48px 20px 80px; background: var(--bg);  overflow: visible;}
+.team-inner { max-width: 1100px; margin: 0 auto; overflow: visible;}
+.team-title {
+  text-align: center; font-size: 1.8rem;
+  font-weight: 800; color: #3D588B; margin-bottom: 32px;
+  display: flex; align-items: center; gap: 16px;
+}
+.team-title::before,
+.team-title::after {
+  content: ''; flex: 1;
+  height: 1px; background: rgba(61, 88, 139, 0.35);
+}
+.team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.team-card {
+  background: white; border-radius: 20px;
+  padding: 80px 20px 60px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  position: relative;
+  margin-top: 70px;
+}
+.team-avatar {
+  width: 140px; height: 140px; border-radius: 50%;
+  position: absolute;
+  top: -65px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.team-name { font-size: 1rem; font-weight: 700; color: #3D588B; margin-top: 12px;}
+.team-role { font-size: 0.88rem; color: var(--text-muted); margin-top: 6px; }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      background: #1c2d5c;
+      color: #fff;
+      padding: 60px 20px;
+      margin-top: auto;
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1fr 2.2fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .footer-brand .brand img {
+      max-height: 110px;
+      width: auto;
+      margin: -30px;
+    }
+
+    .footer-brand p {
+      margin: 20px 0 0;
+      max-width: 300px;
+      line-height: 1.65;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .footer-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.4fr;
+      gap: 0;
+      align-items: start;
+      margin-right: -50px;
+    }
+
+    .footer-links h3 {
+      margin: 0 0 20px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
       gap: 10px;
     }
 
-    /* ─── TEAM ───────────────────────────────── */
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 0.5fr);
-      gap: 24px;
-      margin-top: 45px;
-    }
-    .team-card {
-  background: #E2EFFD;
-  border-radius: 16px;
-  padding: 0 15px 20px;
-  text-align: center;
-  box-shadow: none;
-  border: none;
-  padding-top: 0;
-}
-    .team-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 28px 60px rgba(15,78,149,.16);
-    }
-    .team-photo {
-  width: 130px; height: 135px;
-  border-radius: 50%;
-  background: #b0b0b0;
-  margin: -80px auto 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2.5rem;
-  position: relative;
-  z-index: 1;
-}
-    .team-card .name {
-      font-weight: 700;
-      font-size: .88rem;
-      color: var(--text-dark);
-      line-height: 1.35;
-    }
-    .team-card .role {
-      margin-top: 6px;
-      font-size: .78rem;
-      color: var(--blue-mid);
-      font-weight: 600;
+    .footer-line {
+      display: inline-block;
+      width: 32px;
+      height: 1.5px;
+      background: #fff;
+      flex-shrink: 0;
     }
 
-    /* ─── WHY US ─────────────────────────────── */
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-    .why-card {
-      background: var(--white);
-      border-radius: var(--radius-lg);
-      padding: 28px;
-      box-shadow: var(--shadow);
-      border-top: 4px solid transparent;
-      transition: border-color .2s, transform .25s;
-    }
-    .why-card:nth-child(1) { border-color: #f7c948; }
-    .why-card:nth-child(2) { border-color: var(--accent-teal); }
-    .why-card:nth-child(3) { border-color: #e05c6e; }
-    .why-card:hover { transform: translateY(-4px); }
-    .why-icon {
-      width: 48px; height: 48px;
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      margin-bottom: 16px;
-    }
-    .why-card:nth-child(1) .why-icon { background: #fff8e1; }
-    .why-card:nth-child(2) .why-icon { background: #e0f7f5; }
-    .why-card:nth-child(3) .why-icon { background: #fdeaec; }
-    .why-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
-    .why-card p { color: var(--text-body); font-size: .93rem; }
-
-    /* ─── PROCESS ────────────────────────────── */
-    .process-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-      position: relative;
-    }
-    /* connector line */
-    .process-grid::before {
-      content: '';
-      position: absolute;
-      top: 44px;
-      left: calc(12.5% + 10px);
-      right: calc(12.5% + 10px);
-      height: 2px;
-      background: var(--blue-pale);
-      z-index: 0;
-    }
-    .process-box {
-      background: var(--white);
-      border-radius: var(--radius-lg);
-      padding: 28px 20px;
-      text-align: center;
-      box-shadow: var(--shadow);
-      position: relative;
-      z-index: 1;
-      transition: transform .25s;
-    }
-    .process-box:hover { transform: translateY(-4px); }
-    .step-circle {
-      width: 56px; height: 56px;
-      margin: 0 auto 18px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 1.1rem;
-      color: var(--white);
-      background: linear-gradient(135deg, var(--blue-mid), var(--blue-deep));
-      box-shadow: 0 6px 20px rgba(15,78,149,.3);
-    }
-    .process-box .step-emoji {
-      font-size: 1.6rem;
-      margin-bottom: 10px;
+    .footer-links a,
+    .footer-links > div > p {
       display: block;
-    }
-    .process-box p {
-      font-weight: 700;
-      font-size: .9rem;
-      color: var(--text-dark);
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 10px;
+      line-height: 1.4;
+      font-size: 0.9rem;
+      text-decoration: none;
     }
 
-    /* ─── FOOTER ─────────────────────────────── */
-    .site-footer {
-      background: var(--blue-deep);
-      color: rgba(255,255,255,.88);
-      padding: 48px 32px;
-    }
-    .footer-wrap {
-      max-width: 1160px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1.8fr 1fr 1fr;
-      gap: 32px;
-    }
-    .footer-brand {
-      font-size: 1.1rem;
-      font-weight: 800;
+    .footer-links a:hover { color: #fff; }
+
+    .contact-item {
+      display: flex !important;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255,255,255,0.85);
+      font-size: 0.9rem;
       margin-bottom: 12px;
-      color: var(--white);
-    }
-    .footer-block p { font-size: .9rem; opacity: .8; line-height: 1.7; }
-    .footer-block h4 { font-weight: 700; margin-bottom: 14px; color: var(--white); }
-    .footer-block a {
-      display: block;
-      margin-bottom: 10px;
-      font-size: .9rem;
-      opacity: .78;
-      transition: opacity .2s;
-    }
-    .footer-block a:hover { opacity: 1; }
-    .footer-divider {
-      max-width: 1160px;
-      margin: 32px auto 0;
-      padding-top: 24px;
-      border-top: 1px solid rgba(255,255,255,.12);
-      font-size: .82rem;
-      opacity: .55;
-      text-align: center;
+      text-decoration: none;
+      line-height: 1.4;
     }
 
-    /* ─── RESPONSIVE ─────────────────────────── */
-    @media (max-width: 1024px) {
-      .team-grid { grid-template-columns: repeat(2, 1fr); }
-      .process-grid { grid-template-columns: repeat(2, 1fr); }
-      .process-grid::before { display: none; }
+    .contact-icon {
+      width: 22px;
+      height: 22px;
+      object-fit: contain;
+      flex-shrink: 0;
     }
-    @media (max-width: 768px) {
-      .topbar { padding: 18px 24px; }
-      .hero { padding: 32px 24px 12px; }
-      .page-content { padding: 0 20px 48px; }
-      .mv-grid, .why-grid, .footer-wrap { grid-template-columns: 1fr; }
-      .main-nav { gap: 4px; }
-      .main-nav a { padding: 6px 12px; font-size: .85rem; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 880px) {
+      .content-grid { grid-template-columns: 1fr; }
+      .contact-card { position: static; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
     }
-    @media (max-width: 480px) {
-      .team-grid { grid-template-columns: 1fr 1fr; }
-      .process-grid { grid-template-columns: 1fr 1fr; }
+
+    @media (max-width: 560px) {
+      html { font-size: 13px; }
+      .hero-title { font-size: 1.5rem; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .topbar { flex-wrap: wrap; }
+      .nav-list { justify-content: flex-start; gap: 14px; overflow-x: auto; padding-bottom: 4px; }
+      .nav-list a { white-space: nowrap; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ─── HEADER ─────────────────────────────── -->
+  <!-- HEADER -->
   <header class="site-header">
-    <div class="topbar">
-      <div class="brand">
-        <span class="brand-dot"></span>
-        Sirip Juara
-      </div>
-      <nav class="main-nav">
-        <a href="aboutteam.html" class="active">About</a>
-        <a href="jeniscupang.html">Jenis Cupang</a>
-        <a href="supportpage.html">Support</a>
-        <a href="payment sucess.html">Checkout</a>
+    <div class="header-pill">
+
+      <a class="brand" href="index.html">
+        <img src="png/Logo.png" alt="Sirip Juara Logo">
+      </a>
+
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="index.html" class="nav-link">HOME</a>
+        <a href="shop.html" class="nav-link active-page">SHOP</a>
+        <a href="careguide.html" class="nav-link">CARE GUIDE</a>
+
+        <div class="nav-dropdown">
+          <a href="about.html" class="nav-link nav-has-dropdown">ABOUT <span class="dropdown-arrow">▾</span></a>
+          <div class="dropdown-menu">
+            <a href="about.html">About Betta</a>
+            <a href="team.html">Team</a>
+          </div>
+        </div>
+
+        <div class="nav-dropdown">
+          <a href="support.html" class="nav-link nav-has-dropdown">SUPPORT <span class="dropdown-arrow">▾</span></a>
+          <div class="dropdown-menu">
+            <a href="support1.html">FAQ</a>
+            <a href="support2.html">Contact Us</a>
+          </div>
+        </div>
       </nav>
+
+      <div class="header-actions">
+        <a href="cart.html" class="cart-wrapper" id="cart-link" aria-label="Cart">
+          <img src="png/Cart.png" alt="Cart" class="cart-icon">
+        </a>
+        <a href="Signup.html" id="auth-button" class="btn-nav">SIGN UP</a>
+        <a href="profil.html" id="profile-button" class="profile-btn hidden" aria-label="Profile">
+          <img src="png/iconAccount.png" alt="Profile">
+        </a>
+      </div>
     </div>
   </header>
 
-  <!-- ─── INTRO SECTION (full-width) ──────────── -->
-  <div class="intro-section">
-    <div class="intro-divider"><span></span><span></span></div>
-    <h2>Berawal dari Hobi, Berubah jadi Misi</h2> </br>
-    <p>Berawal dari hobi memelihara ikan cupang, kami melihat masih banyak orang kesulitan mendapatkan ikan yang sehat serta memahami perawatannya dengan benar.
-Kami percaya bahwa keindahan cupang tidak hanya dari tampilannya, tetapi juga dari kualitas perawatannya.
-Oleh karena itu, kami menyediakan ikan cupang yang telah dirawat dengan baik agar sampai ke tangan
- pelanggan dalam kondisi sehat, sekaligus memberikan edukasi agar dapat dipelihara dengan lebih mudah dan percaya diri. </p>    
-  </div>    
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">About Us</div>
+        <h1 class="hero-title">Berawal dari Hobi, Berubah jadi Misi</h1>
+        <p class="hero-desc">
+         Berawal dari hobi memelihara ikan cupang, kami melihat masih banyak orang kesulitan mendapatkan ikan yang sehat serta memahami perawatannya dengan benar. Kami percaya bahwa keindahan cupang tidak hanya dari tampilannya, tetapi juga dari kualitas perawatannya.
+Oleh karena itu, kami menyediakan ikan cupang yang telah dirawat dengan baik agar sampai ke tangan pelanggan dalam kondisi sehat, sekaligus memberikan edukasi agar dapat dipelihara dengan lebih mudah dan percaya diri. </p>  
+      </div>
 
-  <!-- ─── MAIN CONTENT ──────────────────────── -->
-  <main class="page-content" style="padding-top: 20px;">   <!-- Visi & Misi -->
-    <section>
-      <div class="mv-grid">
-        <div class="mv-card">
-          <span class="mv-label">VISI</span>
-          <p>Menjadi website utama dan terpercaya untuk cupang berkualitas serta menjaga kelestarian ikan cupang Indonesia dengan standar perawatan terbaik.</p>
+      <!-- Hero Images: ganti src dengan path foto asli kamu -->
+      <div class="hero-image-wrap">
+        <img
+          class="hero-img-1"
+          src="Rectangle 300.png"
+          alt="Ikan Cupang 1"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+        />
+        <div class="hero-img-placeholder-1" style="display:none;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 12c0 1.268-2.016 2.292-3.2 2.938C16.8 15.585 15.5 16 14 16c-1 0-2-.3-2.8-.7L9 17l-1.5-1.5L9 14c-.7-.8-1-1.9-1-3 0-3.3 2.7-6 6-6s6 2.7 6 5z"/>
+            <circle cx="16" cy="10" r="1.5" fill="currentColor"/>
+          </svg>
         </div>
-        <div class="mv-card">
-          <span class="mv-label">MISI</span>
-          <ul>
-            <li>Menyediakan ikan cupang terbaik dengan kualitas premium dan kesehatan prima.</li>
-            <li>Mengedukasi pelanggan tentang perawatan cupang yang benar dan ramah lingkungan.</li>
-            <li>Membangun komunitas pecinta cupang yang saling mendukung dan berbagi pengalaman.</li>
-            <li>Memberikan layanan cepat, aman, dan memuaskan kepada setiap pelanggan.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
 
-    <!-- Tim Kami -->
-    <section>
-      <div class="section-heading">
-        <h2>Tim Kami</h2>
-        <span class="left-line"></span>
-      </div>
-      <div class="team-grid">
-        <div class="team-card" style="padding-top: 60px;">
-          <div class="team-photo">🧑‍💼</div>
-          <p class="name">IVY LAILA NURANI</p>
-          <p class="role">Co-Founder</p>
+        <img
+          class="hero-img-2"
+          src="Rectangle 301.jpg"
+          alt="Ikan Cupang 2"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+        />
+        <div class="hero-img-placeholder-2" style="display:none;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 12c0 1.268-2.016 2.292-3.2 2.938C16.8 15.585 15.5 16 14 16c-1 0-2-.3-2.8-.7L9 17l-1.5-1.5L9 14c-.7-.8-1-1.9-1-3 0-3.3 2.7-6 6-6s6 2.7 6 5z"/>
+            <circle cx="16" cy="10" r="1.5" fill="currentColor"/>
+          </svg>
         </div>
-        <div class="team-card" style="padding-top: 60px;">
-          <div class="team-photo">👨‍💼</div>
-          <p class="name">ADAM MUHAMMAD RIDHO</p>
-          <p class="role">Co-Founder</p>
-        </div>
-        <div class="team-card" style="padding-top: 60px;">
-          <div class="team-photo">👩‍💼</div>
-          <p class="name">PUTRI AYU WULAN</p>
-          <p class="role">Marketing</p>
-        </div>
-        <div class="team-card" style="padding-top: 60px;">
-          <div class="team-photo">👨‍🔬</div>
-          <p class="name">RIZAL FAJAR</p>
-          <p class="role">Fish Specialist</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Kenapa Beli di Kami -->
-    <section>
-      <div class="section-heading">
-        <h2>Kenapa Beli di Kami</h2>
-        <p>Ikan cupang kami punya banyak keistimewaan yang terbukti</p>
-      </div>
-      <div class="why-grid">
-        <div class="why-card">
-          <div class="why-icon">🏆</div>
-          <h3>Produk Terpercaya</h3>
-          <p>Ikan cupang kami selalu diternak oleh breeder profesional dengan kualitas terbaik dan rekam jejak terpercaya.</p>
-        </div>
-        <div class="why-card">
-          <div class="why-icon">🔍</div>
-          <h3>Pemilihan Selektif</h3>
-          <p>Setiap ekor diperiksa ketat sebelum dikirim untuk memastikan kondisi sehat dan sirip yang sempurna.</p>
-        </div>
-        <div class="why-card">
-          <div class="why-icon">📦</div>
-          <h3>Paket Aman</h3>
-          <p>Pengiriman dikemas khusus dengan plastik oksigen dan styrofoam agar ikan sampai dalam kondisi prima.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Proses Merawat Cupang -->
-    <section>
-      <div class="section-heading">
-        <h2>Proses Kami Merawat Cupang</h2>
-        <p>Standar ketat dari awal hingga siap dikirim</p>
-      </div>
-      <div class="process-grid">
-        <div class="process-box">
-          <div class="step-circle">1</div>
-          <span class="step-emoji">🐟</span>
-          <p>Seleksi Cupang</p>
-        </div>
-        <div class="process-box">
-          <div class="step-circle">2</div>
-          <span class="step-emoji">💧</span>
-          <p>Adaptasi Air</p>
-        </div>
-        <div class="process-box">
-          <div class="step-circle">3</div>
-          <span class="step-emoji">🌿</span>
-          <p>Perawatan Harian</p>
-        </div>
-        <div class="process-box">
-          <div class="step-circle">4</div>
-          <span class="step-emoji">✅</span>
-          <p>Quality Check</p>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ─── FOOTER ─────────────────────────────── -->
-  <footer class="site-footer">
-    <div class="footer-wrap">
-      <div class="footer-block">
-        <p class="footer-brand">Sirip Juara</p>
-        <p>Kami hadirkan ikan cupang berkualitas dan pelayanan terbaik agar setiap pelanggan puas dengan setiap pembeliannya.</p>
-      </div>
-      <div class="footer-block">
-        <h4>Company</h4>
-        <a href="#">Tentang Kami</a>
-        <a href="#">Ketentuan</a>
-        <a href="#">Cara Order</a>
-      </div>
-      <div class="footer-block">
-        <h4>Kontak</h4>
-        <a href="#">WhatsApp</a>
-        <a href="#">Email</a>
-        <a href="#">Instagram</a>
       </div>
     </div>
-    <div class="footer-divider">
-      © 2026 Sirip Juara · Semua hak dilindungi
+  </div>
+
+  <!-- MAIN -->
+  <main>
+
+    <!-- INTRO -->
+    <div class="intro-wrap">
+    </div>
+
+    <!-- VISI MISI -->
+    <div class="section">
+      <div class="section-inner">
+        <h2 class="section-title"></h2>
+        <div class="mv-grid">
+          <div class="mv-card">
+            <span class="mv-tag">VISI</span>
+          </p>Menjadi website bisnis ikan cupang yang berkembang dari hobi menjadi sumber terpercaya bagi pecinta ikan cupang, dengan mengedepankan kualitas, kecintaan, dan edukasi dalam setiap layanan.</p>
+          </div>  
+          <div class="mv-card">
+            <span class="mv-tag">MISI</span>
+            <ol>
+              <li>Menyediakan ikan cupang pilihan yang dirawat dengan penuh perhatian layaknya hobiis, bukan sekadar komoditas</li>
+              <li>Berbagi pengetahuan dan pengalaman seputar perawatan ikan cupang kepada pemula maupun penghobi</li>
+              <li>Menjaga kepercayaan pelanggan melalui transparansi kondisi ikan dan pelayanan yang jujur.</li>
+              <li>Mengembangkan bisnis secara berkelanjutan tanpa menghilangkan nilai utama sebagai penghobi ikan cupang</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OUR TEAM -->
+<div class="team-section">
+  <div class="team-inner">
+    <h2 class="team-title">Our Team</h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar" style="background: #C1E6FE;"></div>
+        <p class="team-name">Sitti Asmaul Khusnah</p>
+        <p class="team-role">Jobdesk</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar" style="background: #FBFFC8;"></div>
+        <p class="team-name">Kania Salsabila Haflin</p>
+        <p class="team-role">Jobdesk</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar" style="background: #FFDCF9;"></div>
+        <p class="team-name">Nur Hasira</p>
+        <p class="team-role">Jobdesk</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar" style="background: #CCBAFF;"></div>
+        <p class="team-name">Erika Desi Saputri</p>
+        <p class="team-role">Jobdesk</p>
+      </div>
+    </div>
+  </div>
+</div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+
+      <div class="footer-brand">
+        <a class="brand" href="index.html">
+          <img src="png/Logo.png" alt="Sirip Juara Logo">
+        </a>
+        <p>Your trusted place to find high-quality betta fish and beginner-friendly care guidance.</p>
+      </div>
+
+      <div class="footer-links">
+        <div>
+          <h3>Company <span class="footer-line"></span></h3>
+          <a href="#">Beginner Guide</a>
+          <a href="#">Types of Betta</a>
+          <a href="#">Feeding Tips</a>
+          <a href="#">Care Basics</a>
+        </div>
+        <div>
+          <h3>Quick Links <span class="footer-line"></span></h3>
+          <a href="index.html">Home</a>
+          <a href="shop.html">Shop</a>
+          <a href="careguide.html">Care Guide</a>
+          <a href="about.html">About</a>
+          <a href="support.html">Support</a>
+        </div>
+        <div>
+          <h3>Contact <span class="footer-line"></span></h3>
+          <p class="contact-item">
+            <img src="png/iconLokasi.png" alt="location" class="contact-icon">
+            <span>Jl. Makkio Baji II, SulSel, Indonesia</span>
+          </p>
+          <a href="mailto:siripjuara@gmail.com" class="contact-item">
+            <img src="png/iconEmail.png" alt="email" class="contact-icon">
+            <span>siripjuara@gmail.com</span>
+          </a>
+          <p class="contact-item">
+            <img src="png/iconCS.png" alt="cs" class="contact-icon">
+            <span>Customer Service</span>
+          </p>
+        </div>
+      </div>
+
     </div>
   </footer>
 
+
+</div>
+
+<script>
+  document.querySelectorAll('.faq-button').forEach((button) => {
+    button.addEventListener('click', () => {
+      const item = button.closest('.faq-item');
+      const currentlyOpen = document.querySelector('.faq-item.open');
+      if (currentlyOpen && currentlyOpen !== item) {
+        currentlyOpen.classList.remove('open');
+        currentlyOpen.querySelector('.faq-button').setAttribute('aria-expanded', 'false');
+      }
+      const isOpen = item.classList.toggle('open');
+      button.setAttribute('aria-expanded', isOpen.toString());
+    });
+  });
+
+      // Active nav
+    (function () {
+      const links = document.querySelectorAll('.nav-link');
+      const current = location.pathname.split('/').pop() || 'index.html';
+      links.forEach(link => {
+        const href = (link.getAttribute('href') || '').split('/').pop();
+        if (href === current) link.classList.add('active-page');
+      });
+    })();
+
+    // Auth state
+    function updateAuthState() {
+      const loggedIn = localStorage.getItem('sj_loggedIn') === 'true';
+      document.getElementById('auth-button').classList.toggle('hidden', loggedIn);
+      document.getElementById('profile-button').classList.toggle('hidden', !loggedIn);
+    }
+    updateAuthState();
+</script>
 </body>
 </html>
