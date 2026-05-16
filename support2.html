@@ -40,9 +40,7 @@
 
     .hidden { display: none !important; }
 
-    /* ====================================================
-       HEADER — sama persis dengan cart.html
-    ==================================================== */
+    /* HEADER */
     .site-header {
       position: relative;
       z-index: 999;
@@ -59,7 +57,7 @@
       border-radius: 999px;
 
       padding: 12px 16px;
-      height: 69px; /* 🔥 kunci utama */
+      height: 69px;
     }
 
     .brand img { 
@@ -110,33 +108,34 @@
       transform: rotate(180deg); 
     }
 
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #1c2e50;
-  border-radius: 12px;
-  padding: 14px 0 8px;
-  min-width: 140px;
-  box-shadow: 0 12px 32px rgba(0,0,0,0.3);
-  z-index: 300;
-  overflow: hidden;
-}
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1c2e50;
+      border-radius: 12px;
+      padding: 14px 0 8px;
+      min-width: 140px;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+      z-index: 300;
+      overflow: hidden;
+    }
 
-.nav-dropdown {
-  position: relative;
-}
+    .nav-dropdown {
+      position: relative;
+    }
 
-.nav-dropdown::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 100%;
-  width: 100%;
-  height: 16px;
-}
+    .nav-dropdown::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 100%;
+      width: 100%;
+      height: 16px;
+    }
+
     .dropdown-menu a {
       display: block;
       padding: 10px 20px;
@@ -241,75 +240,89 @@
       border-radius: 2px;
     }
 
-    /* ── CUSTOMER SERVICE STEPS ── */
-    .cs-section { background: var(--white); }
+    /* ── CUSTOMER SERVICE ── */
+    .cs-section {
+      background: #fff;
+      padding-top: 55px;
+    }
+
+    .cs-section .section-title {
+      margin-bottom: 20px;
+    }
 
     .steps-wrapper {
-      border: 1px solid #0d0d0dca;
-      border-radius: 25px;
-      padding: 40px;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 28px;
-      max-width: 1000px;
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      max-width: 1100px;
       margin: 0 auto;
+      padding-top: 60px;
     }
+
+    .step-item {
+      flex: 1;
+      max-width: 240px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform .25s, filter .25s;
+      cursor: default;
+    }
+
+    .step-item:hover {
+      transform: translateY(-10px);
+      filter: drop-shadow(0 18px 28px rgba(59,83,128,0.28));
+    }
+
+.step-icon-float {
+  position: absolute;
+  top: -70px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 140px;
+  height: 140px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 2;
+}
+
+.step-icon {
+  width: 140px;
+  height: 140px;
+
+  object-fit: contain;
+  display: block;
+}
 
     .step-card {
       background: #3B5380;
       border-radius: 20px;
-      padding: 28px 20px 24px;
+      padding: 58px 20px 20px;
       text-align: center;
-      border: 1.5px solid #3B5380;
-      transition: transform .25s, box-shadow .25s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .step-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--teal), var(--blue));
-      opacity: 0;
-      transition: opacity .25s;
-    }
-
-    .step-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 40px rgba(46,75,189,.12);
-    }
-    .step-card:hover::before { opacity: 1; }
-
-    .step-icon {
-      width: 68px; height: 68px;
-      border-radius: 18px;
-      margin: 0 auto 1px;
+      width: 100%;
+      height: 240px;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      font-size: 32px;
-      position: relative;
-      top: -20px;
+      justify-content: flex-start;
     }
-
-    .step-icon.blue   { background: #dde8ff; }
-    .step-icon.orange { background: #fff0d4; }
-    .step-icon.teal   { background: #d3f5f5; }
-    .step-icon.purple { background: #ebe5ff; }
 
     .step-card h3 {
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 800;
       color: #ffffff;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     .step-card p {
-      font-size: 12px;
-      color: #ffffff;
-      line-height: 1.5;
+      font-size: 14px;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.6;
     }
 
     /* ── NEED MORE HELP ── */
@@ -319,9 +332,9 @@
     }
 
     .help-section .section-title { 
-    margin-bottom: 12px;
-    margin-top: -20px;
-}
+      margin-bottom: 12px;
+      margin-top: -20px;
+    }
 
     .help-subtitle {
       text-align: center;
@@ -332,8 +345,8 @@
     }
 
     .help-card-row {
-      display: grid;
-      grid-template-columns: 1fr 1px 1fr;
+      display: flex;
+      align-items: stretch;
       background: #F4F9FF;
       border-radius: 16px;
       border: 1px solid #3b538025;
@@ -342,21 +355,33 @@
       margin: 0 auto;
     }
 
-   .help-divider {
-  background: #3B5380;
-  width: 1.5px;
-  height: 120px;
-  margin: auto 0;
-}
+    .help-divider {
+      background: #3B5380;
+      width: 1.5px;
+      flex-shrink: 0;
+      margin: 20px 0;
+    }
+
+    .help-card-row > .help-card {
+      flex: 1;
+    }
+
+    .help-card-link {
+      flex: 1;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+    }
 
     .help-card {
-      padding: 32px 28px;
+      padding: 20px 22px;
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 14px;
       cursor: pointer;
       transition: background 0.2s;
       text-align: left;
+      width: 100%;
     }
 
     .help-card:hover { background: #eaf0ff; }
@@ -365,60 +390,29 @@
       font-size: 15px;
       font-weight: 700;
       color: var(--navy);
-      margin-bottom: 7px;
+      margin-bottom: 4px;
     }
 
     .help-card p {
       font-size: 13px;
       color: var(--muted);
-      line-height: 1.65;
+      line-height: 1.55;
       margin: 0;
     }
 
     .qa-icon-wrap {
-      position: relative;
-      width: 70px;
-      height: 70px;
+      width: 56px;
+      height: 56px;
       flex-shrink: 0;
     }
 
-    .qa-q {
-      position: absolute;
-      bottom: 0; left: 0;
-      width: 36px; height: 32px;
-      background: #4a7bdf;
-      border-radius: 8px 8px 8px 2px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 14px; font-weight: 900; color: white;
-    }
-
-    .qa-a {
-      position: absolute;
-      top: 0; right: 0;
-      width: 30px; height: 26px;
-      background: #7ba8ef;
-      border-radius: 8px 8px 2px 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 13px; font-weight: 900; color: white;
-    }
-
     .sira-avatar {
-      width: 75px; height: 75px;
+      width: 58px;
+      height: 58px;
       flex-shrink: 0;
       border-radius: 50%;
       overflow: hidden;
     }
-
-    .sira-avatar svg {
-  width: 100%;
-  height: 100%;
-}
-
-.help-card-link {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-}
 
     /* ── FOOTER ── */
     .site-footer {
@@ -484,7 +478,6 @@
       font-size: 0.9rem;
       text-decoration: none;
     }
-
     .footer-links a:hover { color: #fff; }
 
     .contact-item {
@@ -497,45 +490,29 @@
       text-decoration: none;
       line-height: 1.4;
     }
-
-    .contact-icon {
-      width: 22px;
-      height: 22px;
-      object-fit: contain;
-      flex-shrink: 0;
+    
+    .contact-icon { 
+      width: 22px; 
+      height: 22px; 
+      object-fit: contain; 
+      flex-shrink: 0; 
     }
 
   @media (max-width: 900px) {
-    .header { padding: 0 24px; }
-    .header-nav { display: none; }
-    .product-card { grid-template-columns: 1fr; gap: 1.5rem; }
-    .footer { padding: 40px 24px; }
-    .footer-inner { flex-direction: column; gap: 30px; }
-    .footer-cols { grid-template-columns: 1fr 1fr; gap: 30px; }
+    .steps-wrapper { flex-wrap: wrap; }
+    .step-item { max-width: calc(50% - 12px); }
   }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       nav { padding: 0 20px; }
       nav ul { display: none; }
       section { padding: 48px 20px; }
 
-      .steps-wrapper {
-        grid-template-columns: 1fr 1fr;
-        padding: 24px;
-      }
+      .steps-wrapper { flex-wrap: wrap; padding-top: 70px; }
+      .step-item { max-width: calc(50% - 12px); }
 
-      .help-card-row {
-        grid-template-columns: 1fr;
-      }
-      .help-divider {
-        height: 1px;
-        width: 100%;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr 1fr;
-      }
+      .help-card-row { flex-direction: column; }
+      .help-divider { height: 1.5px; width: 80%; margin: 0 auto; }
 
       footer { padding: 40px 20px 24px; }
     }
@@ -553,11 +530,13 @@
 
       <nav class="site-nav" aria-label="Primary navigation">
         <a href="index.html" class="nav-link">HOME</a>
-        <a href="shop.html" class="nav-link active-page">SHOP</a>
+        <a href="shop.html" class="nav-link">SHOP</a>
         <a href="careguide.html" class="nav-link">CARE GUIDE</a>
 
         <div class="nav-dropdown">
-          <a href="about.html" class="nav-link nav-has-dropdown">ABOUT <span class="dropdown-arrow">▾</span></a>
+          <button type="button" class="nav-link nav-has-dropdown dropdown-toggle">
+            ABOUT <span class="dropdown-arrow">▾</span>
+          </button>
           <div class="dropdown-menu">
             <a href="about.html">About Betta</a>
             <a href="team.html">Team</a>
@@ -565,7 +544,9 @@
         </div>
 
         <div class="nav-dropdown">
-          <a href="support.html" class="nav-link nav-has-dropdown">SUPPORT <span class="dropdown-arrow">▾</span></a>
+          <button type="button" class="nav-link nav-has-dropdown dropdown-toggle">
+            SUPPORT <span class="dropdown-arrow">▾</span>
+          </button>
           <div class="dropdown-menu">
             <a href="support1.html">FAQ</a>
             <a href="support2.html">Contact Us</a>
@@ -574,7 +555,7 @@
       </nav>
 
       <div class="header-actions">
-        <a href="cart.html" class="cart-wrapper" id="cart-link" aria-label="Cart">
+        <a href="cart1.html" class="cart-wrapper" id="cart-link" aria-label="Cart">
           <img src="png/Cart.png" alt="Cart" class="cart-icon">
         </a>
         <a href="Signup.html" id="auth-button" class="btn-nav">SIGN UP</a>
@@ -592,42 +573,53 @@
     <h2>Customer Service</h2>
   </div>
 
-  <div class="steps-wrapper">
+<div class="steps-wrapper">
+
+  <!-- Card 1 -->
+  <div class="step-item">
+    <div class="step-icon-float">
+      <img src="png/contact.png" alt="Contact Us" class="step-icon">
+    </div>
     <div class="step-card">
-        <div class="step-icon">
-                    <img src="https://www.figma.com/api/mcp/asset/15e2a1ed-b5d6-4af5-8867-c61fcbce2cb4" alt="Contact Us" style="width:100%; height:100%; object-fit:cover;">
-                </div>
       <h3>Contact Us</h3>
       <p>Reach out to the Sirip Juara customer service team for assistance with purchases, shipping, or betta fish care consultations.</p>
     </div>
+  </div>
 
+  <!-- Card 2 -->
+  <div class="step-item">
+    <div class="step-icon-float">
+      <img src="png/issue.png" alt="Describe Issue" class="step-icon">
+    </div>
     <div class="step-card">
-        <div class="step-icon">
-                    <img src="https://www.figma.com/api/mcp/asset/6cc4515b-7b6c-4ac0-a985-465243daf23f" alt="Contact Us" style="width:100%; height:100%; object-fit:cover;">
-                   
-                </div>
       <h3>Describe Issue</h3>
       <p>Tell us about the issue or question you are experiencing so we can provide the most suitable solution for your needs.</p>
     </div>
+  </div>
 
+  <!-- Card 3 -->
+  <div class="step-item">
+    <div class="step-icon-float">
+      <img src="png/help.png" alt="Get Help" class="step-icon">
+    </div>
     <div class="step-card">
-        <div class="step-icon">
-                    <img src="https://www.figma.com/api/mcp/asset/97764a58-3e21-429c-b044-779c03fbe464" alt="Contact Us" style="width:100%; height:100%; object-fit:cover;">
-                    
-                </div>
       <h3>Get Help</h3>
       <p>Our team will provide the best support, from care tips to product recommendations tailored to your betta fish needs.</p>
     </div>
+  </div>
 
+  <!-- Card 4 -->
+  <div class="step-item">
+    <div class="step-icon-float">
+      <img src="png/done.png" alt="Done" class="step-icon">
+    </div>
     <div class="step-card">
-        <div class="step-icon">
-                    <img src="https://www.figma.com/api/mcp/asset/7b864a8b-99ac-49e0-aaa3-6a1b8a18cfbd" alt="Contact Us" style="width:100%; height:100%; object-fit:cover;">
-                    
-                </div>
       <h3>Done Issue Resolved</h3>
       <p>Your issue has been successfully resolved. We hope your experience with Sirip Juara becomes more comfortable and enjoyable.</p>
     </div>
   </div>
+
+</div>
 </section>
 
 <!-- NEED MORE HELP -->
@@ -640,44 +632,34 @@
   <div class="help-card-row">
     
     <!-- FAQ CARD -->
-    <div class="help-card">
-      
-      <!-- GANTI SVG/JUDUL ICON JADI PNG -->
+    <div class="help-card" onclick="window.location.href='support1.html'">
       <div class="qa-icon-wrap">
         <img src="png/FAQicon.png" alt="FAQ Icon" class="help-icon-img">
       </div>
-
       <div>
         <h3>FAQ</h3>
-        <p>
-          Find answers to common questions about orders, shipping, and betta fish care.
-        </p>
+        <p>Find answers to common questions about orders, shipping, and betta fish care.</p>
       </div>
     </div>
 
     <div class="help-divider"></div>
 
-<!-- SIRA CARD -->
-<a href="support3.html" class="help-card-link">
-  <div class="help-card">
-
-    <div class="sira-avatar">
-      <img src="png/SIRA.png" alt="SIRA Avatar" class="help-icon-img">
-    </div>
-
-    <div>
-      <h3>Live Chat with SIRA</h3>
-      <p>
-        Chat with SIRA for quick assistance regarding products or issues you may experience.
-        If needed, you can also connect directly with our admin during operating hours.
-      </p>
-    </div>
-
-  </div>
-</a>
+    <!-- SIRA CARD -->
+    <a href="support3.html" class="help-card-link">
+      <div class="help-card">
+        <div class="sira-avatar">
+          <img src="png/SIRA.png" alt="SIRA Avatar" class="help-icon-img">
+        </div>
+        <div>
+          <h3>Live Chat with SIRA</h3>
+          <p>Chat with SIRA for quick assistance regarding products or issues you may experience. If needed, you can also connect directly with our admin during operating hours.</p>
+        </div>
+      </div>
+    </a>
 
   </div>
 </section>
+
 <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container footer-inner">
@@ -692,10 +674,10 @@
       <div class="footer-links">
         <div>
           <h3>Company <span class="footer-line"></span></h3>
-          <a href="#">Beginner Guide</a>
-          <a href="#">Types of Betta</a>
-          <a href="#">Feeding Tips</a>
-          <a href="#">Care Basics</a>
+          <a href="careguide.html">Beginner Guide</a>
+          <a href="about1.html">Types of Betta</a>
+          <a href="artikel6.html">Feeding Tips</a>
+          <a href="artikel1.html">Care Basics</a>
         </div>
         <div>
           <h3>Quick Links <span class="footer-line"></span></h3>
@@ -703,7 +685,7 @@
           <a href="shop.html">Shop</a>
           <a href="careguide.html">Care Guide</a>
           <a href="about.html">About</a>
-          <a href="support.html">Support</a>
+          <a href="support2.html">Support</a>
         </div>
         <div>
           <h3>Contact <span class="footer-line"></span></h3>
@@ -726,23 +708,29 @@
   </footer>
 
 <script>
-      // Active nav
-    (function () {
-      const links = document.querySelectorAll('.nav-link');
-      const current = location.pathname.split('/').pop() || 'index.html';
-      links.forEach(link => {
-        const href = (link.getAttribute('href') || '').split('/').pop();
-        if (href === current) link.classList.add('active-page');
-      });
-    })();
+  (function () {
+    const current = location.pathname.split('/').pop() || 'index.html';
 
-    // Auth state
-    function updateAuthState() {
-      const loggedIn = localStorage.getItem('sj_loggedIn') === 'true';
-      document.getElementById('auth-button').classList.toggle('hidden', loggedIn);
-      document.getElementById('profile-button').classList.toggle('hidden', !loggedIn);
+    document.querySelectorAll('.nav-link[href]').forEach(link => {
+      const href = (link.getAttribute('href') || '').split('/').pop();
+      if (href === current) link.classList.add('active-page');
+    });
+
+    if (current === 'about.html' || current === 'about1.html' || current === 'team.html') {
+      document.querySelectorAll('.dropdown-toggle')[0]?.classList.add('active-page');
     }
-    updateAuthState();
+
+    if (current === 'support1.html' || current === 'support2.html' || current === 'support3.html') {
+      document.querySelectorAll('.dropdown-toggle')[1]?.classList.add('active-page');
+    }
+  })();
+
+  function updateAuthState() {
+    const loggedIn = localStorage.getItem('sj_loggedIn') === 'true';
+    document.getElementById('auth-button').classList.toggle('hidden', loggedIn);
+    document.getElementById('profile-button').classList.toggle('hidden', !loggedIn);
+  }
+  updateAuthState();
 </script>
 
 </body>

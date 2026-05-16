@@ -213,181 +213,289 @@
       object-fit: contain; 
     }
 
-    /* ── HERO ── */
-    .hero {
-      background: #ffffff;
-      padding: 25px 20px 115px;
-    }
-    .hero-inner {
-      max-width: 900px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr auto;
-      gap: 16px; align-items: flex-start; 
-      justify-content: center;
-      padding-top: 50px;
-    }
-    .hero-badge {
-      display: inline-flex; align-items: center;
-      padding: 5px 14px; border-radius: 999px;
-      background: #f4f9ff;
-      color: #3B5380;
-      font-size: 0.72rem; font-weight: 500;
-      letter-spacing: 0.06em; margin-bottom: 14px;
-      border: 1px solid rgba(59, 83, 128, 0.42);
-    }
-    .hero-title {
-      font-size: clamp(2rem, 3vw, 3rem);
-      font-weight: 700; line-height: 1.15;
-      color: #3D588B; margin-bottom: 16px;
-    }
-    .hero-desc {
-      font-size: 0.95rem; color: #3D588B;
-      line-height: 1.8; max-width: 520px;
-    }
-
-    /* ── HERO IMAGE (fixed) ── */
-    .hero-image-wrap {
-      position: relative;
-      width: 360px;
-      height: 340px;
-      flex-shrink: 0;
-      margin-top: 30px;
-    }
-    .hero-img-1 {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 260px;
-      height: 240px;
-      border-radius: 50px 4px 50px 4px;
-      object-fit: cover;
-      box-shadow: var(--shadow);
-      z-index: 1;
-    }
-    .hero-img-2 {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 210px;
-      height: 190px;
-      border-radius: 4px 50px 4px 50px;
-      object-fit: cover;
-      box-shadow: var(--shadow);
-      z-index: 2;
-    }
-
-    /* Placeholder SVG for when images are missing */
-    .hero-img-placeholder-1,
-    .hero-img-placeholder-2 {
-      position: absolute;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .hero-img-placeholder-1 {
-      top: 0; left: 0;
-      width: 220px; height: 200px;
-      background: #dce8ff;
-      z-index: 1;
-    }
-    .hero-img-placeholder-2 {
-      bottom: 0; right: 0;
-      width: 180px; height: 160px;
-      background: #1c3b79;
-      z-index: 2;
-    }
-    .hero-img-placeholder-1 svg { width: 64px; height: 64px; color: #1c3b79; opacity: 0.3; }
-    .hero-img-placeholder-2 svg { width: 52px; height: 52px; color: white; opacity: 0.4; }
-
-    main { flex: 1; }
-
-    /* ── INTRO CARD ── */
-    .intro-wrap {
-      max-width: 1100px; margin: 0 auto;
-      padding: 0 20px;
-      margin-top: -36px;
-    }
-    .intro-card {
-      background: white; border-radius: 20px;
-      padding: 28px 32px;
-      box-shadow: var(--shadow);
-      font-size: 0.88rem; color: var(--text-muted); line-height: 1.85;
-    }
-
-    /* ── SECTION ── */
-    .section { padding: 0px 0px 60px;  }
-    .section-inner { max-width: 890px; 
-      margin: 0 auto;  padding: 0 20px;}
-    .section-title {
-      text-align: center; font-size: 1.4rem;
-      font-weight: 900; color: #122E3A; margin-bottom: 28px;
-    }
-
-    /* ── VISI MISI ── */
-    .mv-grid { display: grid; grid-template-columns: 1fr 1fr; 
-      gap: 20px; }
-    .mv-card {
-      background: #F4F9FF; 
-      border-radius: 40px;
-      padding: 28px; 
-      box-shadow: var(--shadow);
-      text-align: center;
-    }
-    .mv-tag {
-      display: inline-block; padding: 5px 16px;
-      border-radius: 999px; background: none;
-      color:  #3D588B; font-weight: 700;
-      font-size: 1.3rem; letter-spacing: 0.06em;
-      margin-bottom: 14px;
-    }
-    .mv-card p { font-size: 0.86rem; color: #122E3A; line-height: 1.8; }
-    .mv-card ol {
-      padding-left: 18px; 
-      font-size: 0.86rem;
-      color: #122E3A; 
-      line-height: 2;
-      text-align: left; 
-    }
-
-    /* ── DIVIDER ── */
-    .divider {
-      height: 1px; background: rgba(28,59,121,0.10);
-      max-width: 1100px; margin: 0 auto;
-    }
-
-    /* ── OUR TEAM ── */
-.team-section { padding: 48px 20px 80px; background: var(--bg);  overflow: visible;}
-.team-inner { max-width: 1100px; margin: 0 auto; overflow: visible;}
-.team-title {
-  text-align: center; font-size: 1.8rem;
-  font-weight: 800; color: #3D588B; margin-bottom: 32px;
-  display: flex; align-items: center; gap: 16px;
+/* ── HERO ── */
+.hero {
+  background: #ffffff;
+  padding: 80px 20px 70px;
 }
+
+.hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 430px;
+  gap: 70px;
+  align-items: center;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 22px;
+  border-radius: 999px;
+  background: #f4f9ff;
+  color: #3B5380;
+  font-size: 0.95rem;
+  font-weight: 400;
+  border: 1px solid rgba(59, 83, 128, 0.35);
+  margin-bottom: 20px;
+}
+
+.hero-title {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.25;
+  color: #3D588B;
+  margin-bottom: 20px;
+  max-width: 470px;
+}
+
+.hero-desc {
+  font-size: 0.95rem;
+  color: #3D588B;
+  line-height: 1.7;
+  max-width: 600px;
+}
+
+.hero-image-wrap {
+  position: relative;
+  width: 420px;
+  height: 350px;
+  margin-top: 15px;
+}
+
+.hero-img-1 {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  width: 300px;
+  height: 270px;
+  border-radius: 0;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.hero-img-2 {
+  position: absolute;
+  right: 0;
+  bottom: 20px;
+  width: 235px;
+  height: 180px;
+  border-radius: 0 22px 0 22px;
+  object-fit: cover;
+  z-index: 2;
+}
+
+.hero-img-1,
+.hero-img-2 {
+  transition: transform 0.45s ease, box-shadow 0.45s ease;
+}
+
+/* gambar besar */
+.hero-img-1:hover {
+  transform: translateY(-10px) rotate(-1deg) scale(1.02);
+  box-shadow: 0 14px 24px rgba(0,0,0,0.18);
+}
+
+/* gambar kecil */
+.hero-img-2:hover {
+  transform: translateY(-8px) rotate(2deg) scale(1.03);
+  box-shadow: 0 14px 24px rgba(0,0,0,0.18);
+}
+
+.hero-img-1,
+.hero-img-2 {
+  box-shadow: 0 10px 18px rgba(0,0,0,0.12);
+}
+
+
+/* ── VISI MISI ── */
+.section {
+  padding: 0 0 75px;
+}
+
+.section-inner {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.mv-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 55px;
+}
+
+.mv-card {
+  background: #F4F9FF;
+  border-radius: 18px;
+  padding: 28px 34px;
+  min-height: 270px;
+  box-shadow: 5px 6px 12px rgba(0, 0, 0, 0.18);
+  text-align: center;
+}
+
+.mv-tag {
+  display: inline-block;
+  color: #3D588B;
+  font-weight: 800;
+  font-size: 1.2rem;
+  margin-bottom: 28px;
+}
+
+.mv-card p {
+  font-size: 1rem;
+  color: #122E3A;
+  line-height: 1.45;
+}
+
+.mv-card ol {
+  padding-left: 18px;
+  font-size: 0.90rem;
+  color: #122E3A;
+  line-height: 1.45;
+  text-align: left;
+}
+
+
+/* ── OUR TEAM ── */
+.team-section {
+  padding: 20px 20px 115px;
+  background: #ffffff;
+  overflow: visible;
+}
+
+.team-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+.team-title {
+  text-align: center;
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: #3D588B;
+  margin-bottom: 58px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
 .team-title::before,
 .team-title::after {
-  content: ''; flex: 1;
-  height: 1px; background: rgba(61, 88, 139, 0.35);
+  content: '';
+  flex: 1;
+  height: 2px;
+  background: rgba(61, 88, 139, 0.65);
 }
-.team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
 .team-card {
-  background: white; border-radius: 20px;
-  padding: 80px 20px 60px;
+  background: #F4F9FF;
+  border-radius: 0 0 0 50px;
+  padding: 125px 14px 32px;
   text-align: center;
-  box-shadow: var(--shadow);
+  box-shadow: 6px 8px 10px rgba(0, 0, 0, 0.23);
   position: relative;
-  margin-top: 70px;
+  margin-top: 35px;
+  min-height: 230px;
 }
+
 .team-avatar {
-  width: 140px; height: 140px; border-radius: 50%;
+  width: 175px;
+  height: 175px;
+  border-radius: 50%;
   position: absolute;
   top: -65px;
   left: 50%;
   transform: translateX(-50%);
 }
-.team-name { font-size: 1rem; font-weight: 700; color: #3D588B; margin-top: 12px;}
-.team-role { font-size: 0.88rem; color: var(--text-muted); margin-top: 6px; }
+
+.team-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 6px solid #ffffff;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+}
+
+.avatar-dot {
+  position: absolute;
+  right: 8px;
+  bottom: 10px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 4px solid #ffffff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.dot-blue {
+  background: #C1E6FE;
+}
+
+.dot-yellow {
+  background: #FBFFC8;
+}
+
+.dot-pink {
+  background: #FFDCF9;
+}
+
+.dot-purple {
+  background: #CCBAFF;
+}
+
+.team-name {
+  font-size: 0.93rem;
+  font-weight: 800;
+  color: #3D588B;
+  margin-top: 18px;
+}
+
+.team-role {
+  font-size: 0.9rem;
+  color: #6b83ad;
+  margin-top: 10px;
+}
+
+.mv-card,
+.team-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mv-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 8px 12px 18px rgba(0, 0, 0, 0.22);
+}
+
+.team-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 8px 14px 18px rgba(0, 0, 0, 0.25);
+}
+
+.team-card:hover .team-avatar {
+  transform: translateX(-50%) scale(1.05);
+}
+
+.team-avatar {
+  transition: transform 0.3s ease;
+}
+
+.team-card:hover .avatar-dot {
+  transform: scale(1.12);
+}
+
+.avatar-dot {
+  transition: transform 0.3s ease;
+}
 
     /* ── FOOTER ── */
     .site-footer {
@@ -503,11 +611,13 @@
 
       <nav class="site-nav" aria-label="Primary navigation">
         <a href="index.html" class="nav-link">HOME</a>
-        <a href="shop.html" class="nav-link active-page">SHOP</a>
+        <a href="shop.html" class="nav-link">SHOP</a>
         <a href="careguide.html" class="nav-link">CARE GUIDE</a>
 
         <div class="nav-dropdown">
-          <a href="about.html" class="nav-link nav-has-dropdown">ABOUT <span class="dropdown-arrow">▾</span></a>
+          <button type="button" class="nav-link nav-has-dropdown dropdown-toggle">
+            ABOUT <span class="dropdown-arrow">▾</span>
+          </button>
           <div class="dropdown-menu">
             <a href="about.html">About Betta</a>
             <a href="team.html">Team</a>
@@ -515,7 +625,9 @@
         </div>
 
         <div class="nav-dropdown">
-          <a href="support.html" class="nav-link nav-has-dropdown">SUPPORT <span class="dropdown-arrow">▾</span></a>
+          <button type="button" class="nav-link nav-has-dropdown dropdown-toggle">
+            SUPPORT <span class="dropdown-arrow">▾</span>
+          </button>
           <div class="dropdown-menu">
             <a href="support1.html">FAQ</a>
             <a href="support2.html">Contact Us</a>
@@ -524,7 +636,7 @@
       </nav>
 
       <div class="header-actions">
-        <a href="cart.html" class="cart-wrapper" id="cart-link" aria-label="Cart">
+        <a href="cart1.html" class="cart-wrapper" id="cart-link" aria-label="Cart">
           <img src="png/Cart.png" alt="Cart" class="cart-icon">
         </a>
         <a href="Signup.html" id="auth-button" class="btn-nav">SIGN UP</a>
@@ -546,33 +658,20 @@
 Oleh karena itu, kami menyediakan ikan cupang yang telah dirawat dengan baik agar sampai ke tangan pelanggan dalam kondisi sehat, sekaligus memberikan edukasi agar dapat dipelihara dengan lebih mudah dan percaya diri. </p>  
       </div>
 
-      <!-- Hero Images: ganti src dengan path foto asli kamu -->
       <div class="hero-image-wrap">
+
         <img
           class="hero-img-1"
-          src="Rectangle 300.png"
+          src="png/gambar1.png"
           alt="Ikan Cupang 1"
-          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
         />
-        <div class="hero-img-placeholder-1" style="display:none;">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M21 12c0 1.268-2.016 2.292-3.2 2.938C16.8 15.585 15.5 16 14 16c-1 0-2-.3-2.8-.7L9 17l-1.5-1.5L9 14c-.7-.8-1-1.9-1-3 0-3.3 2.7-6 6-6s6 2.7 6 5z"/>
-            <circle cx="16" cy="10" r="1.5" fill="currentColor"/>
-          </svg>
-        </div>
 
         <img
           class="hero-img-2"
-          src="Rectangle 301.jpg"
+          src="png/gambar2.png"
           alt="Ikan Cupang 2"
-          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
         />
-        <div class="hero-img-placeholder-2" style="display:none;">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M21 12c0 1.268-2.016 2.292-3.2 2.938C16.8 15.585 15.5 16 14 16c-1 0-2-.3-2.8-.7L9 17l-1.5-1.5L9 14c-.7-.8-1-1.9-1-3 0-3.3 2.7-6 6-6s6 2.7 6 5z"/>
-            <circle cx="16" cy="10" r="1.5" fill="currentColor"/>
-          </svg>
-        </div>
+
       </div>
     </div>
   </div>
@@ -591,7 +690,7 @@ Oleh karena itu, kami menyediakan ikan cupang yang telah dirawat dengan baik aga
         <div class="mv-grid">
           <div class="mv-card">
             <span class="mv-tag">VISI</span>
-          </p>Menjadi website bisnis ikan cupang yang berkembang dari hobi menjadi sumber terpercaya bagi pecinta ikan cupang, dengan mengedepankan kualitas, kecintaan, dan edukasi dalam setiap layanan.</p>
+          <p>Menjadi website bisnis ikan cupang yang berkembang dari hobi menjadi sumber terpercaya bagi pecinta ikan cupang, dengan mengedepankan kualitas, kecintaan, dan edukasi dalam setiap layanan.</p>
           </div>  
           <div class="mv-card">
             <span class="mv-tag">MISI</span>
@@ -606,31 +705,49 @@ Oleh karena itu, kami menyediakan ikan cupang yang telah dirawat dengan baik aga
       </div>
     </div>
 
-    <!-- OUR TEAM -->
+<!-- OUR TEAM -->
 <div class="team-section">
   <div class="team-inner">
     <h2 class="team-title">Our Team</h2>
+
     <div class="team-grid">
+
       <div class="team-card">
-        <div class="team-avatar" style="background: #C1E6FE;"></div>
+        <div class="team-avatar">
+          <img src="png/usnaa.jpeg" alt="Sitti Asmaul Khusnah">
+          <span class="avatar-dot dot-blue"></span>
+        </div>
         <p class="team-name">Sitti Asmaul Khusnah</p>
-        <p class="team-role">Jobdesk</p>
+        <p class="team-role">UI/UX Designer & Frontend Developer</p>
       </div>
+
       <div class="team-card">
-        <div class="team-avatar" style="background: #FBFFC8;"></div>
+        <div class="team-avatar">
+          <img src="png/kania.jpeg" alt="Kania Salsabila Haflin">
+          <span class="avatar-dot dot-yellow"></span>
+        </div>
         <p class="team-name">Kania Salsabila Haflin</p>
-        <p class="team-role">Jobdesk</p>
+        <p class="team-role">Creative Designer & Frontend Developer</p>
       </div>
+
       <div class="team-card">
-        <div class="team-avatar" style="background: #FFDCF9;"></div>
+        <div class="team-avatar">
+          <img src="png/sira.jpeg" alt="Nur Hasira">
+          <span class="avatar-dot dot-pink"></span>
+        </div>
         <p class="team-name">Nur Hasira</p>
-        <p class="team-role">Jobdesk</p>
+        <p class="team-role">Frontend Developer & Testing</p>
       </div>
+
       <div class="team-card">
-        <div class="team-avatar" style="background: #CCBAFF;"></div>
+        <div class="team-avatar">
+          <img src="png/rika.jpeg" alt="Erika Desi Saputri">
+          <span class="avatar-dot dot-purple"></span>
+        </div>
         <p class="team-name">Erika Desi Saputri</p>
-        <p class="team-role">Jobdesk</p>
+        <p class="team-role">Web Development Support & Testing</p>
       </div>
+
     </div>
   </div>
 </div>
@@ -650,10 +767,10 @@ Oleh karena itu, kami menyediakan ikan cupang yang telah dirawat dengan baik aga
       <div class="footer-links">
         <div>
           <h3>Company <span class="footer-line"></span></h3>
-          <a href="#">Beginner Guide</a>
-          <a href="#">Types of Betta</a>
-          <a href="#">Feeding Tips</a>
-          <a href="#">Care Basics</a>
+          <a href="careguide.html">Beginner Guide</a>
+          <a href="about1.html">Types of Betta</a>
+          <a href="artikel6.html">Feeding Tips</a>
+          <a href="artikel1.html">Care Basics</a>
         </div>
         <div>
           <h3>Quick Links <span class="footer-line"></span></h3>
@@ -661,7 +778,7 @@ Oleh karena itu, kami menyediakan ikan cupang yang telah dirawat dengan baik aga
           <a href="shop.html">Shop</a>
           <a href="careguide.html">Care Guide</a>
           <a href="about.html">About</a>
-          <a href="support.html">Support</a>
+          <a href="support2.html">Support</a>
         </div>
         <div>
           <h3>Contact <span class="footer-line"></span></h3>
@@ -687,6 +804,40 @@ Oleh karena itu, kami menyediakan ikan cupang yang telah dirawat dengan baik aga
 </div>
 
 <script>
+
+    (function () {
+    const current = location.pathname.split('/').pop() || 'index.html';
+
+    // active link biasa
+    document.querySelectorAll('.nav-link[href]').forEach(link => {
+      const href = (link.getAttribute('href') || '').split('/').pop();
+
+      if (href === current) {
+        link.classList.add('active-page');
+      }
+    });
+
+    // ABOUT pages
+    if (
+      current === 'about.html' ||
+      current === 'about1.html' ||
+      current === 'team.html'
+    ) {
+      document.querySelectorAll('.dropdown-toggle')[0]
+        ?.classList.add('active-page');
+    }
+
+    // SUPPORT pages
+    if (
+      current === 'support1.html' ||
+      current === 'support2.html' ||
+      current === 'support3.html'
+    ) {
+      document.querySelectorAll('.dropdown-toggle')[1]
+        ?.classList.add('active-page');
+    }
+  })();
+
   document.querySelectorAll('.faq-button').forEach((button) => {
     button.addEventListener('click', () => {
       const item = button.closest('.faq-item');

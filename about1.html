@@ -221,10 +221,10 @@
   background: #ffffff;
 }
 
-.container {
+.main-container {
+  width: min(1320px, calc(100% - 80px));
   max-width: 1180px;
   margin: 0 auto;
-  background: #ffffff;
 }
 
     .hero-card {
@@ -405,6 +405,9 @@
     font-weight: 500;
     }
 
+    /* ====================================================
+       FOOTER
+    ==================================================== */
     .site-footer {
       background: #1c2d5c;
       color: #fff;
@@ -417,6 +420,10 @@
       grid-template-columns: 1fr 2.2fr;
       gap: 60px;
       align-items: start;
+    }
+
+    .site-footer .main-container {
+      background: transparent;
     }
 
     .footer-brand .brand img { 
@@ -482,16 +489,6 @@
       flex-shrink: 0; 
     }
 
-        @media (max-width: 1080px) {
-      .tips-grid, .guides-grid { grid-template-columns: 1fr; }
-      .tips-section, .guides-section { padding-left: 24px; padding-right: 24px; }
-    }
-
-    @media (max-width: 768px) {
-      .site-nav { display: none; }
-      .footer-inner { grid-template-columns: 1fr; gap: 30px; }
-      .footer-links { grid-template-columns: 1fr 1fr; margin-right: 0; }
-    }
 
   </style>
 </head>
@@ -506,10 +503,12 @@
       <nav class="site-nav" aria-label="Primary navigation">
         <a href="index.html" class="nav-link">HOME</a>
         <a href="shop.html" class="nav-link">SHOP</a>
-        <a href="careguide.html" class="nav-link active-page">CARE GUIDE</a>
+        <a href="careguide.html" class="nav-link">CARE GUIDE</a>
 
         <div class="nav-dropdown">
-          <a href="about.html" class="nav-link nav-has-dropdown">ABOUT <span class="dropdown-arrow">▾</span></a>
+          <button type="button" class="nav-link nav-has-dropdown dropdown-toggle">
+            ABOUT <span class="dropdown-arrow">▾</span>
+          </button>
           <div class="dropdown-menu">
             <a href="about.html">About Betta</a>
             <a href="team.html">Team</a>
@@ -517,7 +516,9 @@
         </div>
 
         <div class="nav-dropdown">
-          <a href="support.html" class="nav-link nav-has-dropdown">SUPPORT <span class="dropdown-arrow">▾</span></a>
+          <button type="button" class="nav-link nav-has-dropdown dropdown-toggle">
+            SUPPORT <span class="dropdown-arrow">▾</span>
+          </button>
           <div class="dropdown-menu">
             <a href="support1.html">FAQ</a>
             <a href="support2.html">Contact Us</a>
@@ -526,7 +527,7 @@
       </nav>
 
       <div class="header-actions">
-        <a href="cart.html" class="cart-wrapper" id="cart-link" aria-label="Cart">
+        <a href="cart1.html" class="cart-wrapper" id="cart-link" aria-label="Cart">
           <img src="png/Cart.png" alt="Cart" class="cart-icon">
         </a>
         <a href="Signup.html" id="auth-button" class="btn-nav">SIGN UP</a>
@@ -669,6 +670,7 @@
            Dragon Scale betta fish are developed through selective crossbreeding to produce thick, iridescent scales resembling dragon armor. 
            They became popular in the mid-2000s and are known for their bold, solid appearance.<br>
             <span class="characteristics">Characteristics: thick, armor-like scales.</span>
+          </div>
         </article>
 
             <article class="type-card" onclick="this.classList.toggle('open')">
@@ -682,6 +684,7 @@
             Fancy betta fish are developed through selective crossbreeding to produce diverse and irregular color combinations. They became popular in the 
             modern era around the 2000s and are often the result of specialized breeding. <br>
             <span class="characteristics">Characteristics: unique, non-standard color combinations.</span>
+          </div>
         </article>
 
             <article class="type-card" onclick="this.classList.toggle('open')">
@@ -703,83 +706,112 @@
       </div>
     </main>
 
-    <!-- ===== FOOTER ===== -->
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <div class="footer-brand">
-          <a class="brand" href="index.html">
-            <img src="png/Logo.png" alt="Sirip Juara Logo">
-          </a>
-          <p>Your trusted place to find high-quality betta fish and beginner-friendly care guidance.</p>
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="main-container footer-inner">
+
+      <div class="footer-brand">
+        <a class="brand" href="index.html">
+          <img src="png/Logo.png" alt="Sirip Juara Logo">
+        </a>
+        <p>Your trusted place to find high-quality betta fish and beginner-friendly care guidance.</p>
+      </div>
+
+      <div class="footer-links">
+        <div>
+          <h3>Company <span class="footer-line"></span></h3>
+          <a href="careguide.html">Beginner Guide</a>
+          <a href="about1.html">Types of Betta</a>
+          <a href="artikel6.html">Feeding Tips</a>
+          <a href="artikel1.html">Care Basics</a>
         </div>
-        <div class="footer-links">
-          <div>
-            <h3>Company <span class="footer-line"></span></h3>
-            <a href="#">Beginner Guide</a>
-            <a href="#">Types of Betta</a>
-            <a href="#">Feeding Tips</a>
-            <a href="#">Care Basics</a>
-          </div>
-          <div>
-            <h3>Quick Links <span class="footer-line"></span></h3>
-            <a href="index.html">Home</a>
-            <a href="shop.html">Shop</a>
-            <a href="care.html">Care Guide</a>
-            <a href="about.html">About</a>
-            <a href="support.html">Support</a>
-          </div>
-          <div>
-            <div class="contact">
+        <div>
+          <h3>Quick Links <span class="footer-line"></span></h3>
+          <a href="index.html">Home</a>
+          <a href="shop.html">Shop</a>
+          <a href="careguide.html">Care Guide</a>
+          <a href="about.html">About</a>
+          <a href="support2.html">Support</a>
+        </div>
+        <div>
           <h3>Contact <span class="footer-line"></span></h3>
-
           <p class="contact-item">
-          <img src="png/iconLokasi.png" alt="location" class="contact-icon">
-          <span>Jl. Makkio Baji II, SulSel, Indonesia</span>
+            <img src="png/iconLokasi.png" alt="location" class="contact-icon">
+            <span>Jl. Makkio Baji II, SulSel, Indonesia</span>
           </p>
-
           <a href="mailto:siripjuara@gmail.com" class="contact-item">
-          <img src="png/iconEmail.png" alt="email" class="contact-icon">
-          <span>siripjuara@gmail.com</span>
+            <img src="png/iconEmail.png" alt="email" class="contact-icon">
+            <span>siripjuara@gmail.com</span>
           </a>
-
           <p class="contact-item">
-          <img src="png/iconCS.png" alt="cs" class="contact-icon">
-          <span>Customer Service</span>
+            <img src="png/iconCS.png" alt="cs" class="contact-icon">
+            <span>Customer Service</span>
           </p>
-        </div>
         </div>
       </div>
-    </footer>
 
-    <script>
-      // Active nav
-      (function () {
-        const links = document.querySelectorAll('.nav-link');
-        const current = location.pathname.split('/').pop() || 'index.html';
-        links.forEach(link => {
-          const href = (link.getAttribute('href') || '').split('/').pop();
-          if (href === current) link.classList.add('active-page');
-        });
-      })();
+    </div>
+  </footer>
 
-      // Active cart
-      (function () {
-        const cartLink = document.getElementById('cart-link');
-        if (location.pathname.split('/').pop() === 'cart.html') {
-          cartLink.classList.add('cart-active');
-        }
-      })();
+  <script>
+  (function () {
+    const current = location.pathname.split('/').pop() || 'index.html';
 
-      // Auth
-      function handleAuth() { window.location.href = 'login.html'; }
+    // active link biasa
+    document.querySelectorAll('.nav-link[href]').forEach(link => {
+      const href = (link.getAttribute('href') || '').split('/').pop();
 
-      function updateAuthState() {
-        const loggedIn = localStorage.getItem('sj_loggedIn') === 'true';
-        document.getElementById('auth-button').classList.toggle('hidden', loggedIn);
-        document.getElementById('profile-button').classList.toggle('hidden', !loggedIn);
+      if (href === current) {
+        link.classList.add('active-page');
       }
-      updateAuthState();
+    });
 
+    // ABOUT pages
+    if (
+      current === 'about.html' ||
+      current === 'about1.html' ||
+      current === 'team.html'
+    ) {
+      document.querySelectorAll('.dropdown-toggle')[0]
+        ?.classList.add('active-page');
+    }
+
+    // SUPPORT pages
+    if (
+      current === 'support1.html' ||
+      current === 'support2.html' ||
+      current === 'support3.html'
+    ) {
+      document.querySelectorAll('.dropdown-toggle')[1]
+        ?.classList.add('active-page');
+    }
+  })();
+
+    // Active nav
+    (function () {
+      const links = document.querySelectorAll('.nav-link');
+      const current = location.pathname.split('/').pop() || 'index.html';
+      links.forEach(link => {
+        const href = (link.getAttribute('href') || '').split('/').pop();
+        if (href === current) link.classList.add('active-page');
+      });
+    })();
+
+    // Active cart
+    (function () {
+      const cartLink = document.getElementById('cart-link');
+      if (location.pathname.split('/').pop() === 'cart.html') {
+        cartLink.classList.add('cart-active');
+      }
+    })();
+
+    // Auth state
+    function updateAuthState() {
+      const loggedIn = localStorage.getItem('sj_loggedIn') === 'true';
+      document.getElementById('auth-button').classList.toggle('hidden', loggedIn);
+      document.getElementById('profile-button').classList.toggle('hidden', !loggedIn);
+    }
+    updateAuthState();
     
     </script>
 

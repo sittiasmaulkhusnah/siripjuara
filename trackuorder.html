@@ -214,10 +214,11 @@
     }
 
         /* ── MAIN CONTAINER ── */
-        .container {
-            max-width: 860px;
-            margin: 0 auto;
-            padding: 36px 24px 60px;
+        .track-container {
+          max-width: 860px;
+          width: min(860px, calc(100% - 80px));
+          margin: 0 auto;
+          padding: 36px 0 60px;
         }
         .intro {
             display: flex; flex-direction: column; gap: 4px;
@@ -284,7 +285,7 @@
 
         /* Icon box */
         .step-icon img {
-            width: 45px; height: 55px;
+            width: 50px; height: 52px;
             object-fit: contain;
         }
 
@@ -354,10 +355,24 @@
             color: #3D588B;
             margin-bottom: 18px;
         }
-        .order-item {
-            display: flex;
-            align-items: center;
-            gap: 18px;
+        .order-item{
+          display:flex;
+          align-items:center;
+          gap:20px;
+        }
+
+        .item-info{
+          flex:1;
+        }
+
+        .item-price{
+          margin-left:auto;
+
+          font-size:2rem;
+          font-weight:700;
+          color:#3D588B;
+
+          white-space:nowrap;
         }
         .fish-img {
             width: 88px; height: 88px;
@@ -376,12 +391,21 @@
             color: #3D588B; margin-left: auto; flex-shrink: 0;
         }
 
-        /* ── FOOTER ── */
+    /* ====================================================
+       FOOTER
+    ==================================================== */
     .site-footer {
       background: #1c2d5c;
       color: #fff;
       padding: 60px 20px;
       margin-top: auto;
+    }
+
+    .site-footer .container {
+      width: min(1320px, calc(100% - 80px));
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0;
     }
 
     .footer-inner {
@@ -391,10 +415,10 @@
       align-items: start;
     }
 
-    .footer-brand .brand img {
-      max-height: 110px;
+    .footer-brand .brand img { 
+      max-height: 110px; 
       width: auto;
-      margin: -30px;
+      margin: -30px; 
     }
 
     .footer-brand p {
@@ -410,7 +434,7 @@
       grid-template-columns: 1fr 1fr 1.4fr;
       gap: 0;
       align-items: start;
-      margin-right: -50px;
+      margin-right: -50px
     }
 
     .footer-links h3 {
@@ -423,13 +447,7 @@
       gap: 10px;
     }
 
-    .footer-line {
-      display: inline-block;
-      width: 32px;
-      height: 1.5px;
-      background: #fff;
-      flex-shrink: 0;
-    }
+    .footer-line { display: inline-block; width: 32px; height: 1.5px; background: #fff; flex-shrink: 0; }
 
     .footer-links a,
     .footer-links > div > p {
@@ -440,7 +458,6 @@
       font-size: 0.9rem;
       text-decoration: none;
     }
-
     .footer-links a:hover { color: #fff; }
 
     .contact-item {
@@ -453,78 +470,57 @@
       text-decoration: none;
       line-height: 1.4;
     }
-
-    .contact-icon {
-      width: 22px;
-      height: 22px;
-      object-fit: contain;
-      flex-shrink: 0;
+    
+    .contact-icon { 
+      width: 22px; 
+      height: 22px; 
+      object-fit: contain; 
+      flex-shrink: 0; 
     }
 
-        @media (max-width: 960px) {
-            .footer-inner { grid-template-columns: 1.4fr 1fr; }
-            .header-inner { flex-wrap: wrap; justify-content: center; }
-        }
-        @media (max-width: 760px) {
-            .nav-menu { gap: 18px; }
-            .status-card, .summary-card { padding: 24px 16px; }
-            .order-item { flex-wrap: wrap; }
-            .item-price { margin-left: 0; }
-        }
-        @media (max-width: 560px) {
-            .nav-menu { justify-content: center; width: 100%; }
-            .page-header { padding: 16px; }
-            .container { padding: 24px 16px 40px; }
-            .footer-inner { grid-template-columns: 1fr; }
-            .brand { font-size: 1rem; }
-            .tracker-line { display: none; }
-        }
-        .qty-control {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 10px;
-}
-
 .qty-control {
-    display: flex;
-    align-items: center;
-    gap: 2px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
 }
 
 .qty-control button {
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    background: #ffffff;
-    color: #3D588B;
-    font-size: 1rem;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    border: none;
-    transition: background 0.2s;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+
+  background: #ffffff;
+  color: #3D588B;
+
+  font-size: 1rem;
+  font-weight: 700;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: default;
+  opacity: 0.8;
 }
 
-.qty-control button:hover {
-    background: #b8cce8;
-}
+.qty-number {
+  min-width: 42px;
+  height: 28px;
+  padding: 0 14px;
 
-.qty-control span {
-    min-width: 40px;
-    height: 26px;
-    padding: 0 10px;
-    border-radius: 18px;
-    background: #ffffff;
-    color: #3D588B;
-    font-size: 1rem;
-    font-weight: 600;
+  border-radius: 999px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background: #ffffff;
+  color: #3D588B;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
     </style>
 </head>
@@ -542,7 +538,9 @@
         <a href="careguide.html" class="nav-link">CARE GUIDE</a>
 
         <div class="nav-dropdown">
-          <a href="about.html" class="nav-link nav-has-dropdown">ABOUT <span class="dropdown-arrow">▾</span></a>
+          <button type="button" class="nav-link nav-has-dropdown dropdown-toggle">
+            ABOUT <span class="dropdown-arrow">▾</span>
+          </button>
           <div class="dropdown-menu">
             <a href="about.html">About Betta</a>
             <a href="team.html">Team</a>
@@ -550,7 +548,9 @@
         </div>
 
         <div class="nav-dropdown">
-          <a href="support.html" class="nav-link nav-has-dropdown">SUPPORT <span class="dropdown-arrow">▾</span></a>
+          <button type="button" class="nav-link nav-has-dropdown dropdown-toggle">
+            SUPPORT <span class="dropdown-arrow">▾</span>
+          </button>
           <div class="dropdown-menu">
             <a href="support1.html">FAQ</a>
             <a href="support2.html">Contact Us</a>
@@ -559,7 +559,7 @@
       </nav>
 
       <div class="header-actions">
-        <a href="cart.html" class="cart-wrapper" id="cart-link" aria-label="Cart">
+        <a href="cart1.html" class="cart-wrapper" id="cart-link" aria-label="Cart">
           <img src="png/Cart.png" alt="Cart" class="cart-icon">
         </a>
         <a href="Signup.html" id="auth-button" class="btn-nav">SIGN UP</a>
@@ -571,10 +571,10 @@
     </div>
   </header>
 
-    <main class="container">
+    <main class="track-container">
         <section class="intro">
             <h1>Order Status</h1>
-            <p>Order ID : <span class="order-id">#SDGT1254FD</span></p>
+            <p>Order ID : <span class="order-id" id="trackOrderId"></span></p>
         </section>
 
         <section class="status-card">
@@ -620,21 +620,32 @@
 
         <section class="summary-card">
             <h2>Order Summary</h2>
+
             <div class="order-item">
-                <img class="fish-img" src="png/s1double tail betta.png" alt="Dumbo Ear" onerror="this.style.background='#1a1a2e'"/>
-                <div class="item-info">
-    <div class="item-name">Double Tail Betta</div>
-    <div class="qty-control">
-        <button onclick="changeQty(-1)">-</button>
-        <span class="qty-number" id="qty">2</span>
-        <button onclick="changeQty(1)">+</button>
-    </div>
-</div>
-                <div class="item-price" id="price">Rp 205.000</div>
+
+              <img class="fish-img" id="trackImg" src="" alt="">
+
+              <div class="item-info">
+
+                <div class="item-name" id="trackName"></div>
+
+                <div class="qty-control">
+                  <button disabled>-</button>
+
+                  <span class="qty-number" id="trackQty"></span>
+
+                  <button disabled>+</button>
+                </div>
+
+              </div>
+
+              <div class="item-price" id="trackPrice"></div>
+
             </div>
         </section>
     </main>
 
+  <!-- ===== FOOTER ===== -->
   <footer class="site-footer">
     <div class="container footer-inner">
 
@@ -648,10 +659,10 @@
       <div class="footer-links">
         <div>
           <h3>Company <span class="footer-line"></span></h3>
-          <a href="#">Beginner Guide</a>
-          <a href="#">Types of Betta</a>
-          <a href="#">Feeding Tips</a>
-          <a href="#">Care Basics</a>
+          <a href="careguide.html">Beginner Guide</a>
+          <a href="about1.html">Types of Betta</a>
+          <a href="artikel6.html">Feeding Tips</a>
+          <a href="artikel1.html">Care Basics</a>
         </div>
         <div>
           <h3>Quick Links <span class="footer-line"></span></h3>
@@ -659,7 +670,7 @@
           <a href="shop.html">Shop</a>
           <a href="careguide.html">Care Guide</a>
           <a href="about.html">About</a>
-          <a href="support.html">Support</a>
+          <a href="support2.html">Support</a>
         </div>
         <div>
           <h3>Contact <span class="footer-line"></span></h3>
@@ -682,14 +693,49 @@
   </footer>
 
     <script>
-        const basePrice = 52500;
-        let qty = 2;
-        function fmt(n) { return 'Rp ' + n.toLocaleString('id-ID'); }
-        function changeQty(delta) {
-            qty = Math.max(1, qty + delta);
-            document.getElementById('qty').textContent = qty;
-            document.getElementById('price').textContent = fmt(basePrice * qty);
-        }
+
+    function fmt(n) {
+      return "Rp " + Number(n || 0).toLocaleString("id-ID");
+    }
+
+    const order = JSON.parse(localStorage.getItem("sj_last_order") || "{}");
+
+    if (order.name) {
+
+      document.getElementById("trackOrderId").textContent =
+        order.orderId || localStorage.getItem("sj_order_id") || "#SJ00000000";
+
+      document.getElementById("trackImg").src =
+        order.img || "png/s1double tail betta.png";
+
+      document.getElementById("trackImg").alt = order.name;
+
+      document.getElementById("trackName").textContent = order.name;
+
+      document.getElementById("trackQty").textContent =
+        order.qty || 1;
+
+      const total =
+        order.total ||
+        ((order.price || 0) * (order.qty || 1) + 10000 - 5000);
+
+      document.getElementById("trackPrice").textContent =
+        fmt(total);
+
+    } else {
+
+      document.getElementById("trackOrderId").textContent =
+        "#SJ00000000";
+
+      document.getElementById("trackName").textContent =
+        "No order found";
+
+      document.getElementById("trackQty").textContent =
+        "-";
+
+      document.getElementById("trackPrice").textContent =
+        "Rp 0";
+    }
 
               // Active nav
     (function () {

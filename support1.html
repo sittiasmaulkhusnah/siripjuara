@@ -217,9 +217,13 @@
     main { flex: 1; 
         padding: 30px 60px 40px; }
 
-    .container { max-width: 1100px;
-         margin: 0 auto; 
-        padding: 30px 80px}
+    /* Main Content */
+    .payment-container {
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 32px 120px;
+        min-height: calc(100vh - 400px);
+    }
 
     .hero { margin-bottom: 16px; }
 
@@ -425,6 +429,12 @@
       margin-top: auto;
     }
 
+    .site-footer .container {
+    width: min(1320px, calc(100% - 80px));
+    margin: 0 auto;
+    padding: 0;
+    }
+
     .footer-inner {
       display: grid;
       grid-template-columns: 1fr 2.2fr;
@@ -532,11 +542,13 @@
 
       <nav class="site-nav" aria-label="Primary navigation">
         <a href="index.html" class="nav-link">HOME</a>
-        <a href="shop.html" class="nav-link active-page">SHOP</a>
+        <a href="shop.html" class="nav-link">SHOP</a>
         <a href="careguide.html" class="nav-link">CARE GUIDE</a>
 
         <div class="nav-dropdown">
-          <a href="about.html" class="nav-link nav-has-dropdown">ABOUT <span class="dropdown-arrow">▾</span></a>
+          <button type="button" class="nav-link nav-has-dropdown dropdown-toggle">
+            ABOUT <span class="dropdown-arrow">▾</span>
+          </button>
           <div class="dropdown-menu">
             <a href="about.html">About Betta</a>
             <a href="team.html">Team</a>
@@ -544,7 +556,9 @@
         </div>
 
         <div class="nav-dropdown">
-          <a href="support.html" class="nav-link nav-has-dropdown">SUPPORT <span class="dropdown-arrow">▾</span></a>
+          <button type="button" class="nav-link nav-has-dropdown dropdown-toggle">
+            SUPPORT <span class="dropdown-arrow">▾</span>
+          </button>
           <div class="dropdown-menu">
             <a href="support1.html">FAQ</a>
             <a href="support2.html">Contact Us</a>
@@ -553,7 +567,7 @@
       </nav>
 
       <div class="header-actions">
-        <a href="cart.html" class="cart-wrapper" id="cart-link" aria-label="Cart">
+        <a href="cart1.html" class="cart-wrapper" id="cart-link" aria-label="Cart">
           <img src="png/Cart.png" alt="Cart" class="cart-icon">
         </a>
         <a href="Signup.html" id="auth-button" class="btn-nav">SIGN UP</a>
@@ -567,7 +581,8 @@
   
   <!-- MAIN -->
   <main>
-    <div class="container">
+    <!-- Main Content -->
+    <div class="payment-container">
 
       <div class="content-grid">
         <!-- LEFT: Hero + FAQ -->
@@ -675,10 +690,10 @@
       <div class="footer-links">
         <div>
           <h3>Company <span class="footer-line"></span></h3>
-          <a href="#">Beginner Guide</a>
-          <a href="#">Types of Betta</a>
-          <a href="#">Feeding Tips</a>
-          <a href="#">Care Basics</a>
+          <a href="careguide.html">Beginner Guide</a>
+          <a href="about1.html">Types of Betta</a>
+          <a href="artikel6.html">Feeding Tips</a>
+          <a href="artikel1.html">Care Basics</a>
         </div>
         <div>
           <h3>Quick Links <span class="footer-line"></span></h3>
@@ -686,7 +701,7 @@
           <a href="shop.html">Shop</a>
           <a href="careguide.html">Care Guide</a>
           <a href="about.html">About</a>
-          <a href="support.html">Support</a>
+          <a href="support2.html">Support</a>
         </div>
         <div>
           <h3>Contact <span class="footer-line"></span></h3>
@@ -712,6 +727,40 @@
 </div>
 
 <script>
+
+    (function () {
+    const current = location.pathname.split('/').pop() || 'index.html';
+
+    // active link biasa
+    document.querySelectorAll('.nav-link[href]').forEach(link => {
+      const href = (link.getAttribute('href') || '').split('/').pop();
+
+      if (href === current) {
+        link.classList.add('active-page');
+      }
+    });
+
+    // ABOUT pages
+    if (
+      current === 'about.html' ||
+      current === 'about1.html' ||
+      current === 'team.html'
+    ) {
+      document.querySelectorAll('.dropdown-toggle')[0]
+        ?.classList.add('active-page');
+    }
+
+    // SUPPORT pages
+    if (
+      current === 'support1.html' ||
+      current === 'support2.html' ||
+      current === 'support3.html'
+    ) {
+      document.querySelectorAll('.dropdown-toggle')[1]
+        ?.classList.add('active-page');
+    }
+  })();
+
   document.querySelectorAll('.faq-button').forEach((button) => {
     button.addEventListener('click', () => {
       const item = button.closest('.faq-item');

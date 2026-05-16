@@ -556,10 +556,12 @@
       <nav class="site-nav" aria-label="Primary navigation">
         <a href="index.html" class="nav-link">HOME</a>
         <a href="shop.html" class="nav-link">SHOP</a>
-        <a href="care.html" class="nav-link">CARE GUIDE</a>
+        <a href="careguide.html" class="nav-link">CARE GUIDE</a>
 
         <div class="nav-dropdown">
-          <a href="about.html" class="nav-link nav-has-dropdown">ABOUT <span class="dropdown-arrow">▾</span></a>
+          <button type="button" class="nav-link nav-has-dropdown dropdown-toggle">
+            ABOUT <span class="dropdown-arrow">▾</span>
+          </button> 
           <div class="dropdown-menu">
             <a href="about.html">About Betta</a>
             <a href="team.html">Team</a>
@@ -567,7 +569,9 @@
         </div>
 
         <div class="nav-dropdown">
-          <a href="support.html" class="nav-link nav-has-dropdown">SUPPORT <span class="dropdown-arrow">▾</span></a>
+          <button type="button" class="nav-link nav-has-dropdown dropdown-toggle">
+            SUPPORT <span class="dropdown-arrow">▾</span>
+          </button>
           <div class="dropdown-menu">
             <a href="support1.html">FAQ</a>
             <a href="support2.html">Contact Us</a>
@@ -576,7 +580,7 @@
       </nav>
 
       <div class="header-actions">
-        <a href="cart.html" class="cart-wrapper" id="cart-link" aria-label="Cart">
+        <a href="cart1.html" class="cart-wrapper" id="cart-link" aria-label="Cart">
           <img src="png/Cart.png" alt="Cart" class="cart-icon">
         </a>
         <a href="Signup.html" id="auth-button" class="btn-nav">SIGN UP</a>
@@ -684,7 +688,9 @@
             <div class="summary-row"><span>Coupon Discount</span><strong>−Rp 5.000</strong></div>
             <hr class="summary-line">
             <div class="summary-total"><span>Total</span><strong>Rp 165.000</strong></div>
-            <button class="checkout-btn">Proceed to Checkout</button>
+            <button class="checkout-btn" onclick="window.location.href='checkout.html'">
+            Proceed to Checkout
+          </button>
           </aside>
 
         </div>
@@ -706,18 +712,18 @@
       <div class="footer-links">
         <div>
           <h3>Company <span class="footer-line"></span></h3>
-          <a href="#">Beginner Guide</a>
-          <a href="#">Types of Betta</a>
-          <a href="#">Feeding Tips</a>
-          <a href="#">Care Basics</a>
+          <a href="careguide.html">Beginner Guide</a>
+          <a href="about1.html">Types of Betta</a>
+          <a href="artikel6.html">Feeding Tips</a>
+          <a href="artikel1.html">Care Basics</a>
         </div>
         <div>
           <h3>Quick Links <span class="footer-line"></span></h3>
           <a href="index.html">Home</a>
           <a href="shop.html">Shop</a>
-          <a href="care.html">Care Guide</a>
+          <a href="careguide.html">Care Guide</a>
           <a href="about.html">About</a>
-          <a href="support.html">Support</a>
+          <a href="support2.html">Support</a>
         </div>
         <div>
           <h3>Contact <span class="footer-line"></span></h3>

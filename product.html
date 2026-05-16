@@ -65,7 +65,7 @@
     .qty-value { min-width:24px; text-align:center; font-weight:600; }
     .add-cart-btn { width:40px; height:40px; border-radius:50%; border:1.5px solid var(--border); background:var(--surface-soft); display:grid; place-items:center; transition:background 0.2s; cursor:pointer; }
     .add-cart-btn:hover { background:var(--border); }
-    .add-cart-btn img { width:22px; }
+    .add-cart-btn img { width:50px; }
     .buy-btn { padding:10px 28px; border-radius:999px; background:var(--navy); color:#fff; font-weight:700; font-size:0.9rem; transition:opacity 0.2s,transform 0.2s; cursor:pointer; font-family:"Poppins",sans-serif; }
     .buy-btn:hover { opacity:0.88; transform:translateY(-1px); }
 
@@ -127,16 +127,20 @@
         <a href="shop.html" class="nav-link active-page">SHOP</a>
         <a href="careguide.html" class="nav-link">CARE GUIDE</a>
         <div class="nav-dropdown">
-          <a href="about.html" class="nav-link nav-has-dropdown">ABOUT <span class="dropdown-arrow">▾</span></a>
+          <button type="button" class="nav-link nav-has-dropdown dropdown-toggle">
+            ABOUT <span class="dropdown-arrow">▾</span>
+          </button>
           <div class="dropdown-menu"><a href="about.html">About Betta</a><a href="team.html">Team</a></div>
         </div>
         <div class="nav-dropdown">
-          <a href="support.html" class="nav-link nav-has-dropdown">SUPPORT <span class="dropdown-arrow">▾</span></a>
+          <button type="button" class="nav-link nav-has-dropdown dropdown-toggle">
+            SUPPORT <span class="dropdown-arrow">▾</span>
+          </button>
           <div class="dropdown-menu"><a href="support1.html">FAQ</a><a href="support2.html">Contact Us</a></div>
         </div>
       </nav>
       <div class="header-actions">
-        <a href="cart.html" class="cart-wrapper" id="cart-link"><img src="png/Cart.png" alt="Cart" class="cart-icon"></a>
+        <a href="cart1.html" class="cart-wrapper" id="cart-link"><img src="png/Cart.png" alt="Cart" class="cart-icon"></a>
         <a href="Signup.html" id="auth-button" class="btn-nav">SIGN UP</a>
         <a href="profil.html" id="profile-button" class="profile-btn hidden"><img src="png/iconAccount.png" alt="Profile"></a>
       </div>
@@ -170,9 +174,13 @@
               <span class="qty-value">1</span>
               <button class="qty-btn">+</button>
             </div>
-            <button class="add-cart-btn" aria-label="Add to Cart">
-              <img src="png/Cart.png" alt="Cart">
-            </button>
+          <button 
+          class="add-cart-btn"
+          aria-label="Add to Cart"
+          onclick="window.location.href='cart1.html'"
+        >
+          <img src="png/Cart.png" alt="Cart">
+        </button>
             <button class="buy-btn" id="buyNowBtn">Buy Now</button>
           </div>
         </div>
@@ -229,11 +237,11 @@
       <div class="footer-links">
         <div>
           <h3>Company <span class="footer-line"></span></h3>
-          <a href="#">Beginner Guide</a><a href="#">Types of Betta</a><a href="#">Feeding Tips</a><a href="#">Care Basics</a>
+          <a href="careguide.html">Beginner Guide</a><a href="about1.html">Types of Betta</a><a href="artikel6.html">Feeding Tips</a><a href="artikel1.html">Care Basics</a>
         </div>
         <div>
           <h3>Quick Links <span class="footer-line"></span></h3>
-          <a href="index.html">Home</a><a href="shop.html">Shop</a><a href="careguide.html">Care Guide</a><a href="about.html">About</a><a href="support.html">Support</a>
+          <a href="index.html">Home</a><a href="shop.html">Shop</a><a href="careguide.html">Care Guide</a><a href="about.html">About</a><a href="support2.html">Support</a>
         </div>
         <div>
           <h3>Contact <span class="footer-line"></span></h3>
@@ -248,119 +256,408 @@
   <script>
     // ── DATA PRODUK (sama persis dengan shop.html) ────────────
     const SJ_PRODUCTS = {
-      1:  { id:1,  name:"Double Tail Betta",   price:100000, img:"png/s1double tail betta.png",  rating:"4,9", ratingNum:4.9, sold:5,  gender:"Male", stock:"Tersedia", category:"Double Tail", origin:"Lokal",
-            shortDesc:"Cupang Double Tail tampil elegan dengan sirip ganda yang mekar simetris dan warna biru-putih yang clean.",
-            longDesc:"Double Tail Betta memiliki ciri khas ekor terbelah dua yang membuat tampilannya terlihat lebih penuh dan mewah saat berenang. Perpaduan warna putih bersih dengan gradasi biru di bagian sirip memberikan kesan premium dan eye-catching, cocok untuk kamu yang cari ikan dengan tampilan unik tapi tetap classy.",
-            reviews:[{name:"Diela", avatar:"png/diela.png", date:"2026-01-12", variant:"Male", stars:5, text:"Cantik, pengiriman cepat, ikan sampai dengan selamat"},
-                     {name:"Aiman", avatar:"png/aiman.png", date:"2026-01-12", variant:"Male", stars:5, text:"Bagus, pengiriman cepat, ikan sampai dengan selamat"}] },
+      1: {
+        id: 1,
+        name: "Double Tail Betta",
+        price: 100000,
+        img: "png/s1double tail betta.png",
+        rating: "4,9",
+        ratingNum: 4.9,
+        sold: 5,
+        gender: "Male",
+        stock: "Tersedia",
+        category: "Double Tail",
+        origin: "Lokal",
+        shortDesc: "Cupang Double Tail tampil elegan dengan sirip ganda yang mekar simetris dan warna biru-putih yang clean.",
+        longDesc: "Double Tail Betta memiliki ciri khas ekor terbelah dua yang membuat tampilannya terlihat lebih penuh dan mewah saat berenang. Perpaduan warna putih bersih dengan gradasi biru di bagian sirip memberikan kesan premium dan eye-catching, cocok untuk kamu yang cari ikan dengan tampilan unik tapi tetap classy.",
+        reviews: [
+          { name: "Diela", avatar: "png/diela.png", date: "2026-01-12", variant: "Male", stars: 5, text: "Cantik, pengiriman cepat, ikan sampai dengan selamat." },
+          { name: "Aiman", avatar: "png/aiman.png", date: "2026-01-12", variant: "Male", stars: 5, text: "Bagus, pengiriman cepat, ikan sampai dengan selamat." }
+        ]
+      },
 
-      2:  { id:2,  name:"Feathertail",          price:450000, img:"png/s2feathertail.png",         rating:"4,9", ratingNum:4.9, sold:7,  gender:"Male", stock:"Tersedia", category:"Feathertail", origin:"Import",
-            shortDesc:"Feathertail memiliki sirip bercabang halus yang terlihat indah dan premium.",
-            longDesc:"Jenis ini cocok untuk kolektor karena bentuk siripnya unik, lebar, dan menyerupai bulu halus saat mengembang. Warnanya beragam dan sangat eye-catching dalam aquarium.",
-            reviews:[{name:"Naya", avatar:"", date:"2026-02-03", variant:"Male", stars:5, text:"Siripnya cantik banget dan ikan aktif."}] },
+      2: {
+        id: 2,
+        name: "Feathertail",
+        price: 450000,
+        img: "png/s2feathertail.png",
+        rating: "4,9",
+        ratingNum: 4.9,
+        sold: 7,
+        gender: "Male",
+        stock: "Tersedia",
+        category: "Feathertail",
+        origin: "Import",
+        shortDesc: "Feathertail ini punya sirip super rimbun dengan tekstur seperti bulu yang bikin tampilannya beda dari cupang biasa.",
+        longDesc: "Feathertail dikenal dengan bentuk sirip yang berlipat-lipat dan bergelombang seperti bulu, menciptakan efek dramatis saat berenang. Warna kombinasi biru dengan kuning transparan membuat ikan ini terlihat hidup dan artistik, cocok untuk kolektor yang ingin tampilan lebih eksotis dan unik di akuarium.",
+        reviews: [
+          { name: "Diela", avatar: "png/diela.png", date: "2026-02-03", variant: "Male", stars: 5, text: "Siripnya cantik banget dan ikan aktif." },
+          { name: "Aiman", avatar: "png/aiman.png", date: "2026-02-03", variant: "Male", stars: 5, text: "Ikannya bagus banget, sesuai sama harganya. Cupang feather tail-nya warnanya keren, cakep banget pas berenang. Ikannya juga sehat dan aktif. Pengiriman lumayan cepat dan aman, packing-nya rapi jadi ikan sampai dengan kondisi baik. Overall puas sih, worth it!" }
+        ]
+      },
 
-      3:  { id:3,  name:"Plakat Betta Thai",    price:80000,  img:"png/s3plakat betta thai.png",   rating:"4,8", ratingNum:4.8, sold:8,  gender:"Male", stock:"Tersedia", category:"Plakat",      origin:"Import",
-            shortDesc:"Plakat Betta Thai memiliki tubuh kuat, warna tegas, dan gaya berenang aktif.",
-            longDesc:"Cupang plakat dikenal dengan sirip pendek dan postur kokoh, cocok untuk penghobi yang menyukai tampilan simple namun berkarakter. Mudah dirawat dan sangat aktif.",
-            reviews:[{name:"Fahri", avatar:"", date:"2026-01-28", variant:"Male", stars:4, text:"Warnanya cerah dan geraknya aktif."}] },
+      3: {
+        id: 3,
+        name: "Plakat Betta Thai",
+        price: 80000,
+        img: "png/s3plakat betta thai.png",
+        rating: "4,8",
+        ratingNum: 4.8,
+        sold: 8,
+        gender: "Male",
+        stock: "Tersedia",
+        category: "Plakat",
+        origin: "Import",
+        shortDesc: "Plakat Betta ini tampil simpel tapi galak dengan warna biru solid yang tegas dan elegan.",
+        longDesc: "Plakat dikenal dengan sirip pendek namun tubuh yang kokoh dan aktif, sering jadi pilihan karena lebih gesit dan tahan. Warna biru metallic yang solid memberi kesan bold dan modern, cocok untuk kamu yang suka cupang dengan karakter kuat dan tidak terlalu ramai di sirip.",
+        reviews: [
+          { name: "Syahriadi", avatar: "png/syahriadi.png", date: "2026-01-28", variant: "Male", stars: 5, text: "Ikan cupangnya datang dalam kondisi sangat sehat dan aktif. Warnanya juga cerah banget sesuai foto. Packing aman, jadi tidak ada kendala sama sekali." },
+          { name: "Najwa", avatar: "png/najwa.png", date: "2026-01-28", variant: "Male", stars: 5, text: "Bagus, pengiriman cepat, ikan sampai dengan selamat." }
+        ]
+      },
 
-      4:  { id:4,  name:"Crowntail Betta",      price:150000, img:"png/s4crowntail.png",           rating:"4,9", ratingNum:4.9, sold:6,  gender:"Male", stock:"Tersedia", category:"Crowntail",   origin:"Lokal",
-            shortDesc:"Crowntail Betta memiliki sirip runcing menyerupai mahkota yang terlihat unik.",
-            longDesc:"Jenis ini populer karena bentuk siripnya berbeda dari cupang lain, cocok untuk pengguna yang ingin ikan dengan tampilan mencolok dan berkarakter kuat.",
-            reviews:[{name:"Alya", avatar:"", date:"2026-02-10", variant:"Male", stars:5, text:"Bentuk siripnya bagus dan sesuai foto."}] },
+      4: {
+        id: 4,
+        name: "Crowntail Betta",
+        price: 150000,
+        img: "png/s4crowntail.png",
+        rating: "4,9",
+        ratingNum: 4.9,
+        sold: 6,
+        gender: "Male",
+        stock: "Tersedia",
+        category: "Crowntail",
+        origin: "Lokal",
+        shortDesc: "Crowntail merah dengan sirip tajam menyerupai mahkota yang bikin tampilannya terlihat sangar dan eksotis.",
+        longDesc: "Dengan ujung sirip yang terpisah seperti duri, Crowntail memberikan kesan unik dan berbeda dibanding jenis lainnya. Warna merah menyala memperkuat kesan agresif dan mencolok, sangat cocok untuk kamu yang ingin ikan dengan karakter kuat dan langsung mencuri perhatian.",
+        reviews: [
+          { name: "Fadil Ilham", avatar: "png/fadil.png", date: "2026-02-10", variant: "Male", stars: 5, text: "Ikan cupangnya sehat, warnanya cerah dan aktif. Pengiriman juga aman, recommended!" },
+          { name: "Aidil", avatar: "png/aidil.png", date: "2026-02-10", variant: "Male", stars: 5, text: "Bagus, pengiriman cepat, ikan sampai dengan selamat." }
+        ]
+      },
 
-      5:  { id:5,  name:"Elephant Ear",         price:400000, img:"png/s5elephant ear.png",        rating:"4,9", ratingNum:4.9, sold:4,  gender:"Male", stock:"Tersedia", category:"Dumbo",       origin:"Import",
-            shortDesc:"Elephant Ear memiliki sirip dada besar menyerupai telinga gajah.",
-            longDesc:"Cupang ini memiliki daya tarik pada bagian sirip dadanya yang lebar dan elegan saat bergerak di air. Warnanya metalik dan sangat memukau dalam aquarium.",
-            reviews:[{name:"Mira", avatar:"", date:"2026-01-20", variant:"Male", stars:5, text:"Cantik banget, cocok untuk koleksi."}] },
+      5: {
+        id: 5,
+        name: "Elephant Ear",
+        price: 400000,
+        img: "png/s5elephant ear.png",
+        rating: "4,9",
+        ratingNum: 4.9,
+        sold: 4,
+        gender: "Male",
+        stock: "Tersedia",
+        category: "Dumbo",
+        origin: "Import",
+        shortDesc: "Elephant Ear ini tampil anggun dengan sirip lebar seperti telinga gajah yang lembut dan flowy.",
+        longDesc: "Ciri khas utama ada di sirip dada yang besar dan melebar, membuat gerakannya terlihat sangat halus dan elegan di air. Warna putih bersih menambah kesan mewah dan bersih, cocok untuk kamu yang suka tampilan minimalis tapi tetap standout.",
+        reviews: [
+          { name: "Agus", avatar: "png/agus.png", date: "2026-01-20", variant: "Male", stars: 5, text: "Sangat puas dengan kualitas ikan yang dikirim. Gerakannya lincah dan warnanya tajam. Bakal beli lagi di sini." },
+          { name: "Darwan", avatar: "png/darwan.png", date: "2026-01-20", variant: "Male", stars: 5, text: "Sudah beberapa kali beli di sini dan tidak pernah kecewa. Kualitas selalu terjaga." }
+        ]
+      },
 
-      6:  { id:6,  name:"Halfmoon Betta",       price:120000, img:"png/s6halfmoon betta.png",      rating:"4,9", ratingNum:4.9, sold:12, gender:"Male", stock:"Tersedia", category:"Halfmoon",    origin:"Lokal",
-            shortDesc:"Halfmoon Betta memiliki sirip lebar yang membentuk setengah lingkaran sempurna.",
-            longDesc:"Jenis ini sangat populer karena tampilan siripnya yang megah dan mudah dikenali, cocok untuk pemula maupun kolektor. Sirip mekar 180 derajat saat display.",
-            reviews:[{name:"Dina", avatar:"", date:"2026-02-06", variant:"Male", stars:5, text:"Siripnya mekar bagus dan ikan sehat."}] },
+      6: {
+        id: 6,
+        name: "Halfmoon Betta",
+        price: 120000,
+        img: "png/s6halfmoon betta.png",
+        rating: "4,9",
+        ratingNum: 4.9,
+        sold: 12,
+        gender: "Male",
+        stock: "Tersedia",
+        category: "Halfmoon",
+        origin: "Lokal",
+        shortDesc: "Halfmoon merah ini punya bukaan ekor sempurna 180° yang bikin tampilannya full dan maksimal.",
+        longDesc: "Halfmoon adalah salah satu jenis paling populer karena bentuk ekornya yang bisa mengembang setengah lingkaran sempurna. Warna merah pekat membuatnya terlihat bold dan mewah, cocok untuk display utama di akuarium karena langsung jadi pusat perhatian.",
+        reviews: [
+          { name: "Nabil", avatar: "png/nabil.png", date: "2026-02-06", variant: "Male", stars: 5, text: "Cantik, pengiriman cepat, ikan sampai dengan selamat." },
+          { name: "Riswan", avatar: "png/riswan.png", date: "2026-02-06", variant: "Male", stars: 5, text: "Packingnya cukup aman, tapi bagian luar box sedikit penyok waktu sampai. Untungnya isi masih aman. Ikannya juga cakep banget, warnanya tetap bagus dan terlihat sehat." }
+        ]
+      },
 
-      7:  { id:7,  name:"Dumbo Ear",            price:100000, img:"png/s7dumbo ear.png",           rating:"4,8", ratingNum:4.8, sold:9,  gender:"Male", stock:"Tersedia", category:"Dumbo",       origin:"Lokal",
-            shortDesc:"Dumbo Ear memiliki sirip samping besar yang membuat tampilannya lucu dan menarik.",
-            longDesc:"Cupang ini cocok untuk penghobi yang mencari ikan dengan karakter visual unik dan mudah dikenali. Sirip dadanya lebar seperti telinga gajah.",
-            reviews:[{name:"Rara", avatar:"", date:"2026-01-15", variant:"Male", stars:5, text:"Ikan lucu, aktif, dan packing rapi."}] },
+      7: {
+        id: 7,
+        name: "Dumbo Ear",
+        price: 100000,
+        img: "png/s7dumbo ear.png",
+        rating: "4,8",
+        ratingNum: 4.8,
+        sold: 9,
+        gender: "Male",
+        stock: "Tersedia",
+        category: "Dumbo",
+        origin: "Lokal",
+        shortDesc: "Dumbo ini dengan sirip dada besar yang bikin gerakannya unik dan menggemaskan.",
+        longDesc: "Dumbo Betta memiliki sirip dada yang menyerupai telinga besar, memberikan efek visual yang lucu sekaligus elegan saat berenang. Kombinasi warna biru dan putih yang kontras membuatnya semakin menarik, cocok untuk kamu yang ingin cupang dengan karakter unik tapi tetap cantik.",
+        reviews: [
+          { name: "Nisa", avatar: "png/nisa.png", date: "2026-01-15", variant: "Male", stars: 5, text: "Ikannya cantik dan sampai dengan keadaan yang sehat, amanah banget tokonya 😍." },
+          { name: "Siraa", avatar: "png/siraa.png", date: "2026-01-15", variant: "Male", stars: 5, text: "Ikannya cantik banget, sesuai dengan yang di foto. Suka banget deh, recommended banget ❤️." },
+          { name: "Abid", avatar: "png/abid.png", date: "2026-01-15", variant: "Male", stars: 5, text: "Bagus, pengiriman cepat, ikan sampai dengan selamat." }
+        ]
+      },
 
-      8:  { id:8,  name:"Giant Betta",          price:250000, img:"png/s8giant betta.png",         rating:"4,9", ratingNum:4.9, sold:5,  gender:"Male", stock:"Tersedia", category:"Giant Betta", origin:"Import",
-            shortDesc:"Giant Betta memiliki ukuran tubuh lebih besar dibanding cupang biasa.",
-            longDesc:"Jenis ini cocok untuk kolektor yang menyukai cupang dengan ukuran dominan, postur kuat, dan tampilan gagah. Bisa tumbuh hingga 3x ukuran cupang biasa.",
-            reviews:[{name:"Bayu", avatar:"", date:"2026-01-05", variant:"Male", stars:5, text:"Ukuran besar dan sehat."}] },
+      8: {
+        id: 8,
+        name: "Giant Betta",
+        price: 250000,
+        img: "png/s8giant betta.png",
+        rating: "4,9",
+        ratingNum: 4.9,
+        sold: 5,
+        gender: "Male",
+        stock: "Tersedia",
+        category: "Giant Betta",
+        origin: "Import",
+        shortDesc: "Giant Betta ini hadir dengan ukuran lebih besar dari cupang biasa dan warna marble yang super mencolok.",
+        longDesc: "Sesuai namanya, Giant Betta punya ukuran tubuh yang jauh lebih besar, memberikan kesan gagah dan dominan di akuarium. Corak warna campuran merah, biru, dan putih membuat tampilannya terlihat eksklusif dan tidak monoton, cocok untuk kamu yang ingin ikan centerpiece.",
+        reviews: [
+          { name: "Afdal", avatar: "png/afdal.png", date: "2026-01-18", variant: "Male", stars: 5, text: "Pengiriman cepat dan packing rapi, jadi paket sampai dengan aman. Ikan cupangnya juga sehat, aktif, dan warnanya cakep sesuai foto. Seller juga responsif saat ditanya dan memberikan informasi yang jelas. Kemungkinan besar akan beli lagi di sini." },
+          { name: "Ainun Duhatika", avatar: "png/ainun.png", date: "2026-01-18", variant: "Male", stars: 5, text: "Pengiriman cepat dan packing rapi. Ikan sehat dan warnanya cakep sesuai foto. Sangat puas dengan pembelian ini." }
+        ]
+      },
 
-      9:  { id:9,  name:"Rosetail",             price:600000, img:"png/s9rosetail.png",            rating:"4,9", ratingNum:4.9, sold:3,  gender:"Male", stock:"Tersedia", category:"Rosetail",    origin:"Import",
-            shortDesc:"Rosetail memiliki sirip mewah dengan lipatan menyerupai kelopak bunga mawar.",
-            longDesc:"Jenis ini termasuk premium karena tampilan siripnya yang tebal, lebar, dan sangat dekoratif. Sangat langka dan menjadi incaran kolektor serius.",
-            reviews:[{name:"Kevin", avatar:"", date:"2026-01-18", variant:"Male", stars:5, text:"Sangat premium, sesuai harga."}] },
+      9: {
+        id: 9,
+        name: "Rosetail",
+        price: 600000,
+        img: "png/s9rosetail.png",
+        rating: "4,9",
+        ratingNum: 4.9,
+        sold: 3,
+        gender: "Male",
+        stock: "Tersedia",
+        category: "Rosetail",
+        origin: "Import",
+        shortDesc: "Rosetail ini punya sirip super lebar dan berlapis-lapis seperti bunga mawar yang sedang mekar.",
+        longDesc: "Rosetail merupakan pengembangan dari Halfmoon dengan sirip yang lebih rimbun dan berlapis, menciptakan efek seperti kelopak bunga. Warna putih gading membuat tampilannya terlihat sangat elegan dan mahal, cocok untuk kolektor yang ingin level premium di akuarium mereka.",
+        reviews: [
+          { name: "Rasmin", avatar: "png/rasmin.png", date: "2026-01-18", variant: "Male", stars: 5, text: "Ikan datang dalam kondisi baik dan aktif." },
+          { name: "Ayu Lestari", avatar: "png/ayu.png", date: "2026-01-18", variant: "Male", stars: 5, text: "Packing rapi dan aman 😊 ikan datang sehat dan warnanya cantik banget 💖 puas!" }
+        ]
+      },
 
-      10: { id:10, name:"Super Delta Betta",    price:60000,  img:"png/s10super delta.png",        rating:"4,9", ratingNum:4.9, sold:10, gender:"Male", stock:"Tersedia", category:"Super Delta", origin:"Lokal",
-            shortDesc:"Super Delta Betta memiliki sirip lebar dengan bentuk hampir menyerupai Halfmoon.",
-            longDesc:"Jenis ini cocok untuk pemula karena tampilannya indah, harga terjangkau, dan mudah dirawat. Sirip mengembang hampir 180 derajat.",
-            reviews:[{name:"Tia", avatar:"", date:"2026-02-01", variant:"Male", stars:5, text:"Bagus untuk pemula, ikan sehat."}] },
+      10: {
+        id: 10,
+        name: "Super Delta Betta",
+        price: 60000,
+        img: "png/s10super delta.png",
+        rating: "4,9",
+        ratingNum: 4.9,
+        sold: 10,
+        gender: "Male",
+        stock: "Tersedia",
+        category: "Super Delta",
+        origin: "Lokal",
+        shortDesc: "Super Delta Betta ini tampil memukau dengan bukaan ekor lebar dan warna merah biru yang kontras.",
+        longDesc: "Super Delta memiliki bentuk ekor hampir setengah lingkaran yang memberikan efek penuh saat berenang, meskipun tidak sempurna seperti Halfmoon. Perpaduan warna merah menyala dengan biru gelap menciptakan tampilan yang mencolok dan elegan, cocok untuk kamu yang cari ikan cantik dengan harga terjangkau.",
+        reviews: [
+          { name: "Farhan", avatar: "png/farhan.png", date: "2026-02-01", variant: "Male", stars: 5, text: "Ikan aktif dan sesuai ekspektasi." },
+          { name: "Hanif", avatar: "png/hanif.png", date: "2026-02-01", variant: "Male", stars: 5, text: "Bagus, pengiriman cepat, ikan sampai dengan selamat." }
+        ]
+      },
 
-      11: { id:11, name:"Rosetail Betta Blue",       price:150000, img:"png/s11rosetail betta.png",     rating:"4,7", ratingNum:4.7, sold:1,  gender:"Male", stock:"Tersedia", category:"Premium",    origin:"Lokal",
-            shortDesc:"Rosetail Betta ini punya sirip super lebar dan berlapis-lapis seperti bunga yang sedang mekar.",
-            longDesc:"Rosetail merupakan pengembangan dari Halfmoon dengan sirip yang lebih rimbun dan bertumpuk, menciptakan efek dramatis saat bergerak di air. Warna biru pekat memberikan kesan elegan dan mewah, cocok untuk kolektor yang ingin tampilan lebih premium di akuarium.",
-            reviews:[{name:"Kania", avatar:"kania.png", date:"2026-02-12", variant:"Male", stars:5, text:"Lucu dan aktif banget 😄💖 warnanya juga cantik, jadi makin betah lihat di akuarium 😍."}],
-            reviews:[{name:"Harum", avatar:"harum.png", date:"2026-02-12", variant:"Male", stars:5, text:"Bagus, pengiriman cepat, ikan sampai dengan selamat."}],
-            reviews:[{name:"Fitri", avatar:"fitri.png", date:"2026-01-13", variant:"Male", stars:5, text:"alhamdulillah paket sampai dengan selamat 💖 ikannya sehat dan geraknya lincah banget. warnanya juga sesuai ekspektasi, cantik dan cerah 😍."}] },
+      11: {
+        id: 11,
+        name: "Rosetail Betta Blue",
+        price: 150000,
+        img: "png/s11rosetail betta.png",
+        rating: "4,7",
+        ratingNum: 4.7,
+        sold: 1,
+        gender: "Male",
+        stock: "Tersedia",
+        category: "Premium",
+        origin: "Lokal",
+        shortDesc: "Rosetail Betta ini punya sirip super lebar dan berlapis-lapis seperti bunga yang sedang mekar.",
+        longDesc: "Rosetail merupakan pengembangan dari Halfmoon dengan sirip yang lebih rimbun dan bertumpuk, menciptakan efek dramatis saat bergerak di air. Warna biru pekat memberikan kesan elegan dan mewah, cocok untuk kolektor yang ingin tampilan lebih premium di akuarium.",
+        reviews: [
+          { name: "Kania", avatar: "png/kania.png", date: "2026-02-12", variant: "Male", stars: 5, text: "Lucu dan aktif banget 😄💖 warnanya juga cantik, jadi makin betah lihat di akuarium 😍." },
+          { name: "Harum", avatar: "png/harum.png", date: "2026-02-12", variant: "Male", stars: 5, text: "Bagus, pengiriman cepat, ikan sampai dengan selamat." },
+          { name: "Fitri", avatar: "png/fitri.png", date: "2026-01-13", variant: "Male", stars: 5, text: "Alhamdulillah paket sampai dengan selamat 💖 ikannya sehat dan geraknya lincah banget. Warnanya juga sesuai ekspektasi, cantik dan cerah 😍." }
+        ]
+      },
 
-      12: { id:12, name:"Halfmoon Blue",        price:80000,  img:"png/s12halfmoon blue.png",      rating:"4,9", ratingNum:4.9, sold:1, gender:"Male", stock:"Tersedia", category:"Premium",    origin:"Lokal",
-            shortDesc:"Halfmoon Blue ini tampil clean dengan warna biru-putih yang lembut dan bukaan ekor sempurna.",
-            longDesc:"Halfmoon dikenal dengan ekor yang bisa mengembang hingga 180°, memberikan tampilan simetris dan penuh. Kombinasi warna biru dan putih membuatnya terlihat kalem namun tetap menarik, cocok untuk kamu yang suka gaya elegan dan tidak terlalu mencolok.",
-            reviews:[{name:"Sabil", avatar:"sabil.png", date:"2026-06-29", variant:"Male", stars:5, text:"Warna ikan sesuai deskripsi, tidak mengecewakan."}],
-             reviews:[{name:"Akmal", avatar:"akmal.png", date:"2026-02-11", variant:"Male", stars:5, text:"Ikannya bagus, warnanya keluar banget dan kelihatan sehat sejak pertama datang."}] },
+      12: {
+        id: 12,
+        name: "Halfmoon Blue",
+        price: 80000,
+        img: "png/s12halfmoon blue.png",
+        rating: "4,9",
+        ratingNum: 4.9,
+        sold: 1,
+        gender: "Male",
+        stock: "Tersedia",
+        category: "Premium",
+        origin: "Lokal",
+        shortDesc: "Halfmoon Blue ini tampil clean dengan warna biru-putih yang lembut dan bukaan ekor sempurna.",
+        longDesc: "Halfmoon dikenal dengan ekor yang bisa mengembang hingga 180°, memberikan tampilan simetris dan penuh. Kombinasi warna biru dan putih membuatnya terlihat kalem namun tetap menarik, cocok untuk kamu yang suka gaya elegan dan tidak terlalu mencolok.",
+        reviews: [
+          { name: "Sabil", avatar: "png/sabil.png", date: "2026-06-29", variant: "Male", stars: 5, text: "Warna ikan sesuai deskripsi, tidak mengecewakan." },
+          { name: "Akmal", avatar: "png/akmal.png", date: "2026-02-11", variant: "Male", stars: 5, text: "Ikannya bagus, warnanya keluar banget dan kelihatan sehat sejak pertama datang." }
+        ]
+      },
 
-      13: { id:13, name:"Yellow Koi",           price:30000,  img:"png/s13yellow koi.png",         rating:"4,9", ratingNum:4.9, sold:4, gender:"Male", stock:"Tersedia", category:"Standar",  origin:"Lokal",
-            shortDesc:"Yellow Koi ini tampil unik dengan corak kuning bercampur hitam seperti ikan koi.",
-            longDesc:"Jenis koi dikenal dengan pola warna acak yang membuat setiap ikan terlihat berbeda dan eksklusif. Dominasi warna kuning dengan bercak hitam memberikan kesan cerah dan hidup, cocok untuk kamu yang suka tampilan playful dan tidak monoton.",
-            reviews:[{name:"Fajar", avatar:"fajar.png", date:"2026-01-30", variant:"Male", stars:5, text:"Keren, sesuai ekspektasi, warna sama bentuk siripnya enak dilihat."}],
-            reviews:[{name:"Dimas", avatar:"dimas.png", date:"2026-01-30", variant:"Male", stars:5, text:"Warnanya cakep, apalagi pas kena lampu jadi makin kelihatan"}]},
+      13: {
+        id: 13,
+        name: "Yellow Koi",
+        price: 30000,
+        img: "png/s13yellow koi.png",
+        rating: "4,9",
+        ratingNum: 4.9,
+        sold: 4,
+        gender: "Male",
+        stock: "Tersedia",
+        category: "Standar",
+        origin: "Lokal",
+        shortDesc: "Yellow Koi ini tampil unik dengan corak kuning bercampur hitam seperti ikan koi.",
+        longDesc: "Jenis koi dikenal dengan pola warna acak yang membuat setiap ikan terlihat berbeda dan eksklusif. Dominasi warna kuning dengan bercak hitam memberikan kesan cerah dan hidup, cocok untuk kamu yang suka tampilan playful dan tidak monoton.",
+        reviews: [
+          { name: "Fajar", avatar: "png/fajar.png", date: "2026-01-30", variant: "Male", stars: 5, text: "Keren, sesuai ekspektasi, warna sama bentuk siripnya enak dilihat." },
+          { name: "Dimas", avatar: "png/dimas.png", date: "2026-01-30", variant: "Male", stars: 5, text: "Warnanya cakep, apalagi pas kena lampu jadi makin kelihatan." }
+        ]
+      },
 
-      14: { id:14, name:"Dragon Besgel",        price:50000,  img:"png/s14dragon besgel.png",      rating:"4,7", ratingNum:4.7, sold:2,  gender:"Male", stock:"Tersedia", category:"Standar", origin:"Lokal",
-            shortDesc:"Dragon Besgel ini punya warna gelap dengan kilap sisik yang tegas dan elegan.",
-            longDesc:"Ciri khas dragon ada pada sisik tebal yang terlihat seperti armor, memberikan kesan kuat dan eksklusif. Kombinasi warna gelap dengan sedikit aksen cerah membuat ikan ini terlihat misterius tapi tetap menarik.",
-            reviews:[{name:"ardi", avatar:"ardi.png", date:"2026-01-25", variant:"Male", stars:4, text:"Ikannya sehat, geraknya juga aktif jadi nggak bosen dilihat"}],
-            reviews:[{name:"Uli", avatar:"Uli.png", date:"2026-01-25", variant:"Male", stars:4, text:"Ikan cupangnya cantik banget 😍 warnanya cerah dan mengkilap, apalagi kalau kena cahaya jadi makin kelihatan elegan. Gerakannya juga anggun banget, bikin aku betah lama-lama lihat akuariumnya 💕"}] },
+      14: {
+        id: 14,
+        name: "Dragon Besgel",
+        price: 50000,
+        img: "png/s14dragon besgel.png",
+        rating: "4,7",
+        ratingNum: 4.7,
+        sold: 2,
+        gender: "Male",
+        stock: "Tersedia",
+        category: "Standar",
+        origin: "Lokal",
+        shortDesc: "Dragon Besgel ini punya warna gelap dengan kilap sisik yang tegas dan elegan.",
+        longDesc: "Ciri khas dragon ada pada sisik tebal yang terlihat seperti armor, memberikan kesan kuat dan eksklusif. Kombinasi warna gelap dengan sedikit aksen cerah membuat ikan ini terlihat misterius tapi tetap menarik.",
+        reviews: [
+          { name: "Ardi", avatar: "png/ardi.png", date: "2026-01-25", variant: "Male", stars: 4, text: "Ikannya sehat, geraknya juga aktif jadi nggak bosen dilihat." },
+          { name: "Uli", avatar: "png/uli.png", date: "2026-01-25", variant: "Male", stars: 4, text: "Ikan cupangnya cantik banget 😍 warnanya cerah dan mengkilap, apalagi kalau kena cahaya jadi makin kelihatan elegan. Gerakannya juga anggun banget, bikin aku betah lama-lama lihat akuariumnya 💕." }
+        ]
+      },
 
-      15: { id:15, name:"FCCP Red Head",        price:100000, img:"png/s15FCCP red head.png",      rating:"4,8", ratingNum:4.8, sold:2,  gender:"Male", stock:"Tersedia", category:"Premium",       origin:"Impor",
-            shortDesc:"FCCP Red Head ini tampil mencolok dengan warna merah putih yang kontras dan unik.",
-            longDesc:"Corak warna pada jenis ini terlihat tegas antara merah dan putih, menciptakan tampilan yang sangat eye-catching. Bentuk sirip yang rapi dan warna cerah membuatnya cocok jadi pilihan utama untuk mempercantik akuarium.",
-            reviews:[{name:"Bima", avatar:"bima.png", date:"2026-02-08", variant:"Male", stars:5, text:"Ikannya datang dengan kondisi bagus, langsung aktif pas dimasukin ke wadah, kelihatan sehat dari awal."}],
-             reviews:[{name:"Yudha", avatar:"yudha.png", date:"2026-02-08", variant:"Male", stars:5, text:"Ikan sehat, nggak ada tanda-tanda sakit, jadi lebih tenang peliharanya."}]},
+      15: {
+        id: 15,
+        name: "FCCP Red Head",
+        price: 100000,
+        img: "png/s15FCCP red head.png",
+        rating: "4,8",
+        ratingNum: 4.8,
+        sold: 2,
+        gender: "Male",
+        stock: "Tersedia",
+        category: "Premium",
+        origin: "Impor",
+        shortDesc: "FCCP Red Head ini tampil mencolok dengan warna merah putih yang kontras dan unik.",
+        longDesc: "Corak warna pada jenis ini terlihat tegas antara merah dan putih, menciptakan tampilan yang sangat eye-catching. Bentuk sirip yang rapi dan warna cerah membuatnya cocok jadi pilihan utama untuk mempercantik akuarium.",
+        reviews: [
+          { name: "Bima", avatar: "png/bima.png", date: "2026-02-08", variant: "Male", stars: 5, text: "Ikannya datang dengan kondisi bagus, langsung aktif pas dimasukin ke wadah, kelihatan sehat dari awal." },
+          { name: "Yudha", avatar: "png/yudha.png", date: "2026-02-08", variant: "Male", stars: 5, text: "Ikan sehat, nggak ada tanda-tanda sakit, jadi lebih tenang peliharanya." }
+        ]
+      },
 
-      16: { id:16, name:"Dumbo Ear Butterfly",  price:200000, img:"png/s16dumbo ear butterfly.png",rating:"4,9", ratingNum:4.9, sold:3,  gender:"Male", stock:"Tersedia", category:"Premium",       origin:"Import",
-            shortDesc:"Dumbo Ear Butterfly ini punya sirip besar dan warna gradasi yang cantik dan elegan.",
-            longDesc:"Dumbo dikenal dengan sirip dada besar seperti telinga, ditambah pola butterfly yang memiliki gradasi warna di ujung sirip. Kombinasi ini menciptakan tampilan yang sangat lembut dan artistik saat berenang.",
-            reviews:[{name:"Andika", avatar:"andika.png", date:"2026-02-04", variant:"Male", stars:5, text:"ikannya sampe dengan aman, pas dibuka masih aktif banget. warnanya juga keluar, puas sih 👍"}],
-             reviews:[{name:"Sari", avatar:"sari.png", date:"2026-02-04", variant:"Male", stars:5, text:"paketnya baru aja sampai 😍 alhamdulillah ikannya masih hidup dan langsung gerak aktif pas dibuka. warnanya juga cantik banget, sesuai sama yang di foto. packingnya rapi dan aman, jadi nggak terlalu khawatir waktu buka. puas banget sih sejauh ini 💕"}] },
+      16: {
+        id: 16,
+        name: "Dumbo Ear Butterfly",
+        price: 200000,
+        img: "png/s16dumbo ear butterfly.png",
+        rating: "4,9",
+        ratingNum: 4.9,
+        sold: 3,
+        gender: "Male",
+        stock: "Tersedia",
+        category: "Premium",
+        origin: "Import",
+        shortDesc: "Dumbo Ear Butterfly ini punya sirip besar dan warna gradasi yang cantik dan elegan.",
+        longDesc: "Dumbo dikenal dengan sirip dada besar seperti telinga, ditambah pola butterfly yang memiliki gradasi warna di ujung sirip. Kombinasi ini menciptakan tampilan yang sangat lembut dan artistik saat berenang.",
+        reviews: [
+          { name: "Andika", avatar: "png/andika.png", date: "2026-02-04", variant: "Male", stars: 5, text: "Ikannya sampai dengan aman, pas dibuka masih aktif banget. Warnanya juga keluar, puas sih 👍." },
+          { name: "Sari", avatar: "png/sari.png", date: "2026-02-04", variant: "Male", stars: 5, text: "Paketnya baru aja sampai 😍 alhamdulillah ikannya masih hidup dan langsung gerak aktif pas dibuka. Warnanya juga cantik banget, sesuai sama yang di foto. Packingnya rapi dan aman, jadi nggak terlalu khawatir waktu buka. Puas banget sih sejauh ini 💕." }
+        ]
+      },
 
-      17: { id:17, name:"Mustard Gass",         price:60000,  img:"png/s17mustard gass.png",       rating:"4,8", ratingNum:4.8, sold:2,  gender:"Male", stock:"Tersedia", category:"Standar",       origin:"Lokal",
-            shortDesc:"Mustard Gass ini tampil unik dengan kombinasi warna kontras dan pola yang tidak biasa.",
-            longDesc:"Jenis ini memiliki perpaduan warna biru, kuning, dan hitam yang mencolok dengan pola khas yang jarang ditemukan. Tampilan keseluruhan terlihat eksotis dan cocok untuk kamu yang ingin ikan beda dari yang lain.",
-            reviews:[{name:"Aan", avatar:"aan.png", date:"2026-01-28", variant:"Male", stars:5, text:"paket baru sampai tadi, langsung dibuka dan dicek. ikannya masih hidup dan cukup aktif, jadi lega. warnanya juga sesuai sama foto, nggak jauh beda."}], 
-             reviews:[{name:"Rizky", avatar:"rizky.png", date:"2026-01-28", variant:"Male", stars:5, text:"barang sudah diterima, awalnya sempat khawatir karena kirimnya lumayan jauh, tapi ternyata ikan masih sehat dan langsung gerak. sejauh ini puas."}]},
+      17: {
+        id: 17,
+        name: "Mustard Gass",
+        price: 60000,
+        img: "png/s17mustard gass.png",
+        rating: "4,8",
+        ratingNum: 4.8,
+        sold: 2,
+        gender: "Male",
+        stock: "Tersedia",
+        category: "Standar",
+        origin: "Lokal",
+        shortDesc: "Mustard Gass ini tampil unik dengan kombinasi warna kontras dan pola yang tidak biasa.",
+        longDesc: "Jenis ini memiliki perpaduan warna biru, kuning, dan hitam yang mencolok dengan pola khas yang jarang ditemukan. Tampilan keseluruhan terlihat eksotis dan cocok untuk kamu yang ingin ikan beda dari yang lain.",
+        reviews: [
+          { name: "Aan", avatar: "png/aan.png", date: "2026-01-28", variant: "Male", stars: 5, text: "Paket baru sampai tadi, langsung dibuka dan dicek. Ikannya masih hidup dan cukup aktif, jadi lega. Warnanya juga sesuai sama foto, nggak jauh beda." },
+          { name: "Rizky", avatar: "png/rizky.png", date: "2026-01-28", variant: "Male", stars: 5, text: "Barang sudah diterima, awalnya sempat khawatir karena kirimnya lumayan jauh, tapi ternyata ikan masih sehat dan langsung gerak. Sejauh ini puas." }
+        ]
+      },
 
-      18: { id:18, name:"Multy Cello",          price:50000,  img:"png/s18multy cello.png",        rating:"4,9", ratingNum:4.9, sold:2, gender:"Male", stock:"Tersedia", category:"Standar",       origin:"Lokal",
-            shortDesc:"Multy Cello ini hadir dengan warna lembut transparan yang terlihat clean dan estetik.",
-            longDesc:"Ciri khas cello adalah warna tubuh yang lebih terang dan sedikit transparan, memberikan kesan ringan dan elegan. Warna pastel yang dimiliki membuatnya cocok untuk tampilan akuarium yang minimalis dan modern.",
-            reviews:[{name:"Fajar", avatar:"fajar.png", date:"2026-02-11", variant:"Male", stars:5, text:" paketnya aman, packing cukup rapi. pas dibuka ikan masih hidup dan nggak lemes. warnanya juga masih bagus."}],
-             reviews:[{name:"Aulia", avatar:"aulia.png", date:"2026-02-11", variant:"Male", stars:5, text:"Paket baru datang dan langsung aku cek 😍 ikannya masih fresh, nggak lemes sama sekali. gerakannya aktif banget, bikin lega. warna juga sesuai ekspektasi, cantik banget 💖"}]},
+      18: {
+        id: 18,
+        name: "Multy Cello",
+        price: 50000,
+        img: "png/s18multy cello.png",
+        rating: "4,9",
+        ratingNum: 4.9,
+        sold: 2,
+        gender: "Male",
+        stock: "Tersedia",
+        category: "Standar",
+        origin: "Lokal",
+        shortDesc: "Multy Cello ini hadir dengan warna lembut transparan yang terlihat clean dan estetik.",
+        longDesc: "Ciri khas cello adalah warna tubuh yang lebih terang dan sedikit transparan, memberikan kesan ringan dan elegan. Warna pastel yang dimiliki membuatnya cocok untuk tampilan akuarium yang minimalis dan modern.",
+        reviews: [
+          { name: "Fajar", avatar: "png/fajar.png", date: "2026-02-11", variant: "Male", stars: 5, text: "Paketnya aman, packing cukup rapi. Pas dibuka ikan masih hidup dan nggak lemes. Warnanya juga masih bagus." },
+          { name: "Aulia", avatar: "png/aulia.png", date: "2026-02-11", variant: "Male", stars: 5, text: "Paket baru datang dan langsung aku cek 😍 ikannya masih fresh, nggak lemes sama sekali. Gerakannya aktif banget, bikin lega. Warna juga sesuai ekspektasi, cantik banget 💖." }
+        ]
+      },
 
-      19: { id:19, name:"Blue Rim",             price:30000,  img:"png/s19blue rim.png",           rating:"4,7", ratingNum:4.7, sold:3, gender:"Male", stock:"Tersedia", category:"Standar",    origin:"Lokal",
-            shortDesc:"Blue Rim ini punya pinggiran sirip biru yang tegas dan terlihat sangat kontras.",
-            longDesc:"Jenis ini dikenal dari garis warna di tepi sirip yang membuat tampilannya lebih hidup. Kombinasi warna dasar terang dengan outline biru memberikan efek visual yang menarik dan unik.",
-            reviews:[{name:"Bima", avatar:"bima.png", date:"2026-01-19", variant:"Male", stars:5, text:"baru sampai tadi, ikan masih hidup dan kelihatan sehat. packing juga lumayan aman."}],
-            reviews:[{name:"Dandi", avatar:"dandi.png", date:"2026-01-19", variant:"Male", stars:5, text:"Paket diterima, ikan masih aktif dan nggak lemes. kondisi sesuai ekspektasi."}]},
+      19: {
+        id: 19,
+        name: "Blue Rim",
+        price: 30000,
+        img: "png/s19blue rim.png",
+        rating: "4,7",
+        ratingNum: 4.7,
+        sold: 3,
+        gender: "Male",
+        stock: "Tersedia",
+        category: "Standar",
+        origin: "Lokal",
+        shortDesc: "Blue Rim ini punya pinggiran sirip biru yang tegas dan terlihat sangat kontras.",
+        longDesc: "Jenis ini dikenal dari garis warna di tepi sirip yang membuat tampilannya lebih hidup. Kombinasi warna dasar terang dengan outline biru memberikan efek visual yang menarik dan unik.",
+        reviews: [
+          { name: "Bima", avatar: "png/bima.png", date: "2026-01-19", variant: "Male", stars: 5, text: "Baru sampai tadi, ikan masih hidup dan kelihatan sehat. Packing juga lumayan aman." },
+          { name: "Dandi", avatar: "png/dandi.png", date: "2026-01-19", variant: "Male", stars: 5, text: "Paket diterima, ikan masih aktif dan nggak lemes. Kondisi sesuai ekspektasi." }
+        ]
+      },
 
-      20: { id:20, name:"Nemo Emerald",         price:250000, img:"png/s20nemo emerald.png",       rating:"4,9", ratingNum:4.9, sold:5,  gender:"Male", stock:"Tersedia", category:"Premium",  origin:"Import",
-            shortDesc:"Nemo Emerald ini tampil super mencolok dengan warna campuran merah, kuning, dan biru.",
-            longDesc:"Jenis nemo terkenal dengan pola warna acak yang vibrant dan penuh karakter. Warna emerald memberikan tambahan kesan eksklusif, membuat ikan ini terlihat mahal dan cocok untuk kolektor.",
-            reviews:[{name:"Hendra", avatar:"hendra.png", date:"2026-02-05", variant:"Male", stars:5, text:"ikannya selamat sampai rumah, kondisi masih bagus dan aktif."}],
-            reviews:[{name:"Ayu", avatar:"ayu.png", date:"2026-02-05", variant:"Male", stars:5, text:"paket udah diterima 🥺 awalnya khawatir tapi ternyata ikannya sehat banget. warnanya juga nggak pudar, malah cantik. langsung jatuh suka 💖."}]}
+      20: {
+        id: 20,
+        name: "Nemo Emerald",
+        price: 250000,
+        img: "png/s20nemo emerald.png",
+        rating: "4,9",
+        ratingNum: 4.9,
+        sold: 5,
+        gender: "Male",
+        stock: "Tersedia",
+        category: "Premium",
+        origin: "Import",
+        shortDesc: "Nemo Emerald ini tampil super mencolok dengan warna campuran merah, kuning, dan biru.",
+        longDesc: "Jenis nemo terkenal dengan pola warna acak yang vibrant dan penuh karakter. Warna emerald memberikan tambahan kesan eksklusif, membuat ikan ini terlihat mahal dan cocok untuk kolektor.",
+        reviews: [
+          { name: "Hendra", avatar: "png/hendra.png", date: "2026-02-05", variant: "Male", stars: 5, text: "Ikannya selamat sampai rumah, kondisi masih bagus dan aktif." },
+          { name: "Ayu", avatar: "png/ayu.png", date: "2026-02-05", variant: "Male", stars: 5, text: "Paket udah diterima 🥺 awalnya khawatir tapi ternyata ikannya sehat banget. Warnanya juga nggak pudar, malah cantik. Langsung jatuh suka 💖." }
+        ]
+      }
     };
-
     // ── HELPER ────────────────────────────────────────────────
     function fmt(n) { return "Rp " + Number(n).toLocaleString("id-ID"); }
     function starsHtml(n) {
